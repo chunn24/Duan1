@@ -18,6 +18,7 @@ public class Testgithub {
         // TODO code application logic here
         System.out.println("Xin chào  Dũng , Tuấn , Trung , Hải  , Triều , Tri");
         System.out.println("Người chơi hệ chiến");
+        System.out.println("123");
     }
     
 }
