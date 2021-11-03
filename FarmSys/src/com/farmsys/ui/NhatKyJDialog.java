@@ -53,7 +53,7 @@ public class NhatKyJDialog extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "STT", "Tên công việc", "Chi tiết công việc", "Người tạo", "Thành viên", "Bắt đầu", "Số ngày còn lại", "Trạng thái"
+                "STT", "Tên công việc", "Chi tiết công việc", "Người tạo", "Nhân viên", "Bắt đầu", "Kết thúc", "Trạng thái"
             }
         ));
         jScrollPane1.setViewportView(jTable1);

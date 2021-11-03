@@ -119,9 +119,9 @@
                 <Column editable="true" title="T&#xea;n c&#xf4;ng vi&#x1ec7;c" type="java.lang.Object"/>
                 <Column editable="true" title="Chi ti&#x1ebf;t c&#xf4;ng vi&#x1ec7;c" type="java.lang.Object"/>
                 <Column editable="true" title="Ng&#x1b0;&#x1edd;i t&#x1ea1;o" type="java.lang.Object"/>
-                <Column editable="true" title="Th&#xe0;nh vi&#xea;n" type="java.lang.Object"/>
+                <Column editable="true" title="Nh&#xe2;n vi&#xea;n" type="java.lang.Object"/>
                 <Column editable="true" title="B&#x1eaf;t &#x111;&#x1ea7;u" type="java.lang.Object"/>
-                <Column editable="true" title="S&#x1ed1; ng&#xe0;y c&#xf2;n l&#x1ea1;i" type="java.lang.Object"/>
+                <Column editable="true" title="K&#x1ebf;t th&#xfa;c" type="java.lang.Object"/>
                 <Column editable="true" title="Tr&#x1ea1;ng th&#xe1;i" type="java.lang.Object"/>
               </Table>
             </Property>
