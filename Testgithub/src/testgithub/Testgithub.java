@@ -17,6 +17,7 @@ public class Testgithub {
     public static void main(String[] args) {
         // TODO code application logic here
         System.out.println("Xin chào  Dũng , Tuấn , Trung , Hải  , Triều , Tri" +"Proteam"+"Vippro");
+        System.out.println("Người chơi hệ chiến");
     }
     
 }
