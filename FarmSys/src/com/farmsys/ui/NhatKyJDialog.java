@@ -59,6 +59,7 @@ public class NhatKyJDialog extends javax.swing.JFrame {
 
         btnXuatPDF.setText("Xuất PDF");
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/icons8_settings_20px_2.png"))); // NOI18N
         jLabel2.setText("Hệ thống trang trại trồng cây thủy canh");
 
@@ -76,11 +77,7 @@ public class NhatKyJDialog extends javax.swing.JFrame {
                         .addGroup(pnlBenTraiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(pnlBenTraiLayout.createSequentialGroup()
-                                .addGroup(pnlBenTraiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addGroup(pnlBenTraiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(btnXuatPDF, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel2)))
+                                .addComponent(jLabel1)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(pnlBenTraiLayout.createSequentialGroup()
@@ -90,8 +87,14 @@ public class NhatKyJDialog extends javax.swing.JFrame {
                                 .addComponent(lblTitle))
                             .addGroup(pnlBenTraiLayout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(jLabel3)))
-                        .addGap(0, 35, Short.MAX_VALUE)))
+                                .addComponent(jLabel3))
+                            .addGroup(pnlBenTraiLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel2))
+                            .addGroup(pnlBenTraiLayout.createSequentialGroup()
+                                .addGap(81, 81, 81)
+                                .addComponent(btnXuatPDF, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         pnlBenTraiLayout.setVerticalGroup(
@@ -107,11 +110,11 @@ public class NhatKyJDialog extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnXuatPDF, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(93, 93, 93)
+                .addGap(72, 72, 72)
                 .addComponent(jLabel2)
-                .addGap(22, 22, 22))
+                .addContainerGap())
         );
 
         pnlBenPhai.setBackground(new java.awt.Color(204, 255, 204));
@@ -146,7 +149,7 @@ public class NhatKyJDialog extends javax.swing.JFrame {
         );
         pnlBenPhaiLayout.setVerticalGroup(
             pnlBenPhaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 516, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout pnlNhatKyLayout = new javax.swing.GroupLayout(pnlNhatKy);
