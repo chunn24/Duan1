@@ -78,7 +78,7 @@ public class DanTrongJDialog extends javax.swing.JFrame {
         txtTenDanTrong.setText("DÀN CỦA ANH LÂM");
 
         btnThem.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
-        btnThem.setIcon(new javax.swing.ImageIcon("D:\\GitHub\\Duan1\\FarmSys\\src\\com\\farmsys\\icon\\Add.png")); // NOI18N
+        btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Add.png"))); // NOI18N
         btnThem.setText("Thêm");
         btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -87,7 +87,7 @@ public class DanTrongJDialog extends javax.swing.JFrame {
         });
 
         btnSua.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
-        btnSua.setIcon(new javax.swing.ImageIcon("D:\\GitHub\\Duan1\\FarmSys\\src\\com\\farmsys\\icon\\Refresh.png")); // NOI18N
+        btnSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Refresh.png"))); // NOI18N
         btnSua.setText("Sửa");
         btnSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,7 +96,7 @@ public class DanTrongJDialog extends javax.swing.JFrame {
         });
 
         btnXoa.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
-        btnXoa.setIcon(new javax.swing.ImageIcon("D:\\GitHub\\Duan1\\FarmSys\\src\\com\\farmsys\\icon\\Delete.png")); // NOI18N
+        btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Delete.png"))); // NOI18N
         btnXoa.setText("Xóa");
         btnXoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -105,7 +105,7 @@ public class DanTrongJDialog extends javax.swing.JFrame {
         });
 
         btnMoi.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
-        btnMoi.setIcon(new javax.swing.ImageIcon("D:\\GitHub\\Duan1\\FarmSys\\src\\com\\farmsys\\icon\\new.png")); // NOI18N
+        btnMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/new.png"))); // NOI18N
         btnMoi.setText("Mới");
         btnMoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,28 +113,28 @@ public class DanTrongJDialog extends javax.swing.JFrame {
             }
         });
 
-        btnFirst.setIcon(new javax.swing.ImageIcon("D:\\GitHub\\Duan1\\FarmSys\\src\\com\\farmsys\\icon\\backward.png")); // NOI18N
+        btnFirst.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/backward.png"))); // NOI18N
         btnFirst.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFirstActionPerformed(evt);
             }
         });
 
-        btnPrev.setIcon(new javax.swing.ImageIcon("D:\\GitHub\\Duan1\\FarmSys\\src\\com\\farmsys\\icon\\previous.png")); // NOI18N
+        btnPrev.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/previous.png"))); // NOI18N
         btnPrev.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPrevActionPerformed(evt);
             }
         });
 
-        btnNext.setIcon(new javax.swing.ImageIcon("D:\\GitHub\\Duan1\\FarmSys\\src\\com\\farmsys\\icon\\next.png")); // NOI18N
+        btnNext.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/next.png"))); // NOI18N
         btnNext.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNextActionPerformed(evt);
             }
         });
 
-        btnLast.setIcon(new javax.swing.ImageIcon("D:\\GitHub\\Duan1\\FarmSys\\src\\com\\farmsys\\icon\\fast-forward.png")); // NOI18N
+        btnLast.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/fast-forward.png"))); // NOI18N
         btnLast.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLastActionPerformed(evt);
