@@ -114,7 +114,7 @@ public class TongQuan extends javax.swing.JFrame {
         pnltongquat.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 250, 111, -1));
 
         jButton3.setText("5 NOTE - TO DO");
-        pnltongquat.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 120, 60));
+        pnltongquat.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, 120, 60));
 
         jButton4.setText("4 NOTE - DOING");
         pnltongquat.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 120, 120, 60));
