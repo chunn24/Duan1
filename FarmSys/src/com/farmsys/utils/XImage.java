@@ -7,6 +7,7 @@ package com.farmsys.utils;
 
 import java.awt.Image;
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -35,7 +36,7 @@ public class XImage {
             Path from = Paths.get(src.getAbsolutePath());
             Path to = Paths.get(src.getAbsolutePath());
             Files.copy(from, to, StandardCopyOption.REPLACE_EXISTING);
-        } catch (Exception e) {
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
 

@@ -48,8 +48,9 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="D:\Netbeans\Github\Duan1\FarmSys\src\com\farmsys\icon\logofarmSys.gif"/>
+              <Image iconType="3" name="/com/farmsys/icons/logofarmSys.gif"/>
             </Property>
           </Properties>
           <Constraints>

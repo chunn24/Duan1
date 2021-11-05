@@ -5,8 +5,13 @@
  */
 package com.farmsys.ui;
 
+import com.farmsys.utils.XImage;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.Timer;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -51,6 +56,7 @@ public class TongQuan extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         btnTopMemberDone = new javax.swing.JButton();
         pnlchart = new javax.swing.JPanel();
+        lblDongHo = new javax.swing.JLabel();
         pnlmenu = new javax.swing.JPanel();
         pnlHome = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -82,7 +88,6 @@ public class TongQuan extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 255, 0));
-        setUndecorated(true);
 
         penalTong.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -125,6 +130,8 @@ public class TongQuan extends javax.swing.JFrame {
 
         pnlchart.setLayout(new java.awt.BorderLayout());
 
+        lblDongHo.setText("jLabel19");
+
         javax.swing.GroupLayout pnltongquatLayout = new javax.swing.GroupLayout(pnltongquat);
         pnltongquat.setLayout(pnltongquatLayout);
         pnltongquatLayout.setHorizontalGroup(
@@ -154,6 +161,9 @@ public class TongQuan extends javax.swing.JFrame {
                         .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(267, Short.MAX_VALUE))
             .addComponent(pnlchart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(pnltongquatLayout.createSequentialGroup()
+                .addComponent(lblDongHo)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pnltongquatLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton4, jButton5});
@@ -161,7 +171,9 @@ public class TongQuan extends javax.swing.JFrame {
         pnltongquatLayout.setVerticalGroup(
             pnltongquatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnltongquatLayout.createSequentialGroup()
-                .addGap(56, 56, 56)
+                .addContainerGap()
+                .addComponent(lblDongHo)
+                .addGap(31, 31, 31)
                 .addGroup(pnltongquatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -177,9 +189,8 @@ public class TongQuan extends javax.swing.JFrame {
                 .addGroup(pnltongquatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnTopMemberDone, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnTopMemberDone1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(44, 44, 44)
-                .addComponent(pnlchart, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(71, 71, 71)
+                .addComponent(pnlchart, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pnltongquatLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton4, jButton5});
@@ -515,7 +526,8 @@ public class TongQuan extends javax.swing.JFrame {
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
-        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/FarmSys.png"))); // NOI18N
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/FarmSys.png"))); // NOI18N
 
         javax.swing.GroupLayout pnlmenuLayout = new javax.swing.GroupLayout(pnlmenu);
         pnlmenu.setLayout(pnlmenuLayout);
@@ -536,8 +548,8 @@ public class TongQuan extends javax.swing.JFrame {
                     .addComponent(pnlNhanvien, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pnlHome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pnlDanTrong, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -584,10 +596,9 @@ public class TongQuan extends javax.swing.JFrame {
         penalTongLayout.setVerticalGroup(
             penalTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(penalTongLayout.createSequentialGroup()
-                .addGroup(penalTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlmenu, javax.swing.GroupLayout.PREFERRED_SIZE, 545, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pnltongquat, javax.swing.GroupLayout.PREFERRED_SIZE, 547, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(pnlmenu, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addGap(2, 2, 2))
+            .addComponent(pnltongquat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -749,6 +760,7 @@ public class TongQuan extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel lblDongHo;
     private javax.swing.JPanel penalTong;
     private javax.swing.JPanel pnlCaytron;
     private javax.swing.JPanel pnlDanTrong;
@@ -764,12 +776,23 @@ public class TongQuan extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     Color c = new Color(14, 251, 137);
 
-    private void init() {
-        setLocationRelativeTo(null);
-        this.showLineChart();
-    }
 
+    private void init() {
+        //this.setIconImage(XImage.getAppIcon());
+        this.setLocationRelativeTo(null);
+        new chaoJdialog(this, true).setVisible(true);
+        new DangNhapJDialog(this, true).setVisible(true);
+        this.showLineChart();
+        
+        new Timer(1000, (ActionEvent e) -> {
+            Date now = new Date();
+            SimpleDateFormat formater = new SimpleDateFormat("hh:mm:ss a");
+            String text = formater.format(now);
+            lblDongHo.setText(text);
+        }).start();
+    }
 // line chart
+
     void showLineChart() {
         //create dataset for the graph
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();

@@ -44,7 +44,8 @@ public class chaoJdialog extends javax.swing.JDialog {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel1.add(pgbLogging, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 500, 30));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\Netbeans\\Github\\Duan1\\FarmSys\\src\\com\\farmsys\\icon\\logofarmSys.gif")); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/logofarmSys.gif"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 358));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
