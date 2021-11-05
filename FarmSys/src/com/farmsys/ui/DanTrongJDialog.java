@@ -5,6 +5,8 @@
  */
 package com.farmsys.ui;
 
+import java.awt.Color;
+
 /**
  *
  * @author trieu
@@ -16,6 +18,9 @@ public class DanTrongJDialog extends javax.swing.JFrame {
      */
     public DanTrongJDialog() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setTitle("Quản Lý Dàn Trồng");
+        getContentPane().setBackground(Color.green);
     }
 
     /**
@@ -54,19 +59,26 @@ public class DanTrongJDialog extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(153, 255, 153));
 
-        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblTitle.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         lblTitle.setForeground(new java.awt.Color(0, 0, 204));
         lblTitle.setText("QUẢN LÝ DÀN TRỒNG");
 
-        jLabel1.setText("Mã dàn trồng");
+        tabs.setBackground(new java.awt.Color(204, 204, 204));
+
+        pnlEdit.setBackground(new java.awt.Color(204, 255, 204));
+
+        jLabel1.setText("Mã dàn trồng:");
 
         txtMaDanTrong.setText("MD001");
 
-        jLabel2.setText("Tên dàn trồng");
+        jLabel2.setText("Tên dàn trồng:");
 
         txtTenDanTrong.setText("DÀN CỦA ANH LÂM");
 
+        btnThem.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
+        btnThem.setIcon(new javax.swing.ImageIcon("D:\\GitHub\\Duan1\\FarmSys\\src\\com\\farmsys\\icon\\Add.png")); // NOI18N
         btnThem.setText("Thêm");
         btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,6 +86,8 @@ public class DanTrongJDialog extends javax.swing.JFrame {
             }
         });
 
+        btnSua.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
+        btnSua.setIcon(new javax.swing.ImageIcon("D:\\GitHub\\Duan1\\FarmSys\\src\\com\\farmsys\\icon\\Refresh.png")); // NOI18N
         btnSua.setText("Sửa");
         btnSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,6 +95,8 @@ public class DanTrongJDialog extends javax.swing.JFrame {
             }
         });
 
+        btnXoa.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
+        btnXoa.setIcon(new javax.swing.ImageIcon("D:\\GitHub\\Duan1\\FarmSys\\src\\com\\farmsys\\icon\\Delete.png")); // NOI18N
         btnXoa.setText("Xóa");
         btnXoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -88,6 +104,8 @@ public class DanTrongJDialog extends javax.swing.JFrame {
             }
         });
 
+        btnMoi.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
+        btnMoi.setIcon(new javax.swing.ImageIcon("D:\\GitHub\\Duan1\\FarmSys\\src\\com\\farmsys\\icon\\new.png")); // NOI18N
         btnMoi.setText("Mới");
         btnMoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,28 +113,28 @@ public class DanTrongJDialog extends javax.swing.JFrame {
             }
         });
 
-        btnFirst.setText("|<");
+        btnFirst.setIcon(new javax.swing.ImageIcon("D:\\GitHub\\Duan1\\FarmSys\\src\\com\\farmsys\\icon\\backward.png")); // NOI18N
         btnFirst.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFirstActionPerformed(evt);
             }
         });
 
-        btnPrev.setText("<<");
+        btnPrev.setIcon(new javax.swing.ImageIcon("D:\\GitHub\\Duan1\\FarmSys\\src\\com\\farmsys\\icon\\previous.png")); // NOI18N
         btnPrev.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPrevActionPerformed(evt);
             }
         });
 
-        btnNext.setText(">>");
+        btnNext.setIcon(new javax.swing.ImageIcon("D:\\GitHub\\Duan1\\FarmSys\\src\\com\\farmsys\\icon\\next.png")); // NOI18N
         btnNext.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNextActionPerformed(evt);
             }
         });
 
-        btnLast.setText(">|");
+        btnLast.setIcon(new javax.swing.ImageIcon("D:\\GitHub\\Duan1\\FarmSys\\src\\com\\farmsys\\icon\\fast-forward.png")); // NOI18N
         btnLast.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLastActionPerformed(evt);
@@ -125,7 +143,7 @@ public class DanTrongJDialog extends javax.swing.JFrame {
 
         jLabel3.setText("Mac dinh la chua hoat dong --- chi cho sua ten dan");
 
-        jLabel5.setText("TRạng thái");
+        jLabel5.setText("TRạng thái:");
 
         jTextField1.setEditable(false);
         jTextField1.setText("Đang hoạt động");
@@ -146,27 +164,25 @@ public class DanTrongJDialog extends javax.swing.JFrame {
                             .addComponent(jLabel3))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlEditLayout.createSequentialGroup()
-                        .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(pnlEditLayout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextField1))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlEditLayout.createSequentialGroup()
-                                .addComponent(btnThem)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnSua)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnXoa)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnMoi)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                                .addComponent(btnFirst)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnPrev)))
+                        .addComponent(btnThem)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnSua)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnXoa)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnMoi)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnFirst)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnPrev)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnNext)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnLast)))
+                        .addComponent(btnLast))
+                    .addGroup(pnlEditLayout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextField1)))
                 .addContainerGap())
         );
         pnlEditLayout.setVerticalGroup(
@@ -201,6 +217,8 @@ public class DanTrongJDialog extends javax.swing.JFrame {
 
         tabs.addTab("CẬP NHẬT", pnlEdit);
 
+        pnlList.setBackground(new java.awt.Color(204, 255, 204));
+
         tblDanTrong.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -230,15 +248,15 @@ public class DanTrongJDialog extends javax.swing.JFrame {
         pnlList.setLayout(pnlListLayout);
         pnlListLayout.setHorizontalGroup(
             pnlListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlListLayout.createSequentialGroup()
-                .addGap(0, 10, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(pnlListLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(pnlListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlListLayout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE))
+                .addContainerGap())
         );
         pnlListLayout.setVerticalGroup(
             pnlListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -248,8 +266,8 @@ public class DanTrongJDialog extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         tabs.addTab("DANH SÁCH", pnlList);
@@ -260,20 +278,21 @@ public class DanTrongJDialog extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tabs)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblTitle)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addComponent(tabs)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblTitle)
+                .addGap(201, 201, 201))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(28, Short.MAX_VALUE)
+                .addContainerGap()
                 .addComponent(lblTitle)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(tabs, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(tabs)
+                .addContainerGap())
         );
 
         pack();
