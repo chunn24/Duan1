@@ -5,6 +5,8 @@
  */
 package com.farmsys.ui;
 
+import java.awt.Color;
+
 /**
  *
  * @author trieu
@@ -17,6 +19,8 @@ public class DanTrongJDialog extends javax.swing.JFrame {
     public DanTrongJDialog() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setTitle("Quản Lý Dàn Trồng");
+        getContentPane().setBackground(Color.green);
     }
 
     /**
@@ -63,7 +67,7 @@ public class DanTrongJDialog extends javax.swing.JFrame {
 
         tabs.setBackground(new java.awt.Color(204, 204, 204));
 
-        pnlEdit.setBackground(new java.awt.Color(153, 255, 153));
+        pnlEdit.setBackground(new java.awt.Color(204, 255, 204));
 
         jLabel1.setText("Mã dàn trồng:");
 
@@ -213,7 +217,7 @@ public class DanTrongJDialog extends javax.swing.JFrame {
 
         tabs.addTab("CẬP NHẬT", pnlEdit);
 
-        pnlList.setBackground(new java.awt.Color(153, 255, 153));
+        pnlList.setBackground(new java.awt.Color(204, 255, 204));
 
         tblDanTrong.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
