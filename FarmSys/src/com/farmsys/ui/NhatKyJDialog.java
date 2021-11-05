@@ -64,7 +64,7 @@ public class NhatKyJDialog extends javax.swing.JFrame {
         btnXuatPDF.setBackground(new java.awt.Color(17, 105, 142));
         btnXuatPDF.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         btnXuatPDF.setForeground(new java.awt.Color(248, 241, 241));
-        btnXuatPDF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/icons8_pdf_35px_1.png"))); // NOI18N
+        btnXuatPDF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/icons8_facebook_30px.png"))); // NOI18N
         btnXuatPDF.setText("Xuất PDF");
         btnXuatPDF.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnXuatPDF.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
