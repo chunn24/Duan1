@@ -351,7 +351,7 @@ public class TongQuan extends javax.swing.JFrame {
                 .addComponent(jLabel7)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel8)
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addContainerGap(69, Short.MAX_VALUE))
         );
         pnlDangxuatLayout.setVerticalGroup(
             pnlDangxuatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -434,7 +434,7 @@ public class TongQuan extends javax.swing.JFrame {
                 .addComponent(jLabel11)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel12)
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
         pnlCaytronLayout.setVerticalGroup(
             pnlCaytronLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -474,7 +474,7 @@ public class TongQuan extends javax.swing.JFrame {
                 .addComponent(jLabel13)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel14)
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addContainerGap(82, Short.MAX_VALUE))
         );
         pnlNhatkyLayout.setVerticalGroup(
             pnlNhatkyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -514,7 +514,7 @@ public class TongQuan extends javax.swing.JFrame {
                 .addComponent(jLabel15)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel16)
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
         pnlGiaoviecLayout.setVerticalGroup(
             pnlGiaoviecLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
