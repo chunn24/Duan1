@@ -61,7 +61,7 @@ public class NhatKyJDialog extends javax.swing.JFrame {
         btnXuatPDF.setText("Xuất PDF");
 
         lblTrangThai.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        lblTrangThai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icon/icons8_settings_20px_2.png"))); // NOI18N
+        lblTrangThai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/icons8_settings_20px_2.png"))); // NOI18N
         lblTrangThai.setText("Hệ thống trang trại trồng cây thủy canh");
 
         javax.swing.GroupLayout pnlBenTraiLayout = new javax.swing.GroupLayout(pnlBenTrai);
@@ -124,7 +124,7 @@ public class NhatKyJDialog extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 204, 204));
 
-        lblDongHo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icon/icons8_alarm_clock_30px.png"))); // NOI18N
+        lblDongHo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/icons8_alarm_clock_30px.png"))); // NOI18N
         lblDongHo.setText("DongHo");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

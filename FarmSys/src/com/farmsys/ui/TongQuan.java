@@ -45,18 +45,23 @@ public class TongQuan extends javax.swing.JFrame {
 
         penalTong = new javax.swing.JPanel();
         pnltongquat = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
         btnTopMemberDone1 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         btnTopMemberDone = new javax.swing.JButton();
         pnlchart = new javax.swing.JPanel();
         lblDongHo = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel19 = new javax.swing.JLabel();
+        countNV = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel20 = new javax.swing.JLabel();
+        countDT = new javax.swing.JLabel();
         pnlmenu = new javax.swing.JPanel();
         pnlHome = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -92,16 +97,17 @@ public class TongQuan extends javax.swing.JFrame {
         penalTong.setBackground(new java.awt.Color(255, 255, 255));
 
         pnltongquat.setBackground(new java.awt.Color(255, 255, 255));
-
-        jButton1.setBackground(new java.awt.Color(204, 204, 255));
-        jButton1.setText("15 NHÂN VIÊN");
+        pnltongquat.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnTopMemberDone1.setBackground(new java.awt.Color(255, 102, 102));
         btnTopMemberDone1.setText("TOP 5 MEMBER CANCEL");
+        pnltongquat.add(btnTopMemberDone1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 250, 180, 60));
 
         jButton6.setText("8 NOTE - DONE");
+        pnltongquat.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 230, 120, 60));
 
         jButton8.setText("10 dàn thu hoah5");
+        pnltongquat.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 70, 120, -1));
 
         jButton7.setText("Thời thiết");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
@@ -109,13 +115,13 @@ public class TongQuan extends javax.swing.JFrame {
                 jButton7ActionPerformed(evt);
             }
         });
-
-        jButton2.setBackground(new java.awt.Color(143, 209, 80));
-        jButton2.setText("30 DÀN TRỒNG");
+        pnltongquat.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 70, 111, -1));
 
         jButton3.setText("5 NOTE - TO DO");
+        pnltongquat.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(99, 225, 120, 60));
 
         jButton4.setText("4 NOTE - DOING");
+        pnltongquat.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 170, 120, 60));
 
         jButton5.setText("1 NOTE-CANCEL");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -123,77 +129,84 @@ public class TongQuan extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
+        pnltongquat.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 150, 120, 60));
 
         btnTopMemberDone.setBackground(new java.awt.Color(204, 0, 255));
         btnTopMemberDone.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnTopMemberDone.setText("TOP 5 MEMBER DONE");
+        pnltongquat.add(btnTopMemberDone, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 240, 180, 60));
 
         pnlchart.setLayout(new java.awt.BorderLayout());
+        pnltongquat.add(pnlchart, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 328, 893, 247));
 
-        lblDongHo.setText("jLabel19");
+        lblDongHo.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
+        pnltongquat.add(lblDongHo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 139, 23));
 
-        javax.swing.GroupLayout pnltongquatLayout = new javax.swing.GroupLayout(pnltongquat);
-        pnltongquat.setLayout(pnltongquatLayout);
-        pnltongquatLayout.setHorizontalGroup(
-            pnltongquatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnltongquatLayout.createSequentialGroup()
-                .addGap(128, 128, 128)
-                .addGroup(pnltongquatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnltongquatLayout.createSequentialGroup()
-                        .addComponent(btnTopMemberDone, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnTopMemberDone1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnltongquatLayout.createSequentialGroup()
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnltongquatLayout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(267, Short.MAX_VALUE))
-            .addComponent(pnlchart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(pnltongquatLayout.createSequentialGroup()
-                .addComponent(lblDongHo)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/user_50px.png"))); // NOI18N
 
-        pnltongquatLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton4, jButton5});
+        countNV.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        countNV.setText("15");
 
-        pnltongquatLayout.setVerticalGroup(
-            pnltongquatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnltongquatLayout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblDongHo)
-                .addGap(31, 31, 31)
-                .addGroup(pnltongquatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(40, 40, 40)
-                .addGroup(pnltongquatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(pnltongquatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnTopMemberDone, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnTopMemberDone1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(71, 71, 71)
-                .addComponent(pnlchart, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(countNV, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel19))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel19)
+                .addContainerGap(16, Short.MAX_VALUE))
+            .addComponent(countNV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        pnltongquatLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton4, jButton5});
+        pnltongquat.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        pnltongquat.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 40, -1, -1));
+
+        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/tree_planting_50px.png"))); // NOI18N
+
+        countDT.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        countDT.setText("30");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(countDT, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel20)
+                .addGap(4, 4, 4))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel20)
+                .addContainerGap(16, Short.MAX_VALUE))
+            .addComponent(countDT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        pnltongquat.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 40, -1, -1));
 
         pnlmenu.setBackground(new java.awt.Color(14, 251, 137));
 
@@ -733,8 +746,8 @@ public class TongQuan extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnTopMemberDone;
     private javax.swing.JButton btnTopMemberDone1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel countDT;
+    private javax.swing.JLabel countNV;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -751,7 +764,9 @@ public class TongQuan extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -759,6 +774,9 @@ public class TongQuan extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblDongHo;
     private javax.swing.JPanel penalTong;
