@@ -21,7 +21,7 @@ public class NhanVienDAO extends FarmSysDAO<NhanVien, String>{
     String UPDATE_SQL = "UPDATE NhanVien SET MatKhau=?,HoTen=?,GioiTinh=?,Email=?, Luong=?, VaiTro=?, Hinh=? WHERE MaNV=?";
     String DELETE_SQL = "DELETE FROM NhanVien WHERE MaNV=?";
     String SELECT_ALL_SQL = "SELECT *FROM NhanVien";
-    String SELECT_BY_ID_SQL = "SELECT * FROM NhanVien WHERE MaNV=?";
+    String SELECT_BY_ID_SQL = "SELECT FROM NhanVien WHERE MaNV=?";
     String RESET_PASS_SQL = "UPDATE NhanVien SET MatKhau=? WHERE MaNV=?";
     
     @Override
