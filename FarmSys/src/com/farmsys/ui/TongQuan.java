@@ -199,7 +199,7 @@ public class TongQuan extends javax.swing.JFrame {
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\Netbeans\\Github\\Duan1\\FarmSys\\src\\com\\farmsys\\icon\\treehouse_25px.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/treehouse_25px.png"))); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -239,7 +239,7 @@ public class TongQuan extends javax.swing.JFrame {
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setIcon(new javax.swing.ImageIcon("D:\\Netbeans\\Github\\Duan1\\FarmSys\\src\\com\\farmsys\\icon\\user_25px.png")); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/user_25px.png"))); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -279,7 +279,7 @@ public class TongQuan extends javax.swing.JFrame {
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setIcon(new javax.swing.ImageIcon("D:\\Netbeans\\Github\\Duan1\\FarmSys\\src\\com\\farmsys\\icon\\tree_planting_25px.png")); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/tree_planting_25px.png"))); // NOI18N
 
         jLabel6.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -325,7 +325,7 @@ public class TongQuan extends javax.swing.JFrame {
         jLabel7.setBackground(new java.awt.Color(255, 255, 255));
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setIcon(new javax.swing.ImageIcon("D:\\Netbeans\\Github\\Duan1\\FarmSys\\src\\com\\farmsys\\icon\\Log out.png")); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Log out.png"))); // NOI18N
 
         jLabel8.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -368,7 +368,7 @@ public class TongQuan extends javax.swing.JFrame {
         jLabel9.setBackground(new java.awt.Color(255, 255, 255));
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setIcon(new javax.swing.ImageIcon("D:\\Netbeans\\Github\\Duan1\\FarmSys\\src\\com\\farmsys\\icon\\Stop.png")); // NOI18N
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Stop.png"))); // NOI18N
 
         jLabel10.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -408,7 +408,7 @@ public class TongQuan extends javax.swing.JFrame {
         jLabel11.setBackground(new java.awt.Color(255, 255, 255));
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setIcon(new javax.swing.ImageIcon("D:\\Netbeans\\Github\\Duan1\\FarmSys\\src\\com\\farmsys\\icon\\plant_25px.png")); // NOI18N
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/plant_25px.png"))); // NOI18N
 
         jLabel12.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -448,7 +448,7 @@ public class TongQuan extends javax.swing.JFrame {
         jLabel13.setBackground(new java.awt.Color(255, 255, 255));
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel13.setIcon(new javax.swing.ImageIcon("D:\\Netbeans\\Github\\Duan1\\FarmSys\\src\\com\\farmsys\\icon\\bookmark_book_64px.png")); // NOI18N
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/bookmark_book_64px.png"))); // NOI18N
 
         jLabel14.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -488,7 +488,7 @@ public class TongQuan extends javax.swing.JFrame {
         jLabel15.setBackground(new java.awt.Color(255, 255, 255));
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel15.setIcon(new javax.swing.ImageIcon("D:\\Netbeans\\Github\\Duan1\\FarmSys\\src\\com\\farmsys\\icon\\external_25px.png")); // NOI18N
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Task list.png"))); // NOI18N
 
         jLabel16.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -503,7 +503,7 @@ public class TongQuan extends javax.swing.JFrame {
                 .addComponent(jLabel15)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel16)
-                .addContainerGap(71, Short.MAX_VALUE))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
         pnlGiaoviecLayout.setVerticalGroup(
             pnlGiaoviecLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -512,10 +512,10 @@ public class TongQuan extends javax.swing.JFrame {
                 .addGroup(pnlGiaoviecLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel15)
                     .addComponent(jLabel16))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
-        jLabel18.setIcon(new javax.swing.ImageIcon("D:\\Netbeans\\Github\\Duan1\\FarmSys\\src\\com\\farmsys\\icon\\FarmSys.png")); // NOI18N
+        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/FarmSys.png"))); // NOI18N
 
         javax.swing.GroupLayout pnlmenuLayout = new javax.swing.GroupLayout(pnlmenu);
         pnlmenu.setLayout(pnlmenuLayout);
@@ -614,8 +614,6 @@ public class TongQuan extends javax.swing.JFrame {
 
     private void pnlHomeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlHomeMouseEntered
         pnlHome.setBackground(Color.white);
-
-
     }//GEN-LAST:event_pnlHomeMouseEntered
 
     private void pnlHomeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlHomeMouseExited

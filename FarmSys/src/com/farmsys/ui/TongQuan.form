@@ -327,7 +327,7 @@
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="2" name="D:\Netbeans\Github\Duan1\FarmSys\src\com\farmsys\icon\treehouse_25px.png"/>
+                      <Image iconType="3" name="/com/farmsys/icons/treehouse_25px.png"/>
                     </Property>
                   </Properties>
                 </Component>
@@ -389,7 +389,7 @@
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="2" name="D:\Netbeans\Github\Duan1\FarmSys\src\com\farmsys\icon\user_25px.png"/>
+                      <Image iconType="3" name="/com/farmsys/icons/user_25px.png"/>
                     </Property>
                   </Properties>
                 </Component>
@@ -451,7 +451,7 @@
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="2" name="D:\Netbeans\Github\Duan1\FarmSys\src\com\farmsys\icon\tree_planting_25px.png"/>
+                      <Image iconType="3" name="/com/farmsys/icons/tree_planting_25px.png"/>
                     </Property>
                   </Properties>
                 </Component>
@@ -524,7 +524,7 @@
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="2" name="D:\Netbeans\Github\Duan1\FarmSys\src\com\farmsys\icon\Log out.png"/>
+                      <Image iconType="3" name="/com/farmsys/icons/Log out.png"/>
                     </Property>
                   </Properties>
                 </Component>
@@ -587,7 +587,7 @@
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="2" name="D:\Netbeans\Github\Duan1\FarmSys\src\com\farmsys\icon\Stop.png"/>
+                      <Image iconType="3" name="/com/farmsys/icons/Stop.png"/>
                     </Property>
                   </Properties>
                 </Component>
@@ -649,7 +649,7 @@
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="2" name="D:\Netbeans\Github\Duan1\FarmSys\src\com\farmsys\icon\plant_25px.png"/>
+                      <Image iconType="3" name="/com/farmsys/icons/plant_25px.png"/>
                     </Property>
                   </Properties>
                 </Component>
@@ -711,7 +711,7 @@
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="2" name="D:\Netbeans\Github\Duan1\FarmSys\src\com\farmsys\icon\bookmark_book_64px.png"/>
+                      <Image iconType="3" name="/com/farmsys/icons/bookmark_book_64px.png"/>
                     </Property>
                   </Properties>
                 </Component>
@@ -745,7 +745,7 @@
                           <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="71" max="32767" attributes="0"/>
+                          <EmptySpace pref="72" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -757,7 +757,7 @@
                               <Component id="jLabel15" alignment="1" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel16" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="12" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -773,7 +773,7 @@
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="2" name="D:\Netbeans\Github\Duan1\FarmSys\src\com\farmsys\icon\external_25px.png"/>
+                      <Image iconType="3" name="/com/farmsys/icons/Task list.png"/>
                     </Property>
                   </Properties>
                 </Component>
@@ -793,7 +793,7 @@
             <Component class="javax.swing.JLabel" name="jLabel18">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="D:\Netbeans\Github\Duan1\FarmSys\src\com\farmsys\icon\FarmSys.png"/>
+                  <Image iconType="3" name="/icons/FarmSys.png"/>
                 </Property>
               </Properties>
             </Component>

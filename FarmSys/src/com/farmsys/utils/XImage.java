@@ -19,14 +19,16 @@ import javax.swing.ImageIcon;
  * @author trieu
  */
 public class XImage {
-    public static Image getAppIcon(){
-        URL url = XImage.class.getResource("com/farmsys/icon/fpt.png");
+
+    public static Image getAppIcon() {
+        URL url = XImage.class.getResource("com/farmsys/icons/fpt.png");
         return new ImageIcon(url).getImage();
         //Lấy địa chỉ hình ảnh và tạo ảnh --> return
     }
-    public static void save(File src){
+
+    public static void save(File src) {
         File dst = new File("logos", src.getName());
-        if(!dst.getParentFile().exists()){
+        if (!dst.getParentFile().exists()) {
             dst.getParentFile().mkdir();
         }
         try {
@@ -36,11 +38,12 @@ public class XImage {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        
+
     }
-    public static ImageIcon read(String fileName){
+
+    public static ImageIcon read(String fileName) {
         File path = new File("logos", fileName);
         return new ImageIcon(path.getAbsolutePath());
     }
-    
+
 }
