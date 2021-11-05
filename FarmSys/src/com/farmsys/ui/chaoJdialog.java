@@ -137,6 +137,11 @@ public class chaoJdialog extends javax.swing.JDialog {
                 if (value == 80) {
                     //lblload.setText("Finished....");
 
+                    
+                }
+                if (value == 100) {
+                    //lblload.setText("Finished....");
+
                     JdbcHelper.ConnectDAO();
                 }
                 pgbLogging.setValue(value + 1);
