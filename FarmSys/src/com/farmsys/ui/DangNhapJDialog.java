@@ -24,8 +24,7 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         initComponents();
     }
     NhanVienDAO dao = new NhanVienDAO();
-  
-    
+
     void dangNhap() {
         String manv = txtMaNV.getText().trim();
         String matKhau = new String(txtMatKhau.getPassword());

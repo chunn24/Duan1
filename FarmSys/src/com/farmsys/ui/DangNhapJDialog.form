@@ -222,36 +222,18 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\trieu\Documents\GitHub\Duan1\FarmSys\src\com\farmsys\icon\bg-login.png"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="jLabel4"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\trieu\Documents\GitHub\Duan1\FarmSys\src\com\farmsys\icon\avatar.png"/>
-            </Property>
-          </Properties>
         </Component>
         <Component class="javax.swing.JSeparator" name="jSeparator1">
         </Component>
         <Component class="javax.swing.JSeparator" name="jSeparator2">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\trieu\Documents\GitHub\Duan1\FarmSys\src\com\farmsys\icon\User.png"/>
-            </Property>
-          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel7">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\trieu\Documents\GitHub\Duan1\FarmSys\src\com\farmsys\icon\Info.png"/>
-            </Property>
-          </Properties>
         </Component>
       </SubComponents>
     </Container>
