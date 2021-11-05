@@ -21,17 +21,17 @@ public class NhanVienDAO extends FarmSysDAO<NhanVien, String>{
     String UPDATE_SQL = "UPDATE NhanVien SET MatKhau=?,HoTen=?,GioiTinh=?,Email=?, Luong=?, VaiTro=?, Hinh=? WHERE MaNV=?";
     String DELETE_SQL = "DELETE FROM NhanVien WHERE MaNV=?";
     String SELECT_ALL_SQL = "SELECT *FROM NhanVien";
-    String SELECT_BY_ID_SQL = "SELECT FROM NhanVien WHERE MaNV=?";
+    String SELECT_BY_ID_SQL = "SELECT * FROM NhanVien WHERE MaNV=?";
     String RESET_PASS_SQL = "UPDATE NhanVien SET MatKhau=? WHERE MaNV=?";
     
     @Override
     public void insert(NhanVien entity) {
-        JdbcHelper.update(INSERT_SQL, entity.getMaNV(), entity.getMatKhau(), entity.getHoTen(), entity.getGioiTinh(), entity.getEmail(), entity.getLuong(), entity.isVaiTro(), entity.getHinh());
+        JdbcHelper.update(INSERT_SQL, entity.getMaNV(), entity.getMatKhau(), entity.getHoTen(), entity.getGioiTinh(), entity.getEmail(), entity.getLuong(), entity.getVaiTro(), entity.getHinh());
     }
 
     @Override
     public void update(NhanVien entity) {
-        JdbcHelper.update(UPDATE_SQL, entity.getMatKhau(), entity.getHoTen(), entity.getGioiTinh(),entity.getEmail(), entity.getLuong(), entity.isVaiTro(), entity.getHinh(), entity.getMaNV());
+        JdbcHelper.update(UPDATE_SQL, entity.getMatKhau(), entity.getHoTen(), entity.getGioiTinh(),entity.getEmail(), entity.getLuong(), entity.getVaiTro(), entity.getHinh(), entity.getMaNV());
     }
 
     @Override
@@ -66,7 +66,7 @@ public class NhanVienDAO extends FarmSysDAO<NhanVien, String>{
                 entity.setGioiTinh(rs.getInt("GioiTinh"));
                 entity.setEmail(rs.getString("Email"));
                 entity.setLuong(rs.getInt("Luong"));
-                entity.setVaiTro(rs.getBoolean("VaiTro"));
+                entity.setVaiTro(rs.getInt("VaiTro"));
                 entity.setHinh(rs.getString("Hinh"));
                 list.add(entity);
             }
