@@ -5,6 +5,12 @@
  */
 package com.farmsys.ui;
 
+import com.farmsys.utils.JdbcHelper;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+
+import javax.swing.Timer;
+
 /**
  *
  * @author NguyenTrung
@@ -17,6 +23,7 @@ public class chaoJdialog extends javax.swing.JDialog {
     public chaoJdialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        init();
     }
 
     /**
@@ -28,17 +35,27 @@ public class chaoJdialog extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        pgbLogging = new javax.swing.JProgressBar();
+        jLabel1 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.add(pgbLogging, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 500, 30));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\Netbeans\\Github\\Duan1\\FarmSys\\src\\com\\farmsys\\icon\\logofarmSys.gif")); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 358));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -87,5 +104,45 @@ public class chaoJdialog extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JProgressBar pgbLogging;
     // End of variables declaration//GEN-END:variables
+
+    private void init() {
+        this.setLocationRelativeTo(null);
+        pgbLogging.setForeground(Color.blue);
+        new Timer(10, (ActionEvent e) -> {
+            int value = pgbLogging.getValue();
+            if (value < pgbLogging.getMaximum()) {
+                if (value >= 20) {
+                    //lblload.setText("Đang load database......");
+                    //pnllogo.setBackground(Color.BLUE);
+                    //pgbLogging.setBackground(Color.BLUE);
+                    //pgbLogging.setForeground(Color.BLUE);
+                }
+                if (value >= 40) {
+                    //lblload.setText("Đang vào chương trình......");
+                    // pnllogo.setBackground(Color.ORANGE);
+                    //pgbLogging.setBackground(Color.ORANGE);
+                    //pgbLogging.setForeground(Color.ORANGE);
+                }
+                if (value >= 60) {
+                    //lblload.setText("Đang vào chương trình......");
+                    //pnllogo.setBackground(Color.green);
+                    //pgbLogging.setBackground(Color.GREEN);
+                    // pgbLogging.setForeground(Color.GREEN);
+                }
+                if (value == 80) {
+                    //lblload.setText("Finished....");
+
+                    JdbcHelper.ConnectDAO();
+                }
+                pgbLogging.setValue(value + 1);
+            } else {
+                chaoJdialog.this.dispose();
+
+            }
+        }).start();
+    }
 }
