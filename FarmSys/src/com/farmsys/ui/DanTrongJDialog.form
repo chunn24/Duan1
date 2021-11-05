@@ -195,7 +195,7 @@
                   <Font name="Tahoma" size="8" style="0"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="D:\GitHub\Duan1\FarmSys\src\com\farmsys\icon\Add.png"/>
+                  <Image iconType="3" name="/com/farmsys/icons/Add.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Th&#xea;m"/>
               </Properties>
@@ -209,7 +209,7 @@
                   <Font name="Tahoma" size="8" style="0"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="D:\GitHub\Duan1\FarmSys\src\com\farmsys\icon\Refresh.png"/>
+                  <Image iconType="3" name="/com/farmsys/icons/Refresh.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="S&#x1eed;a"/>
               </Properties>
@@ -223,7 +223,7 @@
                   <Font name="Tahoma" size="8" style="0"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="D:\GitHub\Duan1\FarmSys\src\com\farmsys\icon\Delete.png"/>
+                  <Image iconType="3" name="/com/farmsys/icons/Delete.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="X&#xf3;a"/>
               </Properties>
@@ -237,7 +237,7 @@
                   <Font name="Tahoma" size="8" style="0"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="D:\GitHub\Duan1\FarmSys\src\com\farmsys\icon\new.png"/>
+                  <Image iconType="3" name="/com/farmsys/icons/new.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="M&#x1edb;i"/>
               </Properties>
@@ -248,7 +248,7 @@
             <Component class="javax.swing.JButton" name="btnFirst">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="D:\GitHub\Duan1\FarmSys\src\com\farmsys\icon\backward.png"/>
+                  <Image iconType="3" name="/com/farmsys/icons/backward.png"/>
                 </Property>
               </Properties>
               <Events>
@@ -258,7 +258,7 @@
             <Component class="javax.swing.JButton" name="btnPrev">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="D:\GitHub\Duan1\FarmSys\src\com\farmsys\icon\previous.png"/>
+                  <Image iconType="3" name="/com/farmsys/icons/previous.png"/>
                 </Property>
               </Properties>
               <Events>
@@ -268,7 +268,7 @@
             <Component class="javax.swing.JButton" name="btnNext">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="D:\GitHub\Duan1\FarmSys\src\com\farmsys\icon\next.png"/>
+                  <Image iconType="3" name="/com/farmsys/icons/next.png"/>
                 </Property>
               </Properties>
               <Events>
@@ -278,7 +278,7 @@
             <Component class="javax.swing.JButton" name="btnLast">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="D:\GitHub\Duan1\FarmSys\src\com\farmsys\icon\fast-forward.png"/>
+                  <Image iconType="3" name="/com/farmsys/icons/fast-forward.png"/>
                 </Property>
               </Properties>
               <Events>
