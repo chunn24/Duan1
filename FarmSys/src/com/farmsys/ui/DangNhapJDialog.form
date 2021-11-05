@@ -30,7 +30,7 @@
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtTaiKhoan" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtMaNV" alignment="0" max="32767" attributes="0"/>
                           <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="txtMatKhau" alignment="0" pref="254" max="32767" attributes="0"/>
                       </Group>
@@ -54,7 +54,7 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="txtTaiKhoan" min="-2" max="-2" attributes="0"/>
+              <Component id="txtMaNV" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
@@ -83,7 +83,7 @@
         <Property name="text" type="java.lang.String" value="T&#xe0;i kho&#x1ea3;n"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtTaiKhoan">
+    <Component class="javax.swing.JTextField" name="txtMaNV">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
@@ -96,11 +96,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="K&#x1ebe;T TH&#xda;C"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnKetThucActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnDangNhap">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x110;&#x102;NG NH&#x1eac;P"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDangNhapActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

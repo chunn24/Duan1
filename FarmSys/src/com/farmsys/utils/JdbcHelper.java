@@ -10,8 +10,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -19,9 +17,9 @@ import java.util.logging.Logger;
  */
 public class JdbcHelper {
     private static String driver="com.microsoft.sqlserver.jdbc.SQLServerDriver"; 
-    private static String dburl="jdbc:sqlserver://localhost:1433;databaseName=EduSys";
+    private static String dburl="jdbc:sqlserver://localhost:1433;databaseName=FarmSys";
     private static String user = "sa";
-    private static String pass = "songlong";
+    private static String pass = "2401";
     static {
         try {
             Class.forName(driver);
