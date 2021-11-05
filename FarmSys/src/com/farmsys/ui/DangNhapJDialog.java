@@ -110,7 +110,9 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         jLabel3.setForeground(new java.awt.Color(100, 230, 50));
         jLabel3.setText("Mật khẩu");
 
-        jLabel4.setText("jLabel4");
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/bg-login.png"))); // NOI18N
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/avatar.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
