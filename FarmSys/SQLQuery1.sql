@@ -18,7 +18,7 @@ Create table NhanVien (
 	GioiTinh int,
 	Email nvarchar(30)not null,
 	Luong int not null,
-	VaiTro int,
+	VaiTro bit,
 	Hinh varchar(30) 
 );
 
