@@ -32,6 +32,8 @@ public class NhanVien {
         this.hinh = hinh;
         this.vaiTro = vaiTro;
     }
+    
+    
 
     public String getMaNV() {
         return maNV;
@@ -97,6 +99,10 @@ public class NhanVien {
         this.vaiTro = vaiTro;
     }
 
+    
+    
+
+    
     
 
 }

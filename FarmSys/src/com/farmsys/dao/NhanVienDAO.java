@@ -8,8 +8,11 @@ package com.farmsys.dao;
 import com.farmsys.entity.NhanVien;
 import com.farmsys.utils.JdbcHelper;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -26,17 +29,29 @@ public class NhanVienDAO extends FarmSysDAO<NhanVien, String>{
     
     @Override
     public void insert(NhanVien entity) {
-        JdbcHelper.update(INSERT_SQL, entity.getMaNV(), entity.getMatKhau(), entity.getHoTen(), entity.getGioiTinh(), entity.getEmail(), entity.getLuong(), entity.isVaiTro(), entity.getHinh());
+        try {
+            JdbcHelper.update(INSERT_SQL, entity.getMaNV(), entity.getMatKhau(), entity.getHoTen(), entity.getGioiTinh(), entity.getEmail(), entity.getLuong(), entity.isVaiTro(), entity.getHinh());
+        } catch (SQLException ex) {
+            Logger.getLogger(NhanVienDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
     public void update(NhanVien entity) {
-        JdbcHelper.update(UPDATE_SQL, entity.getMatKhau(), entity.getHoTen(), entity.getGioiTinh(),entity.getEmail(), entity.getLuong(), entity.isVaiTro(), entity.getHinh(), entity.getMaNV());
+        try {
+            JdbcHelper.update(UPDATE_SQL, entity.getMatKhau(), entity.getHoTen(), entity.getGioiTinh(),entity.getEmail(), entity.getLuong(), entity.isVaiTro(), entity.getHinh(), entity.getMaNV());
+        } catch (SQLException ex) {
+            Logger.getLogger(NhanVienDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
     public void delete(String key) {
-        JdbcHelper.update(DELETE_SQL, key);
+        try {
+            JdbcHelper.update(DELETE_SQL, key);
+        } catch (SQLException ex) {
+            Logger.getLogger(NhanVienDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
@@ -77,7 +92,7 @@ public class NhanVienDAO extends FarmSysDAO<NhanVien, String>{
         }
     }
     
-    public void resetPass(NhanVien entity) {
+    public void resetPass(NhanVien entity) throws SQLException {
         JdbcHelper.update(RESET_PASS_SQL, entity.getMatKhau(), entity.getMaNV());
     }
     
