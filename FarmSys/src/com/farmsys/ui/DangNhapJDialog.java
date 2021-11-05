@@ -75,12 +75,12 @@ public class DangNhapJDialog extends javax.swing.JDialog {
 
         txtMaNV.setBackground(new java.awt.Color(150, 250, 150));
         txtMaNV.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txtMaNV.setText("TrieuNHD");
+        txtMaNV.setText("123");
         txtMaNV.setBorder(null);
 
         txtMatKhau.setBackground(new java.awt.Color(150, 250, 150));
         txtMatKhau.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txtMatKhau.setText("123123");
+        txtMatKhau.setText("123");
         txtMatKhau.setBorder(null);
 
         btnKetThuc.setBackground(new java.awt.Color(255, 0, 0));
@@ -110,14 +110,7 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         jLabel3.setForeground(new java.awt.Color(100, 230, 50));
         jLabel3.setText("Mật khẩu");
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\trieu\\Documents\\GitHub\\Duan1\\FarmSys\\src\\com\\farmsys\\icon\\bg-login.png")); // NOI18N
         jLabel4.setText("jLabel4");
-
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\trieu\\Documents\\GitHub\\Duan1\\FarmSys\\src\\com\\farmsys\\icon\\avatar.png")); // NOI18N
-
-        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\trieu\\Documents\\GitHub\\Duan1\\FarmSys\\src\\com\\farmsys\\icon\\User.png")); // NOI18N
-
-        jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\trieu\\Documents\\GitHub\\Duan1\\FarmSys\\src\\com\\farmsys\\icon\\Info.png")); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -147,19 +140,19 @@ public class DangNhapJDialog extends javax.swing.JDialog {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnKetThuc, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtMatKhau))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
                                     .addComponent(jLabel3)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel6)
-                                        .addGap(18, 18, 18)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(txtMaNV, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtMatKhau)))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(

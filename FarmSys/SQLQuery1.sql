@@ -13,7 +13,7 @@ go
 
 Create table NhanVien (	
 	MaNV varchar(15) primary key not null,
-	MatKhau nvarchar(16)not null,
+	MatKhau varchar(16)not null,
 	HoTen nvarchar(50),
 	GioiTinh int,
 	Email nvarchar(30)not null,
