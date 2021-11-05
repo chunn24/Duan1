@@ -783,13 +783,13 @@ public class TongQuan extends javax.swing.JFrame {
     private void init() {
         //this.setIconImage(XImage.getAppIcon());
         this.setLocationRelativeTo(null);
-        new chaoJdialog(this, true).setVisible(true);
-        new DangNhapJDialog(this, true).setVisible(true);
+       // new chaoJdialog(this, true).setVisible(true);
+       // new DangNhapJDialog(this, true).setVisible(true);
         this.showLineChart();
 
         new Timer(1000, (ActionEvent e) -> {
             Date now = new Date();
-            SimpleDateFormat formater = new SimpleDateFormat("hh:mm:ss a");
+            SimpleDateFormat formater = new SimpleDateFormat("hh:mm:ss"+"     "+"dd:MM:YYYY");
             String text = formater.format(now);
             lblDongHo.setText(text);
         }).start();
