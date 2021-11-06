@@ -5,8 +5,8 @@
  */
 package com.farmsys.dao;
 
-import com.farmsys.entity.NhanVien;
-import com.farmsys.utils.JdbcHelper;
+import com.farmsys.DTO.NhanVien;
+import com.farmsys.Helper.JdbcHelper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
