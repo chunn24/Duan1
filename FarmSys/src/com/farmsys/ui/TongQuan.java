@@ -5,7 +5,9 @@
  */
 package com.farmsys.ui;
 
+import com.farmsys.data.JsonResult;
 import com.farmsys.utils.Auth;
+import com.farmsys.utils.HandleAPI;
 import com.farmsys.utils.MsgBox;
 import com.farmsys.utils.XImage;
 import java.awt.BorderLayout;
@@ -13,6 +15,7 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
@@ -47,6 +50,17 @@ public class TongQuan extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        weather = new javax.swing.JDialog();
+        jPanel2 = new javax.swing.JPanel();
+        lb_date = new javax.swing.JLabel();
+        lb_city = new javax.swing.JLabel();
+        lb_nation = new javax.swing.JLabel();
+        lb_nhietDo = new javax.swing.JLabel();
+        lb_apXuat = new javax.swing.JLabel();
+        lb_cloud = new javax.swing.JLabel();
+        lb_doAm = new javax.swing.JLabel();
+        cbocity = new javax.swing.JDialog();
+        cb_city = new javax.swing.JComboBox<>();
         penalTong = new javax.swing.JPanel();
         pnltongquat = new javax.swing.JPanel();
         pnlchart = new javax.swing.JPanel();
@@ -79,7 +93,7 @@ public class TongQuan extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel31 = new javax.swing.JLabel();
         lblTrangThai = new javax.swing.JLabel();
-        lblDongHo = new javax.swing.JLabel();
+        lb_weather = new javax.swing.JLabel();
         pnlmenu = new javax.swing.JPanel();
         pnlHome = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -108,6 +122,110 @@ public class TongQuan extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        lblDongHo = new javax.swing.JLabel();
+
+        weather.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        weather.setMinimumSize(new java.awt.Dimension(418, 210));
+        weather.setUndecorated(true);
+
+        jPanel2.setBackground(new java.awt.Color(242, 181, 154));
+
+        lb_date.setText("Ngày :");
+
+        lb_city.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/city_16px.png"))); // NOI18N
+        lb_city.setText(":");
+
+        lb_nation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Globe.png"))); // NOI18N
+        lb_nation.setText(":");
+
+        lb_nhietDo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/temperature_16px.png"))); // NOI18N
+        lb_nhietDo.setText(":");
+
+        lb_apXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/pressure_16px.png"))); // NOI18N
+        lb_apXuat.setText(":");
+
+        lb_cloud.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/cloud_16px.png"))); // NOI18N
+        lb_cloud.setText(" Mây :");
+
+        lb_doAm.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/hygrometer_16px.png"))); // NOI18N
+        lb_doAm.setText(":");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(130, 130, 130)
+                        .addComponent(lb_date, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lb_nation, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lb_city, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lb_apXuat, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(lb_doAm, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lb_cloud, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE))
+                            .addComponent(lb_nhietDo, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(lb_date, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lb_nation, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lb_nhietDo, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(4, 4, 4)
+                        .addComponent(lb_city, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(lb_doAm, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lb_cloud, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lb_apXuat, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(1, 1, 1))
+        );
+
+        javax.swing.GroupLayout weatherLayout = new javax.swing.GroupLayout(weather.getContentPane());
+        weather.getContentPane().setLayout(weatherLayout);
+        weatherLayout.setHorizontalGroup(
+            weatherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 455, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        weatherLayout.setVerticalGroup(
+            weatherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        cb_city.setBackground(new java.awt.Color(255, 153, 153));
+        cb_city.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Saigon", "Hanoi", "Danang", " " }));
+        cb_city.setToolTipText("");
+        cb_city.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_cityActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout cbocityLayout = new javax.swing.GroupLayout(cbocity.getContentPane());
+        cbocity.getContentPane().setLayout(cbocityLayout);
+        cbocityLayout.setHorizontalGroup(
+            cbocityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(cb_city, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        cbocityLayout.setVerticalGroup(
+            cbocityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(cb_city, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("FarmSys");
@@ -366,6 +484,14 @@ public class TongQuan extends javax.swing.JFrame {
         pnltongquat.add(lblsunrain, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 0, 110, 100));
 
         jLabel32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/weather_50px.png"))); // NOI18N
+        jLabel32.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel32MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel32MouseExited(evt);
+            }
+        });
         pnltongquat.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 180, 50, 50));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -378,8 +504,9 @@ public class TongQuan extends javax.swing.JFrame {
         lblTrangThai.setText("Vương Nguyên Trung - Admin");
         jPanel1.add(lblTrangThai, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, 20));
 
-        lblDongHo.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jPanel1.add(lblDongHo, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 10, 180, 20));
+        lb_weather.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/weather_16px.png"))); // NOI18N
+        lb_weather.setText(":");
+        jPanel1.add(lb_weather, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, -1, -1));
 
         pnltongquat.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 30));
 
@@ -723,6 +850,8 @@ public class TongQuan extends javax.swing.JFrame {
         jSeparator1.setBackground(new java.awt.Color(102, 102, 102));
         jSeparator1.setForeground(new java.awt.Color(102, 102, 102));
 
+        lblDongHo.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+
         javax.swing.GroupLayout pnlmenuLayout = new javax.swing.GroupLayout(pnlmenu);
         pnlmenu.setLayout(pnlmenuLayout);
         pnlmenuLayout.setHorizontalGroup(
@@ -748,6 +877,10 @@ public class TongQuan extends javax.swing.JFrame {
                     .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pnlHome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(pnlmenuLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(lblDongHo, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pnlmenuLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {pnlCaytron, pnlDanTrong, pnlDangxuat, pnlGiaoviec, pnlHome, pnlKetthuc, pnlNhanvien, pnlNhatky});
@@ -774,7 +907,9 @@ public class TongQuan extends javax.swing.JFrame {
                 .addComponent(pnlDangxuat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlKetthuc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblDongHo, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14)
                 .addComponent(jLabel17)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -950,6 +1085,19 @@ public class TongQuan extends javax.swing.JFrame {
     private void pnlNhatkyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlNhatkyMouseClicked
         OpenNhatky();    }//GEN-LAST:event_pnlNhatkyMouseClicked
 
+    private void cb_cityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_cityActionPerformed
+        result = HandleAPI.getJsonData((String) cb_city.getSelectedItem());
+        setThoiTiet();
+    }//GEN-LAST:event_cb_cityActionPerformed
+
+    private void jLabel32MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel32MouseEntered
+        weather.setVisible(true);
+    }//GEN-LAST:event_jLabel32MouseEntered
+
+    private void jLabel32MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel32MouseExited
+        weather.setVisible(false);
+    }//GEN-LAST:event_jLabel32MouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -986,6 +1134,8 @@ public class TongQuan extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cb_city;
+    private javax.swing.JDialog cbocity;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1019,11 +1169,20 @@ public class TongQuan extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
+    private javax.swing.JLabel lb_apXuat;
+    private javax.swing.JLabel lb_city;
+    private javax.swing.JLabel lb_cloud;
+    private javax.swing.JLabel lb_date;
+    private javax.swing.JLabel lb_doAm;
+    private javax.swing.JLabel lb_nation;
+    private javax.swing.JLabel lb_nhietDo;
+    private javax.swing.JLabel lb_weather;
     private javax.swing.JLabel lblDongHo;
     private javax.swing.JLabel lblTop5Done;
     private javax.swing.JLabel lblTop5Done1;
@@ -1047,12 +1206,19 @@ public class TongQuan extends javax.swing.JFrame {
     private javax.swing.JPanel pnlmenu;
     private javax.swing.JPanel pnltodo;
     private javax.swing.JPanel pnltongquat;
+    private javax.swing.JDialog weather;
     // End of variables declaration//GEN-END:variables
     Color c = new Color(14, 251, 137);
+    private JsonResult result;
+
+    private int idx = 0;
 
     private void init() {
+        result = HandleAPI.getJsonData((String) cb_city.getSelectedItem());
+        setThoiTiet();
         //this.setIconImage(XImage.getAppIcon());
         this.setLocationRelativeTo(null);
+        weather.setLocationRelativeTo(null);
         new chaoJdialog(this, true).setVisible(true);
         new DangNhapJDialog(this, true).setVisible(true);
         this.showLineChart();
@@ -1065,6 +1231,36 @@ public class TongQuan extends javax.swing.JFrame {
         }).start();
     }
 // line chart
+
+    void setThoiTiet() {
+        String date = " Ngày: " + result.getList()[idx].getDt_txt();
+        String city = " Thành phố: " + result.getCity().getName();
+        String nation = " Quốc gia: " + result.getCity().getCountry();
+        String weath = " Thời tiết: " + result.getList()[idx].getWeather()[0].getDescription();
+        String nhietDo = " Nhiệt độ: " + result.getList()[idx].getMain().getTemp() + " độ C";
+        String apXuat = " Áp xuất: " + result.getList()[idx].getMain().getPresure() + " Pa";
+        String doAm = " Độ ẩm: " + result.getList()[idx].getMain().getHumidity() + " %";
+        String clouds = " Mây: " + result.getList()[idx].getClouds().getAll() + " %";
+
+        lb_apXuat.setText(apXuat);
+        lb_city.setText(city);
+        lb_cloud.setText(clouds);
+        lb_date.setText(date);
+        lb_doAm.setText(doAm);
+        lb_nation.setText(nation);
+        lb_nhietDo.setText(nhietDo);
+        lb_weather.setText(weath);
+        
+        String text = lb_weather.getText();
+        
+        if (text.contains("clouds")) {
+            lblsunrain.setIcon(new ImageIcon("src\\com\\farmsys\\icons\\cloud_100px.png"));
+        }else if (text.contains("sun")) {
+            lblsunrain.setIcon(new ImageIcon("src\\com\\farmsys\\icons\\sun_100px.png"));
+        }else if (text.contains("rain")) {
+            lblsunrain.setIcon(new ImageIcon("src\\com\\farmsys\\icons\\rain_100px.png"));
+        }
+    }
 
     void showLineChart() {
         //create dataset for the graph
@@ -1150,7 +1346,7 @@ public class TongQuan extends javax.swing.JFrame {
 
     private void OpenGiaoViec() {
         if (Auth.isLogin()) {
-            new GiaoViecJDialog(this,true).setVisible(true);
+            new GiaoViecJDialog(this, true).setVisible(true);
         } else {
             MsgBox.alert(this, "Vui lòng đăng nhập!");
         }
