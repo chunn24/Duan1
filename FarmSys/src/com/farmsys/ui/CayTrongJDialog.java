@@ -57,7 +57,7 @@ public class CayTrongJDialog extends javax.swing.JFrame {
         btnThem1 = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(22, 199, 154));
 

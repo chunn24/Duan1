@@ -40,8 +40,11 @@ public class chaoJdialog extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        pgbLogging.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.add(pgbLogging, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 500, 30));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -112,7 +115,7 @@ public class chaoJdialog extends javax.swing.JDialog {
 
     private void init() {
         this.setLocationRelativeTo(null);
-        pgbLogging.setForeground(Color.blue);
+        pgbLogging.setForeground(Color.black);
         new Timer(10, (ActionEvent e) -> {
             int value = pgbLogging.getValue();
             if (value < pgbLogging.getMaximum()) {
@@ -139,7 +142,7 @@ public class chaoJdialog extends javax.swing.JDialog {
 
                     
                 }
-                if (value == 100) {
+                if (value == 80) {
                     //lblload.setText("Finished....");
 
                     JdbcHelper.ConnectDAO();

@@ -16,6 +16,7 @@ public class NhanVienJDialog extends javax.swing.JFrame {
      */
     public NhanVienJDialog() {
         initComponents();
+        init();
     }
 
     /**
@@ -60,7 +61,7 @@ public class NhanVienJDialog extends javax.swing.JFrame {
         tblNhanVien = new javax.swing.JTable();
         lblTitle = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(22, 199, 154));
 
@@ -458,4 +459,8 @@ public class NhanVienJDialog extends javax.swing.JFrame {
     private javax.swing.JPasswordField txtMatKhau;
     private javax.swing.JPasswordField txtMatKhau2;
     // End of variables declaration//GEN-END:variables
+
+    private void init() {
+        setLocationRelativeTo(null);
+    }
 }

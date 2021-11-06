@@ -47,7 +47,7 @@ public class ThuHoachJDialog extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         btnGiaoViet = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         pnlRight.setBackground(new java.awt.Color(17, 105, 142));
 
@@ -102,18 +102,16 @@ public class ThuHoachJDialog extends javax.swing.JFrame {
                 .addGap(41, 41, 41))
         );
 
-        pnlLeft.setBackground(new java.awt.Color(25, 69, 107));
+        pnlLeft.setBackground(new java.awt.Color(255, 255, 255));
 
         cboChonGian.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         cboChonGian.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         lblChonGian.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        lblChonGian.setForeground(new java.awt.Color(248, 241, 241));
-        lblChonGian.setText("chọn giàn:");
+        lblChonGian.setText("Chọn giàn");
 
-        btnChon.setBackground(new java.awt.Color(19, 148, 147));
+        btnChon.setBackground(new java.awt.Color(102, 255, 102));
         btnChon.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
-        btnChon.setForeground(new java.awt.Color(248, 241, 241));
         btnChon.setText("CHỌN");
 
         txtChon.setColumns(20);
@@ -127,17 +125,14 @@ public class ThuHoachJDialog extends javax.swing.JFrame {
         pnlLeftLayout.setHorizontalGroup(
             pnlLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlLeftLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
                 .addGroup(pnlLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlLeftLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblChonGian))
-                    .addGroup(pnlLeftLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(pnlLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnChon, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(pnlLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(cboChonGian, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addComponent(lblChonGian)
+                    .addGroup(pnlLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(btnChon, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(pnlLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cboChonGian, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
         pnlLeftLayout.setVerticalGroup(
