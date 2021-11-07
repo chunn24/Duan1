@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.farmsys.START;
+package main;
 
 import com.farmsys.GUI.TongQuan;
 
@@ -11,7 +11,7 @@ import com.farmsys.GUI.TongQuan;
  *
  * @author NguyenTrung
  */
-public class Start {
+public class main {
     public static void main(String[] args) {
         new TongQuan().setVisible(true);
     }

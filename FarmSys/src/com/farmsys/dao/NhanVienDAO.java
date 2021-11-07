@@ -25,6 +25,7 @@ public class NhanVienDAO extends FarmSysDAO<NhanVien, String> {
     String DELETE_SQL = "DELETE FROM NhanVien WHERE MaNV=?";
     String SELECT_ALL_SQL = "SELECT *FROM NhanVien";
     String SELECT_BY_ID_SQL = "SELECT * FROM NhanVien WHERE MaNV=?";
+    String SELECT_BY_Email_SQL = "SELECT * FROM NhanVien WHERE Email=?";
     String RESET_PASS_SQL = "UPDATE NhanVien SET MatKhau=? WHERE MaNV=?";
 
     @Override
@@ -68,6 +69,14 @@ public class NhanVienDAO extends FarmSysDAO<NhanVien, String> {
         return list.get(0);
     }
 
+    public NhanVien selectByEmail(String key) {
+        List<NhanVien> list = this.selectBySql(SELECT_BY_Email_SQL, key);
+        if (list.isEmpty()) {
+            return null;
+        }
+        return list.get(0);
+    }
+
     @Override
     protected List<NhanVien> selectBySql(String sql, Object... args) {
         List<NhanVien> list = new ArrayList<NhanVien>();
@@ -91,6 +100,5 @@ public class NhanVienDAO extends FarmSysDAO<NhanVien, String> {
             throw new RuntimeException(e);
         }
     }
-
 
 }

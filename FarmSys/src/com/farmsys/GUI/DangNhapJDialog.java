@@ -9,6 +9,8 @@ import com.farmsys.dao.NhanVienDAO;
 import com.farmsys.DTO.NhanVien;
 import com.farmsys.Helper.Auth;
 import com.farmsys.Helper.MsgBox;
+import java.awt.Color;
+import java.awt.event.KeyEvent;
 
 /**
  *
@@ -56,13 +58,29 @@ public class DangNhapJDialog extends javax.swing.JDialog {
 
         txtMaNV.setBackground(new java.awt.Color(150, 250, 150));
         txtMaNV.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txtMaNV.setText("Trung");
         txtMaNV.setBorder(null);
+        txtMaNV.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtMaNVFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtMaNVFocusLost(evt);
+            }
+        });
+        txtMaNV.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtMaNVKeyPressed(evt);
+            }
+        });
 
         txtMatKhau.setBackground(new java.awt.Color(150, 250, 150));
         txtMatKhau.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txtMatKhau.setText("240102");
         txtMatKhau.setBorder(null);
+        txtMatKhau.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtMatKhauKeyPressed(evt);
+            }
+        });
 
         btnKetThuc.setBackground(new java.awt.Color(255, 0, 0));
         btnKetThuc.setText("KẾT THÚC");
@@ -103,39 +121,33 @@ public class DangNhapJDialog extends javax.swing.JDialog {
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 608, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 445, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(132, 132, 132)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(103, 103, 103)
-                                .addComponent(jLabel1)))
-                        .addGap(0, 20, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 445, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(132, 132, 132)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(103, 103, 103)
+                        .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel7)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtMatKhau))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnDangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnKetThuc, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(btnDangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(btnKetThuc, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel6)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtMaNV, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addContainerGap())
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtMaNV))
+                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnDangNhap, btnKetThuc});
@@ -161,9 +173,9 @@ public class DangNhapJDialog extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnKetThuc, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnDangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -175,13 +187,13 @@ public class DangNhapJDialog extends javax.swing.JDialog {
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnDangNhap, btnKetThuc});
 
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtMaNV, txtMatKhau});
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 6, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,14 +204,43 @@ public class DangNhapJDialog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
-        // TODO add your handling code here:
+
         this.dangNhap();
+
     }//GEN-LAST:event_btnDangNhapActionPerformed
 
     private void btnKetThucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKetThucActionPerformed
         // TODO add your handling code here:
         this.ketThuc();
     }//GEN-LAST:event_btnKetThucActionPerformed
+
+    private void txtMatKhauKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMatKhauKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            this.dangNhap();
+        }
+    }//GEN-LAST:event_txtMatKhauKeyPressed
+
+    private void txtMaNVKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMaNVKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            this.dangNhap();
+        }
+    }//GEN-LAST:event_txtMaNVKeyPressed
+
+    private void txtMaNVFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMaNVFocusGained
+        if (txtMaNV.getText().equalsIgnoreCase("Nhập tên đăng nhập hoặc Email")) {
+            txtMaNV.setText("");
+            txtMaNV.setForeground(Color.BLACK);
+            txtMatKhau.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_txtMaNVFocusGained
+
+    private void txtMaNVFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMaNVFocusLost
+        if (txtMaNV.getText().length() == 0) {
+            txtMaNV.setText("Nhập tên đăng nhập hoặc Email");
+            txtMaNV.setForeground(Color.gray);
+
+        }
+    }//GEN-LAST:event_txtMaNVFocusLost
 
     /**
      * @param args the command line arguments
@@ -263,20 +304,35 @@ public class DangNhapJDialog extends javax.swing.JDialog {
 
     private void init() {
         setLocationRelativeTo(null);
+
     }
 
     void dangNhap() {
-        String manv = txtMaNV.getText().trim();
-        String matKhau = new String(txtMatKhau.getPassword());
-        NhanVien nhanVien = dao.selectById(manv);
-        if (nhanVien == null) {
-            MsgBox.alert(this, "Sai tên đăng nhập!");
-        } else if (!matKhau.equals(nhanVien.getMatKhau())) {
-            MsgBox.alert(this, "Sai mật khẩu!");
-        } else {
-            Auth.user = nhanVien;
-            this.dispose();
+        try {
+            String manv = txtMaNV.getText().trim();
+            String matKhau = new String(txtMatKhau.getPassword());
+            NhanVien nhanVien = dao.selectById(manv);
+            NhanVien nhanVienEM = dao.selectByEmail(manv);
+            if (nhanVien == null) {
+                if (nhanVienEM == null) {
+                    MsgBox.alert(this, "Sai tên đăng nhập hoặc Email!");
+                } else if (!matKhau.equals(nhanVienEM.getMatKhau())) {
+
+                } else {
+                    Auth.user = nhanVienEM;
+                    this.dispose();
+                }
+            } else if (!matKhau.equals(nhanVien.getMatKhau())) {
+                MsgBox.alert(this, "Sai mật khẩu!");
+            } else {
+                Auth.user = nhanVien;
+                this.dispose();
+            }
+
+        } catch (Exception e) {
+            MsgBox.alert(rootPane, "<3");
         }
+
     }
 
     void ketThuc() {
@@ -286,6 +342,6 @@ public class DangNhapJDialog extends javax.swing.JDialog {
     }
 
     public static String HienThi() {
-        return Auth.user.getHoTen() + (Auth.user.isVaiTro()? " - Trưởng phòng" : " - Nhân viên");
+        return Auth.user.getHoTen() + (Auth.user.isVaiTro() ? " - Trưởng phòng" : " - Nhân viên");
     }
 }

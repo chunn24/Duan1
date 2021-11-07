@@ -23,7 +23,7 @@ public class HandleAPI {
         OkHttpClient client = new OkHttpClient();
         Gson gson = new Gson();
         JsonResult data = null;
-        Request res = new Request.Builder().url("http://api.openweathermap.org/data/2.5/forecast?q="+city+"&APPID=bffca17bcb552b8c8e4f3b82f64cccd2&units=metric").build();
+        Request res = new Request.Builder().url("http://api.openweathermap.org/data/2.5/forecast?q=Ho Chi Minh city&APPID=bffca17bcb552b8c8e4f3b82f64cccd2&units=metric").build();
         try {
             Response response = client.newCall(res).execute();
             ResponseBody body = response.body();

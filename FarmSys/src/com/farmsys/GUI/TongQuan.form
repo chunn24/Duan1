@@ -976,10 +976,6 @@
                   <Color blue="89" green="fb" red="e" type="rgb"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pnlHomeMouseEntered"/>
-                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pnlHomeMouseExited"/>
-              </Events>
 
               <Layout>
                 <DimensionLayout dim="0">

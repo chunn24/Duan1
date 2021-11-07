@@ -614,14 +614,6 @@ public class TongQuan extends javax.swing.JFrame {
         pnlmenu.setBackground(new java.awt.Color(14, 251, 137));
 
         pnlHome.setBackground(new java.awt.Color(14, 251, 137));
-        pnlHome.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                pnlHomeMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                pnlHomeMouseExited(evt);
-            }
-        });
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -938,14 +930,6 @@ public class TongQuan extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void pnlHomeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlHomeMouseEntered
-        pnlHome.setBackground(Color.white);
-    }//GEN-LAST:event_pnlHomeMouseEntered
-
-    private void pnlHomeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlHomeMouseExited
-        pnlHome.setBackground(c);
-    }//GEN-LAST:event_pnlHomeMouseExited
 
     private void pnlNhanvienMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlNhanvienMouseEntered
         pnlNhanvien.setBackground(Color.white);
@@ -1317,9 +1301,9 @@ public class TongQuan extends javax.swing.JFrame {
     }
 
     private void closeFarmSys() {
-        if (MsgBox.confirm(this, "Bạn muốn kết thúc làm việc?")) {
-            System.exit(0);
-        }
+
+        System.exit(0);
+
     }
 
     private void OpenNhanVien() {
