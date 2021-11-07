@@ -62,6 +62,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/com/farmsys/icons/icons8_ok_40px.png"/>
         </Property>
+        <Property name="text" type="java.lang.String" value="Ho&#xe0;n th&#xe0;nh"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>

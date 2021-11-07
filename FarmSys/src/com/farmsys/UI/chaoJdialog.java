@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.farmsys.GUI;
+package com.farmsys.UI;
 
 import com.farmsys.Helper.JdbcHelper;
 import java.awt.Color;

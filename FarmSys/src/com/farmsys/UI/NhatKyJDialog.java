@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.farmsys.GUI;
+package com.farmsys.UI;
 
 /**
  *
@@ -76,7 +76,7 @@ public class NhatKyJDialog extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(25, 69, 107));
-        jLabel3.setText("....:");
+        jLabel3.setText("Lọc theo trạng thái");
 
         javax.swing.GroupLayout pnlBenTraiLayout = new javax.swing.GroupLayout(pnlBenTrai);
         pnlBenTrai.setLayout(pnlBenTraiLayout);
@@ -93,8 +93,8 @@ public class NhatKyJDialog extends javax.swing.JFrame {
                             .addGroup(pnlBenTraiLayout.createSequentialGroup()
                                 .addGroup(pnlBenTraiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblLocTheo)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 230, Short.MAX_VALUE))))
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(pnlBenTraiLayout.createSequentialGroup()
                         .addGroup(pnlBenTraiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlBenTraiLayout.createSequentialGroup()
@@ -103,7 +103,7 @@ public class NhatKyJDialog extends javax.swing.JFrame {
                             .addGroup(pnlBenTraiLayout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(lblTrangThai)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 20, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         pnlBenTraiLayout.setVerticalGroup(
@@ -155,7 +155,7 @@ public class NhatKyJDialog extends javax.swing.JFrame {
         pnlBenPhaiLayout.setHorizontalGroup(
             pnlBenPhaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlBenPhaiLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 633, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 726, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         pnlBenPhaiLayout.setVerticalGroup(

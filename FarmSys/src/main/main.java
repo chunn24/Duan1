@@ -5,7 +5,7 @@
  */
 package main;
 
-import com.farmsys.GUI.TongQuan;
+import com.farmsys.UI.TongQuan;
 
 /**
  *

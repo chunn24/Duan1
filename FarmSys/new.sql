@@ -17,7 +17,7 @@ Create table NhanVien (
 	HoTen nvarchar(50) not null,
 	GioiTinh int,
 	Email nvarchar(30)not null,
-	Luong int not null,
+	Luong int,
 	VaiTro bit not null,
 	Hinh varchar(30) 
 );
@@ -167,5 +167,5 @@ values
 
  insert into NhatKy (TenCV,MaGian,ChiTiet,NguoiTao,NhanVien,NgayBatDau,NgayKetThuc,TrangThai)
 values 
- ('0','1','Trồng cây giàn A1','Trung','TrieuNHD','2021-11-05','2021-11-06','')
+ ('0','1','Trồng cây giàn A1','Trung','TrieuNHD','2021-11-05','2021-11-06','0')
  go
