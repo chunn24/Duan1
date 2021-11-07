@@ -933,8 +933,8 @@
                                   </Group>
                                   <Group type="103" alignment="0" groupAlignment="1" attributes="0">
                                       <Component id="pnlHome" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="pnlNhanvien" min="-2" max="-2" attributes="0"/>
-                                      <Component id="pnlDanTrong" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="pnlNhanvien" linkSize="8" min="-2" max="-2" attributes="0"/>
+                                      <Component id="pnlDanTrong" linkSize="8" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -1111,7 +1111,7 @@
                           <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                           <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="46" max="32767" attributes="0"/>
+                          <EmptySpace pref="56" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
