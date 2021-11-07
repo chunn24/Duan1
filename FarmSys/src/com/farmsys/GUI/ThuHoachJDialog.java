@@ -102,7 +102,7 @@ public class ThuHoachJDialog extends javax.swing.JFrame {
                 .addGap(41, 41, 41))
         );
 
-        pnlLeft.setBackground(new java.awt.Color(255, 255, 255));
+        pnlLeft.setBackground(new java.awt.Color(204, 204, 204));
 
         cboChonGian.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         cboChonGian.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -195,7 +195,7 @@ public class ThuHoachJDialog extends javax.swing.JFrame {
         btnGiaoViet.setBackground(new java.awt.Color(19, 148, 147));
         btnGiaoViet.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         btnGiaoViet.setForeground(new java.awt.Color(248, 241, 241));
-        btnGiaoViet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/icons8_checkmark_35px.png"))); // NOI18N
+        btnGiaoViet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/icons8_edit_35px_1.png"))); // NOI18N
         btnGiaoViet.setText("GIAO VIỆC");
         btnGiaoViet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

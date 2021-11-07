@@ -168,7 +168,7 @@
         <Container class="javax.swing.JPanel" name="pnlLeft">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+              <Color blue="cc" green="cc" red="cc" type="rgb"/>
             </Property>
           </Properties>
 
@@ -349,7 +349,7 @@
               <Color blue="f1" green="f1" red="f8" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/com/farmsys/icons/icons8_checkmark_35px.png"/>
+              <Image iconType="3" name="/com/farmsys/icons/icons8_edit_35px_1.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="GIAO VI&#x1ec6;C"/>
           </Properties>
