@@ -10,10 +10,12 @@ import com.farmsys.Helper.Auth;
 import com.farmsys.Helper.HandleAPI;
 import com.farmsys.Helper.MsgBox;
 import com.farmsys.Helper.XImage;
+import jaco.mp3.player.MP3Player;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.Icon;
@@ -33,6 +35,8 @@ import org.jfree.data.category.DefaultCategoryDataset;
  * @author trieu
  */
 public class TongQuan extends javax.swing.JFrame {
+
+    MP3Player Ping = new MP3Player(new File("src\\com\\farmsys\\icons\\thongbao.mp3"));
 
     /**
      * Creates new form TongQuan
@@ -1202,6 +1206,7 @@ public class TongQuan extends javax.swing.JFrame {
     private int idx = 0;
 
     private void init() {
+
         result = HandleAPI.getJsonData((String) cb_city.getSelectedItem());
         setThoiTiet();
         //this.setIconImage(XImage.getAppIcon());
@@ -1209,8 +1214,10 @@ public class TongQuan extends javax.swing.JFrame {
         weather.setLocationRelativeTo(null);
         new chaoJdialog(this, true).setVisible(true);
         new DangNhapJDialog(this, true).setVisible(true);
+        Ping.play();
         this.showLineChart();
         loadLbl();
+
         new Timer(1000, (ActionEvent e) -> {
             Date now = new Date();
             SimpleDateFormat formater = new SimpleDateFormat("hh:mm:ss a" + "     " + "dd/MM/YYYY");

@@ -83,22 +83,28 @@ public class NhatKyJDialog extends javax.swing.JFrame {
         pnlBenTraiLayout.setHorizontalGroup(
             pnlBenTraiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlBenTraiLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(pnlBenTraiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cboLocTheo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnXuatPDF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(pnlBenTraiLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(pnlBenTraiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cboLocTheo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnXuatPDF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(pnlBenTraiLayout.createSequentialGroup()
+                                .addGroup(pnlBenTraiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblLocTheo)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 230, Short.MAX_VALUE))))
                     .addGroup(pnlBenTraiLayout.createSequentialGroup()
                         .addGroup(pnlBenTraiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblTrangThai)
-                            .addComponent(lblLocTheo)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnlBenTraiLayout.createSequentialGroup()
+                                .addGap(25, 25, 25)
+                                .addComponent(lblTitle))
+                            .addGroup(pnlBenTraiLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(lblTrangThai)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(pnlBenTraiLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(lblTitle)
-                .addContainerGap(30, Short.MAX_VALUE))
         );
         pnlBenTraiLayout.setVerticalGroup(
             pnlBenTraiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -124,21 +130,21 @@ public class NhatKyJDialog extends javax.swing.JFrame {
 
         tblNhatKy.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "STT", "Tên công việc", "Chi tiết công việc", "Người tạo", "Nhân viên", "Bắt đầu", "Kết thúc", "Trạng thái"
+                "STT", "Tên công việc", "Mã Giàn", "Chi tiết công việc", "Người tạo", "Nhân viên", "Bắt đầu", "Kết thúc", "Trạng thái"
             }
         ));
         tblNhatKy.setRowHeight(40);
