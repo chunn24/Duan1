@@ -18,7 +18,7 @@ public class NhatKyDao extends FarmSysDAO<NhatKy, String>{
     
     
     String SELECT_ALL_SQL = "SELECT * FROM NhatKy";
-    
+    String select_by_id_sql = "select * from NhatKy where MaCV = ?";
    
     
     @Override
@@ -42,8 +42,20 @@ public class NhatKyDao extends FarmSysDAO<NhatKy, String>{
     }
 
     @Override
-    public NhatKy selectById(String key) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public NhatKy selectById(String macv) {
+        List<NhatKy> list = this.selectBySql(select_by_id_sql, macv);
+        if(list.isEmpty()){
+            return null;
+        }
+        return list.get(0);
+    }
+    
+     public NhatKy selectById(Integer macv) {
+        List<NhatKy> list = this.selectBySql(select_by_id_sql, macv);
+        if(list.isEmpty()){
+            return null;
+        }
+        return list.get(0);
     }
 
     @Override
@@ -70,9 +82,9 @@ public class NhatKyDao extends FarmSysDAO<NhatKy, String>{
             throw new RuntimeException(ex);
         }
     }
-    public List<NhatKy> selectByTenCV(int macv){
-        String sql = "SELECT * FROM NhatKy WHERE MaCV = ?";
-        return this.selectBySql(sql, macv);
+    public List<NhatKy> selectByTenCV(int tencv){
+        String sql = "SELECT * FROM NhatKy WHERE TenCV = ?";
+        return this.selectBySql(sql, tencv);
     }
     public List<NhatKy> selectByTrangThai(int trangthai ){
         String sql = "SELECT * FROM NhatKy WHERE TrangThai = ?";
