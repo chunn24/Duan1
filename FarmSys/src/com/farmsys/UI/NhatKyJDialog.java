@@ -60,7 +60,7 @@ public class NhatKyJDialog extends javax.swing.JFrame {
 
         lblLocTheo.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         lblLocTheo.setForeground(new java.awt.Color(25, 69, 107));
-        lblLocTheo.setText("Lọc theo:");
+        lblLocTheo.setText("Lọc theo tên:");
 
         jComboBox2.setBackground(new java.awt.Color(25, 69, 107));
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -251,5 +251,9 @@ public class NhatKyJDialog extends javax.swing.JFrame {
 
     private void init() {
         this.setLocationRelativeTo(null);
+        
+    }
+    private void fillToTable(){
+        
     }
 }
