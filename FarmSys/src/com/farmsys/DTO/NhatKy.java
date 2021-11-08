@@ -12,27 +12,29 @@ import java.util.Date;
  * @author trieu
  */
 public class NhatKy {
-    private int maCV;
-    private int tenCV;
+    private int stt;
+    private String tenCV; 
+    private int maCay;
     private int maGian;
     private String chiTiet;
     private String nguoiTao;
     private String nhanVien;
     private Date ngayBatDau;
     private Date ngayKetThuc;
-    private int trangThai;
+    private int trangThai; // 0: to do , 1:doing , 2:Từ chối , 3:Hoàn thành , 4:Hoàn thành + trễ
 
     @Override
     public String toString() {
-        return this.toString();
+        return this.toString(); //To change body of generated methods, choose Tools | Templates.
     }
 
     public NhatKy() {
     }
 
-    public NhatKy(int maCV, int tenCV, int maGian, String chiTiet, String nguoiTao, String nhanVien, Date ngayBatDau, Date ngayKetThuc, int trangThai) {
-        this.maCV = maCV;
+    public NhatKy(int stt, String tenCV, int maCay, int maGian, String chiTiet, String nguoiTao, String nhanVien, Date ngayBatDau, Date ngayKetThuc, int trangThai) {
+        this.stt = stt;
         this.tenCV = tenCV;
+        this.maCay = maCay;
         this.maGian = maGian;
         this.chiTiet = chiTiet;
         this.nguoiTao = nguoiTao;
@@ -42,20 +44,28 @@ public class NhatKy {
         this.trangThai = trangThai;
     }
 
-    public int getMaCV() {
-        return maCV;
+    public int getStt() {
+        return stt;
     }
 
-    public void setMaCV(int maCV) {
-        this.maCV = maCV;
+    public void setStt(int stt) {
+        this.stt = stt;
     }
 
-    public int getTenCV() {
+    public String getTenCV() {
         return tenCV;
     }
 
-    public void setTenCV(int tenCV) {
+    public void setTenCV(String tenCV) {
         this.tenCV = tenCV;
+    }
+
+    public int getMaCay() {
+        return maCay;
+    }
+
+    public void setMaCay(int maCay) {
+        this.maCay = maCay;
     }
 
     public int getMaGian() {

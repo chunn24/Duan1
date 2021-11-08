@@ -14,11 +14,11 @@ import java.util.ArrayList;
  *
  * @author admin
  */
-public class NhatKyDao extends FarmSysDAO<NhatKy, String>{
+public class NhatKyDAO extends FarmSysDAO<NhatKy, String>{
     
     
-    String SELECT_ALL_SQL = "SELECT * FROM NhatKy";
-    String select_by_id_sql = "select * from NhatKy where MaCV = ?";
+    String SELECT_ALL_SQL = "select * from NhatKy";
+    String select_by_id_sql = "select * from NhatKy where TenCV = ?";
    
     
     @Override
@@ -65,8 +65,9 @@ public class NhatKyDao extends FarmSysDAO<NhatKy, String>{
             ResultSet rs = JdbcHelper.query(sql, args);
             while(rs.next()){
                 NhatKy entity = new NhatKy();//Tạo đối tượng NhatKy
-                entity.setMaCV(rs.getInt("MaCV"));
-                entity.setTenCV(rs.getInt("TenCV"));
+                entity.setStt(rs.getInt("STT"));
+                entity.setTenCV(rs.getString("TenCV"));
+                entity.setMaCay(rs.getInt("MaCay"));
                 entity.setMaGian(rs.getInt("MaGian"));
                 entity.setChiTiet(rs.getString("ChiTiet"));
                 entity.setNguoiTao(rs.getString("NguoiTao"));
@@ -82,10 +83,10 @@ public class NhatKyDao extends FarmSysDAO<NhatKy, String>{
             throw new RuntimeException(ex);
         }
     }
-    public List<NhatKy> selectByTenCV(int tencv){
-        String sql = "SELECT * FROM NhatKy WHERE TenCV = ?";
-        return this.selectBySql(sql, tencv);
-    }
+//    public List<NhatKy> selectByTenCV(int tencv){
+//        String sql = "SELECT * FROM NhatKy WHERE TenCV = ?";
+//        return this.selectBySql(sql, tencv);
+//    }
     public List<NhatKy> selectByTrangThai(int trangthai ){
         String sql = "SELECT * FROM NhatKy WHERE TrangThai = ?";
         return this.selectBySql(sql, trangthai);
