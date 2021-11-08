@@ -14,10 +14,14 @@ public class NhatKyJDialog extends javax.swing.JFrame {
     /**
      * Creates new form NhatKyJDialog
      */
+    
     public NhatKyJDialog() {
         initComponents();
+        
         init();
     }
+
+
 
     /**
      * This method is called from within the constructor to initialize the form.
