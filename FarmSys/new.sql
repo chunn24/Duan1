@@ -59,13 +59,15 @@ Create table TrongCay (
 go
 
 create table CongViec(
-	TenCV int,
+	TenCV int primary key,
 	MoTa nvarchar(200),
+	MaGian int ,
 	NguoiGiaoViec varchar(15),
 	NguoiNhanViec varchar(15),
 	NgayBatDau date,
 	NgayKetThuc date,
-
+	foreign key (MaGian) references GianTrong(MaGian),
+	foreign key (NguoiNhanViec) references NhanVien(MaNV)
 );
 go
 
@@ -85,9 +87,14 @@ Create table NhatKy (
 		3: hoàn thành
 		4: hoàn thành + trể */
 
-	Primary key (MaCV),
+	Primary key (MaCV,TenCV),
 	foreign key (Nhanvien) references NhanVien(MaNV),
-	foreign key (MaGian) references GianTrong(MaGian)
+	foreign key (MaGian) references GianTrong(MaGian),
+
+	foreign key (TenCV) references CongViec(TenCV),
+	
+	
+
 );
 go
 
@@ -165,7 +172,12 @@ values
  ('8','6','Trung','Hai','2021-11-03')
  go
 
+ insert into CongViec (TenCV,MaGian,MoTa,NguoiGiaoViec,NguoiNhanViec,NgayBatDau,NgayKetThuc)
+values 
+ ('1','1','Trồng cây giàn A1','Trung','TrieuNHD','2021-11-05','2021-11-06')
+ go
+
  insert into NhatKy (TenCV,MaGian,ChiTiet,NguoiTao,NhanVien,NgayBatDau,NgayKetThuc,TrangThai)
 values 
- ('0','1','Trồng cây giàn A1','Trung','TrieuNHD','2021-11-05','2021-11-06','0')
+ ('1','1','Trồng cây giàn A1','Trung','TrieuNHD','2021-11-05','2021-11-06','0')
  go
