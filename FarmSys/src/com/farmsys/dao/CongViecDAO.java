@@ -17,7 +17,7 @@ import java.util.List;
  *
  * @author trieu
  */
-public abstract class CongViecDAO extends FarmSysDAO<CongViec, String> {
+public class CongViecDAO extends FarmSysDAO<CongViec, String> {
 
     String SELECT_ALL_SQL = "SELECT *FROM CongViec";
     String SELECT_BY_ID_SQL = "SELECT * FROM CongViec WHERE TenCV=?";
@@ -52,6 +52,21 @@ public abstract class CongViecDAO extends FarmSysDAO<CongViec, String> {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public void insert(CongViec entity) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void update(CongViec entity) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void delete(String key) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
