@@ -10,7 +10,7 @@ public class XJdbc {
     private static String driver="com.microsoft.sqlserver.jdbc.SQLServerDriver"; 
     private static String dburl="jdbc:sqlserver://localhost:1433;database=FarmSys";
     private static String username="sa";
-    private static String password="songlong";
+    private static String password="123";
     
     /*
      * Nạp driver
