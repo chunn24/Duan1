@@ -28,7 +28,7 @@ public class CayTrongDAO extends FarmSysDAO<CayTrong, String> {
     @Override
     public void insert(CayTrong entity) {
         try {
-            JdbcHelper.update(INSERT_SQL, entity.getMaCay(), entity.getTenCay(), entity.getThoiGianThuHoach(), entity.getDoTDS(), entity.getDoPH(), entity.getNhietDo(), entity.getDoAm(), entity.getAnh());
+            JdbcHelper.update(INSERT_SQL, entity.getMaCay(), entity.getTenCay(), entity.getThoiGianThuHoach(), entity.getDoTDS(), entity.getDoPH(), entity.getNhietDo(), entity.getDoAm(), entity.getHinh());
         } catch (SQLException ex) {
             Logger.getLogger(CayTrongDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -37,7 +37,7 @@ public class CayTrongDAO extends FarmSysDAO<CayTrong, String> {
     @Override
     public void update(CayTrong entity) {
         try {
-            JdbcHelper.update(UPDATE_SQL,entity.getMaCay(), entity.getTenCay(), entity.getThoiGianThuHoach(), entity.getDoTDS(), entity.getDoPH(), entity.getNhietDo(), entity.getDoAm(), entity.getAnh());
+            JdbcHelper.update(UPDATE_SQL,entity.getMaCay(), entity.getTenCay(), entity.getThoiGianThuHoach(), entity.getDoTDS(), entity.getDoPH(), entity.getNhietDo(), entity.getDoAm(), entity.getHinh());
         } catch (SQLException ex) {
             Logger.getLogger(CayTrongDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -80,7 +80,7 @@ public class CayTrongDAO extends FarmSysDAO<CayTrong, String> {
                 entity.setDoPH(rs.getFloat("DoPH"));
                 entity.setNhietDo(rs.getInt("NhietDo"));
                 entity.setDoAm(rs.getFloat("DoAm"));
-                entity.setAnh(rs.getString("Anh"));
+                entity.setHinh(rs.getString("Hinh"));
                 list.add(entity);
             }
             rs.getStatement().getConnection().close();

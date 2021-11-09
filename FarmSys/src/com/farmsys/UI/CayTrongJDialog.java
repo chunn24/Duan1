@@ -32,7 +32,7 @@ public class CayTrongJDialog extends javax.swing.JFrame {
      */
     public CayTrongJDialog() {
         initComponents();
-        this.init();
+        init();
     }
 
     /**
@@ -79,6 +79,7 @@ public class CayTrongJDialog extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(22, 199, 154));
 
+        tblCayTrong.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tblCayTrong.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
@@ -89,7 +90,20 @@ public class CayTrongJDialog extends javax.swing.JFrame {
             new String [] {
                 "Mã cây trồng", "Tên cây trồng", "Thời gian thu hoạch", "Độ TDS", "Độ PH", "Nhiệt độ", "Độ ẩm"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblCayTrong.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblCayTrongMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblCayTrong);
 
         javax.swing.GroupLayout pnlListLayout = new javax.swing.GroupLayout(pnlList);
@@ -208,13 +222,13 @@ public class CayTrongJDialog extends javax.swing.JFrame {
                         .addComponent(btnDelete)
                         .addGap(18, 18, 18)
                         .addComponent(btnNew)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
                         .addComponent(btnFirst)
-                        .addGap(26, 26, 26)
+                        .addGap(29, 29, 29)
                         .addComponent(btnPrev)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(30, 30, 30)
                         .addComponent(btnNext)
-                        .addGap(75, 75, 75)
+                        .addGap(28, 28, 28)
                         .addComponent(btnLast)
                         .addContainerGap())
                     .addGroup(pnlEditLayout.createSequentialGroup()
@@ -238,7 +252,7 @@ public class CayTrongJDialog extends javax.swing.JFrame {
                                     .addComponent(txtDoAm, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel7)))
                             .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
                         .addComponent(lblAnh, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(25, 25, 25))))
         );
@@ -279,9 +293,9 @@ public class CayTrongJDialog extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(btnFirst, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btnPrev, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btnNext, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(btnFirst)
+                        .addComponent(btnPrev)
+                        .addComponent(btnNext)
                         .addComponent(btnLast))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnAdd)
@@ -376,6 +390,16 @@ public class CayTrongJDialog extends javax.swing.JFrame {
 //        this.selectImage();
     }//GEN-LAST:event_lblAnhMouseClicked
 
+    private void tblCayTrongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCayTrongMouseClicked
+        if (evt.getClickCount() == 2) {
+            this.index = tblCayTrong.rowAtPoint(evt.getPoint());
+            if (this.index >= 0) {
+                this.edit();
+                tabs.setSelectedIndex(0);
+            }
+        }
+    }//GEN-LAST:event_tblCayTrongMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -450,7 +474,6 @@ public class CayTrongJDialog extends javax.swing.JFrame {
         load();
         tabs.setSelectedIndex(index);
         tblCayTrong.setDefaultEditor(Object.class, null);
-        fileChooser.setDialogTitle("Chọn Logo cho chuyên đề");
     }
 
     CayTrong getModel() {
@@ -462,7 +485,7 @@ public class CayTrongJDialog extends javax.swing.JFrame {
         model.setDoPH(Float.valueOf(txtDoPH.getText()));
         model.setNhietDo(Float.valueOf(txtNhietDo.getText()));
         model.setDoAm(Float.valueOf(txtDoAm.getText()));
-        model.setAnh(lblAnh.getToolTipText());
+        model.setHinh(lblAnh.getToolTipText());
         return model;
     }
 
@@ -480,7 +503,7 @@ public class CayTrongJDialog extends javax.swing.JFrame {
                     ct.getDoPH(),
                     ct.getNhietDo(),
                     ct.getDoAm(),
-                    ct.getAnh()
+                    ct.getHinh()
                 };
                 model.addRow(row);
             }
@@ -536,14 +559,14 @@ public class CayTrongJDialog extends javax.swing.JFrame {
 
     void edit() {
         try {
-            String macd = (String) tblCayTrong.getValueAt(this.index, 0);
-            CayTrong model = dao.selectById(macd);
+            String mact = (String) tblCayTrong.getValueAt(this.index, 0);
+            CayTrong model = dao.selectById(mact);
             if (model != null) {
                 this.setModel(model);
                 this.getstatus(false);
             }
         } catch (Exception e) {
-            MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
+            e.printStackTrace();
         }
     }
 
@@ -555,9 +578,9 @@ public class CayTrongJDialog extends javax.swing.JFrame {
         txtDoPH.setText(String.valueOf(model.getDoPH()));
         txtNhietDo.setText(String.valueOf(model.getNhietDo()));
         txtDoAm.setText(String.valueOf(model.getDoAm()));
-        lblAnh.setToolTipText(model.getAnh());
-        if (model.getAnh() != null) {
-            lblAnh.setIcon(XImage.read(model.getAnh()));
+        lblAnh.setToolTipText(model.getHinh());
+        if (model.getHinh()!= null) {
+            lblAnh.setIcon(XImage.read(model.getHinh()));
         }
     }
 
