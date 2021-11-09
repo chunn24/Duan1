@@ -19,11 +19,11 @@ import java.util.logging.Logger;
  * @author ASUS
  */
 public class CayTrongDAO extends FarmSysDAO<CayTrong, String> {
-    String INSERT_SQL = "INSERT INTO LoaiCayTrong(MaCay, TenCay, ThoiGianThuHoach, DoTDS, DoPH, NhietDo, DoAm, Hinh) VALUES(?,?,?,?,?,?,?,?)";
-    String UPDATE_SQL = "UPDATE LoaiCayTrong SET TenCay=?, ThoiGianThuHoach=?, DoTDS=?, DoPH=?, NhietDo=?, DoAm=?, Hinh=? WHERE MaCay=?";
-    String DELETE_SQL = "DELETE FROM LoaiCayTrong WHERE MaCay=?";
-    String SELECT_ALL_SQL = "SELECT *FROM LoaiCayTrong";
-    String SELECT_BY_ID_SQL = "SELECT * FROM LoaiCayTrong WHERE MaCay=?";
+    String INSERT_SQL = "INSERT INTO LoaiCay(MaCay, TenCay, ThoiGianThuHoach, DoTDS, DoPH, NhietDo, DoAm, Hinh) VALUES(?,?,?,?,?,?,?,?)";
+    String UPDATE_SQL = "UPDATE LoaiCay SET TenCay=?, ThoiGianThuHoach=?, DoTDS=?, DoPH=?, NhietDo=?, DoAm=?, Hinh=? WHERE MaCay=?";
+    String DELETE_SQL = "DELETE FROM LoaiCay WHERE MaCay=?";
+    String SELECT_ALL_SQL = "SELECT *FROM LoaiCay";
+    String SELECT_BY_ID_SQL = "SELECT * FROM LoaiCay WHERE MaCay=?";
     
     @Override
     public void insert(CayTrong entity) {
