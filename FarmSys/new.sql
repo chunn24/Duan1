@@ -141,14 +141,15 @@ go
 
 insert into CongViec (TenCV)
 values 
-('Trồng cây'),
-('Chăm sóc'),
-('Thu hoạch')
+(N'Trồng cây'),
+(N'Chăm sóc'),
+(N'Thu hoạch')
 go
 
  insert into NhatKy (TenCV,MaGian,MaCay,ChiTiet,NguoiTao,NhanVien,NgayBatDau,NgayKetThuc,TrangThai)
 values 
- ('Trồng cây',1,1,'Trồng cây giàn A1','Trung','TrieuNHD','2021-11-05','2021-11-06','0')
+ (N'Trồng cây',1,1,N'Trồng cây giàn A1','Trung','TrieuNHD','2021-11-05','2021-11-06','0')
+ 
  go
 
 
