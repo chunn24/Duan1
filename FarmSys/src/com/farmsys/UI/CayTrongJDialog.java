@@ -476,19 +476,6 @@ public class CayTrongJDialog extends javax.swing.JFrame {
         tblCayTrong.setDefaultEditor(Object.class, null);
     }
 
-    CayTrong getModel() {
-        CayTrong model = new CayTrong();
-        model.setMaCay(Integer.valueOf(txtMaCay.getText()));
-        model.setTenCay(txtTenCay.getText());
-        model.setThoiGianThuHoach(Integer.valueOf(txtThoiGianThuHoach.getText()));
-        model.setDoTDS(Float.valueOf(txtDoTDS.getText()));
-        model.setDoPH(Float.valueOf(txtDoPH.getText()));
-        model.setNhietDo(Float.valueOf(txtNhietDo.getText()));
-        model.setDoAm(Float.valueOf(txtDoAm.getText()));
-        model.setHinh(lblAnh.getToolTipText());
-        return model;
-    }
-
     void load() {
         DefaultTableModel model = (DefaultTableModel) tblCayTrong.getModel();
         model.setRowCount(0);
@@ -540,9 +527,9 @@ public class CayTrongJDialog extends javax.swing.JFrame {
 
     void delete() {
         if (MsgBox.confirm(this, "Bạn có muốn xóa hay không?")) {
-            String macd = txtMaCay.getText();
+            String mact = txtMaCay.getText();
             try {
-                dao.delete(macd);
+                dao.delete(mact);
                 this.load();
                 this.clear();
                 MsgBox.alert(this, "Xóa thành công!");
@@ -559,8 +546,8 @@ public class CayTrongJDialog extends javax.swing.JFrame {
 
     void edit() {
         try {
-            String mact = (String) tblCayTrong.getValueAt(this.index, 0);
-            CayTrong model = dao.selectById(mact);
+            Integer mact = (Integer) tblCayTrong.getValueAt(this.index, 0);
+            CayTrong model = dao.selectByIdInt(mact);
             if (model != null) {
                 this.setModel(model);
                 this.getstatus(false);
@@ -579,9 +566,22 @@ public class CayTrongJDialog extends javax.swing.JFrame {
         txtNhietDo.setText(String.valueOf(model.getNhietDo()));
         txtDoAm.setText(String.valueOf(model.getDoAm()));
         lblAnh.setToolTipText(model.getHinh());
-        if (model.getHinh()!= null) {
+        if (model.getHinh() != null) {
             lblAnh.setIcon(XImage.read(model.getHinh()));
         }
+    }
+
+    CayTrong getModel() {
+        CayTrong model = new CayTrong();
+        model.setMaCay(Integer.valueOf(txtMaCay.getText()));
+        model.setTenCay(txtTenCay.getText());
+        model.setThoiGianThuHoach(Integer.valueOf(txtThoiGianThuHoach.getText()));
+        model.setDoTDS(Float.valueOf(txtDoTDS.getText()));
+        model.setDoPH(Float.valueOf(txtDoPH.getText()));
+        model.setNhietDo(Float.valueOf(txtNhietDo.getText()));
+        model.setDoAm(Float.valueOf(txtDoAm.getText()));
+        model.setHinh(lblAnh.getToolTipText());
+        return model;
     }
 
     void getstatus(boolean insertable) {
@@ -630,19 +630,23 @@ public class CayTrongJDialog extends javax.swing.JFrame {
     }
 
     void first() {
-
+        this.index = 0;
+        this.edit();
     }
 
     void prev() {
-
+        this.index--;
+        this.edit();
     }
 
     void next() {
-
+        this.index++;
+        this.edit();
     }
 
     void last() {
-
+        this.index = tblCayTrong.getRowCount() - 1;
+        this.edit();
     }
 
 }

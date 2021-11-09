@@ -90,4 +90,13 @@ public class CayTrongDAO extends FarmSysDAO<CayTrong, String> {
         }
     }
 
+    public CayTrong selectByIdInt(Integer mact) {
+        List<CayTrong> list = this.selectBySql(SELECT_BY_ID_SQL, mact);
+        if (list.isEmpty()) {
+            return null;
+        }
+        return list.get(0);
+    }
+
+
 }
