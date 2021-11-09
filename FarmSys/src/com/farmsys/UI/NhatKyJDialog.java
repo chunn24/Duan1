@@ -289,11 +289,11 @@ public class NhatKyJDialog extends javax.swing.JFrame {
         }
     }
     private void fillTableNhatKy(){
-        DefaultTableModel modelNhatKy = (DefaultTableModel) tblNhatKy.getModel();
-        modelNhatKy.setRowCount(0);
+        DefaultTableModel model = (DefaultTableModel) tblNhatKy.getModel();
+        model.setRowCount(0);
         List<NhatKy> list = nkdao.selectAll();
         for (NhatKy nhatKy : list) {
-            modelNhatKy.addRow(new Object[]{
+            model.addRow(new Object[]{
                 nhatKy.getStt(),
                 nhatKy.getTenCV(),
                 nhatKy.getMaCay(),

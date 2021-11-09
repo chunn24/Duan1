@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class NhatKyDAO extends FarmSysDAO<NhatKy, String>{
     
     
-    String SELECT_ALL_SQL = "select * from NhatKy";
+    String select_all_sql = "select*from NhatKy;";
     String select_by_id_sql = "select * from NhatKy where TenCV = ?";
    
     
@@ -38,7 +38,7 @@ public class NhatKyDAO extends FarmSysDAO<NhatKy, String>{
 
     @Override
     public List<NhatKy> selectAll() {
-        return selectBySql(SELECT_ALL_SQL);
+        return selectBySql(select_all_sql);
     }
 
     @Override

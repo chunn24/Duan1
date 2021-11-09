@@ -13,6 +13,12 @@ public class CongViec {
     int MaCV;
     String TenCV;
 
+    @Override
+    public String toString() {
+        return this.toString(); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
     public CongViec(int MaCV, String TenCV) {
         this.MaCV = MaCV;
         this.TenCV = TenCV;
