@@ -41,10 +41,29 @@ public class XImage {
         }
 
     }
+    
+    public static boolean saveImage(File file) {
+        File dir = new File("logos");
+        // Tạo thư mục nếu chưa tồn tại
+        if (!dir.exists()) {
+            dir.mkdirs();
+        }
+        File newFile = new File(dir, file.getName());
+        try {
+            // Copy vào thư mục logos (đè nếu đã tồn tại)
+            Path source = Paths.get(file.getAbsolutePath());
+            Path destination = Paths.get(newFile.getAbsolutePath());
+            Files.copy(source, destination, StandardCopyOption.REPLACE_EXISTING);
+            return true;
+        } catch (Exception ex) {
+            return false;
+        }
+    }
 
     public static ImageIcon read(String fileName) {
         File path = new File("logos", fileName);
         return new ImageIcon(path.getAbsolutePath());
     }
 
+    
 }

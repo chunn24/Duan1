@@ -72,7 +72,7 @@ public class CayTrongJDialog extends javax.swing.JFrame {
         btnUpdate = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
         btnNew = new javax.swing.JButton();
-        lblAnh = new javax.swing.JLabel();
+        lblHinh = new javax.swing.JLabel();
         lblTitle = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -122,6 +122,8 @@ public class CayTrongJDialog extends javax.swing.JFrame {
         pnlEdit.setBackground(new java.awt.Color(204, 255, 204));
 
         jLabel1.setText("Mã cây trồng");
+
+        txtMaCay.setEditable(false);
 
         jLabel2.setText("Tên cây trồng");
 
@@ -199,11 +201,11 @@ public class CayTrongJDialog extends javax.swing.JFrame {
             }
         });
 
-        lblAnh.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblAnh.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 255, 153)));
-        lblAnh.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblHinh.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblHinh.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 255, 153)));
+        lblHinh.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblAnhMouseClicked(evt);
+                lblHinhMouseClicked(evt);
             }
         });
 
@@ -253,7 +255,7 @@ public class CayTrongJDialog extends javax.swing.JFrame {
                                     .addComponent(jLabel7)))
                             .addComponent(jLabel4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
-                        .addComponent(lblAnh, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblHinh, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(25, 25, 25))))
         );
         pnlEditLayout.setVerticalGroup(
@@ -281,7 +283,7 @@ public class CayTrongJDialog extends javax.swing.JFrame {
                         .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtDoTDS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtDoPH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(lblAnh, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblHinh, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -386,9 +388,9 @@ public class CayTrongJDialog extends javax.swing.JFrame {
         this.clear();
     }//GEN-LAST:event_btnNewActionPerformed
 
-    private void lblAnhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAnhMouseClicked
-//        this.selectImage();
-    }//GEN-LAST:event_lblAnhMouseClicked
+    private void lblHinhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHinhMouseClicked
+        this.selectImage();
+    }//GEN-LAST:event_lblHinhMouseClicked
 
     private void tblCayTrongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCayTrongMouseClicked
         if (evt.getClickCount() == 2) {
@@ -427,6 +429,8 @@ public class CayTrongJDialog extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -454,7 +458,7 @@ public class CayTrongJDialog extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblAnh;
+    private javax.swing.JLabel lblHinh;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JPanel pnlEdit;
     private javax.swing.JPanel pnlList;
@@ -507,7 +511,7 @@ public class CayTrongJDialog extends javax.swing.JFrame {
             this.clear();
             MsgBox.alert(this, "Thêm mới thành công!");
         } catch (Exception e) {
-            MsgBox.alert(this, "Thêm mới thất bại!");
+            e.printStackTrace();
         }
 
     }
@@ -565,22 +569,22 @@ public class CayTrongJDialog extends javax.swing.JFrame {
         txtDoPH.setText(String.valueOf(model.getDoPH()));
         txtNhietDo.setText(String.valueOf(model.getNhietDo()));
         txtDoAm.setText(String.valueOf(model.getDoAm()));
-        lblAnh.setToolTipText(model.getHinh());
+        lblHinh.setToolTipText(model.getHinh());
         if (model.getHinh() != null) {
-            lblAnh.setIcon(XImage.read(model.getHinh()));
+            lblHinh.setIcon(XImage.read(model.getHinh()));
         }
     }
 
     CayTrong getModel() {
         CayTrong model = new CayTrong();
-        model.setMaCay(Integer.valueOf(txtMaCay.getText()));
+//        model.setMaCay(Integer.valueOf(txtMaCay.getText()));
         model.setTenCay(txtTenCay.getText());
         model.setThoiGianThuHoach(Integer.valueOf(txtThoiGianThuHoach.getText()));
         model.setDoTDS(Float.valueOf(txtDoTDS.getText()));
         model.setDoPH(Float.valueOf(txtDoPH.getText()));
         model.setNhietDo(Float.valueOf(txtNhietDo.getText()));
         model.setDoAm(Float.valueOf(txtDoAm.getText()));
-        model.setHinh(lblAnh.getToolTipText());
+        model.setHinh(lblHinh.getToolTipText());
         return model;
     }
 
@@ -597,18 +601,18 @@ public class CayTrongJDialog extends javax.swing.JFrame {
         btnNext.setEnabled(!insertable && last);
     }
 
-//    void selectImage() {
-//        JFileChooser files = new JFileChooser("D:\\SOF2041\\PS15413\\src\\com\\edusys\\anh");
-//        int fileChooser = files.showOpenDialog(null);
-//        if (fileChooser == JFileChooser.APPROVE_OPTION) {
-//            File file = files.getSelectedFile();
-//            if (XImage.save(file)) {
-//                // Hiển thị hình lên form 
-//                lblAnh.setIcon(XImage.read(file.getName()));
-//                lblAnh.setToolTipText(file.getName());
-//            }
-//        }
-//    }
+    void selectImage() {
+        JFileChooser files = new JFileChooser("C:\\Users\\ASUS\\Documents\\GitHub\\Duan1\\FarmSys\\src\\com\\farmsys\\icons");
+        int fileChooser = files.showOpenDialog(null);
+        if (fileChooser == JFileChooser.APPROVE_OPTION) {
+            File file = files.getSelectedFile();
+            if (XImage.saveImage(file)) {
+                // Hiển thị hình lên form 
+                lblHinh.setIcon(XImage.read(file.getName()));
+                lblHinh.setToolTipText(file.getName());
+            }
+        }
+    }
     public boolean checkTrungMa(JTextField txt) {
         txt.setBackground(white);
         if (dao.selectById(txt.getText()) == null) {
@@ -621,7 +625,7 @@ public class CayTrongJDialog extends javax.swing.JFrame {
     }
 
     public boolean checkNullHinh() {
-        if (lblAnh.getToolTipText() != null) {
+        if (lblHinh.getToolTipText() != null) {
             return true;
         } else {
             MsgBox.alert(this, "Không được để trống hình.");

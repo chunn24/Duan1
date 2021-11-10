@@ -228,7 +228,7 @@
                                       <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace pref="79" max="32767" attributes="0"/>
-                                  <Component id="lblAnh" min="-2" pref="181" max="-2" attributes="0"/>
+                                  <Component id="lblHinh" min="-2" pref="181" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -263,7 +263,7 @@
                                       <Component id="txtDoPH" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Component id="lblAnh" min="-2" pref="213" max="-2" attributes="0"/>
+                              <Component id="lblHinh" min="-2" pref="213" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -302,6 +302,9 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtMaCay">
+                  <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
+                  </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel2">
                   <Properties>
@@ -441,7 +444,7 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNewActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JLabel" name="lblAnh">
+                <Component class="javax.swing.JLabel" name="lblHinh">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -453,7 +456,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblAnhMouseClicked"/>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblHinhMouseClicked"/>
                   </Events>
                 </Component>
               </SubComponents>

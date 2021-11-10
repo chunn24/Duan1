@@ -19,25 +19,26 @@ import java.util.logging.Logger;
  * @author ASUS
  */
 public class CayTrongDAO extends FarmSysDAO<CayTrong, String> {
-    String INSERT_SQL = "INSERT INTO LoaiCay(MaCay, TenCay, ThoiGianThuHoach, DoTDS, DoPH, NhietDo, DoAm, Hinh) VALUES(?,?,?,?,?,?,?,?)";
+
+    String INSERT_SQL = "INSERT INTO LoaiCay(TenCay,ThoiGianThuHoach,DoTDS,DoPH,NhietDo,DoAm,Hinh) VALUES(?,?,?,?,?,?,?)";
     String UPDATE_SQL = "UPDATE LoaiCay SET TenCay=?, ThoiGianThuHoach=?, DoTDS=?, DoPH=?, NhietDo=?, DoAm=?, Hinh=? WHERE MaCay=?";
     String DELETE_SQL = "DELETE FROM LoaiCay WHERE MaCay=?";
     String SELECT_ALL_SQL = "SELECT *FROM LoaiCay";
     String SELECT_BY_ID_SQL = "SELECT * FROM LoaiCay WHERE MaCay=?";
-    
+
     @Override
     public void insert(CayTrong entity) {
         try {
-            JdbcHelper.update(INSERT_SQL, entity.getMaCay(), entity.getTenCay(), entity.getThoiGianThuHoach(), entity.getDoTDS(), entity.getDoPH(), entity.getNhietDo(), entity.getDoAm(), entity.getHinh());
+            JdbcHelper.update(INSERT_SQL, entity.getTenCay(), entity.getThoiGianThuHoach(), entity.getDoTDS(), entity.getDoPH(), entity.getNhietDo(), entity.getDoAm(), entity.getHinh());
         } catch (SQLException ex) {
             Logger.getLogger(CayTrongDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     @Override
     public void update(CayTrong entity) {
         try {
-            JdbcHelper.update(UPDATE_SQL,entity.getMaCay(), entity.getTenCay(), entity.getThoiGianThuHoach(), entity.getDoTDS(), entity.getDoPH(), entity.getNhietDo(), entity.getDoAm(), entity.getHinh());
+            JdbcHelper.update(UPDATE_SQL, entity.getTenCay(), entity.getThoiGianThuHoach(), entity.getDoTDS(), entity.getDoPH(), entity.getNhietDo(), entity.getDoAm(), entity.getHinh(), entity.getMaCay());
         } catch (SQLException ex) {
             Logger.getLogger(CayTrongDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -97,6 +98,5 @@ public class CayTrongDAO extends FarmSysDAO<CayTrong, String> {
         }
         return list.get(0);
     }
-
 
 }
