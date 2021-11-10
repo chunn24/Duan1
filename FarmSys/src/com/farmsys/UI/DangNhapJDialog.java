@@ -5,12 +5,22 @@
  */
 package com.farmsys.UI;
 
-import com.farmsys.dao.NhanVienDAO;
 import com.farmsys.DTO.NhanVien;
 import com.farmsys.Helper.Auth;
 import com.farmsys.Helper.MsgBox;
+import com.farmsys.dao.NhanVienDAO;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
+import java.util.Date;
+import java.util.Properties;
+import java.util.UUID;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 /**
  *
@@ -26,6 +36,13 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         initComponents();
         init();
     }
+    NhanVienDAO dao = new NhanVienDAO();
+    NhanVien nv = new NhanVien();
+    private String OTP;
+    private String accountName = "farmsys.contact@gmail.com";
+    private String accountPassword = "FarmSys@123456";
+    private String manv;
+    private String emailNV;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -36,6 +53,13 @@ public class DangNhapJDialog extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDialog1 = new javax.swing.JDialog();
+        txtMatKhau1 = new javax.swing.JPasswordField();
+        txtMatKhau2 = new javax.swing.JPasswordField();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         txtMaNV = new javax.swing.JTextField();
         txtMatKhau = new javax.swing.JPasswordField();
@@ -50,6 +74,57 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         jSeparator2 = new javax.swing.JSeparator();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+
+        jDialog1.setMinimumSize(new java.awt.Dimension(200, 250));
+        jDialog1.setModal(true);
+
+        jLabel8.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        jLabel8.setText("Đổi mật khẩu");
+
+        jLabel11.setText("Mật khẩu mới");
+
+        jLabel12.setText("Xác nhận mật khẩu");
+
+        jButton1.setText("Xác nhận");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
+        jDialog1.getContentPane().setLayout(jDialog1Layout);
+        jDialog1Layout.setHorizontalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog1Layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel12)
+                    .addComponent(txtMatKhau1)
+                    .addComponent(txtMatKhau2)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(41, Short.MAX_VALUE))
+        );
+        jDialog1Layout.setVerticalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog1Layout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addComponent(jLabel8)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtMatKhau1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtMatKhau2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton1)
+                .addContainerGap(45, Short.MAX_VALUE))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -113,6 +188,14 @@ public class DangNhapJDialog extends javax.swing.JDialog {
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/avatar.png"))); // NOI18N
 
+        jLabel9.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jLabel9.setText("Quên mật khẩu");
+        jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel9MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -147,7 +230,8 @@ public class DangNhapJDialog extends javax.swing.JDialog {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 445, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtMatKhau))))))
+                                    .addComponent(txtMatKhau)))
+                            .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
@@ -177,7 +261,9 @@ public class DangNhapJDialog extends javax.swing.JDialog {
                         .addComponent(txtMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator2)))
-                .addGap(32, 32, 32)
+                .addGap(4, 4, 4)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnKetThuc, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnDangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -244,6 +330,40 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_txtMaNVFocusLost
 
+    private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
+        // TODO add your handling code here:
+        try {
+            manv = MsgBox.prompt(this, "Nhập tên tài khoản");
+            NhanVien nhanVien = dao.selectById(manv);
+            if (nhanVien != null) {//check tk có tồn tại không
+                emailNV = dao.selectById(manv).getEmail();//check mail nv
+                if (emailNV == null) {
+                    MsgBox.alert(this, "Tài khoản này chưa có email");
+                } else {//tài khoản có mail --> gửi mail -->check otp
+                    this.sendOTP(emailNV);
+                    String tempOTP;
+                    tempOTP = MsgBox.prompt(this, "Vui lòng xác thực OTP");
+                    if (tempOTP.equals(OTP)) {//đúng OTP thì hiện form đổi mk
+                        jDialog1.setLocationRelativeTo(this);
+                        jDialog1.setVisible(true);
+                    } else {
+                        MsgBox.alert(this, "Bạn nhập sai OTP");
+                    }
+                }
+            } else {
+                MsgBox.alert(this, "Tài khoản không tồn tại");
+            }
+        } catch (Exception e) {
+        }
+
+
+    }//GEN-LAST:event_jLabel9MouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.doiMatKhau(manv);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -289,20 +409,27 @@ public class DangNhapJDialog extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDangNhap;
     private javax.swing.JButton btnKetThuc;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextField txtMaNV;
     private javax.swing.JPasswordField txtMatKhau;
+    private javax.swing.JPasswordField txtMatKhau1;
+    private javax.swing.JPasswordField txtMatKhau2;
     // End of variables declaration//GEN-END:variables
-    NhanVienDAO dao = new NhanVienDAO();
 
     private void init() {
         setLocationRelativeTo(null);
@@ -345,5 +472,64 @@ public class DangNhapJDialog extends javax.swing.JDialog {
 
     public static String HienThi() {
         return Auth.user.getHoTen() + (Auth.user.isVaiTro() ? " - Trưởng phòng" : " - Nhân viên");
+    }
+
+    private void randomString() {
+        OTP = UUID.randomUUID().toString();
+    }
+
+    private void sendOTP(String email) {
+        try {
+            Properties p = new Properties();
+            p.put("mail.smtp.auth", "true");
+            p.put("mail.smtp.starttls.enable", "true");
+            p.put("mail.smtp.host", "smtp.gmail.com");
+            p.put("mail.smtp.port", 587);
+            Session s = Session.getInstance(p,
+                    new javax.mail.Authenticator() {
+                protected PasswordAuthentication getPasswordAuthentication() {
+                    return new PasswordAuthentication(accountName, accountPassword);
+                }
+            });
+            String from = accountName;
+            String to = email;
+            String subject = "OTP - Quên mật khẩu";
+            this.randomString();
+            String body = "Mã OTP: " + OTP;
+
+            Message msg = new MimeMessage(s);
+            msg.setFrom(new InternetAddress(from));
+            msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
+            msg.setSubject(subject);
+            msg.setText(body);
+            msg.setSentDate(new Date());
+
+            Transport.send(msg);
+            MsgBox.alert(this, "Một email chứa mã OTP đã gửi vào email của bạn!");
+
+        } catch (MessagingException ex) {
+            System.out.println(ex);
+        }
+    }
+
+    private void doiMatKhau(String manv) {
+        String matKhauMoi1 = new String(txtMatKhau1.getPassword());
+        String matKhauMoi2 = new String(txtMatKhau2.getPassword());
+        if (!matKhauMoi1.equals(matKhauMoi2)) {
+            MsgBox.alert(this, "Xác nhận mật khẩu không đúng!");
+            this.clearForm();
+        } else {
+            nv.setMatKhau(matKhauMoi1);
+            nv.setMaNV(manv);
+            dao.resetPass(nv);
+            MsgBox.alert(this, "Đổi mật khẩu thành công!");
+            jDialog1.setVisible(false);
+            jDialog1.setModal(false);
+        }
+    }
+
+    private void clearForm() {
+        txtMatKhau1.setText("");
+        txtMatKhau2.setText("");
     }
 }
