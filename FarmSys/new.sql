@@ -30,13 +30,13 @@ Create table GianTrong (
 	/* "0: chưa trồng
 		1: trồng" */
 
-	primary key(MaGian)
+	primary key(TenGian)
 );
 go
 
 Create table LoaiCay (	
-	MaCay int IDENTITY(0,1) primary key not null,
-	TenCay nvarchar(30)not null,
+	MaCay int IDENTITY(0,1)  not null,
+	TenCay nvarchar(30) primary key not null,
 	ThoiGianThuHoach int not null,
 	DoTDS float,
 	DoPH float,
@@ -53,8 +53,8 @@ Create table CongViec(
 Create table NhatKy (	
 	STT int IDENTITY(0,1),
 	TenCV nvarchar(30), 
-	MaCay int,
-	MaGian int,
+	TenCay nvarchar(30),
+	TenGian nvarchar(30),
 	ChiTiet nvarchar(200),
 	NguoiTao varchar(15),
 	NhanVien varchar(15),
@@ -67,11 +67,11 @@ Create table NhatKy (
 		3: hoàn thành
 		4: hoàn thành + trể */
 
-	Primary key (STT),
+	Primary key (NhanVien,TenGian,TenCay,TenCV),
 	
-	foreign key (Nhanvien) references NhanVien(MaNV),
-	foreign key (MaGian) references GianTrong(MaGian),
-	foreign key (MaCay) references LoaiCay(MaCay),
+	foreign key (NhanVien) references NhanVien(MaNV),
+	foreign key (TenGian) references GianTrong(TenGian),
+	foreign key (TenCay) references LoaiCay(TenCay),
 	foreign key (TenCV) references CongViec(TenCV)
 	
 );
