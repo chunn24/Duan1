@@ -5,6 +5,8 @@
  */
 package com.farmsys.UI;
 
+import com.farmsys.DTO.NhanVien;
+import com.farmsys.Helper.JdbcHelper;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 
@@ -23,7 +25,7 @@ public class GiaoViecJDialog extends javax.swing.JDialog {
     public GiaoViecJDialog(java.awt.Frame parent, boolean modal) {
         
         initComponents();
-        init();
+//        init();
     }
 
    
@@ -324,25 +326,26 @@ public class GiaoViecJDialog extends javax.swing.JDialog {
     private javax.swing.JTextField txtNgayBatDau;
     private javax.swing.JTextField txtNgayKiemTra;
     // End of variables declaration//GEN-END:variables
-    NhatKyDAO nkdao = new NhatKyDAO();
-  
-    void init(){
-        setLocationRelativeTo(null);
-        
-    }
-    void insert(){
-        KhoaHoc kh = getForm();
-        if(kh == null){
-            return;
-        }else{
-            try{
-                dao.insert(kh);
-                this.fillTable();
-                this.clearForm();
-                ThongBao.alert(this, "Đã thêm khóa học mới thành công!");
-            }catch(Exception e){
-                ThongBao.alert(this, "Thêm khóa học thất bại!");
-            }
-        }
-    }
+//    NhatKyDAO nkdao = new NhatKyDAO();
+//  
+//    void init(){
+//        setLocationRelativeTo(null);
+//        
+//    }
+//    void insert(){
+//        KhoaHoc kh = getForm();
+//        if(kh == null){
+//            return;
+//        }else{
+//            try{
+//                dao.insert(kh);
+//                this.fillTable();
+//                this.clearForm();
+//                ThongBao.alert(this, "Đã thêm khóa học mới thành công!");
+//            }catch(Exception e){
+//                ThongBao.alert(this, "Thêm khóa học thất bại!");
+//            }
+//        }
+//    }
+
 }

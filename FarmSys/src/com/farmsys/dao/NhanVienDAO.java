@@ -31,20 +31,18 @@ public class NhanVienDAO extends FarmSysDAO<NhanVien, String> {
     @Override
     public void insert(NhanVien entity) {
         try {
-            JdbcHelper.update(INSERT_SQL, entity.getMaNV(), entity.getMatKhau(), entity.getHoTen(), entity.isGioiTinh(), entity.getEmail(), entity.getLuong(), entity.isVaiTro(), entity.getHinh());
+            JdbcHelper.update(INSERT_SQL, entity.getMaNV(), entity.getMatKhau(), entity.getHoTen(), entity.getGioiTinh(), entity.getEmail(), entity.getLuong(), entity.isVaiTro(), entity.getHinh());
         } catch (SQLException ex) {
             Logger.getLogger(NhanVienDAO.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println(ex);
         }
     }
 
     @Override
     public void update(NhanVien entity) {
         try {
-            JdbcHelper.update(UPDATE_SQL, entity.getMatKhau(), entity.getHoTen(), entity.isGioiTinh(), entity.getEmail(), entity.getLuong(), entity.isVaiTro(), entity.getHinh(), entity.getMaNV());
+            JdbcHelper.update(UPDATE_SQL, entity.getMatKhau(), entity.getHoTen(), entity.getGioiTinh(), entity.getEmail(), entity.getLuong(), entity.isVaiTro(), entity.getHinh(), entity.getMaNV());
         } catch (SQLException ex) {
             Logger.getLogger(NhanVienDAO.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println(ex);
         }
     }
 
@@ -54,7 +52,6 @@ public class NhanVienDAO extends FarmSysDAO<NhanVien, String> {
             JdbcHelper.update(DELETE_SQL, key);
         } catch (SQLException ex) {
             Logger.getLogger(NhanVienDAO.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println(ex);
         }
     }
 
@@ -90,7 +87,7 @@ public class NhanVienDAO extends FarmSysDAO<NhanVien, String> {
                 entity.setMaNV(rs.getString("MaNV"));
                 entity.setMatKhau(rs.getString("MatKhau"));
                 entity.setHoTen(rs.getString("HoTen"));
-                entity.setGioiTinh(rs.getBoolean("GioiTinh"));
+                entity.setGioiTinh(rs.getInt("GioiTinh"));
                 entity.setEmail(rs.getString("Email"));
                 entity.setLuong(rs.getInt("Luong"));
                 entity.setVaiTro(rs.getBoolean("VaiTro"));
@@ -103,7 +100,7 @@ public class NhanVienDAO extends FarmSysDAO<NhanVien, String> {
             throw new RuntimeException(e);
         }
     }
-    
+
     public void resetPass(NhanVien entity) {
         try {
             JdbcHelper.update(RESET_PASS_SQL, entity.getMatKhau(), entity.getMaNV());
