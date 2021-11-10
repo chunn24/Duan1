@@ -86,7 +86,7 @@ public class NhatKyDAO extends FarmSysDAO<NhatKy, String> {
             }
             rs.getStatement().getConnection().close();
             return list;
-        } catch (Exception ex) {
+        } catch (SQLException ex) {
             throw new RuntimeException(ex);
         }
     }
