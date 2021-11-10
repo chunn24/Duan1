@@ -67,7 +67,7 @@ Create table NhatKy (
 		3: hoàn thành
 		4: hoàn thành + trể */
 
-	Primary key (NhanVien,TenGian,TenCay,TenCV),
+	Primary key (STT),
 	
 	foreign key (NhanVien) references NhanVien(MaNV),
 	foreign key (TenGian) references GianTrong(TenGian),
@@ -146,12 +146,12 @@ values
 (N'Thu hoạch')
 go
 
- insert into NhatKy (TenCV,MaGian,MaCay,ChiTiet,NguoiTao,NhanVien,NgayBatDau,NgayKetThuc,TrangThai)
+ insert into NhatKy (TenCV,TenCay,TenGian,ChiTiet,NguoiTao,NhanVien,NgayBatDau,NgayKetThuc,TrangThai)
 values 
- (N'Trồng cây',1,1,N'Trồng cây giàn A1','Trung','TrieuNHD','2021-11-05','2021-11-06','0')
+ (N'Trồng cây',N'Cây Chuối',N'A1',N'Trồng cây giàn A1','Trung','TrieuNHD','2021-11-05','2021-11-06','0')
  
  go
 
 
 
-select (SELECT DATEADD(day, +(LoaiCay.ThoiGianThuHoach) , NhatKy.NgayBatDau )) as 'ngaythuhoach' from LoaiCay inner join NhatKy on LoaiCay.MaCay = NhatKy.MaCay
+select (SELECT DATEADD(day, +(LoaiCay.ThoiGianThuHoach) , NhatKy.NgayBatDau )) as 'ngaythuhoach' from LoaiCay inner join NhatKy on LoaiCay.TenCay = NhatKy.TenCay

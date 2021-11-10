@@ -30,13 +30,13 @@ Create table GianTrong (
 	/* "0: chưa trồng
 		1: trồng" */
 
-	primary key(MaGian)
+	primary key(TenGian)
 );
 go
 
 Create table LoaiCay (	
-	MaCay int IDENTITY(0,1) primary key not null,
-	TenCay nvarchar(30)not null,
+	MaCay int IDENTITY(0,1)  not null,
+	TenCay nvarchar(30) primary key not null,
 	ThoiGianThuHoach int not null,
 	DoTDS float,
 	DoPH float,
@@ -45,14 +45,16 @@ Create table LoaiCay (
 	Hinh varchar(30) not null
 );
 go
-
-
+Create table CongViec(
+	STT int IDENTITY(0,1),
+	TenCV nvarchar(30) primary key
+);
 
 Create table NhatKy (	
-	MaCV int IDENTITY(0,1),
+	STT int IDENTITY(0,1),
 	TenCV nvarchar(30), 
-	MaCay int,
-	MaGian int,
+	TenCay nvarchar(30),
+	TenGian nvarchar(30),
 	ChiTiet nvarchar(200),
 	NguoiTao varchar(15),
 	NhanVien varchar(15),
@@ -65,10 +67,12 @@ Create table NhatKy (
 		3: hoàn thành
 		4: hoàn thành + trể */
 
-	Primary key (TenCV,MaGian),
-	foreign key (Nhanvien) references NhanVien(MaNV),
-	foreign key (MaGian) references GianTrong(MaGian),
-	foreign key (MaCay) references LoaiCay(MaCay)
+	Primary key (STT),
+	
+	foreign key (NhanVien) references NhanVien(MaNV),
+	foreign key (TenGian) references GianTrong(TenGian),
+	foreign key (TenCay) references LoaiCay(TenCay),
+	foreign key (TenCV) references CongViec(TenCV)
 	
 );
 go
@@ -135,11 +139,19 @@ INSERT INTO LoaiCay VALUES (N'Cây Khoai Tây','15','2180','6.5','30','11','Hinh
 INSERT INTO LoaiCay VALUES (N'Cây Hành','15','1290','6.9','29','12','Hinh15.jpg');
 go
 
-
- insert into NhatKy (TenCV,MaGian,MaCay,ChiTiet,NguoiTao,NhanVien,NgayBatDau,NgayKetThuc,TrangThai)
+insert into CongViec (TenCV)
 values 
- (1,1,1,'Trồng cây giàn A1','Trung','TrieuNHD','2021-11-05','2021-11-06','0')
+(N'Trồng cây'),
+(N'Chăm sóc'),
+(N'Thu hoạch')
+go
+
+ insert into NhatKy (TenCV,TenCay,TenGian,ChiTiet,NguoiTao,NhanVien,NgayBatDau,NgayKetThuc,TrangThai)
+values 
+ (N'Trồng cây',N'Cây Chuối',N'A1',N'Trồng cây giàn A1','Trung','TrieuNHD','2021-11-05','2021-11-06','0')
+ 
  go
 
 
-select (SELECT DATEADD(day, +(LoaiCay.ThoiGianThuHoach) , NhatKy.NgayBatDau )) as 'ngaythuhoach' from LoaiCay inner join NhatKy on LoaiCay.MaCay = NhatKy.MaCay
+
+select (SELECT DATEADD(day, +(LoaiCay.ThoiGianThuHoach) , NhatKy.NgayBatDau )) as 'ngaythuhoach' from LoaiCay inner join NhatKy on LoaiCay.TenCay = NhatKy.TenCay
