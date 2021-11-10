@@ -12,9 +12,9 @@ import java.util.Date;
  * @author ASUS
  */
 public class GiaoViec {
-    private String TenCV;
-    private int CayTrong;
-    private int DanTrong;
+    private int TenCV;
+    private String CayTrong;
+    private String DanTrong;
     private  Date NgayBatDau;
     private  Date NgayKiemTra;
     private String NhanVien;
@@ -23,7 +23,7 @@ public class GiaoViec {
     public GiaoViec(){
     }
 
-    public GiaoViec(String TenCV, int CayTrong, int DanTrong, Date NgayBatDau, Date NgayKiemTra, String NhanVien, String GhiChu) {
+    public GiaoViec(int TenCV, String CayTrong, String DanTrong, Date NgayBatDau, Date NgayKiemTra, String NhanVien, String GhiChu) {
         this.TenCV = TenCV;
         this.CayTrong = CayTrong;
         this.DanTrong = DanTrong;
@@ -33,27 +33,27 @@ public class GiaoViec {
         this.GhiChu = GhiChu;
     }
 
-    public String getTenCV() {
+    public int getTenCV() {
         return TenCV;
     }
 
-    public void setTenCV(String TenCV) {
+    public void setTenCV(int TenCV) {
         this.TenCV = TenCV;
     }
 
-    public int getCayTrong() {
+    public String getCayTrong() {
         return CayTrong;
     }
 
-    public void setCayTrong(int CayTrong) {
+    public void setCayTrong(String CayTrong) {
         this.CayTrong = CayTrong;
     }
 
-    public int getDanTrong() {
+    public String getDanTrong() {
         return DanTrong;
     }
 
-    public void setDanTrong(int DanTrong) {
+    public void setDanTrong(String DanTrong) {
         this.DanTrong = DanTrong;
     }
 
@@ -88,7 +88,6 @@ public class GiaoViec {
     public void setGhiChu(String GhiChu) {
         this.GhiChu = GhiChu;
     }
-
     
 }
 
