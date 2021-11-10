@@ -5,6 +5,13 @@
  */
 package com.farmsys.UI;
 
+import com.farmsys.DTO.NhatKy;
+import com.farmsys.dao.CongViecDAO;
+import com.farmsys.dao.NhatKyDAO;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author trieu
@@ -14,10 +21,14 @@ public class NhatKyJDialog extends javax.swing.JFrame {
     /**
      * Creates new form NhatKyJDialog
      */
+    NhatKyDAO nkdao = new NhatKyDAO();
+//    CongViecDAO cvdao = new CongViecDAO();
     public NhatKyJDialog() {
         initComponents();
         init();
     }
+
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -31,9 +42,9 @@ public class NhatKyJDialog extends javax.swing.JFrame {
         pnlNhatKy = new javax.swing.JPanel();
         pnlBenTrai = new javax.swing.JPanel();
         lblTitle = new javax.swing.JLabel();
-        cboLocTheo = new javax.swing.JComboBox<>();
+        cboLocTheoTen = new javax.swing.JComboBox<>();
         lblLocTheo = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        cboTrangThai = new javax.swing.JComboBox<>();
         btnXuatPDF = new javax.swing.JButton();
         lblTrangThai = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -51,15 +62,15 @@ public class NhatKyJDialog extends javax.swing.JFrame {
         lblTitle.setForeground(new java.awt.Color(248, 241, 241));
         lblTitle.setText("NHẬT KÝ CÔNG VIỆC");
 
-        cboLocTheo.setBackground(new java.awt.Color(25, 69, 107));
-        cboLocTheo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboLocTheoTen.setBackground(new java.awt.Color(25, 69, 107));
+        cboLocTheoTen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         lblLocTheo.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         lblLocTheo.setForeground(new java.awt.Color(25, 69, 107));
-        lblLocTheo.setText("Lọc theo:");
+        lblLocTheo.setText("Lọc theo tên:");
 
-        jComboBox2.setBackground(new java.awt.Color(25, 69, 107));
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboTrangThai.setBackground(new java.awt.Color(25, 69, 107));
+        cboTrangThai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         btnXuatPDF.setBackground(new java.awt.Color(17, 105, 142));
         btnXuatPDF.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -87,8 +98,8 @@ public class NhatKyJDialog extends javax.swing.JFrame {
                     .addGroup(pnlBenTraiLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(pnlBenTraiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cboLocTheo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cboLocTheoTen, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cboTrangThai, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnXuatPDF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(pnlBenTraiLayout.createSequentialGroup()
                                 .addGroup(pnlBenTraiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,11 +125,11 @@ public class NhatKyJDialog extends javax.swing.JFrame {
                 .addGap(39, 39, 39)
                 .addComponent(lblLocTheo)
                 .addGap(18, 18, 18)
-                .addComponent(cboLocTheo, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cboLocTheoTen, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25)
                 .addComponent(jLabel3)
                 .addGap(32, 32, 32)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cboTrangThai, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41)
                 .addComponent(btnXuatPDF, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -130,23 +141,31 @@ public class NhatKyJDialog extends javax.swing.JFrame {
 
         tblNhatKy.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "STT", "Tên công việc", "Mã Giàn", "Chi tiết công việc", "Người tạo", "Nhân viên", "Bắt đầu", "Kết thúc", "Trạng thái"
+                "STT", "Tên công việc", "Mã Cây", "Mã Giàn", "Chi tiết công việc", "Người tạo", "Nhân viên", "Bắt đầu", "Kết thúc", "Trạng thái"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tblNhatKy.setRowHeight(40);
         jScrollPane1.setViewportView(tblNhatKy);
 
@@ -232,8 +251,8 @@ public class NhatKyJDialog extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnXuatPDF;
-    private javax.swing.JComboBox<String> cboLocTheo;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> cboLocTheoTen;
+    private javax.swing.JComboBox<String> cboTrangThai;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblLocTheo;
@@ -247,5 +266,45 @@ public class NhatKyJDialog extends javax.swing.JFrame {
 
     private void init() {
         this.setLocationRelativeTo(null);
+//        this.fillComboBoxTenCV();
+        this.fillTableNhatKy();
+
+    }
+    /*
+    private void fillComboBoxTenCV(){
+         DefaultComboBoxModel model = (DefaultComboBoxModel) cboLocTheoTen.getModel();
+         model.removeAllElements();
+         List<NhatKy> list = cvdao.selectAll();
+         for (NhatKy nhatKy : list) {
+            model.addElement(nhatKy);
+        }
+    }
+    */
+    private void fillComboBoxTrangThai(){
+        DefaultComboBoxModel model = (DefaultComboBoxModel) cboTrangThai.getModel();
+         model.removeAllElements();
+         List<NhatKy> list = nkdao.selectAll();
+         for (NhatKy nhatKy : list) {
+            model.addElement(nhatKy);
+        }
+    }
+    private void fillTableNhatKy(){
+        DefaultTableModel model = (DefaultTableModel) tblNhatKy.getModel();
+        model.setRowCount(0);
+        List<NhatKy> list = nkdao.selectAll();
+        for (NhatKy nhatKy : list) {
+            model.addRow(new Object[]{
+                nhatKy.getStt(),
+                nhatKy.getTenCV(),
+                nhatKy.getMaCay(),
+                nhatKy.getMaGian(),
+                nhatKy.getChiTiet(),
+                nhatKy.getNguoiTao(),
+                nhatKy.getNhanVien(),
+                nhatKy.getNgayBatDau(),
+                nhatKy.getNgayKetThuc(),
+                nhatKy.getTrangThai()
+            });
+        }
     }
 }

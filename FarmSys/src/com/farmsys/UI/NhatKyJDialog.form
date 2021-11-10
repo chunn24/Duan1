@@ -78,8 +78,8 @@
                           <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="cboLocTheo" max="32767" attributes="0"/>
-                                  <Component id="jComboBox2" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="cboLocTheoTen" max="32767" attributes="0"/>
+                                  <Component id="cboTrangThai" alignment="0" max="32767" attributes="0"/>
                                   <Component id="btnXuatPDF" alignment="0" max="32767" attributes="0"/>
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -116,11 +116,11 @@
                       <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                       <Component id="lblLocTheo" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="cboLocTheo" min="-2" pref="38" max="-2" attributes="0"/>
+                      <Component id="cboLocTheoTen" min="-2" pref="38" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                      <Component id="jComboBox2" min="-2" pref="39" max="-2" attributes="0"/>
+                      <Component id="cboTrangThai" min="-2" pref="39" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                       <Component id="btnXuatPDF" min="-2" pref="53" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
@@ -142,7 +142,7 @@
                 <Property name="text" type="java.lang.String" value="NH&#x1eac;T K&#xdd; C&#xd4;NG VI&#x1ec6;C"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="cboLocTheo">
+            <Component class="javax.swing.JComboBox" name="cboLocTheoTen">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="6b" green="45" red="19" type="rgb"/>
@@ -168,10 +168,10 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="6b" green="45" red="19" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="L&#x1ecd;c theo:"/>
+                <Property name="text" type="java.lang.String" value="L&#x1ecd;c theo t&#xea;n:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="jComboBox2">
+            <Component class="javax.swing.JComboBox" name="cboTrangThai">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="6b" green="45" red="19" type="rgb"/>
@@ -270,16 +270,17 @@
                 <Component class="javax.swing.JTable" name="tblNhatKy">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="9" rowCount="12">
-                        <Column editable="true" title="STT" type="java.lang.Object"/>
-                        <Column editable="true" title="T&#xea;n c&#xf4;ng vi&#x1ec7;c" type="java.lang.Object"/>
-                        <Column editable="true" title="M&#xe3; Gi&#xe0;n" type="java.lang.Object"/>
-                        <Column editable="true" title="Chi ti&#x1ebf;t c&#xf4;ng vi&#x1ec7;c" type="java.lang.Object"/>
-                        <Column editable="true" title="Ng&#x1b0;&#x1edd;i t&#x1ea1;o" type="java.lang.Object"/>
-                        <Column editable="true" title="Nh&#xe2;n vi&#xea;n" type="java.lang.Object"/>
-                        <Column editable="true" title="B&#x1eaf;t &#x111;&#x1ea7;u" type="java.lang.Object"/>
-                        <Column editable="true" title="K&#x1ebf;t th&#xfa;c" type="java.lang.Object"/>
-                        <Column editable="true" title="Tr&#x1ea1;ng th&#xe1;i" type="java.lang.Object"/>
+                      <Table columnCount="10" rowCount="12">
+                        <Column editable="false" title="STT" type="java.lang.Object"/>
+                        <Column editable="false" title="T&#xea;n c&#xf4;ng vi&#x1ec7;c" type="java.lang.Object"/>
+                        <Column editable="false" title="M&#xe3; C&#xe2;y" type="java.lang.Object"/>
+                        <Column editable="false" title="M&#xe3; Gi&#xe0;n" type="java.lang.Object"/>
+                        <Column editable="false" title="Chi ti&#x1ebf;t c&#xf4;ng vi&#x1ec7;c" type="java.lang.Object"/>
+                        <Column editable="false" title="Ng&#x1b0;&#x1edd;i t&#x1ea1;o" type="java.lang.Object"/>
+                        <Column editable="false" title="Nh&#xe2;n vi&#xea;n" type="java.lang.Object"/>
+                        <Column editable="false" title="B&#x1eaf;t &#x111;&#x1ea7;u" type="java.lang.Object"/>
+                        <Column editable="false" title="K&#x1ebf;t th&#xfa;c" type="java.lang.Object"/>
+                        <Column editable="false" title="Tr&#x1ea1;ng th&#xe1;i" type="java.lang.Object"/>
                       </Table>
                     </Property>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
