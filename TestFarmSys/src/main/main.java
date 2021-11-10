@@ -7,9 +7,10 @@ package main;
 
 import com.farmsys.UI.TongQuan;
 
-
-
-
+/**
+ *
+ * @author NguyenTrung
+ */
 public class main {
     public static void main(String[] args) {
         new TongQuan().setVisible(true);

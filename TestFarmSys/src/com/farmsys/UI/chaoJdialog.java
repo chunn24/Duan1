@@ -45,7 +45,6 @@ public class chaoJdialog extends javax.swing.JDialog {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pgbLogging.setForeground(new java.awt.Color(0, 0, 0));
-        pgbLogging.setStringPainted(true);
         jPanel1.add(pgbLogging, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 500, 30));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -120,19 +119,31 @@ public class chaoJdialog extends javax.swing.JDialog {
         new Timer(10, (ActionEvent e) -> {
             int value = pgbLogging.getValue();
             if (value < pgbLogging.getMaximum()) {
-                if (value <= 0) {
-                    pgbLogging.setString("Đang vào chương trình....");
+                if (value >= 20) {
+                    //lblload.setText("Đang load database......");
+                    //pnllogo.setBackground(Color.BLUE);
+                    //pgbLogging.setBackground(Color.BLUE);
+                    //pgbLogging.setForeground(Color.BLUE);
                 }
                 if (value >= 40) {
-                    pgbLogging.setString("Đang vào chương trình....");
+                    //lblload.setText("Đang vào chương trình......");
+                    // pnllogo.setBackground(Color.ORANGE);
+                    //pgbLogging.setBackground(Color.ORANGE);
+                    //pgbLogging.setForeground(Color.ORANGE);
                 }
                 if (value >= 60) {
-                    pgbLogging.setString("Đang kết nối với database....");
+                    //lblload.setText("Đang vào chương trình......");
+                    //pnllogo.setBackground(Color.green);
+                    //pgbLogging.setBackground(Color.GREEN);
+                    // pgbLogging.setForeground(Color.GREEN);
                 }
-                if (value == 70) {
-                    pgbLogging.setString("Đang kết nối với database....");
+                if (value == 80) {
+                    //lblload.setText("Finished....");
+
+                    
                 }
-                if (value == 90) {
+                if (value == 80) {
+                    //lblload.setText("Finished....");
 
                     JdbcHelper.ConnectDAO();
                 }

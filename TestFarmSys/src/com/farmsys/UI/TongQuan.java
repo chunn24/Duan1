@@ -333,7 +333,7 @@ public class TongQuan extends javax.swing.JFrame {
             .addGroup(pnldieukhienLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblDongHo, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 556, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 566, Short.MAX_VALUE)
                 .addComponent(jLabel31)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblTrangThai, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -358,7 +358,7 @@ public class TongQuan extends javax.swing.JFrame {
             .addComponent(jLabel31, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        penalTong.add(pnldieukhien, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1220, 30));
+        penalTong.add(pnldieukhien, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1230, 30));
 
         pnlmenu.setBackground(new java.awt.Color(14, 251, 137));
 

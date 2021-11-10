@@ -5,13 +5,6 @@
  */
 package com.farmsys.UI;
 
-import com.farmsys.DTO.NhanVien;
-import com.farmsys.Helper.Auth;
-import com.farmsys.Helper.MsgBox;
-import com.farmsys.dao.NhanVienDAO;
-import java.util.List;
-import javax.swing.table.DefaultTableModel;
-
 /**
  *
  * @author trieu
@@ -24,186 +17,6 @@ public class NhanVienJDialog extends javax.swing.JFrame {
     public NhanVienJDialog() {
         initComponents();
         init();
-        this.fillTable();
-        this.row = -1;
-        this.updateStatus();
-    }
-    
-    NhanVienDAO dao = new NhanVienDAO();
-    int row = -1;
-    
-    void init() {
-//        if (!Auth.isLogin()) {
-//            MsgBox.alert(this, "Chưa đăng nhập, vô cái loz");
-//            System.exit(0);
-//        }
-//        this.updateStatus();
-    }
-    
-    void insert() {
-        if (!Auth.isManager()) {
-            MsgBox.alert(this, "Không có quyền xóa nhân viên!");
-        } else {
-
-            NhanVien nv = getForm();
-            String mk2 = new String(txtMatKhau2.getPassword());
-            if (!mk2.equals(nv.getMatKhau())) {
-                MsgBox.alert(this, "Xác nhận mật khẩu không đúng");
-            } else {
-                try {
-                    dao.insert(nv);
-                    this.fillTable();
-                    this.clearForm();
-                    MsgBox.alert(this, "Thêm mới thành công!");
-                } catch (Exception e) {
-                    MsgBox.alert(this, "Thêm thất bại!");
-                    System.out.println(e);
-                }
-            }
-        }
-    }
-    
-    void update() {
-        NhanVien nv = getForm();
-        String mk2 = new String(txtMatKhau2.getPassword());
-        if (!mk2.equals(nv.getMatKhau())) {
-            MsgBox.alert(this, "Xác nhận mật khẩu không đúng!");
-        } else {
-            try {
-                dao.update(nv);
-                this.fillTable();
-                MsgBox.alert(this, "Cập nhật thành công!");
-            } catch (Exception e) {
-                MsgBox.alert(this, "Cập nhật thất bại!");
-                System.out.println(e);
-            }
-        }
-    }
-
-    void delete() {
-        if (!Auth.isManager()) {
-            MsgBox.alert(this, "Không có quyền xóa nhân viên!");
-        } else {
-            String manv = txtMaNV.getText();
-            System.out.println(Auth.user.getMaNV());
-            System.out.println(manv);
-            if (manv.equals(Auth.user.getMaNV())) {
-                MsgBox.alert(this, "Bạn không được xóa chính bạn!");
-            } else if (MsgBox.confirm(this, "bạn thực sự muốn xóa nhân viên này?")) {
-                try {
-                    dao.delete(manv);
-                    this.fillTable();
-                    this.clearForm();
-                    MsgBox.alert(this, "Xóa thành công!");
-                } catch (Exception e) {
-                    MsgBox.alert(this, "Xóa thất bại!");
-                    System.out.println(e);
-                }
-            }
-        }
-    }
-
-    void clearForm() {
-        NhanVien nv = new NhanVien();
-        this.setForm(nv);
-        this.row = -1;
-        this.updateStatus();
-    }
-
-    void edit() {
-        String manv = (String) tblNhanVien.getValueAt(this.row, 0);
-        NhanVien nv = dao.selectById(manv);
-        this.setForm(nv);
-        Tabs.setSelectedIndex(0);
-        this.updateStatus();
-
-    }
-
-    void first() {
-        this.row = 0;
-        this.edit();
-    }
-
-    void prev() {
-        if (this.row > 0) {
-            this.row--;
-            this.edit();
-        }
-    }
-
-    void next() {
-        if (this.row < tblNhanVien.getRowCount() - 1) {
-            this.row++;
-            this.edit();
-        }
-    }
-
-    void last() {
-        this.row = tblNhanVien.getColumnCount() - 1;
-        this.edit();
-    }
-
-    void fillTable() {
-        DefaultTableModel model = (DefaultTableModel) tblNhanVien.getModel();
-        model.setRowCount(0);
-        try {
-            List<NhanVien> list = dao.selectAll();
-            for (NhanVien nv : list) {
-                
-                Object[] row = {
-                    nv.getMaNV(), "***********", nv.getHoTen(),
-                    nv.isVaiTro() ? "Trưởng phòng" : "Nhân viên",
-                    nv.getEmail(), nv.isGioiTinh()?"Nam":"Nữ", nv.getLuong()
-                };
-                model.addRow(row);
-            }
-        } catch (Exception e) {
-            MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
-        }
-    }
-
-    void setForm(NhanVien nv) {
-        txtMaNV.setText(nv.getMaNV());
-        txtHoTen.setText(nv.getHoTen());
-        txtMatKhau.setText(nv.getMatKhau());
-        txtMatKhau2.setText(nv.getMatKhau());
-        rdoTruongPhong.setSelected(nv.isVaiTro());
-        rdoNhanVien.setSelected(!nv.isVaiTro());
-        
-        rdoNam.setSelected(nv.isGioiTinh());
-        rdoNu.setSelected(!nv.isGioiTinh());
-        txtEmail.setText(nv.getEmail());
-        txtLuong.setText(nv.getLuong()+"");
-    }
-
-    NhanVien getForm() {
-        NhanVien nv = new NhanVien();
-        nv.setMaNV(txtMaNV.getText());
-        nv.setHoTen(txtHoTen.getText());
-        nv.setMatKhau(new String(txtMatKhau.getPassword()));
-        nv.setVaiTro(rdoTruongPhong.isSelected());
-        //xét giới tính
-        
-        nv.setGioiTinh(rdoNam.isSelected());
-        nv.setEmail(txtEmail.getText());
-        nv.setLuong(Integer.parseInt(txtLuong.getText()));
-        return nv;
-    }
-
-    void updateStatus() {
-        boolean edit = (this.row >= 0);
-        boolean first = (this.row == 0);
-        boolean last = (this.row == tblNhanVien.getColumnCount() - 1);
-        //Trạng thái form
-        txtMaNV.setEditable(!edit);
-        btnThem.setEnabled(!edit);
-        btnSua.setEnabled(edit);
-        btnXoa.setEnabled(edit);
-        //Trạng thái điều hướng
-        btnFirst.setEnabled(edit && !first);
-        btnPrev.setEnabled(edit && !first);
-        btnNext.setEnabled(edit && !last);
-        btnLast.setEnabled(edit && !last);
     }
 
     /**
@@ -215,8 +28,6 @@ public class NhanVienJDialog extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
-        buttonGroup2 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         Tabs = new javax.swing.JTabbedPane();
         pnlEdit = new javax.swing.JPanel();
@@ -240,12 +51,11 @@ public class NhanVienJDialog extends javax.swing.JFrame {
         rdoTruongPhong = new javax.swing.JRadioButton();
         rdoNhanVien = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
+        cboGioiTinh = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txtLuong = new javax.swing.JTextField();
-        rdoNam = new javax.swing.JRadioButton();
-        rdoNu = new javax.swing.JRadioButton();
         pnlList = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblNhanVien = new javax.swing.JTable();
@@ -332,28 +142,21 @@ public class NhanVienJDialog extends javax.swing.JFrame {
             }
         });
 
-        buttonGroup1.add(rdoTruongPhong);
         rdoTruongPhong.setSelected(true);
         rdoTruongPhong.setText("Trưởng phòng");
 
-        buttonGroup1.add(rdoNhanVien);
         rdoNhanVien.setText("Nhân viên");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Gioi Tinh");
+
+        cboGioiTinh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam", "Nu" }));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Email");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Lương cơ bản");
-
-        buttonGroup2.add(rdoNam);
-        rdoNam.setSelected(true);
-        rdoNam.setText("Nam");
-
-        buttonGroup2.add(rdoNu);
-        rdoNu.setText("Nữ");
 
         javax.swing.GroupLayout pnlEditLayout = new javax.swing.GroupLayout(pnlEdit);
         pnlEdit.setLayout(pnlEditLayout);
@@ -396,15 +199,11 @@ public class NhanVienJDialog extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(rdoNhanVien))
                             .addComponent(jLabel1)
+                            .addComponent(cboGioiTinh, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3)
                             .addComponent(txtLuong, javax.swing.GroupLayout.PREFERRED_SIZE, 774, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(18, Short.MAX_VALUE))
-                    .addGroup(pnlEditLayout.createSequentialGroup()
-                        .addComponent(rdoNam)
-                        .addGap(41, 41, 41)
-                        .addComponent(rdoNu)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         pnlEditLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtEmail, txtHoTen, txtLuong, txtMaNV, txtMatKhau, txtMatKhau2});
@@ -432,15 +231,13 @@ public class NhanVienJDialog extends javax.swing.JFrame {
                 .addComponent(txtHoTen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cboGioiTinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rdoNam)
-                    .addComponent(rdoNu))
-                .addGap(10, 10, 10)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtLuong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -546,50 +343,50 @@ public class NhanVienJDialog extends javax.swing.JFrame {
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
-        this.insert();
+//        this.insert();
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
-        this.update();
+//        this.update();
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
-        this.delete();
+//        this.delete();
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void btnMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoiActionPerformed
         // TODO add your handling code here:
-        this.clearForm();
+//        this.clearForm();
     }//GEN-LAST:event_btnMoiActionPerformed
 
     private void btnFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstActionPerformed
         // TODO add your handling code here:
-        this.first();
+//        this.first();
     }//GEN-LAST:event_btnFirstActionPerformed
 
     private void btnPrevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrevActionPerformed
         // TODO add your handling code here:
-        this.prev();
+//        this.prev();
     }//GEN-LAST:event_btnPrevActionPerformed
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
         // TODO add your handling code here:
-        this.next();
+//        this.next();
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void btnLastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastActionPerformed
         // TODO add your handling code here:
-        this.last();
+//        this.last();
     }//GEN-LAST:event_btnLastActionPerformed
 
     private void tblNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblNhanVienMouseClicked
         // TODO add your handling code here:
-        if (evt.getClickCount() == 2) {
-            this.row = tblNhanVien.getSelectedRow();
-            this.edit();
-        }
+//        if (evt.getClickCount() == 2) {
+//            this.row = tblNhanVien.getSelectedRow();
+//            this.edit();
+//        }
     }//GEN-LAST:event_tblNhanVienMouseClicked
 
     /**
@@ -638,8 +435,7 @@ public class NhanVienJDialog extends javax.swing.JFrame {
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnXoa;
-    private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.JComboBox<String> cboGioiTinh;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -653,9 +449,7 @@ public class NhanVienJDialog extends javax.swing.JFrame {
     private javax.swing.JLabel lblVaiTro;
     private javax.swing.JPanel pnlEdit;
     private javax.swing.JPanel pnlList;
-    private javax.swing.JRadioButton rdoNam;
     private javax.swing.JRadioButton rdoNhanVien;
-    private javax.swing.JRadioButton rdoNu;
     private javax.swing.JRadioButton rdoTruongPhong;
     private javax.swing.JTable tblNhanVien;
     private javax.swing.JTextField txtEmail;
@@ -666,5 +460,7 @@ public class NhanVienJDialog extends javax.swing.JFrame {
     private javax.swing.JPasswordField txtMatKhau2;
     // End of variables declaration//GEN-END:variables
 
-   
+    private void init() {
+        setLocationRelativeTo(null);
+    }
 }
