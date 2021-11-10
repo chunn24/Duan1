@@ -45,13 +45,11 @@ Create table LoaiCay (
 	Hinh varchar(30) not null
 );
 go
-Create table CongViec(
-	STT int IDENTITY(0,1),
-	TenCV nvarchar(30) primary key
-);
+
+
 
 Create table NhatKy (	
-	STT int IDENTITY(0,1),
+	MaCV int IDENTITY(0,1),
 	TenCV nvarchar(30), 
 	MaCay int,
 	MaGian int,
@@ -67,12 +65,10 @@ Create table NhatKy (
 		3: hoàn thành
 		4: hoàn thành + trể */
 
-	Primary key (STT),
-	
+	Primary key (TenCV,MaGian),
 	foreign key (Nhanvien) references NhanVien(MaNV),
 	foreign key (MaGian) references GianTrong(MaGian),
-	foreign key (MaCay) references LoaiCay(MaCay),
-	foreign key (TenCV) references CongViec(TenCV)
+	foreign key (MaCay) references LoaiCay(MaCay)
 	
 );
 go
@@ -139,19 +135,11 @@ INSERT INTO LoaiCay VALUES (N'Cây Khoai Tây','15','2180','6.5','30','11','Hinh
 INSERT INTO LoaiCay VALUES (N'Cây Hành','15','1290','6.9','29','12','Hinh15.jpg');
 go
 
-insert into CongViec (TenCV)
-values 
-(N'Trồng cây'),
-(N'Chăm sóc'),
-(N'Thu hoạch')
-go
 
  insert into NhatKy (TenCV,MaGian,MaCay,ChiTiet,NguoiTao,NhanVien,NgayBatDau,NgayKetThuc,TrangThai)
 values 
- (N'Trồng cây',1,1,N'Trồng cây giàn A1','Trung','TrieuNHD','2021-11-05','2021-11-06','0')
- 
+ (1,1,1,'Trồng cây giàn A1','Trung','TrieuNHD','2021-11-05','2021-11-06','0')
  go
-
 
 
 select (SELECT DATEADD(day, +(LoaiCay.ThoiGianThuHoach) , NhatKy.NgayBatDau )) as 'ngaythuhoach' from LoaiCay inner join NhatKy on LoaiCay.MaCay = NhatKy.MaCay
