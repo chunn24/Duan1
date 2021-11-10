@@ -15,7 +15,7 @@ public class DateHelper {
      * @param pattern là định dạng thời gian
      * @return Date kết quả
      */
-    public static Date toDate(String date, String...pattern) {
+    public static Date toDate(String date, String... pattern) {
         try {
             if (pattern.length > 0) {
                 DATE_FORMATER.applyPattern(pattern[0]);
