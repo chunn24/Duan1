@@ -20,6 +20,8 @@ public class DangNhapJDialog extends javax.swing.JDialog {
 
     /**
      * Creates new form DangNhapJDialog
+     * @param parent
+     * @param modal
      */
     public DangNhapJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);

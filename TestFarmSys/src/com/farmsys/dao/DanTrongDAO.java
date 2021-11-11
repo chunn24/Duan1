@@ -20,13 +20,12 @@ import java.util.logging.Logger;
  * @author DELL
  */
 public class DanTrongDAO extends FarmSysDAO<GianTrong, String> {
-
     String INSERT_SQL = "INSERT INTO GianTrong (MaGian, TenGian, TrangThai) VALUES(?,?,?)";
     String UPDATE_SQL = "UPDATE GianTrong SET TenGian =?, TrangThai =? WHERE MaGian =?";
     String DELETE_SQL = "DELETE FROM GianTrong WHERE MaGian =?";
     String SELECT_ALL_SQL = "SELECT * FROM GianTrong";
     String SELECT_BY_ID_SQL = "SELECT * FROM GianTrong WHERE MaGian=?";
-    String SELECT_BY_trangthai_SQL = "SELECT * FROM GianTrong WHERE TrangThai=?";
+    String SELECT_BY_trangthai_SQL = "SELECT TrangThai FROM GianTrong WHERE TrangThai = 1";
 
     @Override
     public void insert(GianTrong entity) {
@@ -59,6 +58,7 @@ public class DanTrongDAO extends FarmSysDAO<GianTrong, String> {
     public List<GianTrong> selectAll() {
         return this.selectBySql(SELECT_ALL_SQL);
     }
+    
 
     @Override
     public GianTrong selectById(String key) {
@@ -69,12 +69,8 @@ public class DanTrongDAO extends FarmSysDAO<GianTrong, String> {
         return list.get(0);
     }
 
-    public GianTrong selectByTRangthai(String key) {
-        List<GianTrong> list = this.selectBySql(SELECT_BY_trangthai_SQL, key);
-        if (list.isEmpty()) {
-            return null;
-        }
-        return list.get(0);
+    public List<GianTrong> selectByTrangThai() {
+        return this.selectBySql(SELECT_BY_trangthai_SQL);
     }
 
     @Override
@@ -84,7 +80,7 @@ public class DanTrongDAO extends FarmSysDAO<GianTrong, String> {
             ResultSet rs = JdbcHelper.query(sql, args);
             while (rs.next()) {
                 GianTrong entity = new GianTrong();
-                entity.setMaDan(rs.getInt("MaGian"));
+//                entity.setMaDan(rs.getInt("MaGian"));
                 entity.setTenDan(rs.getString("TenGian"));
                 entity.setTrangThai(rs.getBoolean("TrangThai"));
                 list.add(entity);
@@ -96,5 +92,9 @@ public class DanTrongDAO extends FarmSysDAO<GianTrong, String> {
         }
 
     }
+
+//    public List<GianTrong> selectByTRangthai() {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
 
 }

@@ -58,6 +58,7 @@ public class CayTrongDAO extends FarmSysDAO<CayTrong, String> {
         return this.selectBySql(SELECT_ALL_SQL);
     }
     
+    
 //    public List<CayTrong> selectTENCAY() {
 //        return this.selectBySql(SELECT_TENCAY);
 //    }

@@ -152,9 +152,6 @@ public final class GiaoViecJDialog extends javax.swing.JDialog {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnGiaoViet, javax.swing.GroupLayout.DEFAULT_SIZE, 805, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(29, 29, 29)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -187,9 +184,11 @@ public final class GiaoViecJDialog extends javax.swing.JDialog {
                                     .addComponent(cboGianTrong, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jScrollPane2)
                                     .addComponent(txtnguoitao, javax.swing.GroupLayout.DEFAULT_SIZE, 316, Short.MAX_VALUE)
-                                    .addComponent(cboCongViec, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addGap(148, 148, 148)))
-                .addContainerGap())
+                                    .addComponent(cboCongViec, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnGiaoViet, javax.swing.GroupLayout.PREFERRED_SIZE, 637, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -360,7 +359,7 @@ public final class GiaoViecJDialog extends javax.swing.JDialog {
     void fillComboBoxGianTrong() {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cboGianTrong.getModel();
         model.removeAllElements();
-        List<GianTrong> list = dtdao.selectAll();
+        List<GianTrong> list = dtdao.selectByTrangThai();
         for (GianTrong dt : list) {
             model.addElement(dt);
         }
