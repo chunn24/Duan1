@@ -68,5 +68,9 @@ public class CongViecDAO extends FarmSysDAO<CongViec, String> {
     public void delete(String key) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
+    public List<CongViec> selectByTenCV(String tencv){
+        String sql = "SELECT * FROM CongViec Where TenCV = N'?'";
+        return this.selectBySql(sql, tencv);
+    }
 }

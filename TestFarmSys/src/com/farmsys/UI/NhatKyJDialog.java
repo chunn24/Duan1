@@ -5,6 +5,7 @@
  */
 package com.farmsys.UI;
 
+import com.farmsys.DTO.CongViec;
 import com.farmsys.DTO.NhatKy;
 import com.farmsys.dao.CongViecDAO;
 import com.farmsys.dao.NhatKyDAO;
@@ -22,7 +23,7 @@ public class NhatKyJDialog extends javax.swing.JFrame {
      * Creates new form NhatKyJDialog
      */
     NhatKyDAO nkdao = new NhatKyDAO();
-//    CongViecDAO cvdao = new CongViecDAO();
+    CongViecDAO cvdao = new CongViecDAO();
     public NhatKyJDialog() {
         initComponents();
         init();
@@ -42,9 +43,9 @@ public class NhatKyJDialog extends javax.swing.JFrame {
         pnlNhatKy = new javax.swing.JPanel();
         pnlBenTrai = new javax.swing.JPanel();
         lblTitle = new javax.swing.JLabel();
-        cboLocTheoTen = new javax.swing.JComboBox<>();
-        lblLocTheo = new javax.swing.JLabel();
-        cboTrangThai = new javax.swing.JComboBox<>();
+        cboLocTrangThai = new javax.swing.JComboBox<>();
+        lblLocTrangThai = new javax.swing.JLabel();
+        cboLocTen = new javax.swing.JComboBox<>();
         btnXuatPDF = new javax.swing.JButton();
         lblTrangThai = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -62,15 +63,23 @@ public class NhatKyJDialog extends javax.swing.JFrame {
         lblTitle.setForeground(new java.awt.Color(248, 241, 241));
         lblTitle.setText("NHẬT KÝ CÔNG VIỆC");
 
-        cboLocTheoTen.setBackground(new java.awt.Color(25, 69, 107));
-        cboLocTheoTen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboLocTrangThai.setBackground(new java.awt.Color(25, 69, 107));
+        cboLocTrangThai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboLocTrangThaiActionPerformed(evt);
+            }
+        });
 
-        lblLocTheo.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        lblLocTheo.setForeground(new java.awt.Color(25, 69, 107));
-        lblLocTheo.setText("Lọc theo tên:");
+        lblLocTrangThai.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        lblLocTrangThai.setForeground(new java.awt.Color(25, 69, 107));
+        lblLocTrangThai.setText("Lọc theo trạng thái:");
 
-        cboTrangThai.setBackground(new java.awt.Color(25, 69, 107));
-        cboTrangThai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboLocTen.setBackground(new java.awt.Color(25, 69, 107));
+        cboLocTen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboLocTenActionPerformed(evt);
+            }
+        });
 
         btnXuatPDF.setBackground(new java.awt.Color(17, 105, 142));
         btnXuatPDF.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -87,7 +96,7 @@ public class NhatKyJDialog extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(25, 69, 107));
-        jLabel3.setText("Lọc theo trạng thái");
+        jLabel3.setText("Lọc theo tên:");
 
         javax.swing.GroupLayout pnlBenTraiLayout = new javax.swing.GroupLayout(pnlBenTrai);
         pnlBenTrai.setLayout(pnlBenTraiLayout);
@@ -98,12 +107,12 @@ public class NhatKyJDialog extends javax.swing.JFrame {
                     .addGroup(pnlBenTraiLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(pnlBenTraiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cboLocTheoTen, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cboTrangThai, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cboLocTrangThai, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cboLocTen, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnXuatPDF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(pnlBenTraiLayout.createSequentialGroup()
                                 .addGroup(pnlBenTraiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblLocTheo)
+                                    .addComponent(lblLocTrangThai)
                                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(pnlBenTraiLayout.createSequentialGroup()
@@ -123,13 +132,13 @@ public class NhatKyJDialog extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addComponent(lblTitle)
                 .addGap(39, 39, 39)
-                .addComponent(lblLocTheo)
+                .addComponent(lblLocTrangThai)
                 .addGap(18, 18, 18)
-                .addComponent(cboLocTheoTen, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cboLocTrangThai, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25)
                 .addComponent(jLabel3)
                 .addGap(32, 32, 32)
-                .addComponent(cboTrangThai, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cboLocTen, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41)
                 .addComponent(btnXuatPDF, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -166,6 +175,7 @@ public class NhatKyJDialog extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblNhatKy.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         tblNhatKy.setRowHeight(40);
         jScrollPane1.setViewportView(tblNhatKy);
 
@@ -214,6 +224,16 @@ public class NhatKyJDialog extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void cboLocTrangThaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboLocTrangThaiActionPerformed
+        // TODO add your handling code here:
+        this.fillComboBoxTrangThai();
+    }//GEN-LAST:event_cboLocTrangThaiActionPerformed
+
+    private void cboLocTenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboLocTenActionPerformed
+        // TODO add your handling code here:
+        this.fillTableNhatKy();
+    }//GEN-LAST:event_cboLocTenActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -241,6 +261,8 @@ public class NhatKyJDialog extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -252,11 +274,11 @@ public class NhatKyJDialog extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnXuatPDF;
-    private javax.swing.JComboBox<String> cboLocTheoTen;
-    private javax.swing.JComboBox<String> cboTrangThai;
+    private javax.swing.JComboBox<String> cboLocTen;
+    private javax.swing.JComboBox<String> cboLocTrangThai;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblLocTheo;
+    private javax.swing.JLabel lblLocTrangThai;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JLabel lblTrangThai;
     private javax.swing.JPanel pnlBenPhai;
@@ -267,45 +289,61 @@ public class NhatKyJDialog extends javax.swing.JFrame {
 
     private void init() {
         this.setLocationRelativeTo(null);
-//        this.fillComboBoxTenCV();
-        this.fillTableNhatKy();
+         this.fillComboBoxTrangThai();
 
     }
-    /*
+    
     private void fillComboBoxTenCV(){
-         DefaultComboBoxModel model = (DefaultComboBoxModel) cboLocTheoTen.getModel();
-         model.removeAllElements();
-         List<NhatKy> list = cvdao.selectAll();
-         for (NhatKy nhatKy : list) {
-            model.addElement(nhatKy);
+        DefaultComboBoxModel model = (DefaultComboBoxModel) cboLocTrangThai.getModel();
+        model.removeAllElements();
+        NhatKy nk = (NhatKy) cboLocTrangThai.getSelectedItem();
+        if(nk != null){
+            List<CongViec> list = cvdao.selectByTenCV(nk.getTenCV());
+            for (CongViec cv : list) {
+                model.addElement(cv);
+            }
+            this.fillTableNhatKy();
         }
+        
+        
     }
-    */
-    private void fillComboBoxTrangThai(){
-        DefaultComboBoxModel model = (DefaultComboBoxModel) cboTrangThai.getModel();
-         model.removeAllElements();
-         List<NhatKy> list = nkdao.selectAll();
-         for (NhatKy nhatKy : list) {
+    
+    private void fillComboBoxTrangThai() {
+        DefaultComboBoxModel model = (DefaultComboBoxModel) cboLocTen.getModel();
+        model.removeAllElements();
+        NhatKy nk = new NhatKy();
+        List<NhatKy> list = nkdao.selectAll();
+        System.out.println(list);
+        for (NhatKy nhatKy : list) {
             model.addElement(nhatKy);
         }
+        this.fillComboBoxTenCV();
+
     }
     private void fillTableNhatKy(){
         DefaultTableModel model = (DefaultTableModel) tblNhatKy.getModel();
         model.setRowCount(0);
-        List<NhatKy> list = nkdao.selectAll();
-        for (NhatKy nhatKy : list) {
-            model.addRow(new Object[]{
-                nhatKy.getStt(),
-                nhatKy.getTenCV(),
-                nhatKy.getTenCay(),
-                nhatKy.getTenGian(),
-                nhatKy.getChiTiet(),
-                nhatKy.getNguoiTao(),
-                nhatKy.getNhanVien(),
-                nhatKy.getNgayBatDau(),
-                nhatKy.getNgayKetThuc(),
-                nhatKy.getTrangThai()
-            });
+        NhatKy nhatKy = (NhatKy) cboLocTen.getSelectedItem();
+        if(nhatKy !=null){
+            List<NhatKy> list = nkdao.selectByTrangThai(nhatKy.getTrangThai());
+            for (int i = 0; i < list.size(); i++) {
+                NhatKy nk  = list.get(i);
+                model.addRow(new Object[]{
+                    nk.getStt(),
+                    nk.getTenCV(),
+                    nk.getTenCay(),
+                    nk.getTenGian(),
+                    nk.getChiTiet(),
+                    nk.getNguoiTao(),
+                    nk.getNhanVien(),
+                    nk.getNgayBatDau(),
+                    nk.getNgayKetThuc(),
+                    nk.getTrangThai()
+                });
+                
+            }
         }
     }
+
+   
 }

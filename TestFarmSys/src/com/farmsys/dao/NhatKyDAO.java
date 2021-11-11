@@ -96,11 +96,12 @@ public class NhatKyDAO extends FarmSysDAO<NhatKy, String> {
             throw new RuntimeException(ex);
         }
     }
-//    public List<NhatKy> selectByTenCV(int tencv){
-//        String sql = "SELECT * FROM NhatKy WHERE TenCV = ?";
-//        return this.selectBySql(sql, tencv);
-//    }
 
+    public List<NhatKy> selectByTenCV(String tencv){
+        String sql = "SELECT * FROM NhatKy Where TenCV = N'?'";
+        return this.selectBySql(sql, tencv);
+    }
+    
     public List<NhatKy> selectByTrangThai(int trangthai) {
         String sql = "SELECT * FROM NhatKy WHERE TrangThai = ?";
         return this.selectBySql(sql, trangthai);

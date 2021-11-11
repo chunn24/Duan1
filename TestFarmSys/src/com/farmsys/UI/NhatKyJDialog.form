@@ -78,12 +78,12 @@
                           <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="cboLocTheoTen" max="32767" attributes="0"/>
-                                  <Component id="cboTrangThai" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="cboLocTrangThai" max="32767" attributes="0"/>
+                                  <Component id="cboLocTen" alignment="0" max="32767" attributes="0"/>
                                   <Component id="btnXuatPDF" alignment="0" max="32767" attributes="0"/>
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="lblLocTheo" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblLocTrangThai" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel3" min="-2" pref="175" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -114,13 +114,13 @@
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                       <Component id="lblTitle" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                      <Component id="lblLocTheo" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblLocTrangThai" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="cboLocTheoTen" min="-2" pref="38" max="-2" attributes="0"/>
+                      <Component id="cboLocTrangThai" min="-2" pref="38" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                      <Component id="cboTrangThai" min="-2" pref="39" max="-2" attributes="0"/>
+                      <Component id="cboLocTen" min="-2" pref="39" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                       <Component id="btnXuatPDF" min="-2" pref="53" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
@@ -142,25 +142,23 @@
                 <Property name="text" type="java.lang.String" value="NH&#x1eac;T K&#xdd; C&#xd4;NG VI&#x1ec6;C"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="cboLocTheoTen">
+            <Component class="javax.swing.JComboBox" name="cboLocTrangThai">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="6b" green="45" red="19" type="rgb"/>
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value="Item 1"/>
-                    <StringItem index="1" value="Item 2"/>
-                    <StringItem index="2" value="Item 3"/>
-                    <StringItem index="3" value="Item 4"/>
-                  </StringArray>
+                  <StringArray count="0"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboLocTrangThaiActionPerformed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JLabel" name="lblLocTheo">
+            <Component class="javax.swing.JLabel" name="lblLocTrangThai">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Times New Roman" size="16" style="0"/>
@@ -168,23 +166,21 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="6b" green="45" red="19" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="L&#x1ecd;c theo t&#xea;n:"/>
+                <Property name="text" type="java.lang.String" value="L&#x1ecd;c theo tr&#x1ea1;ng th&#xe1;i:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="cboTrangThai">
+            <Component class="javax.swing.JComboBox" name="cboLocTen">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="6b" green="45" red="19" type="rgb"/>
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value="Item 1"/>
-                    <StringItem index="1" value="Item 2"/>
-                    <StringItem index="2" value="Item 3"/>
-                    <StringItem index="3" value="Item 4"/>
-                  </StringArray>
+                  <StringArray count="0"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboLocTenActionPerformed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
@@ -232,7 +228,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="6b" green="45" red="19" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="L&#x1ecd;c theo tr&#x1ea1;ng th&#xe1;i"/>
+                <Property name="text" type="java.lang.String" value="L&#x1ecd;c theo t&#xea;n:"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -336,6 +332,9 @@
                           <Renderer/>
                         </Column>
                       </TableColumnModel>
+                    </Property>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Default Cursor"/>
                     </Property>
                     <Property name="rowHeight" type="int" value="40"/>
                     <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">

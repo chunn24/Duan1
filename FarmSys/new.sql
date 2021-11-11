@@ -150,8 +150,8 @@ go
 
  insert into NhatKy (TenCV,TenCay,TenGian,ChiTiet,NguoiTao,NhanVien,NgayBatDau,NgayKetThuc,TrangThai)
 values 
- (N'Trồng cây',N'Cây Chuối','C9',N'Trồng cây giàn A1','Trung','TrieuNHD','2021-11-05','2021-11-06','0')
- 
+ (N'Trồng cây',N'Cây Chuối','C9',N'Trồng cây giàn A1','Trung','TrieuNHD','2021-11-05','2021-11-06','0'),
+ (N'Chăm sóc',N'Cây Chuối','C9',N'Trồng cây giàn A2','Trung','TrieuNHD','2021-11-05','2021-11-06','1')
  go
 
 
