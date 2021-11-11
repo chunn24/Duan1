@@ -155,7 +155,7 @@ public class NhatKyJDialog extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "STT", "Tên công việc", "Mã Cây", "Mã Giàn", "Chi tiết công việc", "Người tạo", "Nhân viên", "Bắt đầu", "Kết thúc", "Trạng thái"
+                "STT", "Tên công việc", "Tên Cây", "Tên Giàn", "Chi tiết công việc", "Người tạo", "Nhân viên", "Bắt đầu", "Kết thúc", "Trạng thái"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -240,6 +240,9 @@ public class NhatKyJDialog extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(NhatKyJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -296,8 +299,8 @@ public class NhatKyJDialog extends javax.swing.JFrame {
             model.addRow(new Object[]{
                 nhatKy.getStt(),
                 nhatKy.getTenCV(),
-                nhatKy.getMaCay(),
-                nhatKy.getMaGian(),
+                nhatKy.getTenCay(),
+                nhatKy.getTenGian(),
                 nhatKy.getChiTiet(),
                 nhatKy.getNguoiTao(),
                 nhatKy.getNhanVien(),

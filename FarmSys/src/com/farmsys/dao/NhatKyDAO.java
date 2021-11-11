@@ -5,6 +5,7 @@
  */
 package com.farmsys.dao;
 
+import com.farmsys.DTO.CayTrong;
 import com.farmsys.DTO.NhatKy;
 import com.farmsys.Helper.JdbcHelper;
 import java.util.List;
@@ -20,19 +21,24 @@ import java.util.logging.Logger;
  */
 public class NhatKyDAO extends FarmSysDAO<NhatKy, String> {
 
+    String INSERT_SQL = "INSERT INTO NhatKy (TenCV, TenCay, TenGian, ChiTiet, NguoiTao, Nhanvien, NgayBatDau, NgayKetThuc, TrangThai) VALUES(?,?,?,?,?,?,?,?,?)";
     String UPDATE_SQL = "UPDATE NhatKy SET TrangThai = ? where TenCV = ?";
     String select_all_sql = "select*from NhatKy;";
     String select_by_id_sql = "select * from NhatKy where TenCV = ?";
 
     @Override
     public void insert(NhatKy entity) {
-
+        try {
+            JdbcHelper.update(INSERT_SQL, entity.getTenCV(), entity.getTenCay(), entity.getTenGian(),entity.getChiTiet(),entity.getNguoiTao(),entity.getNhanVien() ,entity.getNgayBatDau(), entity.getNgayKetThuc(), entity.getTrangThai());
+        } catch (SQLException ex) {
+            Logger.getLogger(CayTrongDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
     public void update(NhatKy entity) {
         try {
-            JdbcHelper.update(UPDATE_SQL, entity.getTrangThai(),entity.getTenCV());
+            JdbcHelper.update(UPDATE_SQL, entity.getTrangThai(), entity.getTenCV());
         } catch (SQLException ex) {
             Logger.getLogger(NhanVienDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -74,8 +80,8 @@ public class NhatKyDAO extends FarmSysDAO<NhatKy, String> {
                 NhatKy entity = new NhatKy();//Tạo đối tượng NhatKy
                 entity.setStt(rs.getInt("STT"));
                 entity.setTenCV(rs.getString("TenCV"));
-                entity.setMaCay(rs.getInt("MaCay"));
-                entity.setMaGian(rs.getInt("MaGian"));
+                entity.setTenCay(rs.getString("TenCay"));
+                entity.setTenGian(rs.getString("TenGian"));
                 entity.setChiTiet(rs.getString("ChiTiet"));
                 entity.setNguoiTao(rs.getString("NguoiTao"));
                 entity.setNhanVien(rs.getString("NhanVien"));

@@ -10,6 +10,7 @@ package com.farmsys.DTO;
  * @author trieu
  */
 public class GianTrong {
+
     private int maDan;
     private String tenDan;
     private boolean trangThai;
@@ -46,6 +47,10 @@ public class GianTrong {
     public void setTrangThai(boolean trangThai) {
         this.trangThai = trangThai;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return tenDan;
+    }
+
 }

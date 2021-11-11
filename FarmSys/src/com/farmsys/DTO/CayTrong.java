@@ -10,6 +10,7 @@ package com.farmsys.DTO;
  * @author trieu
  */
 public class CayTrong {
+
     private int maCay;
     private String tenCay;
     private int thoiGianThuHoach;
@@ -97,5 +98,9 @@ public class CayTrong {
         this.hinh = hinh;
     }
 
+    @Override
+    public String toString() {
+        return tenCay;
+    }
 
 }
