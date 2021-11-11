@@ -24,7 +24,7 @@ Create table NhanVien (
 go
 
 Create table GianTrong (	
-	MaGian int IDENTITY(0,1),
+	MaGian int IDENTITY(1,1),
 	TenGian nvarchar(30),
 	TrangThai bit,
 	/* "0: chưa trồng
@@ -35,7 +35,7 @@ Create table GianTrong (
 go
 
 Create table LoaiCay (	
-	MaCay int IDENTITY(0,1)  not null,
+	MaCay int IDENTITY(1,1)  not null,
 	TenCay nvarchar(30) primary key not null,
 	ThoiGianThuHoach int not null,
 	DoTDS float,
@@ -46,12 +46,12 @@ Create table LoaiCay (
 );
 go
 Create table CongViec(
-	STT int IDENTITY(0,1),
+	STT int IDENTITY(1,1),
 	TenCV nvarchar(30) primary key
 );
 
 Create table NhatKy (	
-	STT int IDENTITY(0,1),
+	STT int IDENTITY(1,1),
 	TenCV nvarchar(30), 
 	TenCay nvarchar(30),
 	TenGian nvarchar(30),
@@ -122,21 +122,23 @@ values
 	 ('C10','0')
  go
  
-INSERT INTO LoaiCay VALUES (N'Cây Chuối','30','1260','3.5','28','18','Hinh1.jpg');
-INSERT INTO LoaiCay VALUES (N'Cây Việt Quốc','25','1300','2.7','30','12','Hinh2.jpg');
-INSERT INTO LoaiCay VALUES (N'Cây Dưa Lưới','15','1000','7.0','27','13','Hinh3.jpg');
-INSERT INTO LoaiCay VALUES (N'Cây Đu Đủ','20','1750','3.8','32','11','Hinh4.jpg');
-INSERT INTO LoaiCay VALUES (N'Cây Dưa Hấu','23','2590','3.8','32','15','Hinh5.jpg');
-INSERT INTO LoaiCay VALUES (N'Cây Măng Tây','37','2500','2.9','29','16','Hinh6.jpg');
-INSERT INTO LoaiCay VALUES (N'Cây Bông Cải Xanh','40','2000','5.6','27','20','Hinh7.jpg');
-INSERT INTO LoaiCay VALUES (N'Cây Củ Dền','19','2800','5.2','28','21','Hinh8.jpg');
-INSERT INTO LoaiCay VALUES (N'Cây Cải Bắp','18','1280','4.7','27','19','Hinh9.jpg');
-INSERT INTO LoaiCay VALUES (N'Cây Đậu Hà Lan','32','1370','4.8','29','16','Hinh10.jpg');
-INSERT INTO LoaiCay VALUES (N'Cây Cà Chua','34','1120','4.8','26','17','Hinh11.jpg');
-INSERT INTO LoaiCay VALUES (N'Cây Bắp','35','3000','6.6','31','21','Hinh12.jpg');
-INSERT INTO LoaiCay VALUES (N'Cây Bí Ngô','15','2570','6.6','33','09','Hinh13.jpg');
-INSERT INTO LoaiCay VALUES (N'Cây Khoai Tây','15','2180','6.5','30','11','Hinh14.jpg');
-INSERT INTO LoaiCay VALUES (N'Cây Hành','15','1290','6.9','29','12','Hinh15.jpg');
+INSERT INTO LoaiCay 
+VALUES 
+(N'Cây chuối','30','1260','3.5','28','18','Hinh1.jpg'),
+(N'Cây việt quốc','25','1300','2.7','30','12','Hinh2.jpg'),
+(N'Cây dưa lưới','15','1000','7.0','27','13','Hinh3.jpg'),
+(N'Cây đu đủ','20','1750','3.8','32','11','Hinh4.jpg'),
+(N'Cây Dưa Hấu','23','2590','3.8','32','15','Hinh5.jpg'),
+(N'Cây Măng Tây','37','2500','2.9','29','16','Hinh6.jpg'),
+(N'Cây Bông Cải Xanh','40','2000','5.6','27','20','Hinh7.jpg'),
+(N'Cây Củ Dền','19','2800','5.2','28','21','Hinh8.jpg'),
+(N'Cây Cải Bắp','18','1280','4.7','27','19','Hinh9.jpg'),
+(N'Cây Đậu Hà Lan','32','1370','4.8','29','16','Hinh10.jpg'),
+(N'Cây Cà Chua','34','1120','4.8','26','17','Hinh11.jpg'),
+(N'Cây Bắp','35','3000','6.6','31','21','Hinh12.jpg'),
+(N'Cây Bí Ngô','15','2570','6.6','33','09','Hinh13.jpg'),
+(N'Cây Khoai Tây','15','2180','6.5','30','11','Hinh14.jpg'),
+(N'Cây Hành','15','1290','6.9','29','12','Hinh15.jpg')
 go
 
 insert into CongViec (TenCV)

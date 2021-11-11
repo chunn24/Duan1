@@ -19,7 +19,7 @@ import java.util.List;
  */
 public class CongViecDAO extends FarmSysDAO<CongViec, String> {
 
-    String SELECT_ALL_SQL = "SELECT *FROM CongViec";
+    String SELECT_ALL_SQL = "SELECT * FROM CongViec";
     String SELECT_BY_ID_SQL = "SELECT * FROM CongViec WHERE TenCV=?";
 
     @Override
@@ -43,7 +43,7 @@ public class CongViecDAO extends FarmSysDAO<CongViec, String> {
             ResultSet rs = JdbcHelper.query(sql, args);
             while (rs.next()) {
                 CongViec entity = new CongViec();
-                entity.setMaCV(rs.getInt("MaCV"));
+                //entity.setMaCV(rs.getInt("MaCV"));
                 entity.setTenCV(rs.getString("TenCV"));
                 list.add(entity);
             }

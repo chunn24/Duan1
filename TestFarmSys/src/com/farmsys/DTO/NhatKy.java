@@ -12,8 +12,9 @@ import java.util.Date;
  * @author trieu
  */
 public class NhatKy {
+
     private int stt;
-    private String tenCV; 
+    private String tenCV;
     private String TenCay;
     private String TenGian;
     private String chiTiet;
@@ -124,6 +125,4 @@ public class NhatKy {
         this.trangThai = trangThai;
     }
 
-    
-    
 }
