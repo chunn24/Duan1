@@ -14,8 +14,8 @@ import java.util.Date;
 public class NhatKy {
     private int stt;
     private String tenCV; 
-    private int maCay;
-    private int maGian;
+    private String TenCay;
+    private String TenGian;
     private String chiTiet;
     private String nguoiTao;
     private String nhanVien;
@@ -29,19 +29,6 @@ public class NhatKy {
     }
 
     public NhatKy() {
-    }
-
-    public NhatKy(int stt, String tenCV, int maCay, int maGian, String chiTiet, String nguoiTao, String nhanVien, Date ngayBatDau, Date ngayKetThuc, int trangThai) {
-        this.stt = stt;
-        this.tenCV = tenCV;
-        this.maCay = maCay;
-        this.maGian = maGian;
-        this.chiTiet = chiTiet;
-        this.nguoiTao = nguoiTao;
-        this.nhanVien = nhanVien;
-        this.ngayBatDau = ngayBatDau;
-        this.ngayKetThuc = ngayKetThuc;
-        this.trangThai = trangThai;
     }
 
     public int getStt() {
@@ -60,20 +47,20 @@ public class NhatKy {
         this.tenCV = tenCV;
     }
 
-    public int getMaCay() {
-        return maCay;
+    public String getTenCay() {
+        return TenCay;
     }
 
-    public void setMaCay(int maCay) {
-        this.maCay = maCay;
+    public void setTenCay(String TenCay) {
+        this.TenCay = TenCay;
     }
 
-    public int getMaGian() {
-        return maGian;
+    public String getTenGian() {
+        return TenGian;
     }
 
-    public void setMaGian(int maGian) {
-        this.maGian = maGian;
+    public void setTenGian(String TenGian) {
+        this.TenGian = TenGian;
     }
 
     public String getChiTiet() {
@@ -123,6 +110,20 @@ public class NhatKy {
     public void setTrangThai(int trangThai) {
         this.trangThai = trangThai;
     }
+
+    public NhatKy(int stt, String tenCV, String TenCay, String TenGian, String chiTiet, String nguoiTao, String nhanVien, Date ngayBatDau, Date ngayKetThuc, int trangThai) {
+        this.stt = stt;
+        this.tenCV = tenCV;
+        this.TenCay = TenCay;
+        this.TenGian = TenGian;
+        this.chiTiet = chiTiet;
+        this.nguoiTao = nguoiTao;
+        this.nhanVien = nhanVien;
+        this.ngayBatDau = ngayBatDau;
+        this.ngayKetThuc = ngayKetThuc;
+        this.trangThai = trangThai;
+    }
+
     
     
 }

@@ -24,19 +24,19 @@ Create table NhanVien (
 go
 
 Create table GianTrong (	
-	MaGian int IDENTITY(1,1),
+	MaGian int IDENTITY(0,1),
 	TenGian nvarchar(30),
 	TrangThai bit,
 	/* "0: chưa trồng
 		1: trồng" */
 
-	primary key(MaGian)
+	primary key(TenGian)
 );
 go
 
 Create table LoaiCay (	
-	MaCay int IDENTITY(0,1),
-	TenCay nvarchar(30)primary key not null,
+	MaCay int IDENTITY(0,1)  not null,
+	TenCay nvarchar(30) primary key not null,
 	ThoiGianThuHoach int not null,
 	DoTDS float,
 	DoPH float,
@@ -53,8 +53,8 @@ Create table CongViec(
 Create table NhatKy (	
 	STT int IDENTITY(0,1),
 	TenCV nvarchar(30), 
+	TenCay nvarchar(30),
 	TenGian nvarchar(30),
-	TenCay nvarchar(30),	
 	ChiTiet nvarchar(200),
 	NguoiTao varchar(15),
 	NhanVien varchar(15),
@@ -67,12 +67,12 @@ Create table NhatKy (
 		3: hoàn thành
 		4: hoàn thành + trể */
 
-	Primary key (STT),
+	Primary key (NhanVien,TenGian,TenCay,TenCV),
 	
-	foreign key (Nhanvien) references NhanVien(MaNV),	
-	foreign key (TenCV) references CongViec(TenCV),
+	foreign key (NhanVien) references NhanVien(MaNV),
 	foreign key (TenGian) references GianTrong(TenGian),
-	foreign key (TenCay) references LoaiCay(TenCay)
+	foreign key (TenCay) references LoaiCay(TenCay),
+	foreign key (TenCV) references CongViec(TenCV)
 	
 );
 go
@@ -146,12 +146,12 @@ values
 (N'Thu hoạch')
 go
 
- insert into NhatKy (TenCV,TenGian,TenCay,ChiTiet,NguoiTao,NhanVien,NgayBatDau,NgayKetThuc,TrangThai)
+ insert into NhatKy (TenCV,TenCay,TenGian,ChiTiet,NguoiTao,NhanVien,NgayBatDau,NgayKetThuc,TrangThai)
 values 
- (N'Trồng cây','Cây Chuối','A1',N'Trồng cây giàn A1','Trung','TrieuNHD','2021-11-05','2021-11-06','0')
+ (N'Trồng cây',N'Cây Chuối','C9',N'Trồng cây giàn A1','Trung','TrieuNHD','2021-11-05','2021-11-06','0')
  
  go
 
 
 
-select (SELECT DATEADD(day, +(LoaiCay.ThoiGianThuHoach) , NhatKy.NgayBatDau )) as 'ngaythuhoach' from LoaiCay inner join NhatKy on LoaiCay.MaCay = NhatKy.MaCay
+select (SELECT DATEADD(day, +(LoaiCay.ThoiGianThuHoach) , NhatKy.NgayBatDau )) as 'ngaythuhoach' from LoaiCay inner join NhatKy on LoaiCay.TenCay = NhatKy.TenCay

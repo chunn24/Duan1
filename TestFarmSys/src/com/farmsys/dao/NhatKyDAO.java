@@ -29,7 +29,7 @@ public class NhatKyDAO extends FarmSysDAO<NhatKy, String> {
     @Override
     public void insert(NhatKy entity) {
         try {
-            JdbcHelper.update(INSERT_SQL, entity.getTenCV(), entity.getMaCay(), entity.getMaGian(), entity.getNgayBatDau(), entity.getChiTiet(), entity.getNgayBatDau(), entity.getNgayKetThuc(), entity.getTrangThai());
+            JdbcHelper.update(INSERT_SQL, entity.getTenCV(), entity.getTenCay(), entity.getTenGian(), entity.getNgayBatDau(), entity.getChiTiet(), entity.getNgayBatDau(), entity.getNgayKetThuc(), entity.getTrangThai());
         } catch (SQLException ex) {
             Logger.getLogger(CayTrongDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -80,8 +80,8 @@ public class NhatKyDAO extends FarmSysDAO<NhatKy, String> {
                 NhatKy entity = new NhatKy();//Tạo đối tượng NhatKy
                 entity.setStt(rs.getInt("STT"));
                 entity.setTenCV(rs.getString("TenCV"));
-                entity.setMaCay(rs.getInt("MaCay"));
-                entity.setMaGian(rs.getInt("MaGian"));
+                entity.setTenCay(rs.getString("TenCay"));
+                entity.setTenGian(rs.getString("TenGian"));
                 entity.setChiTiet(rs.getString("ChiTiet"));
                 entity.setNguoiTao(rs.getString("NguoiTao"));
                 entity.setNhanVien(rs.getString("NhanVien"));
