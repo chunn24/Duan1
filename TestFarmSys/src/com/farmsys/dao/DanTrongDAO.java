@@ -26,7 +26,9 @@ public class DanTrongDAO extends FarmSysDAO<GianTrong, String> {
     String DELETE_SQL = "DELETE FROM GianTrong WHERE MaGian =?";
     String SELECT_ALL_SQL = "SELECT * FROM GianTrong";
     String SELECT_BY_ID_SQL = "SELECT * FROM GianTrong WHERE MaGian =?";
-    String SELECT_BY_ID_TT = "SELECT * FROM GianTrong WHERE TrangThai =?";
+    String SELECT_BY_ID_TT = "SELECT * FROM GianTrong WHERE TrangThai = ?";
+    String UPDATE_TrangThai_SQL = "UPDATE GianTrong SET  TrangThai = 1 WHERE TenGian = ?";
+    
 
     @Override
     public void insert(GianTrong entity) {
@@ -41,6 +43,13 @@ public class DanTrongDAO extends FarmSysDAO<GianTrong, String> {
     public void update(GianTrong entity) {
         try {
             JdbcHelper.update(UPDATE_SQL, entity.getTenDan(), entity.isTrangThai(), entity.getMaDan());
+        } catch (SQLException ex) {
+            Logger.getLogger(DanTrongDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+     public void updateTrangThai(String TenGian) {
+        try {
+            JdbcHelper.update(UPDATE_TrangThai_SQL,TenGian);
         } catch (SQLException ex) {
             Logger.getLogger(DanTrongDAO.class.getName()).log(Level.SEVERE, null, ex);
         }

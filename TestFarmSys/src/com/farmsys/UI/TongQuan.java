@@ -1311,6 +1311,8 @@ public class TongQuan extends javax.swing.JFrame {
 
     private void OpenGiaoViec() {
         if (Auth.isLogin()) {
+            new GiaoViecJDialog(this,true).setVisible(true);
+                    
             // tabs.setTabPlacement(1);
         } else {
             MsgBox.alert(this, "Vui lòng đăng nhập!");

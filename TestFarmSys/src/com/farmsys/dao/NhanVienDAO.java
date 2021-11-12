@@ -27,6 +27,7 @@ public class NhanVienDAO extends FarmSysDAO<NhanVien, String> {
     String SELECT_BY_ID_SQL = "SELECT * FROM NhanVien WHERE MaNV=?";
     String SELECT_BY_Email_SQL = "SELECT * FROM NhanVien WHERE Email=?";
     String RESET_PASS_SQL = "UPDATE NhanVien SET MatKhau=? WHERE MaNV=?";
+    String SELECT_NhanVien_SQL = "SELECT *FROM NhanVien WHERE VaiTro= 0";
 
     @Override
     public void insert(NhanVien entity) {
@@ -58,6 +59,9 @@ public class NhanVienDAO extends FarmSysDAO<NhanVien, String> {
     @Override
     public List<NhanVien> selectAll() {
         return this.selectBySql(SELECT_ALL_SQL);
+    }
+    public List<NhanVien> selectNhanVien() {
+        return this.selectBySql(SELECT_NhanVien_SQL);
     }
 
     @Override
