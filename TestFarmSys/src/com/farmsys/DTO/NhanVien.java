@@ -13,7 +13,7 @@ public class NhanVien {
     private String maNV;
     private String matKhau;
     private String hoTen;
-    private int gioiTinh;
+    private boolean gioiTinh;
     private String email;
     private int luong;
     private String hinh;
@@ -22,7 +22,7 @@ public class NhanVien {
     public NhanVien() {
     }
 
-    public NhanVien(String maNV, String matKhau, String hoTen, int gioiTinh, String email, int luong, String hinh, boolean vaiTro) {
+    public NhanVien(String maNV, String matKhau, String hoTen, boolean gioiTinh, String email, int luong, String hinh, boolean vaiTro) {
         this.maNV = maNV;
         this.matKhau = matKhau;
         this.hoTen = hoTen;
@@ -32,8 +32,6 @@ public class NhanVien {
         this.hinh = hinh;
         this.vaiTro = vaiTro;
     }
-    
-    
 
     public String getMaNV() {
         return maNV;
@@ -59,11 +57,11 @@ public class NhanVien {
         this.hoTen = hoTen;
     }
 
-    public int getGioiTinh() {
+    public boolean isGioiTinh() {
         return gioiTinh;
     }
 
-    public void setGioiTinh(int gioiTinh) {
+    public void setGioiTinh(boolean gioiTinh) {
         this.gioiTinh = gioiTinh;
     }
 
@@ -99,10 +97,6 @@ public class NhanVien {
         this.vaiTro = vaiTro;
     }
 
-    
-    
-
-    
     
 
 }

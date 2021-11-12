@@ -20,17 +20,18 @@ import java.util.logging.Logger;
  * @author DELL
  */
 public class DanTrongDAO extends FarmSysDAO<GianTrong, String> {
-    String INSERT_SQL = "INSERT INTO GianTrong (MaGian, TenGian, TrangThai) VALUES(?,?,?)";
+
+    String INSERT_SQL = "INSERT INTO GianTrong (TenGian, TrangThai) VALUES(?,?)";
     String UPDATE_SQL = "UPDATE GianTrong SET TenGian =?, TrangThai =? WHERE MaGian =?";
     String DELETE_SQL = "DELETE FROM GianTrong WHERE MaGian =?";
     String SELECT_ALL_SQL = "SELECT * FROM GianTrong";
-    String SELECT_BY_ID_SQL = "SELECT * FROM GianTrong WHERE MaGian=?";
-    String SELECT_BY_trangthai_SQL = "SELECT TrangThai FROM GianTrong WHERE TrangThai = 1";
+    String SELECT_BY_ID_SQL = "SELECT * FROM GianTrong WHERE MaGian =?";
+    String SELECT_BY_ID_TT = "SELECT * FROM GianTrong WHERE TrangThai =?";
 
     @Override
     public void insert(GianTrong entity) {
         try {
-            JdbcHelper.update(INSERT_SQL, entity.getMaDan(), entity.getTenDan(), entity.isTrangThai());
+            JdbcHelper.update(INSERT_SQL, entity.getTenDan(), entity.isTrangThai());
         } catch (SQLException ex) {
             Logger.getLogger(DanTrongDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -58,19 +59,17 @@ public class DanTrongDAO extends FarmSysDAO<GianTrong, String> {
     public List<GianTrong> selectAll() {
         return this.selectBySql(SELECT_ALL_SQL);
     }
-    
 
-    @Override
-    public GianTrong selectById(String key) {
+    public List<GianTrong> selectByTT(Integer key) {
+        return this.selectBySql(SELECT_BY_ID_TT, key);
+    }
+
+    public GianTrong selectById(Integer key) {
         List<GianTrong> list = this.selectBySql(SELECT_BY_ID_SQL, key);
         if (list.isEmpty()) {
             return null;
         }
         return list.get(0);
-    }
-
-    public List<GianTrong> selectByTrangThai() {
-        return this.selectBySql(SELECT_BY_trangthai_SQL);
     }
 
     @Override
@@ -80,7 +79,7 @@ public class DanTrongDAO extends FarmSysDAO<GianTrong, String> {
             ResultSet rs = JdbcHelper.query(sql, args);
             while (rs.next()) {
                 GianTrong entity = new GianTrong();
-//                entity.setMaDan(rs.getInt("MaGian"));
+                entity.setMaDan(rs.getInt("MaGian"));
                 entity.setTenDan(rs.getString("TenGian"));
                 entity.setTrangThai(rs.getBoolean("TrangThai"));
                 list.add(entity);
@@ -90,11 +89,11 @@ public class DanTrongDAO extends FarmSysDAO<GianTrong, String> {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
     }
 
-//    public List<GianTrong> selectByTRangthai() {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-//    }
+    @Override
+    public GianTrong selectById(String key) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
 }

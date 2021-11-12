@@ -20,7 +20,7 @@ public class JdbcHelper {
     static String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
     static String dburl = "jdbc:sqlserver://localhost:1433;database=FarmSys";
     static String user = "sa";
-    static String password = "123";
+    static String password = "2401";
 
     static {
         try {

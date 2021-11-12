@@ -19,20 +19,18 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author trieu
+ * @author ASUS
  */
-public class CayTrongJDialog extends javax.swing.JFrame {
+public class CayTrongPanel extends javax.swing.JPanel {
 
     int index = -1;
     CayTrongDAO dao = new CayTrongDAO();
     JFileChooser fileChooser = new JFileChooser();
-
     /**
-     * Creates new form CayTrongJDialog
+     * Creates new form CayTrongPanel
      */
-    public CayTrongJDialog() {
+    public CayTrongPanel() {
         initComponents();
-        init();
     }
 
     /**
@@ -75,8 +73,6 @@ public class CayTrongJDialog extends javax.swing.JFrame {
         lblHinh = new javax.swing.JLabel();
         lblTitle = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
         jPanel1.setBackground(new java.awt.Color(22, 199, 154));
 
         tblCayTrong.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -110,7 +106,7 @@ public class CayTrongJDialog extends javax.swing.JFrame {
         pnlList.setLayout(pnlListLayout);
         pnlListLayout.setHorizontalGroup(
             pnlListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 756, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 689, Short.MAX_VALUE)
         );
         pnlListLayout.setVerticalGroup(
             pnlListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -224,7 +220,7 @@ public class CayTrongJDialog extends javax.swing.JFrame {
                         .addComponent(btnDelete)
                         .addGap(18, 18, 18)
                         .addComponent(btnNew)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnFirst)
                         .addGap(29, 29, 29)
                         .addComponent(btnPrev)
@@ -254,7 +250,7 @@ public class CayTrongJDialog extends javax.swing.JFrame {
                                     .addComponent(txtDoAm, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel7)))
                             .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lblHinh, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(25, 25, 25))))
         );
@@ -292,7 +288,7 @@ public class CayTrongJDialog extends javax.swing.JFrame {
                 .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNhietDo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtDoAm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
                 .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(btnFirst)
@@ -307,8 +303,6 @@ public class CayTrongJDialog extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        pnlEditLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtDoAm, txtDoPH, txtDoTDS, txtMaCay, txtNhietDo, txtTenCay, txtThoiGianThuHoach});
-
         tabs.addTab("CẬP NHẬT", pnlEdit);
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -319,7 +313,7 @@ public class CayTrongJDialog extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tabs, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(tabs, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 694, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(296, 296, 296)
                 .addComponent(lblTitle)
@@ -334,8 +328,8 @@ public class CayTrongJDialog extends javax.swing.JFrame {
                 .addComponent(tabs, javax.swing.GroupLayout.PREFERRED_SIZE, 467, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -344,9 +338,14 @@ public class CayTrongJDialog extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-
-        pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void tblCayTrongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCayTrongMouseClicked
+        if (evt.getClickCount() == 2) {
+            this.index = tblCayTrong.getSelectedRow();
+            this.edit();
+        }
+    }//GEN-LAST:event_tblCayTrongMouseClicked
 
     private void btnLastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastActionPerformed
         // TODO add your handling code here:
@@ -392,54 +391,6 @@ public class CayTrongJDialog extends javax.swing.JFrame {
         this.selectImage();
     }//GEN-LAST:event_lblHinhMouseClicked
 
-    private void tblCayTrongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCayTrongMouseClicked
-        if (evt.getClickCount() == 2) {
-            this.index = tblCayTrong.getSelectedRow();
-            this.edit();
-        }
-    }//GEN-LAST:event_tblCayTrongMouseClicked
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CayTrongJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CayTrongJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CayTrongJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CayTrongJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new CayTrongJDialog().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
@@ -475,7 +426,6 @@ public class CayTrongJDialog extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     public void init() {
-        setLocationRelativeTo(null);
         load();
         tabs.setSelectedIndex(index);
         tblCayTrong.setDefaultEditor(Object.class, null);
@@ -654,5 +604,4 @@ public class CayTrongJDialog extends javax.swing.JFrame {
         this.index = tblCayTrong.getRowCount() - 1;
         this.edit();
     }
-
 }

@@ -10,6 +10,7 @@ package com.farmsys.DTO;
  * @author trieu
  */
 public class CayTrong {
+
     private int maCay;
     private String tenCay;
     private int thoiGianThuHoach;
@@ -17,9 +18,9 @@ public class CayTrong {
     private float doPH;
     private float nhietDo;
     private float doAm;
-    private String anh;
+    private String hinh;
 
-    public CayTrong(int maCay, String tenCay, int thoiGianThuHoach, float doTDS, float doPH, float nhietDo, float doAm, String anh) {
+    public CayTrong(int maCay, String tenCay, int thoiGianThuHoach, float doTDS, float doPH, float nhietDo, float doAm, String hinh) {
         this.maCay = maCay;
         this.tenCay = tenCay;
         this.thoiGianThuHoach = thoiGianThuHoach;
@@ -27,7 +28,7 @@ public class CayTrong {
         this.doPH = doPH;
         this.nhietDo = nhietDo;
         this.doAm = doAm;
-        this.anh = anh;
+        this.hinh = hinh;
     }
 
     public CayTrong() {
@@ -89,18 +90,17 @@ public class CayTrong {
         this.doAm = doAm;
     }
 
-    public String getAnh() {
-        return anh;
+    public String getHinh() {
+        return hinh;
     }
 
-    public void setAnh(String anh) {
-        this.anh = anh;
+    public void setHinh(String hinh) {
+        this.hinh = hinh;
     }
 
     @Override
     public String toString() {
-        return  tenCay ;
+        return tenCay;
     }
-    
-    
+
 }

@@ -61,6 +61,7 @@ public class CongViecNhanVienJDialog extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(638, 485));
+        setPreferredSize(new java.awt.Dimension(638, 485));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnltong.setBackground(new java.awt.Color(153, 255, 153));
@@ -295,7 +296,6 @@ public class CongViecNhanVienJDialog extends javax.swing.JDialog {
             java.util.logging.Logger.getLogger(CongViecNhanVienJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -412,5 +412,4 @@ public class CongViecNhanVienJDialog extends javax.swing.JDialog {
         }
         return true;
     }
-    
 }

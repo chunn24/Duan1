@@ -24,27 +24,7 @@ public class NhatKy {
     private Date ngayKetThuc;
     private int trangThai; // 0: to do , 1:doing , 2:Từ chối , 3:Hoàn thành , 4:Hoàn thành + trễ
 
-    @Override
-    public String toString() {
-        return toInteger(trangThai);
-    }
-
     
-    public String toInteger(int trangthai) {
-        String value = null;
-        if(trangthai ==0){
-            value = "Chưa nhận";
-        }else if(trangthai == 1){
-            value = "Đang làm";
-        }else if(trangthai ==2){
-            value = "Không làm";
-        }else if(trangthai ==3){
-            value = "Hoàn thành";
-        }else {
-            value = "Hoàn thành muộn";
-        }
-        return value;
-    }
     
     
     public NhatKy() {
