@@ -24,9 +24,6 @@ public class NhatKy {
     private Date ngayKetThuc;
     private int trangThai; // 0: to do , 1:doing , 2:Từ chối , 3:Hoàn thành , 4:Hoàn thành + trễ
 
-    
-    
-    
     public NhatKy() {
     }
 
@@ -124,5 +121,4 @@ public class NhatKy {
     }
 
     
-
 }

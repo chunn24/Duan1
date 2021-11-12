@@ -23,14 +23,14 @@ public class NhatKyDAO extends FarmSysDAO<NhatKy, String> {
 
     String INSERT_SQL = "INSERT INTO NhatKy (TenCV, TenCay, TenGian, ChiTiet, NguoiTao, Nhanvien, NgayBatDau, NgayKetThuc, TrangThai) VALUES(?,?,?,?,?,?,?,?,?)";
     String UPDATE_SQL = "UPDATE NhatKy SET TrangThai = ? where TenCV = ?";
-    String select_all_sql = "select*from NhatKy;";
+    String select_all_sql = "select*from NhatKy";
     String select_by_ten_sql = "select * from NhatKy where TenCV = ?";
     String select_by_trangthai_sql = "select * from NhatKy where TrangThai = ?";
-    
+
     @Override
     public void insert(NhatKy entity) {
         try {
-            JdbcHelper.update(INSERT_SQL, entity.getTenCV(), entity.getTenCay(), entity.getTenGian(),entity.getChiTiet(),entity.getNguoiTao(),entity.getNhanVien() ,entity.getNgayBatDau(), entity.getNgayKetThuc(), entity.getTrangThai());
+            JdbcHelper.update(INSERT_SQL, entity.getTenCV(), entity.getTenCay(), entity.getTenGian(), entity.getChiTiet(), entity.getNguoiTao(), entity.getNhanVien(), entity.getNgayBatDau(), entity.getNgayKetThuc(), entity.getTrangThai());
         } catch (SQLException ex) {
             Logger.getLogger(CayTrongDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -57,15 +57,27 @@ public class NhatKyDAO extends FarmSysDAO<NhatKy, String> {
 
     @Override
     public NhatKy selectById(String macv) {
-        return null;
+        List<NhatKy> list = this.selectBySql(select_by_ten_sql, macv);
+        if (list.isEmpty()) {
+            return null;
+        }
+        return list.get(0);
     }
 
-     public List<NhatKy> selectByTen(String tencv) {
-        return selectBySql(select_by_ten_sql,tencv);
+    public NhatKy selectById(Integer macv) {
+        List<NhatKy> list = this.selectBySql(select_by_ten_sql, macv);
+        if (list.isEmpty()) {
+            return null;
+        }
+        return list.get(0);
     }
-     
-    public List<NhatKy> selectByTrangThai(int trangthai ) {
-        return selectBySql(select_by_trangthai_sql,trangthai);
+
+    public List<NhatKy> selectByTen(String tencv) {
+        return selectBySql(select_by_ten_sql, tencv);
+    }
+
+    public List<NhatKy> selectByTrangThai(int trangthai) {
+        return selectBySql(select_by_trangthai_sql, trangthai);
     }
 
     @Override
@@ -93,8 +105,5 @@ public class NhatKyDAO extends FarmSysDAO<NhatKy, String> {
             throw new RuntimeException(ex);
         }
     }
-
-    
-    
 
 }

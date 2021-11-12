@@ -5,7 +5,6 @@
  */
 package com.farmsys.UI;
 
-import com.farmsys.DTO.CongViec;
 import com.farmsys.DTO.NhatKy;
 import com.farmsys.Helper.MsgBox;
 import com.farmsys.dao.CongViecDAO;
@@ -14,7 +13,6 @@ import java.awt.print.PrinterException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -405,23 +403,13 @@ public class NhatKyJDialog extends javax.swing.JFrame {
 
     private String trangThai(NhatKy nk) {
         String status = null;
-        switch (nk.getTrangThai()) {
-            case 0:
-                status = "Chưa nhận";
-                break;
-            case 1:
-                status = "Đang làm";
-                break;
-            case 2:
-                status = "Từ chối";
-                break;
-            case 3:
-                status = "Hoàn thành";
-                break;
-            default:
-                status = "Hoàn thành muộn";
-                break;
-        }
+        status = switch (nk.getTrangThai()) {
+            case 0 -> "Chưa nhận";
+            case 1 -> "Đang làm";
+            case 2 -> "Từ chối";
+            case 3 -> "Hoàn thành";
+            default -> "Hoàn thành muộn";
+        };
         return status;
     }
 
