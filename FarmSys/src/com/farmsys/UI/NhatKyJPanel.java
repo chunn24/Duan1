@@ -5,27 +5,22 @@
  */
 package com.farmsys.UI;
 
-import com.farmsys.DTO.CongViec;
 import com.farmsys.DTO.NhatKy;
 import com.farmsys.dao.CongViecDAO;
 import com.farmsys.dao.NhatKyDAO;
 import java.util.List;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author trieu
+ * @author admin
  */
-public class NhatKyJDialog extends javax.swing.JFrame {
+public class NhatKyJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form NhatKyJDialog
+     * Creates new form NhatKyJPanel
      */
-    NhatKyDAO nkdao = new NhatKyDAO();
-    CongViecDAO cvdao = new CongViecDAO();
-
-    public NhatKyJDialog() {
+    public NhatKyJPanel() {
         initComponents();
         init();
     }
@@ -51,10 +46,6 @@ public class NhatKyJDialog extends javax.swing.JFrame {
         pnlBenPhai = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblNhatKy = new javax.swing.JTable();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setBackground(new java.awt.Color(0, 204, 51));
-        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         pnlBenTrai.setBackground(new java.awt.Color(14, 251, 137));
 
@@ -209,8 +200,8 @@ public class NhatKyJDialog extends javax.swing.JFrame {
             .addComponent(pnlBenPhai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -221,8 +212,6 @@ public class NhatKyJDialog extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pnlNhatKy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
-
-        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void cboLocTenCVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboLocTenCVActionPerformed
@@ -265,43 +254,6 @@ public class NhatKyJDialog extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cboLocTrangThaiActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(NhatKyJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(NhatKyJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(NhatKyJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(NhatKyJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new NhatKyJDialog().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnXuatPDF;
@@ -317,9 +269,9 @@ public class NhatKyJDialog extends javax.swing.JFrame {
     private javax.swing.JPanel pnlNhatKy;
     private javax.swing.JTable tblNhatKy;
     // End of variables declaration//GEN-END:variables
-
+    NhatKyDAO nkdao = new NhatKyDAO();
+    CongViecDAO cvdao = new CongViecDAO();
     private void init() {
-        this.setLocationRelativeTo(null);
         this.fillTableNhatKyAll();
     }
 
@@ -404,5 +356,4 @@ public class NhatKyJDialog extends javax.swing.JFrame {
         }
         return status;
     }
-
 }

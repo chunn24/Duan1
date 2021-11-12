@@ -15,8 +15,8 @@ public class NhatKy {
 
     private int stt;
     private String tenCV;
-    private String TenCay;
-    private String TenGian;
+    private String tenCay;
+    private String tenGian;
     private String chiTiet;
     private String nguoiTao;
     private String nhanVien;
@@ -24,12 +24,23 @@ public class NhatKy {
     private Date ngayKetThuc;
     private int trangThai; // 0: to do , 1:doing , 2:Từ chối , 3:Hoàn thành , 4:Hoàn thành + trễ
 
-    @Override
-    public String toString() {
-        return this.toString(); //To change body of generated methods, choose Tools | Templates.
+    
+    
+    
+    public NhatKy() {
     }
 
-    public NhatKy() {
+    public NhatKy(int stt, String tenCV, String tenCay, String tenGian, String chiTiet, String nguoiTao, String nhanVien, Date ngayBatDau, Date ngayKetThuc, int trangThai) {
+        this.stt = stt;
+        this.tenCV = tenCV;
+        this.tenCay = tenCay;
+        this.tenGian = tenGian;
+        this.chiTiet = chiTiet;
+        this.nguoiTao = nguoiTao;
+        this.nhanVien = nhanVien;
+        this.ngayBatDau = ngayBatDau;
+        this.ngayKetThuc = ngayKetThuc;
+        this.trangThai = trangThai;
     }
 
     public int getStt() {
@@ -49,19 +60,19 @@ public class NhatKy {
     }
 
     public String getTenCay() {
-        return TenCay;
+        return tenCay;
     }
 
-    public void setTenCay(String TenCay) {
-        this.TenCay = TenCay;
+    public void setTenCay(String tenCay) {
+        this.tenCay = tenCay;
     }
 
     public String getTenGian() {
-        return TenGian;
+        return tenGian;
     }
 
-    public void setTenGian(String TenGian) {
-        this.TenGian = TenGian;
+    public void setTenGian(String tenGian) {
+        this.tenGian = tenGian;
     }
 
     public String getChiTiet() {
@@ -112,17 +123,6 @@ public class NhatKy {
         this.trangThai = trangThai;
     }
 
-    public NhatKy(int stt, String tenCV, String TenCay, String TenGian, String chiTiet, String nguoiTao, String nhanVien, Date ngayBatDau, Date ngayKetThuc, int trangThai) {
-        this.stt = stt;
-        this.tenCV = tenCV;
-        this.TenCay = TenCay;
-        this.TenGian = TenGian;
-        this.chiTiet = chiTiet;
-        this.nguoiTao = nguoiTao;
-        this.nhanVien = nhanVien;
-        this.ngayBatDau = ngayBatDau;
-        this.ngayKetThuc = ngayKetThuc;
-        this.trangThai = trangThai;
-    }
+    
 
 }
