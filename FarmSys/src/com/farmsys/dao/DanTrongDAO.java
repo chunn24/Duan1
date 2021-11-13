@@ -27,6 +27,7 @@ public class DanTrongDAO extends FarmSysDAO<GianTrong, String> {
     String SELECT_ALL_SQL = "SELECT * FROM GianTrong";
     String SELECT_BY_ID_SQL = "SELECT * FROM GianTrong WHERE MaGian =?";
     String SELECT_BY_ID_TT = "SELECT * FROM GianTrong WHERE TrangThai =?";
+    String SELECT_BY_ID_TenGian = "SELECT * FROM GianTrong WHERE TenGian =?";
 
     @Override
     public void insert(GianTrong entity) {
@@ -66,6 +67,13 @@ public class DanTrongDAO extends FarmSysDAO<GianTrong, String> {
 
     public GianTrong selectById(Integer key) {
         List<GianTrong> list = this.selectBySql(SELECT_BY_ID_SQL, key);
+        if (list.isEmpty()) {
+            return null;
+        }
+        return list.get(0);
+    }
+    public GianTrong selectByTenGian(String key) {
+        List<GianTrong> list = this.selectBySql(SELECT_BY_ID_TenGian, key);
         if (list.isEmpty()) {
             return null;
         }
