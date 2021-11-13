@@ -404,11 +404,16 @@ public class NhatKyJDialog extends javax.swing.JFrame {
     private String trangThai(NhatKy nk) {
         String status = null;
         status = switch (nk.getTrangThai()) {
-            case 0 -> "Chưa nhận";
-            case 1 -> "Đang làm";
-            case 2 -> "Từ chối";
-            case 3 -> "Hoàn thành";
-            default -> "Hoàn thành muộn";
+            case 0 ->
+                "Chưa nhận";
+            case 1 ->
+                "Đang làm";
+            case 2 ->
+                "Từ chối";
+            case 3 ->
+                "Hoàn thành";
+            default ->
+                "Hoàn thành muộn";
         };
         return status;
     }

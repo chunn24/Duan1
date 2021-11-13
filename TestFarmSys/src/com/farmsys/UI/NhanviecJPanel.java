@@ -5,8 +5,10 @@
  */
 package com.farmsys.UI;
 
+import com.farmsys.DTO.GianTrong;
 import com.farmsys.DTO.NhatKy;
 import com.farmsys.Helper.MsgBox;
+import com.farmsys.dao.GianTrongDAO;
 import com.farmsys.dao.NhatKyDAO;
 import java.sql.Date;
 import java.util.List;
@@ -16,12 +18,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author NguyenTrung
  */
-public class NhanviecJPanel extends javax.swing.JPanel {
+public class NhanViecJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form NhanviecJPanel
      */
-    public NhanviecJPanel() {
+    public NhanViecJPanel() {
         initComponents();
         init();
     }
@@ -155,6 +157,11 @@ public class NhanviecJPanel extends javax.swing.JPanel {
         btnhuy.setText("Từ chối");
         btnhuy.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnhuy.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnhuy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnhuyActionPerformed(evt);
+            }
+        });
 
         btnnhanviec.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnnhanviec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/icons8_ok_40px.png"))); // NOI18N
@@ -283,6 +290,10 @@ public class NhanviecJPanel extends javax.swing.JPanel {
         this.update();
     }//GEN-LAST:event_btnnhanviecActionPerformed
 
+    private void btnhuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhuyActionPerformed
+        this.updateAgain();
+    }//GEN-LAST:event_btnhuyActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnhuy;
@@ -308,10 +319,11 @@ public class NhanviecJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txttrangthai;
     // End of variables declaration//GEN-END:variables
 NhatKyDAO nkDAO = new NhatKyDAO();
+    GianTrongDAO gtDAO = new GianTrongDAO();
     int row = -1;
 
     private void init() {
-
+        
         this.row = -1;
         fillTableNguoinhanviec();
     }
@@ -323,7 +335,7 @@ NhatKyDAO nkDAO = new NhatKyDAO();
         for (NhatKy nv : list) {
             String status = trangThai(nv);
             model.addRow(new Object[]{
-                nv.getTenCV(), nv.getChiTiet(), nv.getNguoiTao(), nv.getNgayKetThuc(), status
+                nv.getStt(), nv.getTenCV(), nv.getChiTiet(), nv.getTenGian(), nv.getNguoiTao(), nv.getNgayKetThuc(), status
             });
         }
 
@@ -331,11 +343,29 @@ NhatKyDAO nkDAO = new NhatKyDAO();
 
     void update() {
         NhatKy nv = getForm();
+
         if (nv == null) {
             return;
         } else {
             try {
-                nkDAO.update(nv);
+                nkDAO.update((int) tblcv.getValueAt(this.row, 0));
+                this.fillTableNguoinhanviec();
+                MsgBox.alert(this, "Nhận việc thành công!");
+            } catch (Exception e) {
+                MsgBox.alert(this, "Nhận việc thất bại!");
+            }
+        }
+    }
+
+    void updateAgain() {
+        NhatKy nv = getForm();
+        GianTrong gt = new GianTrong();
+        if (nv == null) {
+            return;
+        } else {
+            try {
+                nkDAO.updateTuChoi((int) tblcv.getValueAt(this.row, 0));
+                gtDAO.updateAgain((String) tblcv.getValueAt(this.row, 3));
                 this.fillTableNguoinhanviec();
                 MsgBox.alert(this, "Nhận việc thành công!");
             } catch (Exception e) {
@@ -349,9 +379,7 @@ NhatKyDAO nkDAO = new NhatKyDAO();
         txtmota.setText(nv.getChiTiet());
         txtgiaoviec.setText(nv.getNguoiTao());
         txtngaykt.setText(String.valueOf(nv.getNgayKetThuc()));
-        txttrangthai.setText(String.valueOf(nv.getTrangThai()));
-        txttrangthai.setText("1");
-        txttrangthai.setEnabled(false);
+
     }
 
     NhatKy getForm() {
@@ -361,14 +389,14 @@ NhatKyDAO nkDAO = new NhatKyDAO();
             nv.setChiTiet(txtmota.getText());
             nv.setNguoiTao(txtgiaoviec.getText());
             nv.setNgayKetThuc(Date.valueOf(txtngaykt.getText()));
-            nv.setTrangThai(Integer.valueOf(txttrangthai.getText()));
+
             return nv;
         }
         return null;
     }
 
     void edit() {
-        String manv = (String) tblcv.getValueAt(this.row, 0);
+        int manv = (int) tblcv.getValueAt(this.row, 0);
         NhatKy nv = nkDAO.selectById(manv);
         this.setForm(nv);
         tabs.setSelectedIndex(1);

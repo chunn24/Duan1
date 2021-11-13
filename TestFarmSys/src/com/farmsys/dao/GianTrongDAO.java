@@ -19,7 +19,7 @@ import java.util.logging.Logger;
  *
  * @author DELL
  */
-public class DanTrongDAO extends FarmSysDAO<GianTrong, String> {
+public class GianTrongDAO extends FarmSysDAO<GianTrong, String> {
 
     String INSERT_SQL = "INSERT INTO GianTrong (TenGian, TrangThai) VALUES(?,?)";
     String UPDATE_SQL = "UPDATE GianTrong SET TenGian =?, TrangThai =? WHERE MaGian =?";
@@ -28,14 +28,14 @@ public class DanTrongDAO extends FarmSysDAO<GianTrong, String> {
     String SELECT_BY_ID_SQL = "SELECT * FROM GianTrong WHERE MaGian =?";
     String SELECT_BY_ID_TT = "SELECT * FROM GianTrong WHERE TrangThai = ?";
     String UPDATE_TrangThai_SQL = "UPDATE GianTrong SET  TrangThai = 1 WHERE TenGian = ?";
-    
+    String UPDATE_TraVeCbo_SQL = "UPDATE GianTrong SET  TrangThai = 0 WHERE TenGian = ?";
 
     @Override
     public void insert(GianTrong entity) {
         try {
             JdbcHelper.update(INSERT_SQL, entity.getTenDan(), entity.isTrangThai());
         } catch (SQLException ex) {
-            Logger.getLogger(DanTrongDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GianTrongDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -44,14 +44,23 @@ public class DanTrongDAO extends FarmSysDAO<GianTrong, String> {
         try {
             JdbcHelper.update(UPDATE_SQL, entity.getTenDan(), entity.isTrangThai(), entity.getMaDan());
         } catch (SQLException ex) {
-            Logger.getLogger(DanTrongDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GianTrongDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-     public void updateTrangThai(String TenGian) {
+
+    public void updateTrangThai(String TenGian) {
         try {
-            JdbcHelper.update(UPDATE_TrangThai_SQL,TenGian);
+            JdbcHelper.update(UPDATE_TrangThai_SQL, TenGian);
         } catch (SQLException ex) {
-            Logger.getLogger(DanTrongDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GianTrongDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void updateAgain(String TenGian) {
+        try {
+            JdbcHelper.update(UPDATE_TraVeCbo_SQL, TenGian);
+        } catch (SQLException ex) {
+            Logger.getLogger(GianTrongDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -60,7 +69,7 @@ public class DanTrongDAO extends FarmSysDAO<GianTrong, String> {
         try {
             JdbcHelper.update(DELETE_SQL, key);
         } catch (SQLException ex) {
-            Logger.getLogger(DanTrongDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GianTrongDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

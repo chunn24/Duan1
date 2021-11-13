@@ -3,14 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Netbeans/Github/Duan1/TestFarmSys/src/com/farmsys/dao/NhatKyDAO.java</file>
-            <file>file:/D:/Netbeans/Github/Duan1/TestFarmSys/src/com/farmsys/UI/NhanviecJPanel.java</file>
-            <file>file:/D:/Netbeans/Github/Duan1/TestFarmSys/src/main/main.java</file>
-            <file>file:/D:/Netbeans/Github/Duan1/TestFarmSys/src/com/farmsys/UI/GianTrongJDialog.java</file>
+            <file>file:/D:/Netbeans/Github/Duan1/TestFarmSys/src/com/farmsys/UI/DoiMatKhauJDialog.java</file>
             <file>file:/D:/Netbeans/Github/Duan1/TestFarmSys/src/com/farmsys/UI/TongQuan.java</file>
-            <file>file:/D:/Netbeans/Github/Duan1/TestFarmSys/src/com/farmsys/UI/CayTrongPanel.java</file>
-            <file>file:/D:/Netbeans/Github/Duan1/TestFarmSys/src/com/farmsys/UI/GiaoViecJDialog.java</file>
-            <file>file:/D:/Netbeans/Github/Duan1/TestFarmSys/src/com/farmsys/UI/NhatKyJDialog.java</file>
+            <file>file:/D:/Netbeans/Github/Duan1/TestFarmSys/src/com/farmsys/UI/DangNhapJDialog1.java</file>
+            <file>file:/D:/Netbeans/Github/Duan1/TestFarmSys/src/com/farmsys/UI/DangNhapJDialog.java</file>
         </group>
     </open-files>
 </project-private>
