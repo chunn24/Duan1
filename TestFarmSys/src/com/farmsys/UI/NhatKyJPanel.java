@@ -264,9 +264,9 @@ public class NhatKyJPanel extends javax.swing.JPanel {
     NhatKyDAO nkdao = new NhatKyDAO();
     CongViecDAO cvdao = new CongViecDAO();
 
-    private void init() {
-        
+    private void init() {      
         this.fillTableNhatKyAll();
+        
     }
 
     private void fillTableNhatKyByCongViec(String tencv) {

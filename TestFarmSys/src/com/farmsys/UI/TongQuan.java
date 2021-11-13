@@ -1062,7 +1062,7 @@ public class TongQuan extends javax.swing.JFrame {
 
     private void pnlNhatkyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlNhatkyMouseClicked
         OpenNhatky();
-        
+
     }//GEN-LAST:event_pnlNhatkyMouseClicked
 
     /**
@@ -1290,7 +1290,7 @@ public class TongQuan extends javax.swing.JFrame {
 
     private void OpenNhanVien() {
         if (Auth.isLogin()) {
-            
+
             new NhanVienJDialog().setVisible(true);
         } else {
             MsgBox.alert(this, "Vui lòng đăng nhập!");
@@ -1325,8 +1325,8 @@ public class TongQuan extends javax.swing.JFrame {
 
     private void OpenGiaoViec() {
         if (Auth.isLogin()) {
-            new GiaoViecJDialog(this,true).setVisible(true);
-                    
+            new GiaoViecJDialog(this, true).setVisible(true);
+
             // tabs.setTabPlacement(1);
         } else {
             MsgBox.alert(this, "Vui lòng đăng nhập!");
@@ -1350,7 +1350,6 @@ public class TongQuan extends javax.swing.JFrame {
 //        tabs.addTab("3", cayTrongPanel);
 //
 //    }
-
     class RoundedPanel extends JPanel {
 
         private Color backgroundColor;
