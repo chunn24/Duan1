@@ -22,10 +22,12 @@ import java.util.logging.Logger;
 public class NhatKyDAO extends FarmSysDAO<NhatKy, String> {
 
     String INSERT_SQL = "INSERT INTO NhatKy (TenCV, TenCay, TenGian, ChiTiet, NguoiTao, Nhanvien, NgayBatDau, NgayKetThuc, TrangThai) VALUES(?,?,?,?,?,?,?,?,?)";
-    String UPDATE_SQL = "UPDATE NhatKy SET TrangThai = ? where TenCV = ?";
     String select_all_sql = "select*from NhatKy";
-    String select_by_ten_sql = "select * from NhatKy where TenCV = ?";
+    String select_by_ten_sql = "select * from NhatKy where STT = ?";
     String select_by_trangthai_sql = "select * from NhatKy where TrangThai = ?";
+    String UPDATE_Done_SQL = "UPDATE NhatKy SET TrangThai = 3 where STT = ?";
+    String UPDATE_SQL = "UPDATE NhatKy SET TrangThai = 1 where STT = ?";
+    String UPDATE_TuChoi_SQL = "UPDATE NhatKy SET TrangThai = 2 where STT = ?";
 
     @Override
     public void insert(NhatKy entity) {
@@ -36,10 +38,17 @@ public class NhatKyDAO extends FarmSysDAO<NhatKy, String> {
         }
     }
 
-    @Override
-    public void update(NhatKy entity) {
+    public void update(int entity) {
         try {
-            JdbcHelper.update(UPDATE_SQL, entity.getTrangThai(), entity.getTenCV());
+            JdbcHelper.update(UPDATE_SQL, entity);
+        } catch (SQLException ex) {
+            Logger.getLogger(NhanVienDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void updateTuChoi(int entity) {
+        try {
+            JdbcHelper.update(UPDATE_TuChoi_SQL, entity);
         } catch (SQLException ex) {
             Logger.getLogger(NhanVienDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -53,6 +62,14 @@ public class NhatKyDAO extends FarmSysDAO<NhatKy, String> {
     @Override
     public List<NhatKy> selectAll() {
         return selectBySql(select_all_sql);
+    }
+
+    public void updateTrangThai(int stt) {
+        try {
+            JdbcHelper.update(UPDATE_Done_SQL, stt);
+        } catch (SQLException ex) {
+            Logger.getLogger(NhatKyDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
@@ -104,6 +121,11 @@ public class NhatKyDAO extends FarmSysDAO<NhatKy, String> {
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
         }
+    }
+
+    @Override
+    public void update(NhatKy entity) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

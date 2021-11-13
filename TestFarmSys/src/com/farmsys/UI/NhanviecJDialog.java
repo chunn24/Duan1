@@ -5,8 +5,10 @@
  */
 package com.farmsys.UI;
 
+import com.farmsys.DTO.GianTrong;
 import com.farmsys.DTO.NhatKy;
 import com.farmsys.Helper.MsgBox;
+import com.farmsys.dao.GianTrongDAO;
 import com.farmsys.dao.NhatKyDAO;
 import java.sql.Date;
 import java.util.List;
@@ -16,12 +18,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author trieu
  */
-public class CongViecNhanVienJDialog extends javax.swing.JDialog {
+public class NhanViecJDialog extends javax.swing.JDialog {
 
     /**
      * Creates new form CongViecNhanVienJDialog
      */
-    public CongViecNhanVienJDialog(java.awt.Frame parent, boolean modal) {
+    public NhanViecJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         init();
@@ -54,8 +56,6 @@ public class CongViecNhanVienJDialog extends javax.swing.JDialog {
         txtngaykt = new javax.swing.JTextField();
         btnhuy = new javax.swing.JButton();
         btnnhanviec = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
-        txttrangthai = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -72,17 +72,17 @@ public class CongViecNhanVienJDialog extends javax.swing.JDialog {
 
         tblcv.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Tên Công Việc", "Mô Tả", "Người Giao Việc", "Ngày Kết Thúc", "Trạng Thái"
+                "STT", "Tên Công Việc", "Mô Tả", "Tên Giàn", "Người Giao Việc", "Ngày Kết Thúc", "Trạng Thái"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -153,6 +153,11 @@ public class CongViecNhanVienJDialog extends javax.swing.JDialog {
         btnhuy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/icons8_cancel_40px.png"))); // NOI18N
         btnhuy.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnhuy.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnhuy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnhuyActionPerformed(evt);
+            }
+        });
 
         btnnhanviec.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnnhanviec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/icons8_ok_40px.png"))); // NOI18N
@@ -163,9 +168,6 @@ public class CongViecNhanVienJDialog extends javax.swing.JDialog {
                 btnnhanviecActionPerformed(evt);
             }
         });
-
-        jLabel7.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
-        jLabel7.setText("Trạng thái: ");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -184,14 +186,9 @@ public class CongViecNhanVienJDialog extends javax.swing.JDialog {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(txtgiaoviec, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(jLabel7)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(btnnhanviec, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnhuy, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(txttrangthai, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(btnnhanviec, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(40, 40, 40)
+                            .addComponent(btnhuy, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
@@ -203,7 +200,7 @@ public class CongViecNhanVienJDialog extends javax.swing.JDialog {
                 .addContainerGap(157, Short.MAX_VALUE))
         );
 
-        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jScrollPane2, txtgiaoviec, txtngaykt, txttencv, txttrangthai});
+        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jScrollPane2, txtgiaoviec, txtngaykt, txttencv});
 
         jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnhuy, btnnhanviec});
 
@@ -226,18 +223,12 @@ public class CongViecNhanVienJDialog extends javax.swing.JDialog {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(txtngaykt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(txttrangthai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(56, 56, 56)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnnhanviec)
                     .addComponent(btnhuy))
                 .addContainerGap(56, Short.MAX_VALUE))
         );
-
-        jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtngaykt, txttrangthai});
 
         jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnhuy, btnnhanviec});
 
@@ -266,6 +257,10 @@ public class CongViecNhanVienJDialog extends javax.swing.JDialog {
         this.update();
     }//GEN-LAST:event_btnnhanviecActionPerformed
 
+    private void btnhuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhuyActionPerformed
+        this.updateAgain();
+    }//GEN-LAST:event_btnhuyActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -283,20 +278,23 @@ public class CongViecNhanVienJDialog extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CongViecNhanVienJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NhanViecJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CongViecNhanVienJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NhanViecJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CongViecNhanVienJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NhanViecJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CongViecNhanVienJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NhanViecJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                CongViecNhanVienJDialog dialog = new CongViecNhanVienJDialog(new javax.swing.JFrame(), true);
+                NhanViecJDialog dialog = new NhanViecJDialog(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -317,7 +315,6 @@ public class CongViecNhanVienJDialog extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -329,9 +326,9 @@ public class CongViecNhanVienJDialog extends javax.swing.JDialog {
     private javax.swing.JTextArea txtmota;
     private javax.swing.JTextField txtngaykt;
     private javax.swing.JTextField txttencv;
-    private javax.swing.JTextField txttrangthai;
     // End of variables declaration//GEN-END:variables
     NhatKyDAO nkDAO = new NhatKyDAO();
+    GianTrongDAO gtDAO = new GianTrongDAO();
     int row = -1;
 
     private void init() {
@@ -347,7 +344,7 @@ public class CongViecNhanVienJDialog extends javax.swing.JDialog {
         for (NhatKy nv : list) {
             String status = trangThai(nv);
             model.addRow(new Object[]{
-                nv.getTenCV(), nv.getChiTiet(), nv.getNguoiTao(), nv.getNgayKetThuc(), status
+                nv.getStt(), nv.getTenCV(), nv.getChiTiet(), nv.getTenGian(), nv.getNguoiTao(), nv.getNgayKetThuc(), status
             });
         }
 
@@ -355,11 +352,29 @@ public class CongViecNhanVienJDialog extends javax.swing.JDialog {
 
     void update() {
         NhatKy nv = getForm();
+
         if (nv == null) {
             return;
         } else {
             try {
-                nkDAO.update(nv);
+                nkDAO.update((int) tblcv.getValueAt(this.row, 0));
+                this.fillTableNguoinhanviec();
+                MsgBox.alert(this, "Nhận việc thành công!");
+            } catch (Exception e) {
+                MsgBox.alert(this, "Nhận việc thất bại!");
+            }
+        }
+    }
+
+    void updateAgain() {
+        NhatKy nv = getForm();
+        GianTrong gt = new GianTrong();
+        if (nv == null) {
+            return;
+        } else {
+            try {
+                nkDAO.updateTuChoi((int) tblcv.getValueAt(this.row, 0));
+                gtDAO.updateAgain((String) tblcv.getValueAt(this.row, 3));
                 this.fillTableNguoinhanviec();
                 MsgBox.alert(this, "Nhận việc thành công!");
             } catch (Exception e) {
@@ -373,9 +388,7 @@ public class CongViecNhanVienJDialog extends javax.swing.JDialog {
         txtmota.setText(nv.getChiTiet());
         txtgiaoviec.setText(nv.getNguoiTao());
         txtngaykt.setText(String.valueOf(nv.getNgayKetThuc()));
-        txttrangthai.setText(String.valueOf(nv.getTrangThai()));
-        txttrangthai.setText("1");
-        txttrangthai.setEnabled(false);
+
     }
 
     NhatKy getForm() {
@@ -385,14 +398,14 @@ public class CongViecNhanVienJDialog extends javax.swing.JDialog {
             nv.setChiTiet(txtmota.getText());
             nv.setNguoiTao(txtgiaoviec.getText());
             nv.setNgayKetThuc(Date.valueOf(txtngaykt.getText()));
-            nv.setTrangThai(Integer.valueOf(txttrangthai.getText()));
+
             return nv;
         }
         return null;
     }
 
     void edit() {
-        String manv = (String) tblcv.getValueAt(this.row, 0);
+        int manv = (int) tblcv.getValueAt(this.row, 0);
         NhatKy nv = nkDAO.selectById(manv);
         this.setForm(nv);
         tabs.setSelectedIndex(1);

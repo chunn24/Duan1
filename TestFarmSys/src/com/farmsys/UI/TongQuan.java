@@ -387,7 +387,7 @@ public class TongQuan extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(30, 30, 30)
                 .addComponent(jLabel2)
-                .addContainerGap(119, Short.MAX_VALUE))
+                .addContainerGap(121, Short.MAX_VALUE))
         );
         pnlHomeLayout.setVerticalGroup(
             pnlHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -426,7 +426,7 @@ public class TongQuan extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addGap(29, 29, 29)
                 .addComponent(jLabel4)
-                .addContainerGap(119, Short.MAX_VALUE))
+                .addContainerGap(121, Short.MAX_VALUE))
         );
         pnlNhanvienLayout.setVerticalGroup(
             pnlNhanvienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -465,7 +465,7 @@ public class TongQuan extends javax.swing.JFrame {
                 .addComponent(jLabel5)
                 .addGap(30, 30, 30)
                 .addComponent(jLabel6)
-                .addContainerGap(114, Short.MAX_VALUE))
+                .addContainerGap(116, Short.MAX_VALUE))
         );
         pnlDanTrongLayout.setVerticalGroup(
             pnlDanTrongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -504,7 +504,7 @@ public class TongQuan extends javax.swing.JFrame {
                 .addComponent(jLabel11)
                 .addGap(30, 30, 30)
                 .addComponent(jLabel12)
-                .addContainerGap(118, Short.MAX_VALUE))
+                .addContainerGap(120, Short.MAX_VALUE))
         );
         pnlCaytronLayout.setVerticalGroup(
             pnlCaytronLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -543,7 +543,7 @@ public class TongQuan extends javax.swing.JFrame {
                 .addComponent(jLabel13)
                 .addGap(30, 30, 30)
                 .addComponent(jLabel14)
-                .addContainerGap(132, Short.MAX_VALUE))
+                .addContainerGap(134, Short.MAX_VALUE))
         );
         pnlNhatkyLayout.setVerticalGroup(
             pnlNhatkyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -582,7 +582,7 @@ public class TongQuan extends javax.swing.JFrame {
                 .addComponent(jLabel15)
                 .addGap(30, 30, 30)
                 .addComponent(jLabel16)
-                .addContainerGap(123, Short.MAX_VALUE))
+                .addContainerGap(125, Short.MAX_VALUE))
         );
         pnlGiaoviecLayout.setVerticalGroup(
             pnlGiaoviecLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -617,7 +617,7 @@ public class TongQuan extends javax.swing.JFrame {
                 .addComponent(jLabel10)
                 .addGap(30, 30, 30)
                 .addComponent(jLabel33)
-                .addContainerGap(152, Short.MAX_VALUE))
+                .addContainerGap(154, Short.MAX_VALUE))
         );
         pnlHome1Layout.setVerticalGroup(
             pnlHome1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -835,6 +835,11 @@ public class TongQuan extends javax.swing.JFrame {
         pnltongquat.add(pnldoing, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 220, -1, -1));
 
         pnldone.setBackground(new java.awt.Color(255, 255, 255));
+        pnldone.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnldoneMouseClicked(evt);
+            }
+        });
 
         jLabel29.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         jLabel29.setText("0");
@@ -995,9 +1000,6 @@ public class TongQuan extends javax.swing.JFrame {
         OpenGiaoViec();
     }//GEN-LAST:event_pnlGiaoviecMouseClicked
 
-    private void pnlNhatkyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlNhatkyMouseClicked
-        OpenNhatky();    }//GEN-LAST:event_pnlNhatkyMouseClicked
-
     private void cb_cityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_cityActionPerformed
         result = HandleAPI.getJsonData((String) cb_city.getSelectedItem());
         setThoiTiet();
@@ -1053,6 +1055,15 @@ public class TongQuan extends javax.swing.JFrame {
     private void pnlHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlHomeMouseClicked
         tabs.setSelectedIndex(0);
     }//GEN-LAST:event_pnlHomeMouseClicked
+
+    private void pnldoneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnldoneMouseClicked
+        new CongViecJDialog().setVisible(true);
+    }//GEN-LAST:event_pnldoneMouseClicked
+
+    private void pnlNhatkyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlNhatkyMouseClicked
+        OpenNhatky();
+        
+    }//GEN-LAST:event_pnlNhatkyMouseClicked
 
     /**
      * @param args the command line arguments
@@ -1183,7 +1194,7 @@ public class TongQuan extends javax.swing.JFrame {
         Ping.play();
         this.showLineChart();
         loadLbl();
-        addpanel();
+        //addpanel();
         new Timer(1000, (ActionEvent e) -> {
             Date now = new Date();
             SimpleDateFormat formater = new SimpleDateFormat("hh:mm:ss a" + "     " + "dd/MM/YYYY");
@@ -1279,6 +1290,7 @@ public class TongQuan extends javax.swing.JFrame {
 
     private void OpenNhanVien() {
         if (Auth.isLogin()) {
+            
             new NhanVienJDialog().setVisible(true);
         } else {
             MsgBox.alert(this, "Vui lòng đăng nhập!");
@@ -1303,6 +1315,8 @@ public class TongQuan extends javax.swing.JFrame {
 
     private void OpenNhatky() {
         if (Auth.isLogin()) {
+            NhatKyJPanel nkpJPanel = new NhatKyJPanel();
+            tabs.addTab("1", nkpJPanel);
             tabs.setSelectedIndex(1);
         } else {
             MsgBox.alert(this, "Vui lòng đăng nhập!");
@@ -1327,15 +1341,15 @@ public class TongQuan extends javax.swing.JFrame {
         }
     }
 
-    void addpanel() {
-        NhatKyJPanel nkpnJPanel = new NhatKyJPanel();
-        NhanviecJPanel nhanviecJPanel = new NhanviecJPanel();
-        CayTrongPanel cayTrongPanel = new CayTrongPanel();
-        tabs.addTab("1", nkpnJPanel);
-        tabs.addTab("2", nhanviecJPanel);
-        tabs.addTab("3", cayTrongPanel);
-
-    }
+//    void addpanel() {
+//        NhatKyJPanel nkpnJPanel = new NhatKyJPanel();
+//        NhanviecJPanel nhanviecJPanel = new NhanviecJPanel();
+//        CayTrongPanel cayTrongPanel = new CayTrongPanel();
+//        tabs.addTab("1", nkpnJPanel);
+//        tabs.addTab("2", nhanviecJPanel);
+//        tabs.addTab("3", cayTrongPanel);
+//
+//    }
 
     class RoundedPanel extends JPanel {
 

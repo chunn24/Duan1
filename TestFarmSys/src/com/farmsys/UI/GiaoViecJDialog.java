@@ -14,10 +14,9 @@ import com.farmsys.Helper.Auth;
 import com.farmsys.Helper.MsgBox;
 import com.farmsys.dao.CayTrongDAO;
 import com.farmsys.dao.CongViecDAO;
-import com.farmsys.dao.DanTrongDAO;
+import com.farmsys.dao.GianTrongDAO;
 import com.farmsys.dao.NhanVienDAO;
 import com.farmsys.dao.NhatKyDAO;
-import java.sql.Date;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 
@@ -325,7 +324,7 @@ public final class GiaoViecJDialog extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
     NhatKyDAO nkdao = new NhatKyDAO();
     CayTrongDAO ctdao = new CayTrongDAO();
-    DanTrongDAO dtdao = new DanTrongDAO();
+    GianTrongDAO dtdao = new GianTrongDAO();
     CongViecDAO cvdao = new CongViecDAO();
     NhanVienDAO nvdao = new NhanVienDAO();
     

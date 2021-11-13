@@ -7,7 +7,7 @@ package com.farmsys.UI;
 
 import com.farmsys.DTO.GianTrong;
 import com.farmsys.Helper.MsgBox;
-import com.farmsys.dao.DanTrongDAO;
+import com.farmsys.dao.GianTrongDAO;
 import java.awt.Color;
 import static java.awt.Color.pink;
 import static java.awt.Color.white;
@@ -471,7 +471,7 @@ public class GianTrongJDialog extends javax.swing.JFrame {
     private javax.swing.JTextField txtTrangThai;
     // End of variables declaration//GEN-END:variables
 
-    DanTrongDAO dtdao = new DanTrongDAO();
+    GianTrongDAO dtdao = new GianTrongDAO();
     int index = 0;
 
     private void init() {

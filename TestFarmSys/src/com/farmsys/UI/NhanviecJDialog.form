@@ -114,9 +114,11 @@
                     <Component class="javax.swing.JTable" name="tblcv">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="5" rowCount="4">
+                          <Table columnCount="7" rowCount="4">
+                            <Column editable="false" title="STT" type="java.lang.Object"/>
                             <Column editable="false" title="T&#xea;n C&#xf4;ng Vi&#x1ec7;c" type="java.lang.Object"/>
                             <Column editable="false" title="M&#xf4; T&#x1ea3;" type="java.lang.Object"/>
+                            <Column editable="false" title="T&#xea;n Gi&#xe0;n" type="java.lang.Object"/>
                             <Column editable="false" title="Ng&#x1b0;&#x1edd;i Giao Vi&#x1ec7;c" type="java.lang.Object"/>
                             <Column editable="false" title="Ng&#xe0;y K&#x1ebf;t Th&#xfa;c" type="java.lang.Object"/>
                             <Column editable="false" title="Tr&#x1ea1;ng Th&#xe1;i" type="java.lang.Object"/>
@@ -124,6 +126,16 @@
                         </Property>
                         <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                           <TableColumnModel selectionModel="0">
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
                             <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                               <Title/>
                               <Editor/>
@@ -203,16 +215,9 @@
                                       <Component id="txtgiaoviec" linkSize="1" min="-2" pref="206" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
-                                      <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="btnnhanviec" linkSize="8" min="-2" pref="89" max="-2" attributes="0"/>
-                                              <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="btnhuy" linkSize="8" min="-2" pref="49" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Component id="txttrangthai" linkSize="1" min="-2" pref="206" max="-2" attributes="0"/>
-                                      </Group>
+                                      <Component id="btnnhanviec" linkSize="8" min="-2" pref="89" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                                      <Component id="btnhuy" linkSize="8" min="-2" pref="49" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
@@ -252,14 +257,9 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtngaykt" linkSize="4" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtngaykt" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txttrangthai" linkSize="4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="btnnhanviec" linkSize="7" min="-2" max="-2" attributes="0"/>
                               <Component id="btnhuy" linkSize="7" min="-2" max="-2" attributes="0"/>
@@ -344,6 +344,9 @@
                     <Property name="horizontalTextPosition" type="int" value="0"/>
                     <Property name="verticalTextPosition" type="int" value="3"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnhuyActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnnhanviec">
                   <Properties>
@@ -359,16 +362,6 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnnhanviecActionPerformed"/>
                   </Events>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel7">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Arial" size="14" style="3"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Tr&#x1ea1;ng th&#xe1;i: "/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="txttrangthai">
                 </Component>
               </SubComponents>
             </Container>
