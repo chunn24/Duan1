@@ -42,9 +42,7 @@ public class FaceDetection extends javax.swing.JFrame {
 ///    
 
     class DaemonThread implements Runnable {
-
         protected volatile boolean runnable = false;
-
         @Override
         public void run() {
             synchronized (this) {
@@ -62,7 +60,7 @@ public class FaceDetection extends javax.swing.JFrame {
                             Highgui.imencode(".bmp", frame, mem);
                             Image im = ImageIO.read(new ByteArrayInputStream(mem.toArray()));
                             BufferedImage buff = (BufferedImage) im;
-                            if (g.drawImage(buff, 0, 0, getWidth(), getHeight() - 150, 0, 0, buff.getWidth(), buff.getHeight(), null)) {
+                            if (g.drawImage(buff, 0, 0, getWidth(), getHeight() - 50, 0, 0, buff.getWidth(), buff.getHeight(), null)) {
                                 if (runnable == false) {
                                     System.out.println("Paused ..... ");
                                     this.wait();
@@ -97,8 +95,8 @@ public class FaceDetection extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnStart = new javax.swing.JButton();
+        btnPause = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -110,20 +108,20 @@ public class FaceDetection extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 376, Short.MAX_VALUE)
+            .addGap(0, 427, Short.MAX_VALUE)
         );
 
-        jButton1.setText("Start");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnStart.setText("Start");
+        btnStart.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnStartActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Pause");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnPause.setText("Pause");
+        btnPause.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnPauseActionPerformed(evt);
             }
         });
 
@@ -135,39 +133,39 @@ public class FaceDetection extends javax.swing.JFrame {
                 .addGap(24, 24, 24)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(255, 255, 255)
-                .addComponent(jButton1)
-                .addGap(86, 86, 86)
-                .addComponent(jButton2)
-                .addContainerGap(258, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(227, Short.MAX_VALUE)
+                .addComponent(btnStart)
+                .addGap(135, 135, 135)
+                .addComponent(btnPause)
+                .addGap(227, 227, 227))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnPause)
+                    .addComponent(btnStart))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnPauseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPauseActionPerformed
         myThread.runnable = false;            // stop thread
-        jButton2.setEnabled(false);   // activate start button 
-        jButton1.setEnabled(true);     // deactivate stop button
+        btnPause.setEnabled(false);   // activate start button 
+        btnStart.setEnabled(true);     // deactivate stop button
 
         webSource.release();  // stop caturing fron cam
 
 
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnPauseActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
 
         webSource = new VideoCapture(0); // video capture from default cam
         myThread = new DaemonThread(); //create object of threat class
@@ -175,11 +173,11 @@ public class FaceDetection extends javax.swing.JFrame {
         t.setDaemon(true);
         myThread.runnable = true;
         t.start();                 //start thrad
-        jButton1.setEnabled(false);  // deactivate start button
-        jButton2.setEnabled(true);  //  activate stop button
+        btnStart.setEnabled(false);  // deactivate start button
+        btnPause.setEnabled(true);  //  activate stop button
 
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnStartActionPerformed
 
     /**
      * @param args the command line arguments
@@ -220,8 +218,8 @@ public class FaceDetection extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnPause;
+    private javax.swing.JButton btnStart;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
