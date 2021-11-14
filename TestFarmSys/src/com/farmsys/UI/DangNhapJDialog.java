@@ -727,6 +727,10 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         return Auth.user.getHoTen() + (Auth.user.isVaiTro() ? " - Trưởng phòng" : " - Nhân viên");
     }
 
+    public static String HienThitennv() {
+        return Auth.user.getMaNV();
+    }
+    
     private void randomString() {
         OTP = UUID.randomUUID().toString();
     }
