@@ -217,7 +217,7 @@ public class NhanVienJDialog extends javax.swing.JFrame {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
-        PanelTong = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
         Tabs = new javax.swing.JTabbedPane();
         pnlEdit = new javax.swing.JPanel();
         lblMaNV = new javax.swing.JLabel();
@@ -253,7 +253,7 @@ public class NhanVienJDialog extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        PanelTong.setBackground(new java.awt.Color(22, 199, 154));
+        jPanel1.setBackground(new java.awt.Color(22, 199, 154));
 
         pnlEdit.setBackground(new java.awt.Color(204, 255, 204));
 
@@ -507,22 +507,22 @@ public class NhanVienJDialog extends javax.swing.JFrame {
         lblTitle.setForeground(new java.awt.Color(0, 0, 204));
         lblTitle.setText("QUẢN LÝ NHÂN VIÊN QUẢN TRỊ");
 
-        javax.swing.GroupLayout PanelTongLayout = new javax.swing.GroupLayout(PanelTong);
-        PanelTong.setLayout(PanelTongLayout);
-        PanelTongLayout.setHorizontalGroup(
-            PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelTongLayout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(Tabs)
                 .addContainerGap())
-            .addGroup(PanelTongLayout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(204, 204, 204)
                 .addComponent(lblTitle)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        PanelTongLayout.setVerticalGroup(
-            PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelTongLayout.createSequentialGroup()
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(lblTitle)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
@@ -534,11 +534,11 @@ public class NhanVienJDialog extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PanelTong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PanelTong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -629,7 +629,6 @@ public class NhanVienJDialog extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel PanelTong;
     private javax.swing.JTabbedPane Tabs;
     private javax.swing.JButton btnFirst;
     private javax.swing.JButton btnLast;
@@ -644,6 +643,7 @@ public class NhanVienJDialog extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblHoTen;
     private javax.swing.JLabel lblMaNV;
