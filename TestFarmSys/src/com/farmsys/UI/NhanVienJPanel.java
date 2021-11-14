@@ -16,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author NguyenTrung
  */
-public final class NhanVienJPanel extends javax.swing.JPanel {
+public class NhanVienJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form NhanVienJPanel
@@ -25,7 +25,6 @@ public final class NhanVienJPanel extends javax.swing.JPanel {
         initComponents();
         initComponents();
         init();
-        this.row = -1;
 
     }
 
@@ -34,10 +33,11 @@ public final class NhanVienJPanel extends javax.swing.JPanel {
 
     void init() {
         if (!Auth.isLogin()) {
-            MsgBox.alert(this, "Chưa đăng nhập.");
+            MsgBox.alert(this, "Chưa đăng nhập, vô cái loz");
             System.exit(0);
         }
         this.fillTable();
+        this.row = -1;
         this.updateStatus();
     }
 

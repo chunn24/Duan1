@@ -24,7 +24,7 @@ import javax.swing.DefaultComboBoxModel;
  *
  * @author NguyenTrung
  */
-public final class GiaoViecJPanel extends javax.swing.JPanel {
+public class GiaoViecJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form GiaoViecJPanel
