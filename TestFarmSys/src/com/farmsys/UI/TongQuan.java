@@ -1055,11 +1055,19 @@ public class TongQuan extends javax.swing.JFrame {
     private void pnlHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlHomeMouseClicked
         tabs.setSelectedIndex(0);
     }//GEN-LAST:event_pnlHomeMouseClicked
+<<<<<<< HEAD
 
     private void pnldoneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnldoneMouseClicked
         new CongViecJDialog().setVisible(true);
     }//GEN-LAST:event_pnldoneMouseClicked
 
+=======
+
+    private void pnldoneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnldoneMouseClicked
+        new CongViecJDialog().setVisible(true);
+    }//GEN-LAST:event_pnldoneMouseClicked
+
+>>>>>>> parent of 035191a (update TestFarmSys)
     private void pnlNhatkyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlNhatkyMouseClicked
         OpenNhatky();
 
@@ -1341,6 +1349,7 @@ public class TongQuan extends javax.swing.JFrame {
         }
     }
 
+<<<<<<< HEAD
     void addpanel() {
         NhatKyJPanel nkpnJPanel = new NhatKyJPanel();
 //        NhanviecJPanel nhanviecJPanel = new NhanviecJPanel();
@@ -1351,6 +1360,17 @@ public class TongQuan extends javax.swing.JFrame {
 
     }
 
+=======
+//    void addpanel() {
+//        NhatKyJPanel nkpnJPanel = new NhatKyJPanel();
+//        NhanviecJPanel nhanviecJPanel = new NhanviecJPanel();
+//        CayTrongPanel cayTrongPanel = new CayTrongPanel();
+//        tabs.addTab("1", nkpnJPanel);
+//        tabs.addTab("2", nhanviecJPanel);
+//        tabs.addTab("3", cayTrongPanel);
+//
+//    }
+>>>>>>> parent of 035191a (update TestFarmSys)
     class RoundedPanel extends JPanel {
 
         private Color backgroundColor;
