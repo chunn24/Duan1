@@ -1199,6 +1199,8 @@ public class TongQuan extends javax.swing.JFrame {
         weather.setLocationRelativeTo(null);
         new chaoJdialog(this, true).setVisible(true);
         new DangNhapJDialog(this, true).setVisible(true);
+        new Loadwelcome(this,true).setVisible(true);
+        new Loadwelcome(this,true).setVisible(false);
         Ping.play();
         this.showLineChart();
         loadLbl();

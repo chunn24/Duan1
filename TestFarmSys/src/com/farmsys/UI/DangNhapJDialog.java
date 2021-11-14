@@ -5,11 +5,14 @@
  */
 package com.farmsys.UI;
 
+import AppPackage.AnimationClass;
 import com.farmsys.DTO.NhanVien;
 import com.farmsys.Helper.Auth;
 import com.farmsys.Helper.MsgBox;
 import com.farmsys.dao.NhanVienDAO;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.util.Date;
 import java.util.Properties;
@@ -80,6 +83,13 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         txtxnmknew = new javax.swing.JPasswordField();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
+        jDialog1 = new javax.swing.JDialog();
+        jPanel1 = new javax.swing.JPanel();
+        pn2 = new javax.swing.JLabel();
+        pn1 = new javax.swing.JLabel();
+        pn3 = new javax.swing.JLabel();
+        pn4 = new javax.swing.JLabel();
+        welcom = new javax.swing.JLabel();
         pnldieukhien1 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -101,7 +111,6 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         doimkJDialog.setMinimumSize(new java.awt.Dimension(950, 500));
         doimkJDialog.setModal(true);
         doimkJDialog.setUndecorated(true);
-        doimkJDialog.setPreferredSize(new java.awt.Dimension(950, 500));
         doimkJDialog.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnldieukhien.setBackground(new java.awt.Color(0, 0, 0));
@@ -309,10 +318,32 @@ public class DangNhapJDialog extends javax.swing.JDialog {
 
         doimkJDialog.getContentPane().add(pnlTong1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 950, 470));
 
+        jDialog1.setPreferredSize(new java.awt.Dimension(650, 460));
+        jDialog1.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        pn2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Path 2.png"))); // NOI18N
+        jPanel1.add(pn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, -9, 460, 380));
+
+        pn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Path 1.png"))); // NOI18N
+        jPanel1.add(pn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -30, 480, 340));
+
+        pn3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Path 4.png"))); // NOI18N
+        jPanel1.add(pn3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 460, 340));
+
+        pn4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Path 5.png"))); // NOI18N
+        jPanel1.add(pn4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 610, 300));
+
+        welcom.setFont(new java.awt.Font("Forte", 1, 36)); // NOI18N
+        welcom.setText("Welcome to FarmSys");
+        jPanel1.add(welcom, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 350, 80));
+
+        jDialog1.getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 460));
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(950, 500));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(950, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnldieukhien1.setBackground(new java.awt.Color(0, 0, 0));
@@ -626,6 +657,7 @@ public class DangNhapJDialog extends javax.swing.JDialog {
     private javax.swing.JButton btndoimk;
     private javax.swing.JDialog doimkJDialog;
     private javax.swing.JButton jButton2;
+    private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -642,6 +674,7 @@ public class DangNhapJDialog extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
@@ -650,6 +683,10 @@ public class DangNhapJDialog extends javax.swing.JDialog {
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JLabel lblquaylaidangnhap;
     private javax.swing.JLabel lblquenmk;
+    private javax.swing.JLabel pn1;
+    private javax.swing.JLabel pn2;
+    private javax.swing.JLabel pn3;
+    private javax.swing.JLabel pn4;
     private javax.swing.JPanel pnlTong;
     private javax.swing.JPanel pnlTong1;
     private javax.swing.JPanel pnldieukhien;
@@ -660,6 +697,7 @@ public class DangNhapJDialog extends javax.swing.JDialog {
     private javax.swing.JPasswordField txtmknew;
     private javax.swing.JTextField txttaikhoanlaymk;
     private javax.swing.JPasswordField txtxnmknew;
+    private javax.swing.JLabel welcom;
     // End of variables declaration//GEN-END:variables
 
     private void init() {
@@ -669,6 +707,8 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         doimkJDialog.setLocationRelativeTo(this);
 
     }
+
+    
 
     void SendOTP() {
         try {
