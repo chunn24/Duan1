@@ -43,8 +43,6 @@ public class NhanViecJPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblcv = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        lblnhanvien = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txttencv = new javax.swing.JTextField();
@@ -74,21 +72,20 @@ public class NhanViecJPanel extends javax.swing.JPanel {
         tabs.setPreferredSize(new java.awt.Dimension(1083, 750));
 
         jPanel1.setBackground(new java.awt.Color(204, 255, 204));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblcv.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Stt", "Tên Công Việc", "Mô Tả", "Tên Giàn", "Người Giao Việc", "Ngày Kết Thúc", "Trạng Thái"
+                "Tên Công Việc", "Mô Tả", "Người Giao Việc", "Ngày Kết Thúc", "Trạng Thái"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, true, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -102,15 +99,31 @@ public class NhanViecJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblcv);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 78, 1035, 506));
-
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setText("Chi Tiết Công Việc :");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 43, -1, -1));
 
-        jLabel8.setText("Nhân viên: ");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 560, -1, -1));
-        jPanel1.add(lblnhanvien, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 560, 207, 14));
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1035, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
 
         tabs.addTab("Danh Sách", jPanel1);
 
@@ -292,12 +305,10 @@ public class NhanViecJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JLabel lblnhanvien;
     private javax.swing.JPanel pnltong;
     private javax.swing.JTabbedPane tabs;
     private javax.swing.JTable tblcv;
@@ -312,21 +323,15 @@ NhatKyDAO nkDAO = new NhatKyDAO();
     int row = -1;
 
     private void init() {
-        this.row = -1;
-        loadLbl();
-        fillTableNguoinhanviec();
         
-    }
-
-    private void loadLbl() {
-        lblnhanvien.setText(DangNhapJDialog.HienThitennv());
+        this.row = -1;
+        fillTableNguoinhanviec();
     }
 
     void fillTableNguoinhanviec() {
         DefaultTableModel model = (DefaultTableModel) tblcv.getModel();
         model.setRowCount(0);
-        String tennv = lblnhanvien.getText();
-        List<NhatKy> list = nkDAO.selectByTrangThaiAndTenNv(0,tennv);
+        List<NhatKy> list = nkDAO.selectByTrangThai(0);
         for (NhatKy nv : list) {
             String status = trangThai(nv);
             model.addRow(new Object[]{
