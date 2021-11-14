@@ -24,7 +24,7 @@ import javax.swing.DefaultComboBoxModel;
  *
  * @author NguyenTrung
  */
-public final class GiaoViecJPanel extends javax.swing.JPanel {
+public class GiaoViecJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form GiaoViecJPanel
@@ -51,6 +51,7 @@ public final class GiaoViecJPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         btnGiaoViet = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -61,44 +62,35 @@ public final class GiaoViecJPanel extends javax.swing.JPanel {
         txtNgayBatDau = new com.toedter.calendar.JDateChooser();
         txtNgayKetThuc = new com.toedter.calendar.JDateChooser();
         cboNhanVien = new javax.swing.JComboBox<>();
-        jLabel9 = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(1083, 750));
         setPreferredSize(new java.awt.Dimension(1083, 750));
 
         PanelTong.setBackground(new java.awt.Color(255, 255, 255));
-        PanelTong.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Giao Việc", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 36), new java.awt.Color(0, 0, 204))); // NOI18N
-        PanelTong.setMinimumSize(new java.awt.Dimension(1083, 750));
-        PanelTong.setPreferredSize(new java.awt.Dimension(1083, 750));
-        PanelTong.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        PanelTong.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Giao Việc", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 36), new java.awt.Color(0, 0, 204))); // NOI18N
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel7.setText("Người Nhận Việc");
-        PanelTong.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 520, -1, -1));
+        jLabel7.setText("Người nhận việc:");
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel8.setText("Ghi chú:");
-        PanelTong.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 230, -1, -1));
 
         txtGhiChu.setColumns(20);
         txtGhiChu.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtGhiChu.setRows(5);
-        txtGhiChu.setText("\n");
         jScrollPane2.setViewportView(txtGhiChu);
-
-        PanelTong.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 230, 316, 109));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Ngày bắt đầu:");
-        PanelTong.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 410, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel4.setText("Ngày kiểm tra");
-        PanelTong.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 470, -1, -1));
+        jLabel4.setText("Ngày kiểm tra:");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Tên công việc:");
-        PanelTong.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 81, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setText("Giàn cây:");
 
         btnGiaoViet.setBackground(new java.awt.Color(19, 148, 147));
         btnGiaoViet.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
@@ -110,48 +102,114 @@ public final class GiaoViecJPanel extends javax.swing.JPanel {
                 btnGiaoVietActionPerformed(evt);
             }
         });
-        PanelTong.add(btnGiaoViet, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 630, 466, 49));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel6.setText("Cây trồng:");
-        PanelTong.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 130, -1, -1));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel10.setText("Người tạo:");
-        PanelTong.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 360, -1, -1));
 
         txtnguoitao.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        PanelTong.add(txtnguoitao, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 360, 316, 31));
 
-        PanelTong.add(cboCongViec, new org.netbeans.lib.awtextra.AbsoluteConstraints(449, 81, 316, 31));
+        javax.swing.GroupLayout PanelTongLayout = new javax.swing.GroupLayout(PanelTong);
+        PanelTong.setLayout(PanelTongLayout);
+        PanelTongLayout.setHorizontalGroup(
+            PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelTongLayout.createSequentialGroup()
+                .addGap(284, 284, 284)
+                .addGroup(PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel6)
+                    .addGroup(PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(btnGiaoViet, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(PanelTongLayout.createSequentialGroup()
+                            .addGroup(PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(PanelTongLayout.createSequentialGroup()
+                                    .addGroup(PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel4)
+                                        .addComponent(jLabel10)
+                                        .addComponent(jLabel8)
+                                        .addComponent(jLabel1)
+                                        .addComponent(jLabel3))
+                                    .addGap(35, 35, 35))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelTongLayout.createSequentialGroup()
+                                    .addComponent(jLabel7)
+                                    .addGap(18, 18, 18)))
+                            .addGroup(PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtNgayKetThuc, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(cboCayTrong, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cboGianTrong, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtnguoitao, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cboCongViec, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtNgayBatDau, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(cboNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(296, Short.MAX_VALUE))
+        );
+        PanelTongLayout.setVerticalGroup(
+            PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelTongLayout.createSequentialGroup()
+                .addGap(59, 59, 59)
+                .addGroup(PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(cboCongViec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6)
+                    .addComponent(cboCayTrong, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(cboGianTrong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtnguoitao, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
+                .addGap(18, 18, 18)
+                .addGroup(PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtNgayBatDau, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(18, 18, 18)
+                .addGroup(PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtNgayKetThuc, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addGap(18, 18, 18)
+                .addGroup(PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cboNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
+                .addGap(37, 37, 37)
+                .addComponent(btnGiaoViet, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(50, Short.MAX_VALUE))
+        );
 
-        PanelTong.add(cboGianTrong, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 180, 316, 31));
+        PanelTongLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cboCayTrong, cboCongViec, cboGianTrong});
 
-        PanelTong.add(cboCayTrong, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 130, 316, 31));
-        PanelTong.add(txtNgayBatDau, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 410, 316, 30));
-        PanelTong.add(txtNgayKetThuc, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 470, 316, 30));
-
-        PanelTong.add(cboNhanVien, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 520, 316, 30));
-
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel9.setText("Giàn cây:");
-        PanelTong.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 180, -1, -1));
+        PanelTongLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cboNhanVien, txtNgayBatDau, txtNgayKetThuc, txtnguoitao});
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(PanelTong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 23, Short.MAX_VALUE)
+                .addComponent(PanelTong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(PanelTong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(PanelTong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGiaoVietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGiaoVietActionPerformed
         this.insert();
+
     }//GEN-LAST:event_btnGiaoVietActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelTong;
@@ -162,12 +220,12 @@ public final class GiaoViecJPanel extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cboNhanVien;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea txtGhiChu;
     private com.toedter.calendar.JDateChooser txtNgayBatDau;
@@ -275,5 +333,4 @@ public final class GiaoViecJPanel extends javax.swing.JPanel {
         }
         return true;
     }
-
 }

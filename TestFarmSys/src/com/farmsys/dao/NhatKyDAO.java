@@ -25,6 +25,7 @@ public class NhatKyDAO extends FarmSysDAO<NhatKy, String> {
     String select_all_sql = "select*from NhatKy";
     String select_by_ten_sql = "select * from NhatKy where STT = ?";
     String select_by_trangthai_sql = "select * from NhatKy where TrangThai = ?";
+    String select_by_trangthaivaten_sql = "select * from NhatKy where TrangThai = ? and NhanVien like ?";
     String UPDATE_Done_SQL = "UPDATE NhatKy SET TrangThai = 3 where STT = ?";
     String UPDATE_SQL = "UPDATE NhatKy SET TrangThai = 1 where STT = ?";
     String UPDATE_TuChoi_SQL = "UPDATE NhatKy SET TrangThai = 2 where STT = ?";
@@ -95,6 +96,10 @@ public class NhatKyDAO extends FarmSysDAO<NhatKy, String> {
 
     public List<NhatKy> selectByTrangThai(int trangthai) {
         return selectBySql(select_by_trangthai_sql, trangthai);
+    }
+
+    public List<NhatKy> selectByTrangThaivaTennv(int trangthai, String tennv) {
+        return selectBySql(select_by_trangthaivaten_sql, trangthai,tennv);
     }
 
     @Override

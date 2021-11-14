@@ -17,14 +17,14 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author trieu
+ * @author NguyenTrung
  */
-public class GianTrongJDialog extends javax.swing.JFrame {
+public class GianTrongJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form DanTrongJDialog
+     * Creates new form GianTrongJPanel
      */
-    public GianTrongJDialog() {
+    public GianTrongJPanel() {
         initComponents();
         init();
     }
@@ -38,9 +38,7 @@ public class GianTrongJDialog extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
-        buttonGroup2 = new javax.swing.ButtonGroup();
-        lblTitle = new javax.swing.JLabel();
+        panelTong = new javax.swing.JPanel();
         tabs = new javax.swing.JTabbedPane();
         pnlEdit = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -63,28 +61,31 @@ public class GianTrongJDialog extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         cboLoc = new javax.swing.JComboBox<>();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setBackground(new java.awt.Color(153, 255, 153));
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
-        });
+        setMinimumSize(new java.awt.Dimension(1083, 750));
+        setPreferredSize(new java.awt.Dimension(1083, 750));
 
-        lblTitle.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        lblTitle.setForeground(new java.awt.Color(0, 0, 204));
-        lblTitle.setText("QUẢN LÝ DÀN TRỒNG");
+        panelTong.setMinimumSize(new java.awt.Dimension(1083, 750));
+        panelTong.setPreferredSize(new java.awt.Dimension(1083, 750));
+        panelTong.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tabs.setBackground(new java.awt.Color(204, 204, 204));
+        tabs.setMinimumSize(new java.awt.Dimension(1083, 750));
+        tabs.setPreferredSize(new java.awt.Dimension(1083, 750));
 
-        pnlEdit.setBackground(new java.awt.Color(204, 255, 204));
+        pnlEdit.setBackground(new java.awt.Color(255, 255, 255));
+        pnlEdit.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Mã dàn trồng:");
+        pnlEdit.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 160, -1, -1));
 
         txtMaDanTrong.setEditable(false);
         txtMaDanTrong.setBackground(new java.awt.Color(204, 204, 204));
+        pnlEdit.add(txtMaDanTrong, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 160, 480, 30));
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("Tên dàn trồng:");
+        pnlEdit.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, -1, -1));
 
         txtTenDanTrong.setText("Nhập tên dàn trồng !");
         txtTenDanTrong.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -92,7 +93,9 @@ public class GianTrongJDialog extends javax.swing.JFrame {
                 txtTenDanTrongFocusGained(evt);
             }
         });
+        pnlEdit.add(txtTenDanTrong, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 220, 480, 30));
 
+        btnThem.setBackground(new java.awt.Color(255, 255, 255));
         btnThem.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
         btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Add.png"))); // NOI18N
         btnThem.setText("Thêm");
@@ -101,7 +104,9 @@ public class GianTrongJDialog extends javax.swing.JFrame {
                 btnThemActionPerformed(evt);
             }
         });
+        pnlEdit.add(btnThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 360, -1, 49));
 
+        btnSua.setBackground(new java.awt.Color(255, 255, 255));
         btnSua.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
         btnSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Refresh.png"))); // NOI18N
         btnSua.setText("Sửa");
@@ -110,7 +115,9 @@ public class GianTrongJDialog extends javax.swing.JFrame {
                 btnSuaActionPerformed(evt);
             }
         });
+        pnlEdit.add(btnSua, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 360, -1, 49));
 
+        btnXoa.setBackground(new java.awt.Color(255, 255, 255));
         btnXoa.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
         btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Delete.png"))); // NOI18N
         btnXoa.setText("Xóa");
@@ -119,7 +126,9 @@ public class GianTrongJDialog extends javax.swing.JFrame {
                 btnXoaActionPerformed(evt);
             }
         });
+        pnlEdit.add(btnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 360, -1, 49));
 
+        btnMoi.setBackground(new java.awt.Color(255, 255, 255));
         btnMoi.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
         btnMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/new.png"))); // NOI18N
         btnMoi.setText("Mới");
@@ -128,103 +137,51 @@ public class GianTrongJDialog extends javax.swing.JFrame {
                 btnMoiActionPerformed(evt);
             }
         });
+        pnlEdit.add(btnMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 360, -1, 50));
 
+        btnFirst.setBackground(new java.awt.Color(255, 255, 255));
         btnFirst.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/backward.png"))); // NOI18N
         btnFirst.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFirstActionPerformed(evt);
             }
         });
+        pnlEdit.add(btnFirst, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 360, -1, 50));
 
+        btnPrev.setBackground(new java.awt.Color(255, 255, 255));
         btnPrev.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/previous.png"))); // NOI18N
         btnPrev.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPrevActionPerformed(evt);
             }
         });
+        pnlEdit.add(btnPrev, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 360, -1, 50));
 
+        btnNext.setBackground(new java.awt.Color(255, 255, 255));
         btnNext.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/next.png"))); // NOI18N
         btnNext.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNextActionPerformed(evt);
             }
         });
+        pnlEdit.add(btnNext, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 360, -1, 50));
 
+        btnLast.setBackground(new java.awt.Color(255, 255, 255));
         btnLast.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/fast-forward.png"))); // NOI18N
         btnLast.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLastActionPerformed(evt);
             }
         });
+        pnlEdit.add(btnLast, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 360, -1, 50));
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setText("Trạng thái:");
+        pnlEdit.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 280, -1, -1));
 
         txtTrangThai.setEditable(false);
         txtTrangThai.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout pnlEditLayout = new javax.swing.GroupLayout(pnlEdit);
-        pnlEdit.setLayout(pnlEditLayout);
-        pnlEditLayout.setHorizontalGroup(
-            pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlEditLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtMaDanTrong)
-                    .addComponent(txtTenDanTrong)
-                    .addGroup(pnlEditLayout.createSequentialGroup()
-                        .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))
-                        .addGap(0, 503, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlEditLayout.createSequentialGroup()
-                        .addComponent(btnThem)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSua)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnXoa)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnMoi)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnFirst)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnPrev)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnNext)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnLast))
-                    .addGroup(pnlEditLayout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtTrangThai)))
-                .addContainerGap())
-        );
-        pnlEditLayout.setVerticalGroup(
-            pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlEditLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtMaDanTrong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtTenDanTrong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(txtTrangThai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38)
-                .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnThem)
-                    .addComponent(btnSua)
-                    .addComponent(btnXoa)
-                    .addComponent(btnMoi)
-                    .addComponent(btnFirst)
-                    .addComponent(btnPrev)
-                    .addComponent(btnNext)
-                    .addComponent(btnLast))
-                .addContainerGap(30, Short.MAX_VALUE))
-        );
+        pnlEdit.add(txtTrangThai, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, 480, 30));
 
         tabs.addTab("CẬP NHẬT", pnlEdit);
 
@@ -288,7 +245,7 @@ public class GianTrongJDialog extends javax.swing.JFrame {
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cboLoc, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1045, Short.MAX_VALUE))
                 .addContainerGap())
         );
         pnlListLayout.setVerticalGroup(
@@ -299,37 +256,32 @@ public class GianTrongJDialog extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(cboLoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 658, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         tabs.addTab("DANH SÁCH", pnlList);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+        panelTong.add(tabs, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 8, 1070, 740));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(tabs)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblTitle)
-                .addGap(201, 201, 201))
+            .addComponent(panelTong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblTitle)
-                .addGap(18, 18, 18)
-                .addComponent(tabs)
-                .addContainerGap())
+            .addComponent(panelTong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-
-        pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtTenDanTrongFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTenDanTrongFocusGained
+        // TODO add your handling code here:
+        if (txtTenDanTrong.getText().trim().endsWith("Nhập tên dàn trồng !")) {
+            txtTenDanTrong.setText("");
+        }
+    }//GEN-LAST:event_txtTenDanTrongFocusGained
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
@@ -379,21 +331,8 @@ public class GianTrongJDialog extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tblDanTrongMouseClicked
 
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_formWindowOpened
-
-    private void txtTenDanTrongFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTenDanTrongFocusGained
-        // TODO add your handling code here:
-        if (txtTenDanTrong.getText().trim().endsWith("Nhập tên dàn trồng !")) {
-            txtTenDanTrong.setText("");
-        }
-    }//GEN-LAST:event_txtTenDanTrongFocusGained
-
     private void cboLocMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cboLocMouseClicked
-        // TODO add your handling code here:       
-
+        // TODO add your handling code here:
     }//GEN-LAST:event_cboLocMouseClicked
 
     private void cboLocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboLocActionPerformed
@@ -405,43 +344,6 @@ public class GianTrongJDialog extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cboLocActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GianTrongJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GianTrongJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GianTrongJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GianTrongJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new GianTrongJDialog().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFirst;
@@ -452,15 +354,13 @@ public class GianTrongJDialog extends javax.swing.JFrame {
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnXoa;
-    private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JComboBox<String> cboLoc;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblTitle;
+    private javax.swing.JPanel panelTong;
     private javax.swing.JPanel pnlEdit;
     private javax.swing.JPanel pnlList;
     private javax.swing.JTabbedPane tabs;
@@ -474,10 +374,8 @@ public class GianTrongJDialog extends javax.swing.JFrame {
     int index = 0;
 
     private void init() {
-        this.setLocationRelativeTo(null);
-        this.setTitle("Quản Lý Dàn Trồng");
-        getContentPane().setBackground(Color.green);
-
+        this.load();
+        this.updateStatus();
     }
 
     void load() {
@@ -588,7 +486,7 @@ public class GianTrongJDialog extends javax.swing.JFrame {
 
     GianTrong getModel() {
         GianTrong model = new GianTrong();
-       // model.setMaDan(Integer.valueOf(txtMaDanTrong.getText()));
+        // model.setMaDan(Integer.valueOf(txtMaDanTrong.getText()));
         model.setTenDan(txtTenDanTrong.getText());
         //model.setTrangThai(Boolean.valueOf(txtTrangThai.getText()));
         return model;
