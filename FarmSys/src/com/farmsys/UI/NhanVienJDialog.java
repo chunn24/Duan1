@@ -253,7 +253,7 @@ public class NhanVienJDialog extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(22, 199, 154));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         pnlEdit.setBackground(new java.awt.Color(204, 255, 204));
 

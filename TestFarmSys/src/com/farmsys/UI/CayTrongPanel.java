@@ -11,10 +11,12 @@ import com.farmsys.Helper.XImage;
 import com.farmsys.dao.CayTrongDAO;
 import static java.awt.Color.red;
 import static java.awt.Color.white;
+import java.awt.event.ActionEvent;
 import java.io.File;
 import java.util.List;
 import javax.swing.JFileChooser;
 import javax.swing.JTextField;
+import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -433,9 +435,10 @@ public class CayTrongPanel extends javax.swing.JPanel {
 
     public void init() {
         load();
-     
         tblCayTrong.setDefaultEditor(Object.class, null);
-        
+        new Timer(5000, (ActionEvent e) -> {
+            this.load();
+        }).start();
     }
 
     void load() {

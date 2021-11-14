@@ -22,24 +22,34 @@ import java.util.logging.Logger;
 public class NhatKyDAO extends FarmSysDAO<NhatKy, String> {
 
     String INSERT_SQL = "INSERT INTO NhatKy (TenCV, TenCay, TenGian, ChiTiet, NguoiTao, Nhanvien, NgayBatDau, NgayKetThuc, TrangThai) VALUES(?,?,?,?,?,?,?,?,?)";
-    String UPDATE_SQL = "UPDATE NhatKy SET TrangThai = ? where TenCV = ?";
-    String select_all_sql = "select*from NhatKy;";
-    String select_by_ten_sql = "select * from NhatKy where TenCV = ?";
+    String select_all_sql = "select*from NhatKy";
+    String select_by_ten_sql = "select * from NhatKy where STT = ?";
     String select_by_trangthai_sql = "select * from NhatKy where TrangThai = ?";
-    
+    String select_by_trangthaivaten_sql = "select * from NhatKy where TrangThai = ? and NhanVien like ?";
+    String UPDATE_Done_SQL = "UPDATE NhatKy SET TrangThai = 3 where STT = ?";
+    String UPDATE_SQL = "UPDATE NhatKy SET TrangThai = 1 where STT = ?";
+    String UPDATE_TuChoi_SQL = "UPDATE NhatKy SET TrangThai = 2 where STT = ?";
+
     @Override
     public void insert(NhatKy entity) {
         try {
-            JdbcHelper.update(INSERT_SQL, entity.getTenCV(), entity.getTenCay(), entity.getTenGian(),entity.getChiTiet(),entity.getNguoiTao(),entity.getNhanVien() ,entity.getNgayBatDau(), entity.getNgayKetThuc(), entity.getTrangThai());
+            JdbcHelper.update(INSERT_SQL, entity.getTenCV(), entity.getTenCay(), entity.getTenGian(), entity.getChiTiet(), entity.getNguoiTao(), entity.getNhanVien(), entity.getNgayBatDau(), entity.getNgayKetThuc(), entity.getTrangThai());
         } catch (SQLException ex) {
             Logger.getLogger(CayTrongDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    @Override
-    public void update(NhatKy entity) {
+    public void update(int entity) {
         try {
-            JdbcHelper.update(UPDATE_SQL, entity.getTrangThai(), entity.getTenCV());
+            JdbcHelper.update(UPDATE_SQL, entity);
+        } catch (SQLException ex) {
+            Logger.getLogger(NhanVienDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void updateTuChoi(int entity) {
+        try {
+            JdbcHelper.update(UPDATE_TuChoi_SQL, entity);
         } catch (SQLException ex) {
             Logger.getLogger(NhanVienDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -55,17 +65,41 @@ public class NhatKyDAO extends FarmSysDAO<NhatKy, String> {
         return selectBySql(select_all_sql);
     }
 
-    @Override
-    public NhatKy selectById(String macv) {
-        return null;
+    public void updateTrangThai(int stt) {
+        try {
+            JdbcHelper.update(UPDATE_Done_SQL, stt);
+        } catch (SQLException ex) {
+            Logger.getLogger(NhatKyDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
-     public List<NhatKy> selectByTen(String tencv) {
-        return selectBySql(select_by_ten_sql,tencv);
+    @Override
+    public NhatKy selectById(String macv) {
+        List<NhatKy> list = this.selectBySql(select_by_ten_sql, macv);
+        if (list.isEmpty()) {
+            return null;
+        }
+        return list.get(0);
     }
-     
-    public List<NhatKy> selectByTrangThai(int trangthai ) {
-        return selectBySql(select_by_trangthai_sql,trangthai);
+
+    public NhatKy selectById(Integer macv) {
+        List<NhatKy> list = this.selectBySql(select_by_ten_sql, macv);
+        if (list.isEmpty()) {
+            return null;
+        }
+        return list.get(0);
+    }
+
+    public List<NhatKy> selectByTen(String tencv) {
+        return selectBySql(select_by_ten_sql, tencv);
+    }
+
+    public List<NhatKy> selectByTrangThai(int trangthai) {
+        return selectBySql(select_by_trangthai_sql, trangthai);
+    }
+
+    public List<NhatKy> selectByTrangThaivaTennv(int trangthai, String tennv) {
+        return selectBySql(select_by_trangthaivaten_sql, trangthai,tennv);
     }
 
     @Override
@@ -94,7 +128,9 @@ public class NhatKyDAO extends FarmSysDAO<NhatKy, String> {
         }
     }
 
-    
-    
+    @Override
+    public void update(NhatKy entity) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
 }

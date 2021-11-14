@@ -5,12 +5,15 @@
  */
 package com.farmsys.UI;
 
-import com.farmsys.DTO.CongViec;
 import com.farmsys.DTO.NhatKy;
+import com.farmsys.Helper.MsgBox;
 import com.farmsys.dao.CongViecDAO;
 import com.farmsys.dao.NhatKyDAO;
+import java.awt.print.PrinterException;
 import java.util.List;
-import javax.swing.DefaultComboBoxModel;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -89,6 +92,11 @@ public class NhatKyJDialog extends javax.swing.JFrame {
         btnXuatPDF.setText("Xuất PDF");
         btnXuatPDF.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnXuatPDF.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnXuatPDF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXuatPDFActionPerformed(evt);
+            }
+        });
 
         lblTrangThai.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         lblTrangThai.setForeground(new java.awt.Color(248, 241, 241));
@@ -265,6 +273,10 @@ public class NhatKyJDialog extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cboLocTrangThaiActionPerformed
 
+    private void btnXuatPDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatPDFActionPerformed
+        print();
+    }//GEN-LAST:event_btnXuatPDFActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -391,18 +403,31 @@ public class NhatKyJDialog extends javax.swing.JFrame {
 
     private String trangThai(NhatKy nk) {
         String status = null;
-        if (nk.getTrangThai() == 0) {
-            status = "Chưa nhận";
-        } else if (nk.getTrangThai() == 1) {
-            status = "Đang làm";
-        } else if (nk.getTrangThai() == 2) {
-            status = "Từ chối";
-        } else if (nk.getTrangThai() == 3) {
-            status = "Hoàn thành";
-        } else {
-            status = "Hoàn thành muộn";
-        }
+        status = switch (nk.getTrangThai()) {
+            case 0 ->
+                "Chưa nhận";
+            case 1 ->
+                "Đang làm";
+            case 2 ->
+                "Từ chối";
+            case 3 ->
+                "Hoàn thành";
+            default ->
+                "Hoàn thành muộn";
+        };
         return status;
     }
 
+    void print() {
+        try {
+            Boolean print = tblNhatKy.print();
+            if (print) {
+                MsgBox.alert(this, "Đã xuất file PDF");
+            } else {
+                JOptionPane.showMessageDialog(this, "Error !", "Printer", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (PrinterException ex) {
+            Logger.getLogger(NhanVienJDialog.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

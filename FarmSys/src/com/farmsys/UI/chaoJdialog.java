@@ -19,6 +19,8 @@ public class chaoJdialog extends javax.swing.JDialog {
 
     /**
      * Creates new form chaoJdialog
+     * @param parent
+     * @param modal
      */
     public chaoJdialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);

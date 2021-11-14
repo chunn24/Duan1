@@ -97,6 +97,13 @@ public class NhanVien {
         this.vaiTro = vaiTro;
     }
 
+    @Override
+    public String toString() {
+        return  maNV ;
+    }
+
+    
+    
     
 
 }

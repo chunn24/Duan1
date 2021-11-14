@@ -7,7 +7,7 @@ package com.farmsys.UI;
 
 import com.farmsys.DTO.GianTrong;
 import com.farmsys.Helper.MsgBox;
-import com.farmsys.dao.DanTrongDAO;
+import com.farmsys.dao.GianTrongDAO;
 import java.awt.Color;
 import static java.awt.Color.pink;
 import static java.awt.Color.white;
@@ -333,16 +333,12 @@ public class GianTrongJDialog extends javax.swing.JFrame {
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
-        if (checkTrungTen(txtTenDanTrong)) {
-            insert();
-        }
+        this.insert();
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
-        if (checkTrungTen(txtTenDanTrong)) {
-            update();
-        }
+        this.update();
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
@@ -385,8 +381,7 @@ public class GianTrongJDialog extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-        this.load();
-        this.updateStatus();
+        
     }//GEN-LAST:event_formWindowOpened
 
     private void txtTenDanTrongFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTenDanTrongFocusGained
@@ -475,7 +470,7 @@ public class GianTrongJDialog extends javax.swing.JFrame {
     private javax.swing.JTextField txtTrangThai;
     // End of variables declaration//GEN-END:variables
 
-    DanTrongDAO dtdao = new DanTrongDAO();
+    GianTrongDAO dtdao = new GianTrongDAO();
     int index = 0;
 
     private void init() {
@@ -620,17 +615,6 @@ public class GianTrongJDialog extends javax.swing.JFrame {
         } else {
             txt.setBackground(pink);
             MsgBox.alert(this, txt.getName() + " đã bị tồn tại.");
-            return false;
-        }
-    }
-    
-    public boolean checkTrungTen(JTextField txt) {
-        txt.setBackground(white);
-        if (dtdao.selectByTenGian(txt.getText()) == null) {
-            return true;
-        } else {
-            txt.setBackground(pink);
-            MsgBox.alert(this, "Tên giàn đã bị tồn tại !");
             return false;
         }
     }

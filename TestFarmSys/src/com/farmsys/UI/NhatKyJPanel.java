@@ -9,11 +9,13 @@ import com.farmsys.DTO.NhatKy;
 import com.farmsys.Helper.MsgBox;
 import com.farmsys.dao.CongViecDAO;
 import com.farmsys.dao.NhatKyDAO;
+import java.awt.event.ActionEvent;
 import java.awt.print.PrinterException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -264,9 +266,11 @@ public class NhatKyJPanel extends javax.swing.JPanel {
     NhatKyDAO nkdao = new NhatKyDAO();
     CongViecDAO cvdao = new CongViecDAO();
 
-    private void init() {      
+    private void init() {
         this.fillTableNhatKyAll();
-        
+        new Timer(2000, (ActionEvent e) -> {
+            this.fillTableNhatKyAll();
+        }).start();
     }
 
     private void fillTableNhatKyByCongViec(String tencv) {
