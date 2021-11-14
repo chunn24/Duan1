@@ -333,11 +333,7 @@ public class TongQuan extends javax.swing.JFrame {
             .addGroup(pnldieukhienLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblDongHo, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-<<<<<<< HEAD
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 626, Short.MAX_VALUE)
-=======
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 646, Short.MAX_VALUE)
->>>>>>> parent of 785c636 (updatenew)
                 .addComponent(jLabel31)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblTrangThai, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -391,11 +387,7 @@ public class TongQuan extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(30, 30, 30)
                 .addComponent(jLabel2)
-<<<<<<< HEAD
                 .addContainerGap(121, Short.MAX_VALUE))
-=======
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
->>>>>>> parent of 785c636 (updatenew)
         );
         pnlHomeLayout.setVerticalGroup(
             pnlHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -434,11 +426,7 @@ public class TongQuan extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addGap(29, 29, 29)
                 .addComponent(jLabel4)
-<<<<<<< HEAD
                 .addContainerGap(121, Short.MAX_VALUE))
-=======
-                .addContainerGap(109, Short.MAX_VALUE))
->>>>>>> parent of 785c636 (updatenew)
         );
         pnlNhanvienLayout.setVerticalGroup(
             pnlNhanvienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -477,11 +465,7 @@ public class TongQuan extends javax.swing.JFrame {
                 .addComponent(jLabel5)
                 .addGap(30, 30, 30)
                 .addComponent(jLabel6)
-<<<<<<< HEAD
                 .addContainerGap(116, Short.MAX_VALUE))
-=======
-                .addContainerGap(104, Short.MAX_VALUE))
->>>>>>> parent of 785c636 (updatenew)
         );
         pnlDanTrongLayout.setVerticalGroup(
             pnlDanTrongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -520,11 +504,7 @@ public class TongQuan extends javax.swing.JFrame {
                 .addComponent(jLabel11)
                 .addGap(30, 30, 30)
                 .addComponent(jLabel12)
-<<<<<<< HEAD
                 .addContainerGap(120, Short.MAX_VALUE))
-=======
-                .addContainerGap(109, Short.MAX_VALUE))
->>>>>>> parent of 785c636 (updatenew)
         );
         pnlCaytronLayout.setVerticalGroup(
             pnlCaytronLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -563,11 +543,7 @@ public class TongQuan extends javax.swing.JFrame {
                 .addComponent(jLabel13)
                 .addGap(30, 30, 30)
                 .addComponent(jLabel14)
-<<<<<<< HEAD
                 .addContainerGap(134, Short.MAX_VALUE))
-=======
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
->>>>>>> parent of 785c636 (updatenew)
         );
         pnlNhatkyLayout.setVerticalGroup(
             pnlNhatkyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -606,11 +582,7 @@ public class TongQuan extends javax.swing.JFrame {
                 .addComponent(jLabel15)
                 .addGap(30, 30, 30)
                 .addComponent(jLabel16)
-<<<<<<< HEAD
                 .addContainerGap(125, Short.MAX_VALUE))
-=======
-                .addContainerGap(114, Short.MAX_VALUE))
->>>>>>> parent of 785c636 (updatenew)
         );
         pnlGiaoviecLayout.setVerticalGroup(
             pnlGiaoviecLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -645,11 +617,7 @@ public class TongQuan extends javax.swing.JFrame {
                 .addComponent(jLabel10)
                 .addGap(30, 30, 30)
                 .addComponent(jLabel33)
-<<<<<<< HEAD
                 .addContainerGap(154, Short.MAX_VALUE))
-=======
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
->>>>>>> parent of 785c636 (updatenew)
         );
         pnlHome1Layout.setVerticalGroup(
             pnlHome1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -665,7 +633,6 @@ public class TongQuan extends javax.swing.JFrame {
                 .addComponent(jLabel17)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(pnlmenuLayout.createSequentialGroup()
-<<<<<<< HEAD
                 .addGroup(pnlmenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(pnlmenuLayout.createSequentialGroup()
@@ -687,29 +654,6 @@ public class TongQuan extends javax.swing.JFrame {
                                 .addComponent(pnlNhatky, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(pnlHome, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
-=======
-                .addContainerGap()
-                .addComponent(jLabel7)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlmenuLayout.createSequentialGroup()
-                .addGroup(pnlmenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlCaytron, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlmenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(pnlGiaoviec, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(pnlNhatky, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(21, 21, 21))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlmenuLayout.createSequentialGroup()
-                .addGroup(pnlmenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlHome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlHome1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(pnlmenuLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(pnlmenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(pnlDanTrong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pnlNhanvien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(22, 22, 22))
->>>>>>> parent of 785c636 (updatenew)
         );
 
         pnlmenuLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {pnlCaytron, pnlDanTrong, pnlGiaoviec, pnlHome, pnlHome1, pnlNhanvien, pnlNhatky});
@@ -986,11 +930,7 @@ public class TongQuan extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-<<<<<<< HEAD
             .addComponent(penalTong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-=======
-            .addComponent(penalTong, javax.swing.GroupLayout.PREFERRED_SIZE, 1300, Short.MAX_VALUE)
->>>>>>> parent of 785c636 (updatenew)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1000,7 +940,6 @@ public class TongQuan extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-<<<<<<< HEAD
     private void pnlNhanvienMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlNhanvienMouseEntered
         pnlNhanvien.setBackground(Color.white);
     }//GEN-LAST:event_pnlNhanvienMouseEntered
@@ -1116,153 +1055,15 @@ public class TongQuan extends javax.swing.JFrame {
     private void pnlHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlHomeMouseClicked
         tabs.setSelectedIndex(0);
     }//GEN-LAST:event_pnlHomeMouseClicked
-<<<<<<< HEAD
 
     private void pnldoneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnldoneMouseClicked
         new CongViecJDialog().setVisible(true);
     }//GEN-LAST:event_pnldoneMouseClicked
 
-=======
-
-    private void pnldoneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnldoneMouseClicked
-        new CongViecJDialog().setVisible(true);
-    }//GEN-LAST:event_pnldoneMouseClicked
-
->>>>>>> parent of 035191a (update TestFarmSys)
     private void pnlNhatkyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlNhatkyMouseClicked
         OpenNhatky();
-
+        
     }//GEN-LAST:event_pnlNhatkyMouseClicked
-=======
-    private void pnlNhanvienMouseEntered(java.awt.event.MouseEvent evt) {                                         
-        pnlNhanvien.setBackground(Color.white);
-    }                                        
-
-    private void pnlNhanvienMouseExited(java.awt.event.MouseEvent evt) {                                        
-        pnlNhanvien.setBackground(c);
-    }                                       
-
-    private void pnlDanTrongMouseEntered(java.awt.event.MouseEvent evt) {                                         
-        pnlDanTrong.setBackground(Color.white);
-    }                                        
-
-    private void pnlDanTrongMouseExited(java.awt.event.MouseEvent evt) {                                        
-        pnlDanTrong.setBackground(c);
-    }                                       
-
-    private void pnlCaytronMouseEntered(java.awt.event.MouseEvent evt) {                                        
-        pnlCaytron.setBackground(Color.white);
-    }                                       
-
-    private void pnlCaytronMouseExited(java.awt.event.MouseEvent evt) {                                       
-        pnlCaytron.setBackground(c);
-    }                                      
-
-    private void pnlGiaoviecMouseEntered(java.awt.event.MouseEvent evt) {                                         
-        pnlGiaoviec.setBackground(Color.white);
-    }                                        
-
-    private void pnlGiaoviecMouseExited(java.awt.event.MouseEvent evt) {                                        
-        pnlGiaoviec.setBackground(c);
-    }                                       
-
-    private void pnlNhatkyMouseEntered(java.awt.event.MouseEvent evt) {                                       
-        pnlNhatky.setBackground(Color.white);
-    }                                      
-
-    private void pnlNhatkyMouseExited(java.awt.event.MouseEvent evt) {                                      
-        pnlNhatky.setBackground(c);
-    }                                     
-
-    private void pnlhienthinvMouseExited(java.awt.event.MouseEvent evt) {                                         
-        pnlhienthinv.setBackground(c);
-    }                                        
-
-    private void pnlNhanvienMouseClicked(java.awt.event.MouseEvent evt) {                                         
-        OpenNhanVien();
-    }                                        
-
-    private void pnlDanTrongMouseClicked(java.awt.event.MouseEvent evt) {                                         
-        OpenGianTrong();
-    }                                        
-
-    private void pnlCaytronMouseClicked(java.awt.event.MouseEvent evt) {                                        
-        OpenCayTrong();
-    }                                       
-
-    private void pnlGiaoviecMouseClicked(java.awt.event.MouseEvent evt) {                                         
-        OpenGiaoViec();
-    }                                        
-
-    private void cb_cityActionPerformed(java.awt.event.ActionEvent evt) {                                        
-        result = HandleAPI.getJsonData((String) cb_city.getSelectedItem());
-        setThoiTiet();
-    }                                       
-
-    private void jLabel32MouseClicked(java.awt.event.MouseEvent evt) {                                      
-        weather.setVisible(true);
-    }                                     
-
-    private void jPanel2MouseExited(java.awt.event.MouseEvent evt) {                                    
-
-    }                                   
-
-    private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {                                     
-        weather.setVisible(false);
-    }                                    
-
-    private void lblpreMouseClicked(java.awt.event.MouseEvent evt) {                                    
-        idx = idx == 0 ? idx : idx - 1;
-        setThoiTiet();
-    }                                   
-
-    private void lblnextMouseClicked(java.awt.event.MouseEvent evt) {                                     
-        idx = idx == 39 ? idx : idx + 1;
-        setThoiTiet();
-    }                                    
-
-    private void lbllogountMouseEntered(java.awt.event.MouseEvent evt) {                                        
-
-        lbllogount.setForeground(new Color(0, 0, 255));
-    }                                       
-
-    private void lbllogountMouseExited(java.awt.event.MouseEvent evt) {                                       
-        lbllogount.setForeground(new Color(51, 102, 255));
-    }                                      
-
-    private void lbllogountMouseClicked(java.awt.event.MouseEvent evt) {                                        
-        this.openDangXuat();
-    }                                       
-
-    private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {                                     
-        this.closeFarmSys();
-    }                                    
-
-    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {                                     
-        this.setExtendedState(TongQuan.ICONIFIED);
-    }                                    
-
-    private void pnltodoMouseClicked(java.awt.event.MouseEvent evt) {                                     
-        this.OpenTodo();
-    }                                    
-
-    private void pnlHomeMouseClicked(java.awt.event.MouseEvent evt) {                                     
-        tabs.setSelectedIndex(0);
-    }                                    
-
-    private void pnldoneMouseClicked(java.awt.event.MouseEvent evt) {                                     
-
-    }                                    
-
-    private void pnlNhatkyMouseClicked(java.awt.event.MouseEvent evt) {                                       
-        OpenNhatky();
-
-    }                                      
-
-    private void pnldoingMouseClicked(java.awt.event.MouseEvent evt) {                                      
-        this.OpenDoing();
-    }                                     
->>>>>>> parent of 785c636 (updatenew)
 
     /**
      * @param args the command line arguments
@@ -1489,7 +1290,7 @@ public class TongQuan extends javax.swing.JFrame {
 
     private void OpenNhanVien() {
         if (Auth.isLogin()) {
-
+            
             new NhanVienJDialog().setVisible(true);
         } else {
             MsgBox.alert(this, "Vui lòng đăng nhập!");
@@ -1524,8 +1325,8 @@ public class TongQuan extends javax.swing.JFrame {
 
     private void OpenGiaoViec() {
         if (Auth.isLogin()) {
-            new GiaoViecJDialog(this, true).setVisible(true);
-
+            new GiaoViecJDialog(this,true).setVisible(true);
+                    
             // tabs.setTabPlacement(1);
         } else {
             MsgBox.alert(this, "Vui lòng đăng nhập!");
@@ -1540,30 +1341,6 @@ public class TongQuan extends javax.swing.JFrame {
         }
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-    private void OpenDoing() {
-        if (Auth.isLogin()) {
-            tabs.setSelectedIndex(6);
-            
-        } else {
-            MsgBox.alert(this, "Vui lòng đăng nhập!");
-        }
-    }
-
->>>>>>> parent of 785c636 (updatenew)
-    void addpanel() {
-        NhatKyJPanel nkpnJPanel = new NhatKyJPanel();
-//        NhanviecJPanel nhanviecJPanel = new NhanviecJPanel();
-        CayTrongPanel cayTrongPanel = new CayTrongPanel();
-        tabs.addTab("1", nkpnJPanel);
-//        tabs.addTab("2", nhanviecJPanel);
-        tabs.addTab("3", cayTrongPanel);
-
-    }
-
-=======
 //    void addpanel() {
 //        NhatKyJPanel nkpnJPanel = new NhatKyJPanel();
 //        NhanviecJPanel nhanviecJPanel = new NhanviecJPanel();
@@ -1573,7 +1350,7 @@ public class TongQuan extends javax.swing.JFrame {
 //        tabs.addTab("3", cayTrongPanel);
 //
 //    }
->>>>>>> parent of 035191a (update TestFarmSys)
+
     class RoundedPanel extends JPanel {
 
         private Color backgroundColor;
