@@ -24,7 +24,7 @@ import javax.swing.DefaultComboBoxModel;
  *
  * @author NguyenTrung
  */
-public class GiaoViecJPanel extends javax.swing.JPanel {
+public final class GiaoViecJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form GiaoViecJPanel
@@ -140,19 +140,18 @@ public class GiaoViecJPanel extends javax.swing.JPanel {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PanelTong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(PanelTong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PanelTong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(PanelTong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGiaoVietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGiaoVietActionPerformed
         this.insert();
     }//GEN-LAST:event_btnGiaoVietActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelTong;
@@ -175,7 +174,7 @@ public class GiaoViecJPanel extends javax.swing.JPanel {
     private com.toedter.calendar.JDateChooser txtNgayKetThuc;
     private javax.swing.JTextField txtnguoitao;
     // End of variables declaration//GEN-END:variables
-NhatKyDAO nkdao = new NhatKyDAO();
+    NhatKyDAO nkdao = new NhatKyDAO();
     CayTrongDAO ctdao = new CayTrongDAO();
     GianTrongDAO dtdao = new GianTrongDAO();
     CongViecDAO cvdao = new CongViecDAO();

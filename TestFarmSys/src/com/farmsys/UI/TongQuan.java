@@ -1072,7 +1072,7 @@ public class TongQuan extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-<<<<<<< HEAD
+
     private void pnlNhanvienMouseEntered(java.awt.event.MouseEvent evt) {
         pnlNhanvien.setBackground(Color.white);
     }
@@ -1201,7 +1201,7 @@ public class TongQuan extends javax.swing.JFrame {
     private void pnldoingMouseClicked(java.awt.event.MouseEvent evt) {
         this.OpenDoing();
     }
-=======
+
     private void pnlNhanvienMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlNhanvienMouseEntered
         pnlNhanvien.setBackground(Color.white);
     }//GEN-LAST:event_pnlNhanvienMouseEntered
@@ -1604,7 +1604,7 @@ public class TongQuan extends javax.swing.JFrame {
         }
     }
 
-<<<<<<< HEAD
+
     private void OpenDoing() {
         if (Auth.isLogin()) {
             tabs.setSelectedIndex(6);
@@ -1629,7 +1629,7 @@ public class TongQuan extends javax.swing.JFrame {
         tabs.addTab("6", hoanThanhCVJPanel);
     }
 
-=======
+
 //    void addpanel() {
 //        NhatKyJPanel nkpnJPanel = new NhatKyJPanel();
 //        NhanviecJPanel nhanviecJPanel = new NhanviecJPanel();
@@ -1639,7 +1639,7 @@ public class TongQuan extends javax.swing.JFrame {
 //        tabs.addTab("3", cayTrongPanel);
 //
 //    }
->>>>>>> parent of 035191a (update TestFarmSys)
+
     class RoundedPanel extends JPanel {
 
         private Color backgroundColor;
