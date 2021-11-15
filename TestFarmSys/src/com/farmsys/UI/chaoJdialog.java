@@ -7,10 +7,12 @@ package com.farmsys.UI;
 
 import AppPackage.AnimationClass;
 import com.farmsys.Helper.JdbcHelper;
+import jaco.mp3.player.MP3Player;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.io.File;
 import javax.swing.Timer;
 
 /**
@@ -125,12 +127,13 @@ public class chaoJdialog extends javax.swing.JDialog {
     private javax.swing.JProgressBar pgbLogging;
     // End of variables declaration//GEN-END:variables
 
-   
+    
 
     private void init() {
+        
         this.setLocationRelativeTo(null);
         pgbLogging.setForeground(Color.black);
-        new Timer(10, (ActionEvent e) -> {
+        new Timer(40, (ActionEvent e) -> {
             int value = pgbLogging.getValue();
             if (value < pgbLogging.getMaximum()) {
                 if (value <= 0) {
@@ -145,7 +148,7 @@ public class chaoJdialog extends javax.swing.JDialog {
                 if (value == 70) {
                     pgbLogging.setString("Đang kết nối với database....");
                 }
-                if (value == 90) {
+                if (value == 80) {
 
                     JdbcHelper.ConnectDAO();
                 }
@@ -155,5 +158,7 @@ public class chaoJdialog extends javax.swing.JDialog {
 
             }
         }).start();
+        
     }
+   
 }

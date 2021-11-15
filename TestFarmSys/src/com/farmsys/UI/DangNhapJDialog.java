@@ -10,10 +10,12 @@ import com.farmsys.DTO.NhanVien;
 import com.farmsys.Helper.Auth;
 import com.farmsys.Helper.MsgBox;
 import com.farmsys.dao.NhanVienDAO;
+import jaco.mp3.player.MP3Player;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
+import java.io.File;
 import java.util.Date;
 import java.util.Properties;
 import java.util.UUID;
@@ -558,6 +560,7 @@ public class DangNhapJDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_txtMaNVFocusLost
 
     private void lblquenmkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblquenmkMouseClicked
+        Ping3.play();
         doimkJDialog.setVisible(true);
     }//GEN-LAST:event_lblquenmkMouseClicked
 
@@ -567,6 +570,7 @@ public class DangNhapJDialog extends javax.swing.JDialog {
 
     private void lblquaylaidangnhapMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblquaylaidangnhapMouseClicked
         doimkJDialog.setVisible(false);
+        Ping3.play();
     }//GEN-LAST:event_lblquaylaidangnhapMouseClicked
 
     private void txtOTPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtOTPKeyPressed
@@ -699,6 +703,7 @@ public class DangNhapJDialog extends javax.swing.JDialog {
     private javax.swing.JPasswordField txtxnmknew;
     private javax.swing.JLabel welcom;
     // End of variables declaration//GEN-END:variables
+    MP3Player Ping3 = new MP3Player(new File("src\\com\\farmsys\\icons\\UI.mp3"));
 
     private void init() {
         setLocationRelativeTo(null);
@@ -707,8 +712,6 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         doimkJDialog.setLocationRelativeTo(this);
 
     }
-
-    
 
     void SendOTP() {
         try {
