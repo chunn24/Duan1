@@ -333,12 +333,16 @@ public class GianTrongJDialog extends javax.swing.JFrame {
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
-        this.insert();
+        if (checkTrungTen(txtTenDanTrong)) {
+            insert();
+        }
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
-        this.update();
+        if (checkTrungTen(txtTenDanTrong)) {
+            update();
+        }
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
@@ -381,7 +385,8 @@ public class GianTrongJDialog extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-        
+        this.load();
+        this.updateStatus();
     }//GEN-LAST:event_formWindowOpened
 
     private void txtTenDanTrongFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTenDanTrongFocusGained
@@ -614,7 +619,17 @@ public class GianTrongJDialog extends javax.swing.JFrame {
             return true;
         } else {
             txt.setBackground(pink);
-            MsgBox.alert(this, txt.getName() + " đã bị tồn tại.");
+            MsgBox.alert(this, "Mã giàn đã tồn tại.");
+            return false;
+        }
+    }
+    public boolean checkTrungTen(JTextField txt) {
+        txt.setBackground(white);
+        if (dtdao.selectByTenGian(txt.getText()) == null) {
+            return true;
+        } else {
+            txt.setBackground(pink);
+            MsgBox.alert(this, "Tên giàn đã bị tồn tại !");
             return false;
         }
     }
