@@ -23,9 +23,11 @@ public class NhatKyDAO extends FarmSysDAO<NhatKy, String> {
 
     String INSERT_SQL = "INSERT INTO NhatKy (TenCV, TenCay, TenGian, ChiTiet, NguoiTao, Nhanvien, NgayBatDau, NgayKetThuc, TrangThai) VALUES(?,?,?,?,?,?,?,?,?)";
     String select_all_sql = "select*from NhatKy";
-    String select_by_ten_sql = "select * from NhatKy where STT = ?";
+    String select_by_ten_sql = "select * from NhatKy where TenCV = ?";
+
     String select_by_trangthai_sql = "select * from NhatKy where TrangThai = ?";
     String select_by_trangthaivaten_sql = "select * from NhatKy where TrangThai = ? and NhanVien like ?";
+    String select_formtodoanddoing_sql = "select * from NhatKy where STT = ?";
     String UPDATE_Done_SQL = "UPDATE NhatKy SET TrangThai = 3 where STT = ?";
     String UPDATE_SQL = "UPDATE NhatKy SET TrangThai = 1 where STT = ?";
     String UPDATE_TuChoi_SQL = "UPDATE NhatKy SET TrangThai = 2 where STT = ?";
@@ -82,6 +84,15 @@ public class NhatKyDAO extends FarmSysDAO<NhatKy, String> {
         return list.get(0);
     }
 
+
+    public NhatKy selectformtodoanddoing(Integer macv) {
+        List<NhatKy> list = this.selectBySql(select_formtodoanddoing_sql, macv);
+        if (list.isEmpty()) {
+            return null;
+        }
+        return list.get(0);
+    }
+
     public NhatKy selectById(Integer macv) {
         List<NhatKy> list = this.selectBySql(select_by_ten_sql, macv);
         if (list.isEmpty()) {
@@ -99,7 +110,7 @@ public class NhatKyDAO extends FarmSysDAO<NhatKy, String> {
     }
 
     public List<NhatKy> selectByTrangThaivaTennv(int trangthai, String tennv) {
-        return selectBySql(select_by_trangthaivaten_sql, trangthai,tennv);
+        return selectBySql(select_by_trangthaivaten_sql, trangthai, tennv);
     }
 
     @Override

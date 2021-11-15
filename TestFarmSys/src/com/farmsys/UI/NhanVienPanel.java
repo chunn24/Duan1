@@ -45,6 +45,8 @@ public class NhanVienPanel extends javax.swing.JPanel {
         }).start();
     }
 
+   
+
     void insert() {
         if (!Auth.isManager()) {
             MsgBox.alert(this, "Không có quyền xóa nhân viên!");

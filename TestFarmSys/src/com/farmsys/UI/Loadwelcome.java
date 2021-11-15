@@ -40,7 +40,7 @@ public class Loadwelcome extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        panelload = new javax.swing.JPanel();
         pn2 = new javax.swing.JLabel();
         pn1 = new javax.swing.JLabel();
         pn3 = new javax.swing.JLabel();
@@ -50,31 +50,30 @@ public class Loadwelcome extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(650, 460));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setMinimumSize(new java.awt.Dimension(650, 460));
-        jPanel1.setPreferredSize(new java.awt.Dimension(650, 460));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelload.setBackground(new java.awt.Color(255, 255, 255));
+        panelload.setMinimumSize(new java.awt.Dimension(650, 460));
+        panelload.setPreferredSize(new java.awt.Dimension(650, 460));
+        panelload.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pn2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Path 2.png"))); // NOI18N
-        jPanel1.add(pn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, -9, 460, 380));
+        panelload.add(pn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, -9, 460, 380));
 
         pn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Path 1.png"))); // NOI18N
-        jPanel1.add(pn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -30, 480, 340));
+        panelload.add(pn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -30, 480, 340));
 
         pn3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Path 4.png"))); // NOI18N
-        jPanel1.add(pn3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 460, 340));
+        panelload.add(pn3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 460, 340));
 
         pn4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Path 5.png"))); // NOI18N
-        jPanel1.add(pn4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 610, 300));
+        panelload.add(pn4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 610, 300));
 
         welcom.setFont(new java.awt.Font("Forte", 1, 36)); // NOI18N
         welcom.setText("Welcome to FarmSys");
-        jPanel1.add(welcom, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 350, 80));
+        panelload.add(welcom, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 350, 80));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 460));
+        getContentPane().add(panelload, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 460));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -122,7 +121,7 @@ public class Loadwelcome extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel panelload;
     private javax.swing.JLabel pn1;
     private javax.swing.JLabel pn2;
     private javax.swing.JLabel pn3;
@@ -137,12 +136,11 @@ public class Loadwelcome extends javax.swing.JDialog {
         AnimationClass anim = new AnimationClass();
 
         anim.jLabelXLeft(pn1.getX(), -1000, 2, 1, pn1);
-
         anim.jLabelXRight(pn2.getX(), 1000, 3, 1, pn2);
-
         anim.jLabelXRight(pn3.getX(), 1000, 2, 1, pn3);
+        anim.jLabelXLeft(pn4.getX(), -1000, 2, 1, pn4);
+        //anim.jLabelXRight(-200, 170, 2, 1, welcom);
 
-        anim.jLabelYDown(pn4.getY(), 1000, 2, 1, pn4);
         new Timer(5000, (ActionEvent e) -> {
             this.dispose();
         }).start();

@@ -28,10 +28,11 @@ public class NhanVienJDialog extends javax.swing.JFrame {
         this.row = -1;
         this.updateStatus();
     }
-    
+
     NhanVienDAO dao = new NhanVienDAO();
     int row = -1;
-    
+
+
     void init() {
 //        if (!Auth.isLogin()) {
 //            MsgBox.alert(this, "Chưa đăng nhập, vô cái loz");
@@ -39,7 +40,7 @@ public class NhanVienJDialog extends javax.swing.JFrame {
 //        }
 //        this.updateStatus();
     }
-    
+
     void insert() {
         if (!Auth.isManager()) {
             MsgBox.alert(this, "Không có quyền xóa nhân viên!");
@@ -62,7 +63,7 @@ public class NhanVienJDialog extends javax.swing.JFrame {
             }
         }
     }
-    
+
     void update() {
         NhanVien nv = getForm();
         String mk2 = new String(txtMatKhau2.getPassword());
@@ -149,11 +150,11 @@ public class NhanVienJDialog extends javax.swing.JFrame {
         try {
             List<NhanVien> list = dao.selectAll();
             for (NhanVien nv : list) {
-                
+
                 Object[] row = {
                     nv.getMaNV(), "***********", nv.getHoTen(),
                     nv.isVaiTro() ? "Trưởng phòng" : "Nhân viên",
-                    nv.getEmail(), nv.isGioiTinh()?"Nam":"Nữ", nv.getLuong()
+                    nv.getEmail(), nv.isGioiTinh() ? "Nam" : "Nữ", nv.getLuong()
                 };
                 model.addRow(row);
             }
@@ -169,11 +170,11 @@ public class NhanVienJDialog extends javax.swing.JFrame {
         txtMatKhau2.setText(nv.getMatKhau());
         rdoTruongPhong.setSelected(nv.isVaiTro());
         rdoNhanVien.setSelected(!nv.isVaiTro());
-        
+
         rdoNam.setSelected(nv.isGioiTinh());
         rdoNu.setSelected(!nv.isGioiTinh());
         txtEmail.setText(nv.getEmail());
-        txtLuong.setText(nv.getLuong()+"");
+        txtLuong.setText(nv.getLuong() + "");
     }
 
     NhanVien getForm() {
@@ -183,7 +184,7 @@ public class NhanVienJDialog extends javax.swing.JFrame {
         nv.setMatKhau(new String(txtMatKhau.getPassword()));
         nv.setVaiTro(rdoTruongPhong.isSelected());
         //xét giới tính
-        
+
         nv.setGioiTinh(rdoNam.isSelected());
         nv.setEmail(txtEmail.getText());
         nv.setLuong(Integer.parseInt(txtLuong.getText()));
@@ -249,6 +250,7 @@ public class NhanVienJDialog extends javax.swing.JFrame {
         pnlList = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblNhanVien = new javax.swing.JTable();
+        jLabel4 = new javax.swing.JLabel();
         lblTitle = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -490,15 +492,25 @@ public class NhanVienJDialog extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblNhanVien);
 
+        jLabel4.setText("jLabel4");
+
         javax.swing.GroupLayout pnlListLayout = new javax.swing.GroupLayout(pnlList);
         pnlList.setLayout(pnlListLayout);
         pnlListLayout.setHorizontalGroup(
             pnlListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 798, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 802, Short.MAX_VALUE)
+            .addGroup(pnlListLayout.createSequentialGroup()
+                .addGap(251, 251, 251)
+                .addComponent(jLabel4)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlListLayout.setVerticalGroup(
             pnlListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 605, Short.MAX_VALUE)
+            .addGroup(pnlListLayout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48)
+                .addComponent(jLabel4)
+                .addGap(0, 95, Short.MAX_VALUE))
         );
 
         Tabs.addTab("DANH SÁCH", pnlList);
@@ -643,6 +655,7 @@ public class NhanVienJDialog extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblHoTen;
@@ -666,5 +679,4 @@ public class NhanVienJDialog extends javax.swing.JFrame {
     private javax.swing.JPasswordField txtMatKhau2;
     // End of variables declaration//GEN-END:variables
 
-   
 }

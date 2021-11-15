@@ -393,7 +393,7 @@ public class NhanViecJPanel extends javax.swing.JPanel {
 
     void edit() {
         int manv = (int) tblcv.getValueAt(this.row, 0);
-        NhatKy nv = nkDAO.selectById(manv);
+        NhatKy nv = nkDAO.selectformtodoanddoing(manv);
         this.setForm(nv);
         tabs.setSelectedIndex(1);
 
