@@ -18,11 +18,12 @@ public class NhanVien {
     private int luong;
     private String hinh;
     private boolean vaiTro;
+    private String QRcodeString;
 
     public NhanVien() {
     }
 
-    public NhanVien(String maNV, String matKhau, String hoTen, boolean gioiTinh, String email, int luong, String hinh, boolean vaiTro) {
+    public NhanVien(String maNV, String matKhau, String hoTen, boolean gioiTinh, String email, int luong, String hinh, boolean vaiTro, String QRcodeString) {
         this.maNV = maNV;
         this.matKhau = matKhau;
         this.hoTen = hoTen;
@@ -31,6 +32,7 @@ public class NhanVien {
         this.luong = luong;
         this.hinh = hinh;
         this.vaiTro = vaiTro;
+        this.QRcodeString = QRcodeString;
     }
 
     public String getMaNV() {
@@ -96,6 +98,16 @@ public class NhanVien {
     public void setVaiTro(boolean vaiTro) {
         this.vaiTro = vaiTro;
     }
+
+    public String getQRcodeString() {
+        return QRcodeString;
+    }
+
+    public void setQRcodeString(String QRcodeString) {
+        this.QRcodeString = QRcodeString;
+    }
+
+    
 
     @Override
     public String toString() {

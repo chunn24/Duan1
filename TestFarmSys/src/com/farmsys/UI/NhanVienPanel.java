@@ -13,6 +13,31 @@ import java.awt.event.ActionEvent;
 import java.util.List;
 import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
+import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.EncodeHintType;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.client.j2se.MatrixToImageWriter;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
+import com.sun.mail.imap.IMAPBodyPart;
+import java.io.IOException;
+import java.util.Date;
+import java.util.Properties;
+import java.util.UUID;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 
 /**
  *
@@ -20,9 +45,13 @@ import javax.swing.table.DefaultTableModel;
  */
 public class NhanVienPanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form NhanVienPanel
-     */
+    private final String accountName = "farmsys.contact@gmail.com";
+    private final String accountPassword = "FarmSys@123456";
+    private String manv;
+    private String emailNV;
+    private String tempOTP;
+    String QRcoderandomString;
+
     public NhanVienPanel() {
         initComponents();
         init();
@@ -43,9 +72,8 @@ public class NhanVienPanel extends javax.swing.JPanel {
         new Timer(5000, (ActionEvent e) -> {
             this.fillTable();
         }).start();
-    }
 
-   
+    }
 
     void insert() {
         if (!Auth.isManager()) {
@@ -58,9 +86,11 @@ public class NhanVienPanel extends javax.swing.JPanel {
                 MsgBox.alert(this, "Xác nhận mật khẩu không đúng");
             } else {
                 try {
+
+                    this.createQRcode();
                     dao.insert(nv);
                     this.fillTable();
-                    this.clearForm();
+
                     MsgBox.alert(this, "Thêm mới thành công!");
                 } catch (Exception e) {
                     MsgBox.alert(this, "Thêm thất bại!");
@@ -194,6 +224,7 @@ public class NhanVienPanel extends javax.swing.JPanel {
         nv.setGioiTinh(rdoNam.isSelected());
         nv.setEmail(txtEmail.getText());
         nv.setLuong(Integer.parseInt(txtLuong.getText()));
+        nv.setQRcodeString(txtqrcode.getText());
         return nv;
     }
 
@@ -211,6 +242,99 @@ public class NhanVienPanel extends javax.swing.JPanel {
         btnPrev.setEnabled(edit && !first);
         btnNext.setEnabled(edit && !last);
         btnLast.setEnabled(edit && !last);
+    }
+
+    private void randomString() {
+        QRcoderandomString = UUID.randomUUID().toString();
+        txtqrcode.setText(QRcoderandomString);
+    }
+
+    private void createQRcode() {
+        try {
+            String qrCodeData = QRcoderandomString;
+            String filePath = "D:\\netbean\\thu vien\\zxing-core-2.0\\QR CODE\\a.png";
+            String charset = "UTF-8"; // or "ISO-8859-1"
+            Map< EncodeHintType, ErrorCorrectionLevel> hintMap = new HashMap< EncodeHintType, ErrorCorrectionLevel>();
+            hintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
+            BitMatrix matrix = new MultiFormatWriter().encode(
+                    new String(qrCodeData.getBytes(charset), charset),
+                    BarcodeFormat.QR_CODE, 200, 200, hintMap);
+            MatrixToImageWriter.writeToFile(matrix, filePath.substring(filePath
+                    .lastIndexOf('.') + 1), new File(filePath));
+            System.out.println("QR Code image created successfully!");
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+    }
+
+    private void sendQRcode(String manv) {
+        try {
+            Properties p = new Properties();
+            p.put("mail.smtp.auth", "true");
+            p.put("mail.smtp.starttls.enable", "true");
+            p.put("mail.smtp.host", "smtp.gmail.com");
+            p.put("mail.smtp.port", 587);
+            Session s = Session.getInstance(p,
+                    new javax.mail.Authenticator() {
+                @Override
+                protected PasswordAuthentication getPasswordAuthentication() {
+                    return new PasswordAuthentication(accountName, accountPassword);
+                }
+            });
+
+            String from = accountName;
+            String to = manv;
+            String subject = "QR code";
+            this.randomString();
+            String body = "Đây là mã QR code cá nhân. Vui lòng không để cho người khác có được mã này !";
+
+            Message msg = new MimeMessage(s);
+            msg.setFrom(new InternetAddress(from));
+            msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
+            msg.setSubject(subject);
+            msg.setText(body);
+            msg.setSentDate(new Date());
+
+            MimeMultipart multipart = new MimeMultipart();
+
+            MimeBodyPart messageBodyPart = new MimeBodyPart();
+            messageBodyPart.setText(body);
+            
+
+            MimeBodyPart attachment = new MimeBodyPart();
+            attachment.attachFile(new File("D:\\netbean\\thu vien\\zxing-core-2.0\\QR CODE\\a.png"));
+
+            multipart.addBodyPart(messageBodyPart);
+            multipart.addBodyPart(attachment);
+
+            msg.setContent(multipart);
+            Transport.send(msg);
+            MsgBox.alert(this, "Gửi mail thành công");
+            this.clearForm();
+        } catch (MessagingException ex) {
+            System.out.println(ex);
+        } catch (IOException ex) {
+            Logger.getLogger(NhanVienPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    void Sendmail() {
+        try {
+            manv = txtMaNV.getText();
+            NhanVien nhanVien = dao.selectById(manv);
+            if (nhanVien != null) {//check tk có tồn tại không
+                emailNV = dao.selectById(manv).getEmail();//check mail nv
+                if (emailNV == null) {
+                    MsgBox.alert(this, "Tài khoản này chưa có email");
+                } else {//tài khoản có mail --> gửi mail -->check otp
+                    this.sendQRcode(emailNV);
+
+                }
+            } else {
+                MsgBox.alert(this, "Tài khoản không tồn tại");
+            }
+        } catch (Exception e) {
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -249,6 +373,8 @@ public class NhanVienPanel extends javax.swing.JPanel {
         txtLuong = new javax.swing.JTextField();
         rdoNam = new javax.swing.JRadioButton();
         rdoNu = new javax.swing.JRadioButton();
+        jLabel4 = new javax.swing.JLabel();
+        txtqrcode = new javax.swing.JTextField();
 
         setMinimumSize(new java.awt.Dimension(1083, 750));
         setPreferredSize(new java.awt.Dimension(1083, 750));
@@ -257,6 +383,7 @@ public class NhanVienPanel extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setMinimumSize(new java.awt.Dimension(1083, 750));
         jPanel1.setPreferredSize(new java.awt.Dimension(1083, 750));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Tabs.setMinimumSize(new java.awt.Dimension(1083, 750));
         Tabs.setPreferredSize(new java.awt.Dimension(1083, 750));
@@ -287,7 +414,7 @@ public class NhanVienPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblNhanVien);
 
-        pnlList.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 1068, 700));
+        pnlList.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 1050, 700));
 
         Tabs.addTab("DANH SÁCH", pnlList);
 
@@ -387,14 +514,19 @@ public class NhanVienPanel extends javax.swing.JPanel {
 
         rdoNu.setText("Nữ");
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel4.setText("QR code");
+
+        txtqrcode.setEditable(false);
+
         javax.swing.GroupLayout pnlEditLayout = new javax.swing.GroupLayout(pnlEdit);
         pnlEdit.setLayout(pnlEditLayout);
         pnlEditLayout.setHorizontalGroup(
             pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlEditLayout.createSequentialGroup()
-                .addGap(117, 117, 117)
-                .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(pnlEditLayout.createSequentialGroup()
+                .addGap(138, 138, 138)
+                .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlEditLayout.createSequentialGroup()
                         .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lblMaNV)
                             .addComponent(lblMatKhau)
@@ -408,26 +540,33 @@ public class NhanVienPanel extends javax.swing.JPanel {
                                 .addGap(41, 41, 41)
                                 .addComponent(rdoNu))
                             .addComponent(jLabel2)
-                            .addComponent(lblVaiTro)
-                            .addGroup(pnlEditLayout.createSequentialGroup()
-                                .addComponent(rdoTruongPhong)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(rdoNhanVien))
                             .addComponent(jLabel3)
                             .addComponent(txtEmail)
                             .addComponent(txtHoTen)
                             .addComponent(txtLuong)
-                            .addComponent(txtMaNV, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtMaNV, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pnlEditLayout.createSequentialGroup()
+                                .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblVaiTro)
+                                    .addGroup(pnlEditLayout.createSequentialGroup()
+                                        .addComponent(rdoTruongPhong)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(rdoNhanVien)))
+                                .addGap(58, 58, 58)
+                                .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtqrcode)
+                                    .addComponent(jLabel4))))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(pnlEditLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlEditLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnThem)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnSua)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnXoa)
-                        .addGap(29, 29, 29)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnMoi)
-                        .addGap(138, 138, 138)
+                        .addGap(165, 165, 165)
                         .addComponent(btnFirst)
                         .addGap(33, 33, 33)
                         .addComponent(btnPrev)
@@ -437,6 +576,9 @@ public class NhanVienPanel extends javax.swing.JPanel {
                         .addComponent(btnLast)
                         .addGap(200, 200, 200))))
         );
+
+        pnlEditLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnMoi, btnSua, btnThem, btnXoa});
+
         pnlEditLayout.setVerticalGroup(
             pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlEditLayout.createSequentialGroup()
@@ -470,13 +612,16 @@ public class NhanVienPanel extends javax.swing.JPanel {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtLuong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52)
-                .addComponent(lblVaiTro, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblVaiTro, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rdoTruongPhong)
-                    .addComponent(rdoNhanVien))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                    .addComponent(rdoNhanVien)
+                    .addComponent(txtqrcode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
                 .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnThem)
@@ -493,35 +638,19 @@ public class NhanVienPanel extends javax.swing.JPanel {
 
         pnlEditLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtEmail, txtHoTen, txtLuong, txtMaNV, txtMatKhau, txtMatKhau2});
 
+        pnlEditLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnMoi, btnSua, btnThem, btnXoa});
+
         Tabs.addTab("CẬP NHẬT", pnlEdit);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1110, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(18, 18, 18)
-                    .addComponent(Tabs, javax.swing.GroupLayout.PREFERRED_SIZE, 1068, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(24, Short.MAX_VALUE)))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 750, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Tabs, javax.swing.GroupLayout.PREFERRED_SIZE, 739, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap()))
-        );
+        jPanel1.add(Tabs, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 11, 1060, 739));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1110, 750));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-        // TODO add your handling code here:
+        this.randomString();
         this.insert();
+        this.Sendmail();
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
@@ -581,6 +710,7 @@ public class NhanVienPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblHoTen;
@@ -601,5 +731,6 @@ public class NhanVienPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtMaNV;
     private javax.swing.JPasswordField txtMatKhau;
     private javax.swing.JPasswordField txtMatKhau2;
+    private javax.swing.JTextField txtqrcode;
     // End of variables declaration//GEN-END:variables
 }

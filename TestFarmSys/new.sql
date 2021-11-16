@@ -20,7 +20,7 @@ Create table NhanVien (
 	Luong int,
 	VaiTro bit not null,
 	Hinh varchar(30) ,
-	QRcode varchar(10)
+	QRcode varchar(40)
 );
 go
 

@@ -130,6 +130,7 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
         lblquenmk = new javax.swing.JLabel();
         lblloginwwithQR = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        txtQRcode = new javax.swing.JTextField();
 
         doimkJDialog.setMinimumSize(new java.awt.Dimension(950, 500));
         doimkJDialog.setModal(true);
@@ -624,6 +625,7 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/logofarmSys.gif"))); // NOI18N
         pnlTong.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 470));
+        pnlTong.add(txtQRcode, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 280, -1, -1));
 
         getContentPane().add(pnlTong, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, -1, 470));
 
@@ -825,6 +827,7 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
     private javax.swing.JTextField txtMaNV;
     private javax.swing.JPasswordField txtMatKhau;
     private javax.swing.JTextField txtOTP;
+    private javax.swing.JTextField txtQRcode;
     private javax.swing.JPasswordField txtmknew;
     private javax.swing.JTextField txttaikhoanlaymk;
     private javax.swing.JPasswordField txtxnmknew;
@@ -869,11 +872,21 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
         try {
             String manv = txtMaNV.getText().trim();
             String matKhau = new String(txtMatKhau.getPassword());
+            String QRcode = txtQRcode.getText().trim();
             NhanVien nhanVien = dao.selectById(manv);
             NhanVien nhanVienEM = dao.selectByEmail(manv);
+            NhanVien nhanvienQRcode = dao.selectByQRcode(QRcode);
             if (nhanVien == null) {
                 if (nhanVienEM == null) {
-                    MsgBox.alert(this, "Sai tên đăng nhập hoặc Email!");
+                    if (nhanvienQRcode == null) {
+                        MsgBox.alert(this, "Sai tên đăng nhập hoặc Email!");
+                    } else if (!QRcode.equals(nhanvienQRcode.getQRcodeString())) {
+
+                    } else {
+                        Auth.user = nhanvienQRcode;
+                        this.dispose();
+                    }
+
                 } else if (!matKhau.equals(nhanVienEM.getMatKhau())) {
 
                 } else {
@@ -889,7 +902,7 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
             }
 
         } catch (Exception e) {
-            MsgBox.alert(rootPane, "<3");
+           
         }
 
     }
@@ -910,6 +923,7 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
 
     private void randomString() {
         OTP = UUID.randomUUID().toString();
+        
     }
 
     private void sendOTP(String email) {
@@ -939,6 +953,7 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
             msg.setText(body);
             msg.setSentDate(new Date());
 
+            
             Transport.send(msg);
             MsgBox.alert(this, "Một email chứa mã OTP đã gửi vào email của bạn!");
 
@@ -993,7 +1008,7 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
             panelquetqr.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 300));
 
             executor.execute(this);
-        }else{
+        } else {
             webcam.close();
             jDialog1.setVisible(false);
         }
@@ -1029,9 +1044,9 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
 
             if (result != null) {
 //                txtMaNV.setText(result.getText());
-//                txtMatKhau.setText(result.getText());
-                txtMaNV.setText("trung");
-                txtMatKhau.setText("240102");
+                txtQRcode.setText(result.getText());
+//                txtMaNV.setText("trung");
+//                txtMatKhau.setText("240102");
                 this.dangNhap();
 
             }
