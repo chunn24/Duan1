@@ -19,7 +19,8 @@ Create table NhanVien (
 	Email nvarchar(30)not null,
 	Luong int,
 	VaiTro bit not null,
-	Hinh varchar(30) 
+	Hinh varchar(30) ,
+	QRcode varchar(10)
 );
 go
 
@@ -80,12 +81,12 @@ go
 
 insert into NhanVien 
 values 
- ('Trung','240102',N'Vương Nguyên Trung',0,'trung@fpt.edu.vn',10000000,1,'a.png'),
- ('TrieuNHD','123456',N'Nguyễn Huỳnh Đông Triều',0,'trieu@fpt.edu.vn',10000000,0,'b.png'),
- ('Tri','123456',N'Nguyễn Diệp Thế Tri',0,'Tri@fpt.edu.vn',10000000,0,'c.png'),
- ('Dung','123456',N'Trần Tiến Dũng',0,'Dung@fpt.edu.vn',2000000,0,'d.png'),
- ('Hai','123456',N'Giáp Văn Hải',0,'Hai@fpt.edu.vn',10000000,0,'e.png'),
- ('Tuan','123456',N'Đinh Quang Tuấn',0,'Tuan@fpt.edu.vn',10000000,0,'f.png')
+ ('Trung','240102',N'Vương Nguyên Trung',0,'trung@fpt.edu.vn',10000000,1,'a.png',null),
+ ('TrieuNHD','123456',N'Nguyễn Huỳnh Đông Triều',0,'trieu@fpt.edu.vn',10000000,0,'b.png',null),
+ ('Tri','123456',N'Nguyễn Diệp Thế Tri',0,'Tri@fpt.edu.vn',10000000,0,'c.png',null),
+ ('Dung','123456',N'Trần Tiến Dũng',0,'Dung@fpt.edu.vn',2000000,0,'d.png',null),
+ ('Hai','123456',N'Giáp Văn Hải',0,'Hai@fpt.edu.vn',10000000,0,'e.png',null),
+ ('Tuan','123456',N'Đinh Quang Tuấn',0,'Tuan@fpt.edu.vn',10000000,0,'f.png',null)
  go
 
  insert into GianTrong (TenGian,TrangThai)
