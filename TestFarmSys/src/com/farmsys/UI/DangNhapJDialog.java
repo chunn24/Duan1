@@ -12,32 +12,45 @@ import com.farmsys.dao.NhanVienDAO;
 import com.github.sarxos.webcam.Webcam;
 import com.github.sarxos.webcam.WebcamPanel;
 import com.github.sarxos.webcam.WebcamResolution;
+import com.google.zxing.BarcodeFormat;
 import com.google.zxing.BinaryBitmap;
+import com.google.zxing.EncodeHintType;
 import com.google.zxing.LuminanceSource;
 import com.google.zxing.MultiFormatReader;
+import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.NotFoundException;
 import com.google.zxing.Result;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
+import com.google.zxing.client.j2se.MatrixToImageWriter;
+import com.google.zxing.common.BitMatrix;
 import com.google.zxing.common.HybridBinarizer;
+import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import jaco.mp3.player.MP3Player;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 import java.util.UUID;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 
 /**
  *
@@ -838,6 +851,8 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
     private WebcamPanel panel = null;
     private Webcam webcam = null;
 
+    String QRcoderandomString;
+
     private static final long serialVersionUID = 6441489157408381878L;
     private final Executor executor = Executors.newSingleThreadExecutor(this);
 
@@ -847,6 +862,40 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
         txtmknew.setEnabled(true);
         doimkJDialog.setLocationRelativeTo(this);
 
+    }
+
+    void update() {
+        String nv = txtQRcode.getText();
+
+        try {
+            this.createQRcode();
+            dao.updateQRcode(nv);
+
+        } catch (Exception e) {
+
+            System.out.println(e);
+        }
+
+    }
+
+    
+
+    private void createQRcode() {
+        try {
+            String qrCodeData = QRcoderandomString;
+            String filePath = "D:\\netbean\\thu vien\\ThuVien\\zxing-core-2.0\\QR CODE\\a.png";
+            String charset = "UTF-8"; // or "ISO-8859-1"
+            Map< EncodeHintType, ErrorCorrectionLevel> hintMap = new HashMap< EncodeHintType, ErrorCorrectionLevel>();
+            hintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
+            BitMatrix matrix = new MultiFormatWriter().encode(
+                    new String(qrCodeData.getBytes(charset), charset),
+                    BarcodeFormat.QR_CODE, 200, 200, hintMap);
+            MatrixToImageWriter.writeToFile(matrix, filePath.substring(filePath
+                    .lastIndexOf('.') + 1), new File(filePath));
+            System.out.println("QR Code image created successfully!");
+        } catch (Exception e) {
+            System.err.println(e);
+        }
     }
 
     void SendOTP() {
@@ -875,7 +924,7 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
             String QRcode = txtQRcode.getText().trim();
             NhanVien nhanVien = dao.selectById(manv);
             NhanVien nhanVienEM = dao.selectByEmail(manv);
-            NhanVien nhanvienQRcode = dao.selectByQRcode(QRcode);
+            NhanVien nhanvienQRcode = dao.selectByQRcodeFormNV(QRcode);
             if (nhanVien == null) {
                 if (nhanVienEM == null) {
                     if (nhanvienQRcode == null) {
@@ -899,10 +948,11 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
                 Auth.user = nhanVien;
                 this.dispose();
                 initWebcam(false);
+
             }
 
         } catch (Exception e) {
-           
+
         }
 
     }
@@ -923,7 +973,77 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
 
     private void randomString() {
         OTP = UUID.randomUUID().toString();
-        
+        QRcoderandomString = UUID.randomUUID().toString();
+        txtQRcode.setText(QRcoderandomString);
+    }
+
+    void Sendmail() {
+        try {
+            manv = txtQRcode.getText();
+            NhanVien nhanVien = dao.selectByQR(manv);
+            if (nhanVien != null) {//check tk có tồn tại không
+                emailNV = dao.selectByQR(manv).getEmail();//check mail nv
+                if (emailNV == null) {
+                    MsgBox.alert(this, "Tài khoản này chưa có email");
+                } else {//tài khoản có mail --> gửi mail -->check otp
+                    this.sendQRcode(emailNV);
+
+                }
+            } else {
+                MsgBox.alert(this, "Tài khoản không tồn tại");
+            }
+        } catch (Exception e) {
+        }
+    }
+
+    private void sendQRcode(String manv) {
+        try {
+            Properties p = new Properties();
+            p.put("mail.smtp.auth", "true");
+            p.put("mail.smtp.starttls.enable", "true");
+            p.put("mail.smtp.host", "smtp.gmail.com");
+            p.put("mail.smtp.port", 587);
+            Session s = Session.getInstance(p,
+                    new javax.mail.Authenticator() {
+                @Override
+                protected PasswordAuthentication getPasswordAuthentication() {
+                    return new PasswordAuthentication(accountName, accountPassword);
+                }
+            });
+
+            String from = accountName;
+            String to = manv;
+            String subject = "QR code";
+            this.randomString();
+            String body = "Đây là mã QR code cá nhân. Vui lòng không để cho người khác có được mã này !";
+
+            Message msg = new MimeMessage(s);
+            msg.setFrom(new InternetAddress(from));
+            msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
+            msg.setSubject(subject);
+            msg.setText(body);
+            msg.setSentDate(new Date());
+
+            MimeMultipart multipart = new MimeMultipart();
+
+            MimeBodyPart messageBodyPart = new MimeBodyPart();
+            messageBodyPart.setText(body);
+
+            MimeBodyPart attachment = new MimeBodyPart();
+            attachment.attachFile(new File("D:\\netbean\\thu vien\\ThuVien\\zxing-core-2.0\\QR CODE\\a.png"));
+
+            multipart.addBodyPart(messageBodyPart);
+            multipart.addBodyPart(attachment);
+
+            msg.setContent(multipart);
+            Transport.send(msg);
+
+            this.clearForm();
+        } catch (MessagingException ex) {
+            System.out.println(ex);
+        } catch (IOException ex) {
+            Logger.getLogger(NhanVienPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     private void sendOTP(String email) {
@@ -953,7 +1073,6 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
             msg.setText(body);
             msg.setSentDate(new Date());
 
-            
             Transport.send(msg);
             MsgBox.alert(this, "Một email chứa mã OTP đã gửi vào email của bạn!");
 
@@ -1047,7 +1166,12 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
                 txtQRcode.setText(result.getText());
 //                txtMaNV.setText("trung");
 //                txtMatKhau.setText("240102");
+
                 this.dangNhap();
+                randomString();
+                createQRcode();
+                update();
+                this.Sendmail();
 
             }
         } while (true);

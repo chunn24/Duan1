@@ -252,7 +252,7 @@ public class NhanVienPanel extends javax.swing.JPanel {
     private void createQRcode() {
         try {
             String qrCodeData = QRcoderandomString;
-            String filePath = "D:\\netbean\\thu vien\\zxing-core-2.0\\QR CODE\\a.png";
+            String filePath = "D:\\netbean\\thu vien\\ThuVien\\zxing-core-2.0\\QR CODE\\a.png";
             String charset = "UTF-8"; // or "ISO-8859-1"
             Map< EncodeHintType, ErrorCorrectionLevel> hintMap = new HashMap< EncodeHintType, ErrorCorrectionLevel>();
             hintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
@@ -302,7 +302,7 @@ public class NhanVienPanel extends javax.swing.JPanel {
             
 
             MimeBodyPart attachment = new MimeBodyPart();
-            attachment.attachFile(new File("D:\\netbean\\thu vien\\zxing-core-2.0\\QR CODE\\a.png"));
+            attachment.attachFile(new File("D:\\netbean\\thu vien\\ThuVien\\zxing-core-2.0\\QR CODE\\a.png"));
 
             multipart.addBodyPart(messageBodyPart);
             multipart.addBodyPart(attachment);

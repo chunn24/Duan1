@@ -22,9 +22,11 @@ public class NhanVienDAO extends FarmSysDAO<NhanVien, String> {
 
     String INSERT_SQL = "INSERT INTO NhanVien(MaNV, MatKhau, HoTen, GioiTinh, Email, Luong, VaiTro, Hinh, QRcode) VALUES(?,?,?,?,?,?,?,?,?)";
     String UPDATE_SQL = "UPDATE NhanVien SET MatKhau=?,HoTen=?,GioiTinh=?,Email=?, Luong=?, VaiTro=?, Hinh=? WHERE MaNV=?";
+    String UPDATEQRcode_SQL = "UPDATE NhanVien SET QRcode = ? WHERE QRcode = ?";
     String DELETE_SQL = "DELETE FROM NhanVien WHERE MaNV=?";
     String SELECT_ALL_SQL = "SELECT *FROM NhanVien";
     String SELECT_BY_ID_SQL = "SELECT * FROM NhanVien WHERE MaNV=?";
+    String SELECT_BY_QR_SQL = "SELECT * FROM NhanVien WHERE QRcode=?";
     String SELECT_BY_Email_SQL = "SELECT * FROM NhanVien WHERE Email=?";
     String RESET_PASS_SQL = "UPDATE NhanVien SET MatKhau=? WHERE MaNV=?";
     String SELECT_NhanVien_SQL = "SELECT *FROM NhanVien WHERE VaiTro= 0";
@@ -43,6 +45,14 @@ public class NhanVienDAO extends FarmSysDAO<NhanVien, String> {
     public void update(NhanVien entity) {
         try {
             JdbcHelper.update(UPDATE_SQL, entity.getMatKhau(), entity.getHoTen(), entity.isGioiTinh(), entity.getEmail(), entity.getLuong(), entity.isVaiTro(), entity.getHinh(), entity.getMaNV());
+        } catch (SQLException ex) {
+            Logger.getLogger(NhanVienDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void updateQRcode(String entity) {
+        try {
+            JdbcHelper.update(UPDATE_SQL, entity);
         } catch (SQLException ex) {
             Logger.getLogger(NhanVienDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -74,6 +84,13 @@ public class NhanVienDAO extends FarmSysDAO<NhanVien, String> {
         }
         return list.get(0);
     }
+    public NhanVien selectByQR(String key) {
+        List<NhanVien> list = this.selectBySql(SELECT_BY_QR_SQL, key);
+        if (list.isEmpty()) {
+            return null;
+        }
+        return list.get(0);
+    }
 
     public NhanVien selectByEmail(String key) {
         List<NhanVien> list = this.selectBySql(SELECT_BY_Email_SQL, key);
@@ -83,7 +100,7 @@ public class NhanVienDAO extends FarmSysDAO<NhanVien, String> {
         return list.get(0);
     }
 
-    public NhanVien selectByQRcode(String key) {
+    public NhanVien selectByQRcodeFormNV(String key) {
         List<NhanVien> list = this.selectBySql(SELECT_NhanVienQRcode_SQL, key);
         if (list.isEmpty()) {
             return null;
