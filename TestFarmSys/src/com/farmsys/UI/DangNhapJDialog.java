@@ -119,12 +119,10 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
         pn4 = new javax.swing.JLabel();
         welcom = new javax.swing.JLabel();
         jFrame1 = new javax.swing.JFrame();
-        jDialog1 = new javax.swing.JDialog();
         panelquetqr = new javax.swing.JPanel();
-        result_field1 = new javax.swing.JTextField();
         jSeparator8 = new javax.swing.JSeparator();
-        jLabel18 = new javax.swing.JLabel();
         panelquetQR = new javax.swing.JPanel();
+        jDialog1 = new javax.swing.JDialog();
         pnldieukhien1 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -383,32 +381,11 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
         jFrame1.setMinimumSize(new java.awt.Dimension(500, 380));
         jFrame1.setUndecorated(true);
 
-        javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
-        jFrame1.getContentPane().setLayout(jFrame1Layout);
-        jFrame1Layout.setHorizontalGroup(
-            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
-        );
-        jFrame1Layout.setVerticalGroup(
-            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 380, Short.MAX_VALUE)
-        );
-
-        jDialog1.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        jDialog1.setUndecorated(true);
-
         panelquetqr.setBackground(new java.awt.Color(255, 255, 255));
         panelquetqr.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        result_field1.setBorder(null);
-        panelquetqr.add(result_field1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 470, 20));
-
         jSeparator8.setForeground(new java.awt.Color(126, 167, 206));
         panelquetqr.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 470, 10));
-
-        jLabel18.setForeground(new java.awt.Color(105, 105, 105));
-        jLabel18.setText("Resultado");
-        panelquetqr.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, -1, -1));
 
         panelquetQR.setBackground(new java.awt.Color(250, 250, 250));
         panelquetQR.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 230, 230)));
@@ -420,25 +397,37 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
         panelquetQR.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         panelquetqr.add(panelquetQR, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 470, 300));
 
-        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
-        jDialog1.getContentPane().setLayout(jDialog1Layout);
-        jDialog1Layout.setHorizontalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
+        jFrame1.getContentPane().setLayout(jFrame1Layout);
+        jFrame1Layout.setHorizontalGroup(
+            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 500, Short.MAX_VALUE)
-            .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jDialog1Layout.createSequentialGroup()
+            .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jFrame1Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
                     .addComponent(panelquetqr, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
-        jDialog1Layout.setVerticalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jFrame1Layout.setVerticalGroup(
+            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 380, Short.MAX_VALUE)
-            .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jDialog1Layout.createSequentialGroup()
+            .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jFrame1Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
                     .addComponent(panelquetqr, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        jDialog1.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jDialog1.setUndecorated(true);
+
+        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
+        jDialog1.getContentPane().setLayout(jDialog1Layout);
+        jDialog1Layout.setHorizontalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        );
+        jDialog1Layout.setVerticalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -729,7 +718,7 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
 
     private void lblloginwwithQRMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblloginwwithQRMouseClicked
         initWebcam(true);
-        jDialog1.setVisible(true);
+        jFrame1.setVisible(true);
     }//GEN-LAST:event_lblloginwwithQRMouseClicked
 
     private void lblloginwwithQRMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblloginwwithQRMouseEntered
@@ -807,7 +796,6 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -836,7 +824,6 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
     private javax.swing.JPanel pnlTong1;
     private javax.swing.JPanel pnldieukhien;
     private javax.swing.JPanel pnldieukhien1;
-    private javax.swing.JTextField result_field1;
     private javax.swing.JTextField txtMaNV;
     private javax.swing.JPasswordField txtMatKhau;
     private javax.swing.JTextField txtOTP;
@@ -861,7 +848,7 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
         txtxnmknew.setEnabled(true);
         txtmknew.setEnabled(true);
         doimkJDialog.setLocationRelativeTo(this);
-
+        this.jFrame1.setLocationRelativeTo(null);
     }
 
     void update() {
@@ -883,7 +870,7 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
     private void createQRcode() {
         try {
             String qrCodeData = QRcoderandomString;
-            String filePath = "D:\\netbean\\thu vien\\ThuVien\\zxing-core-2.0\\QR CODE\\a.png";
+            String filePath = "src\\QRcode\\a.png";
             String charset = "UTF-8"; // or "ISO-8859-1"
             Map< EncodeHintType, ErrorCorrectionLevel> hintMap = new HashMap< EncodeHintType, ErrorCorrectionLevel>();
             hintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
@@ -933,6 +920,8 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
 
                     } else {
                         Auth.user = nhanvienQRcode;
+                        initWebcam(false);
+                        this.jFrame1.dispose();
                         this.dispose();
                     }
 
@@ -940,6 +929,8 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
 
                 } else {
                     Auth.user = nhanVienEM;
+                    initWebcam(false);
+                    this.jFrame1.dispose();
                     this.dispose();
                 }
             } else if (!matKhau.equals(nhanVien.getMatKhau())) {
@@ -948,6 +939,7 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
                 Auth.user = nhanVien;
                 this.dispose();
                 initWebcam(false);
+                this.jFrame1.dispose();
 
             }
 
@@ -1030,7 +1022,7 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
             messageBodyPart.setText(body);
 
             MimeBodyPart attachment = new MimeBodyPart();
-            attachment.attachFile(new File("D:\\netbean\\thu vien\\ThuVien\\zxing-core-2.0\\QR CODE\\a.png"));
+            attachment.attachFile(new File("src\\QRcode\\a.png"));
 
             multipart.addBodyPart(messageBodyPart);
             multipart.addBodyPart(attachment);
@@ -1129,7 +1121,7 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
             executor.execute(this);
         } else {
             webcam.close();
-            jDialog1.setVisible(false);
+            jFrame1.setVisible(false);
         }
 
     }
@@ -1168,10 +1160,10 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
 //                txtMatKhau.setText("240102");
 
                 this.dangNhap();
-                randomString();
-                createQRcode();
-                update();
-                this.Sendmail();
+//                randomString();
+//                createQRcode();
+//                update();
+//                this.Sendmail();
 
             }
         } while (true);
