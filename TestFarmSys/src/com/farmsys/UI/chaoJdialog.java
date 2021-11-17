@@ -19,7 +19,7 @@ import javax.swing.Timer;
  *
  * @author NguyenTrung
  */
-public class chaoJdialog extends javax.swing.JDialog {
+public class ChaoJdialog extends javax.swing.JDialog {
 
     /**
      * Creates new form chaoJdialog
@@ -27,7 +27,7 @@ public class chaoJdialog extends javax.swing.JDialog {
      * @param parent
      * @param modal
      */
-    public chaoJdialog(java.awt.Frame parent, boolean modal) {
+    public ChaoJdialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         init();
@@ -93,20 +93,21 @@ public class chaoJdialog extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(chaoJdialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ChaoJdialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(chaoJdialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ChaoJdialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(chaoJdialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ChaoJdialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(chaoJdialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ChaoJdialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                chaoJdialog dialog = new chaoJdialog(new javax.swing.JFrame(), true);
+                ChaoJdialog dialog = new ChaoJdialog(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -154,7 +155,7 @@ public class chaoJdialog extends javax.swing.JDialog {
                 }
                 pgbLogging.setValue(value + 1);
             } else {
-                chaoJdialog.this.dispose();
+                ChaoJdialog.this.dispose();
 
             }
         }).start();

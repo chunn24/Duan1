@@ -102,6 +102,9 @@ public class TongQuan extends javax.swing.JFrame {
         pnlHome1 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
+        pnlbarchart = new javax.swing.JPanel();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
         tabs = new javax.swing.JTabbedPane();
         pnltongquat = new javax.swing.JPanel();
         pnlchart = new javax.swing.JPanel();
@@ -382,7 +385,7 @@ public class TongQuan extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(30, 30, 30)
                 .addComponent(jLabel2)
-                .addContainerGap(121, Short.MAX_VALUE))
+                .addContainerGap(108, Short.MAX_VALUE))
         );
         pnlHomeLayout.setVerticalGroup(
             pnlHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -421,7 +424,7 @@ public class TongQuan extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addGap(29, 29, 29)
                 .addComponent(jLabel4)
-                .addContainerGap(121, Short.MAX_VALUE))
+                .addContainerGap(109, Short.MAX_VALUE))
         );
         pnlNhanvienLayout.setVerticalGroup(
             pnlNhanvienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -460,7 +463,7 @@ public class TongQuan extends javax.swing.JFrame {
                 .addComponent(jLabel5)
                 .addGap(30, 30, 30)
                 .addComponent(jLabel6)
-                .addContainerGap(116, Short.MAX_VALUE))
+                .addContainerGap(104, Short.MAX_VALUE))
         );
         pnlDanTrongLayout.setVerticalGroup(
             pnlDanTrongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -499,7 +502,7 @@ public class TongQuan extends javax.swing.JFrame {
                 .addComponent(jLabel11)
                 .addGap(30, 30, 30)
                 .addComponent(jLabel12)
-                .addContainerGap(120, Short.MAX_VALUE))
+                .addContainerGap(108, Short.MAX_VALUE))
         );
         pnlCaytronLayout.setVerticalGroup(
             pnlCaytronLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -538,7 +541,7 @@ public class TongQuan extends javax.swing.JFrame {
                 .addComponent(jLabel13)
                 .addGap(30, 30, 30)
                 .addComponent(jLabel14)
-                .addContainerGap(134, Short.MAX_VALUE))
+                .addContainerGap(119, Short.MAX_VALUE))
         );
         pnlNhatkyLayout.setVerticalGroup(
             pnlNhatkyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -577,7 +580,7 @@ public class TongQuan extends javax.swing.JFrame {
                 .addComponent(jLabel15)
                 .addGap(30, 30, 30)
                 .addComponent(jLabel16)
-                .addContainerGap(125, Short.MAX_VALUE))
+                .addContainerGap(113, Short.MAX_VALUE))
         );
         pnlGiaoviecLayout.setVerticalGroup(
             pnlGiaoviecLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -612,12 +615,45 @@ public class TongQuan extends javax.swing.JFrame {
                 .addComponent(jLabel10)
                 .addGap(30, 30, 30)
                 .addComponent(jLabel33)
-                .addContainerGap(154, Short.MAX_VALUE))
+                .addContainerGap(141, Short.MAX_VALUE))
         );
         pnlHome1Layout.setVerticalGroup(
             pnlHome1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
             .addComponent(jLabel33, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        pnlbarchart.setBackground(new java.awt.Color(14, 251, 137));
+        pnlbarchart.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlbarchartMouseClicked(evt);
+            }
+        });
+
+        jLabel34.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel34.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel34.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/youtube_live_25px.png"))); // NOI18N
+
+        jLabel35.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel35.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel35.setText("Dash Board");
+
+        javax.swing.GroupLayout pnlbarchartLayout = new javax.swing.GroupLayout(pnlbarchart);
+        pnlbarchart.setLayout(pnlbarchartLayout);
+        pnlbarchartLayout.setHorizontalGroup(
+            pnlbarchartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlbarchartLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel34)
+                .addGap(30, 30, 30)
+                .addComponent(jLabel35)
+                .addContainerGap(98, Short.MAX_VALUE))
+        );
+        pnlbarchartLayout.setVerticalGroup(
+            pnlbarchartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel34, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
+            .addComponent(jLabel35, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout pnlmenuLayout = new javax.swing.GroupLayout(pnlmenu);
@@ -630,29 +666,23 @@ public class TongQuan extends javax.swing.JFrame {
             .addGroup(pnlmenuLayout.createSequentialGroup()
                 .addGroup(pnlmenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(pnlmenuLayout.createSequentialGroup()
-                        .addGroup(pnlmenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(pnlmenuLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel7))
-                            .addComponent(pnlHome1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlmenuLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel7)
+                        .addGap(202, 202, 202))
+                    .addGroup(pnlmenuLayout.createSequentialGroup()
                         .addGroup(pnlmenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlmenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(pnlGiaoviec, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(pnlCaytron, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(pnlmenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(pnlNhanvien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(pnlDanTrong, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(pnlNhatky, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(pnlHome, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(pnlNhanvien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pnlDanTrong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pnlCaytron, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pnlGiaoviec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pnlNhatky, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pnlbarchart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pnlHome1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pnlHome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-
-        pnlmenuLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {pnlCaytron, pnlDanTrong, pnlGiaoviec, pnlHome, pnlHome1, pnlNhanvien, pnlNhatky});
-
         pnlmenuLayout.setVerticalGroup(
             pnlmenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlmenuLayout.createSequentialGroup()
@@ -660,8 +690,10 @@ public class TongQuan extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlHome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlbarchart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlHome1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
+                .addGap(31, 31, 31)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlNhanvien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -673,13 +705,13 @@ public class TongQuan extends javax.swing.JFrame {
                 .addComponent(pnlGiaoviec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlNhatky, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(406, 406, 406)
+                .addGap(697, 697, 697)
                 .addComponent(jLabel17))
         );
 
-        pnlmenuLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {pnlCaytron, pnlDanTrong, pnlGiaoviec, pnlHome, pnlHome1, pnlNhanvien, pnlNhatky});
+        pnlmenuLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {pnlCaytron, pnlDanTrong, pnlGiaoviec, pnlHome, pnlHome1, pnlNhanvien, pnlNhatky, pnlbarchart});
 
-        penalTong.add(pnlmenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 21, 230, 760));
+        penalTong.add(pnlmenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 21, 230, 920));
 
         pnltongquat.setBackground(new java.awt.Color(255, 255, 255));
         pnltongquat.setMinimumSize(new java.awt.Dimension(1083, 750));
@@ -934,7 +966,7 @@ public class TongQuan extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(penalTong, javax.swing.GroupLayout.PREFERRED_SIZE, 770, Short.MAX_VALUE)
+            .addComponent(penalTong, javax.swing.GroupLayout.PREFERRED_SIZE, 774, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -1068,6 +1100,10 @@ public class TongQuan extends javax.swing.JFrame {
         this.Opendoing();
     }//GEN-LAST:event_pnldoingMouseClicked
 
+    private void pnlbarchartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlbarchartMouseClicked
+        this.Openchart();
+    }//GEN-LAST:event_pnlbarchartMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1133,6 +1169,8 @@ public class TongQuan extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1168,6 +1206,7 @@ public class TongQuan extends javax.swing.JFrame {
     private javax.swing.JPanel pnlHome1;
     private javax.swing.JPanel pnlNhanvien;
     private javax.swing.JPanel pnlNhatky;
+    private javax.swing.JPanel pnlbarchart;
     private javax.swing.JPanel pnlchart;
     private javax.swing.JPanel pnldieukhien;
     private javax.swing.JPanel pnldoing;
@@ -1196,9 +1235,9 @@ public class TongQuan extends javax.swing.JFrame {
         //this.setIconImage(XImage.getAppIcon());
         this.setLocationRelativeTo(null);
         weather.setLocationRelativeTo(null);
-        Ping2.play();
-        new chaoJdialog(this, true).setVisible(true);
-        Ping2.stop();
+       
+        new ChaoJdialog(this, true).setVisible(true);
+       
         Ping3.play();
         new DangNhapJDialog(this, true).setVisible(true);
         Ping3.stop();
@@ -1206,7 +1245,7 @@ public class TongQuan extends javax.swing.JFrame {
         new Loadwelcome(this, true).setVisible(false);
 
         Ping.play();
-        this.showLineChart();
+        
         loadLbl();
         addpanel();
         new Timer(1000, (ActionEvent e) -> {
@@ -1248,42 +1287,7 @@ public class TongQuan extends javax.swing.JFrame {
         }
     }
 
-    void showLineChart() {
-        //create dataset for the graph
-        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        dataset.setValue(200, "Amount", "1");
-        dataset.setValue(150, "Amount", "2");
-        dataset.setValue(18, "Amount", "3");
-        dataset.setValue(100, "Amount", "4");
-        dataset.setValue(80, "Amount", "5");
-        dataset.setValue(250, "Amount", "6");
-        dataset.setValue(250, "Amount", "7");
-        dataset.setValue(110, "Amount", "8");
-        dataset.setValue(30, "Amount", "9");
-        dataset.setValue(20, "Amount", "10");
-        dataset.setValue(150, "Amount", "11");
-        dataset.setValue(250, "Amount", "12");
-
-        //create chart
-        JFreeChart linechart = ChartFactory.createLineChart("Thu hoạch", "Tháng", "Số lượng",
-                dataset, PlotOrientation.VERTICAL, false, true, false);
-
-        //create plot object
-        CategoryPlot lineCategoryPlot = linechart.getCategoryPlot();
-        // lineCategoryPlot.setRangeGridlinePaint(Color.BLUE);
-        lineCategoryPlot.setBackgroundPaint(Color.white);
-
-        //create render object to change the moficy the line properties like color
-        LineAndShapeRenderer lineRenderer = (LineAndShapeRenderer) lineCategoryPlot.getRenderer();
-        Color lineChartColor = new Color(204, 0, 51);
-        lineRenderer.setSeriesPaint(0, lineChartColor);
-
-        //create chartPanel to display chart(graph)
-        ChartPanel lineChartPanel = new ChartPanel(linechart);
-        pnlchart.removeAll();
-        pnlchart.add(lineChartPanel, BorderLayout.CENTER);
-        pnlchart.validate();
-    }
+    
 
     private void loadLbl() {
         lblTrangThai.setText(DangNhapJDialog.HienThi());
@@ -1358,6 +1362,14 @@ public class TongQuan extends javax.swing.JFrame {
         }
     }
 
+    private void Openchart(){
+        if (Auth.isLogin()) {
+            tabs.setSelectedIndex(8);
+        } else {
+            MsgBox.alert(this, "Vui lòng đăng nhập!");
+        }
+    }
+    
     void addpanel() {
         NhatKyJPanel nkpnJPanel = new NhatKyJPanel();
         NhanViecJPanel nhanviecJPanel = new NhanViecJPanel();
@@ -1366,6 +1378,8 @@ public class TongQuan extends javax.swing.JFrame {
         NhanVienPanel nhanVienPanel = new NhanVienPanel();
         HoanThanhcvJPanel hoanThanhcvJPanel = new HoanThanhcvJPanel();
         GianTrongJPanel gianTrongJPanel = new GianTrongJPanel();
+        ChartJPanel chartPanel = new ChartJPanel();
+        
         tabs.addTab("1", nkpnJPanel);
         tabs.addTab("2", nhanviecJPanel);
         tabs.addTab("3", cayTrongPanel);
@@ -1373,6 +1387,7 @@ public class TongQuan extends javax.swing.JFrame {
         tabs.addTab("5", nhanVienPanel);
         tabs.addTab("6", hoanThanhcvJPanel);
         tabs.addTab("7", gianTrongJPanel);
+        tabs.addTab("8", chartPanel);
 
     }
 
