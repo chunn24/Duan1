@@ -22,6 +22,8 @@ public class NhanViecJDialog extends javax.swing.JDialog {
 
     /**
      * Creates new form CongViecNhanVienJDialog
+     * @param parent
+     * @param modal
      */
     public NhanViecJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
