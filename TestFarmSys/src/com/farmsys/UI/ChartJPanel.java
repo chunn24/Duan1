@@ -11,14 +11,9 @@ import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.CategoryPlot;
-import org.jfree.chart.plot.PiePlot;
 import org.jfree.chart.plot.PlotOrientation;
-import org.jfree.chart.plot.XYPlot;
-import org.jfree.chart.renderer.category.BarRenderer;
 import org.jfree.chart.renderer.category.LineAndShapeRenderer;
 import org.jfree.data.category.DefaultCategoryDataset;
-import org.jfree.data.general.DefaultPieDataset;
-import org.jfree.data.statistics.HistogramDataset;
 
 /**
  *
@@ -26,23 +21,16 @@ import org.jfree.data.statistics.HistogramDataset;
  */
 public class ChartJPanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form chartJPanel
-     */
+    
     public ChartJPanel() {
         initComponents();
         init();
-        this.showLineChart();
-        
-        //this.showPieChart();
-//        this.showBarChart();
     }
 
     private void init() {
-
-        
+        this.showLineChart();
     }
-
+    
     void showLineChart() {
         //create dataset for the graph
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
@@ -80,63 +68,6 @@ public class ChartJPanel extends javax.swing.JPanel {
         pnlchart.validate();
     }
 
-   
-
-    public void showPieChart() {
-
-        //create dataset
-        DefaultPieDataset barDataset = new DefaultPieDataset();
-        barDataset.setValue("IPhone 5s", new Double(20));
-        barDataset.setValue("SamSung Grand", new Double(20));
-        barDataset.setValue("MotoG", new Double(40));
-        barDataset.setValue("Nokia Lumia", new Double(10));
-
-        //create chart
-        JFreeChart piechart = ChartFactory.createPieChart("mobile sales", barDataset, false, true, false);//explain
-
-        PiePlot piePlot = (PiePlot) piechart.getPlot();
-
-        //changing pie chart blocks colors
-        piePlot.setSectionPaint("IPhone 5s", new Color(255, 255, 102));
-        piePlot.setSectionPaint("SamSung Grand", new Color(102, 255, 102));
-        piePlot.setSectionPaint("MotoG", new Color(255, 102, 153));
-        piePlot.setSectionPaint("Nokia Lumia", new Color(0, 204, 204));
-
-        piePlot.setBackgroundPaint(Color.white);
-
-        //create chartPanel to display chart(graph)
-        ChartPanel barChartPanel = new ChartPanel(piechart);
-//        pnlchart2.removeAll();
-//        pnlchart2.add(barChartPanel, BorderLayout.CENTER);
-//        pnlchart2.validate();
-    }
-
-//    public void showBarChart() {
-//        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-//        dataset.setValue(200, "Amount", "january");
-//        dataset.setValue(150, "Amount", "february");
-//        dataset.setValue(18, "Amount", "march");
-//        dataset.setValue(100, "Amount", "april");
-//        dataset.setValue(80, "Amount", "may");
-//        dataset.setValue(250, "Amount", "june");
-//
-//        JFreeChart chart = ChartFactory.createBarChart("contribution", "monthly", "amount",
-//                dataset, PlotOrientation.VERTICAL, false, true, false);
-//
-//        CategoryPlot categoryPlot = chart.getCategoryPlot();
-//        categoryPlot.setRangeGridlinePaint(Color.BLUE);
-//        categoryPlot.setBackgroundPaint(Color.WHITE);
-//        BarRenderer renderer = (BarRenderer) categoryPlot.getRenderer();
-//        Color clr3 = new Color(204, 0, 51);
-//        renderer.setSeriesPaint(0, clr3);
-//
-//        ChartPanel barpChartPanel = new ChartPanel(chart);
-//        pnlchart.removeAll();
-//        pnlchart.add(barpChartPanel, BorderLayout.CENTER);
-//        pnlchart.validate();
-//
-//    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -149,31 +80,25 @@ public class ChartJPanel extends javax.swing.JPanel {
         PanelTong = new javax.swing.JPanel();
         pnlchart = new javax.swing.JPanel();
 
+        setMinimumSize(new java.awt.Dimension(1083, 750));
+        setPreferredSize(new java.awt.Dimension(1083, 750));
+
         PanelTong.setBackground(new java.awt.Color(255, 255, 255));
+        PanelTong.setMinimumSize(new java.awt.Dimension(1083, 750));
+        PanelTong.setPreferredSize(new java.awt.Dimension(1083, 750));
+        PanelTong.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlchart.setBackground(new java.awt.Color(255, 255, 255));
         pnlchart.setLayout(new java.awt.BorderLayout());
-
-        javax.swing.GroupLayout PanelTongLayout = new javax.swing.GroupLayout(PanelTong);
-        PanelTong.setLayout(PanelTongLayout);
-        PanelTongLayout.setHorizontalGroup(
-            PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelTongLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(pnlchart, javax.swing.GroupLayout.PREFERRED_SIZE, 1233, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        PanelTongLayout.setVerticalGroup(
-            PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlchart, javax.swing.GroupLayout.DEFAULT_SIZE, 593, Short.MAX_VALUE)
-        );
+        PanelTong.add(pnlchart, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 1020, 710));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(PanelTong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(PanelTong, javax.swing.GroupLayout.PREFERRED_SIZE, 1212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 31, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

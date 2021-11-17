@@ -78,6 +78,25 @@ Create table NhatKy (
 );
 go
 
+Create table ThuHoach (	
+	TenGian nvarchar(30),
+	TenCay nvarchar(30),
+	Soluong int,	
+	NgayBatDau date,
+	NgayKetThuc date,
+	TrangThai int 
+	/* 1 là bán
+	   0 là chưa bán*/
+
+	Primary key (NhanVien,TenGian,TenCay,TenCV),
+	
+	foreign key (NhanVien) references NhanVien(MaNV),
+	foreign key (TenGian) references GianTrong(TenGian),
+	foreign key (TenCay) references LoaiCay(TenCay),
+	foreign key (TenCV) references CongViec(TenCV)
+	
+);
+go
 
 insert into NhanVien 
 values 

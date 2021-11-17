@@ -76,6 +76,7 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
     private final String accountName = "farmsys.contact@gmail.com";
     private final String accountPassword = "FarmSys@123456";
     private String manv;
+    private String manvotp;
     private String emailNV;
     private String tempOTP;
 
@@ -118,14 +119,13 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
         pn3 = new javax.swing.JLabel();
         pn4 = new javax.swing.JLabel();
         welcom = new javax.swing.JLabel();
-        jFrame1 = new javax.swing.JFrame();
+        WebcamQRcode = new javax.swing.JFrame();
         panelquetqr = new javax.swing.JPanel();
         jSeparator8 = new javax.swing.JSeparator();
         panelquetQR = new javax.swing.JPanel();
-        jDialog1 = new javax.swing.JDialog();
         pnldieukhien1 = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        lblExit = new javax.swing.JLabel();
+        lbltieude = new javax.swing.JLabel();
         pnlTong = new javax.swing.JPanel();
         Pnlnhap = new javax.swing.JPanel();
         txtMaNV = new javax.swing.JTextField();
@@ -140,7 +140,7 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
         jLabel7 = new javax.swing.JLabel();
         lblquenmk = new javax.swing.JLabel();
         lblloginwwithQR = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lbllogo = new javax.swing.JLabel();
         txtQRcode = new javax.swing.JTextField();
 
         doimkJDialog.setMinimumSize(new java.awt.Dimension(950, 500));
@@ -240,6 +240,7 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
         jLabel15.setForeground(new java.awt.Color(0, 230, 0));
         jLabel15.setText("OTP");
 
+        jButton2.setBackground(new java.awt.Color(153, 255, 153));
         jButton2.setText("GET OTP");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -375,11 +376,11 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
 
         welcomeJDialog.getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 460));
 
-        jFrame1.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        jFrame1.setAlwaysOnTop(true);
-        jFrame1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jFrame1.setMinimumSize(new java.awt.Dimension(500, 380));
-        jFrame1.setUndecorated(true);
+        WebcamQRcode.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        WebcamQRcode.setAlwaysOnTop(true);
+        WebcamQRcode.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        WebcamQRcode.setMinimumSize(new java.awt.Dimension(500, 380));
+        WebcamQRcode.setUndecorated(true);
 
         panelquetqr.setBackground(new java.awt.Color(255, 255, 255));
         panelquetqr.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -397,37 +398,25 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
         panelquetQR.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         panelquetqr.add(panelquetQR, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 470, 300));
 
-        javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
-        jFrame1.getContentPane().setLayout(jFrame1Layout);
-        jFrame1Layout.setHorizontalGroup(
-            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout WebcamQRcodeLayout = new javax.swing.GroupLayout(WebcamQRcode.getContentPane());
+        WebcamQRcode.getContentPane().setLayout(WebcamQRcodeLayout);
+        WebcamQRcodeLayout.setHorizontalGroup(
+            WebcamQRcodeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 500, Short.MAX_VALUE)
-            .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jFrame1Layout.createSequentialGroup()
+            .addGroup(WebcamQRcodeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(WebcamQRcodeLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
                     .addComponent(panelquetqr, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
-        jFrame1Layout.setVerticalGroup(
-            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        WebcamQRcodeLayout.setVerticalGroup(
+            WebcamQRcodeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 380, Short.MAX_VALUE)
-            .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jFrame1Layout.createSequentialGroup()
+            .addGroup(WebcamQRcodeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(WebcamQRcodeLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
                     .addComponent(panelquetqr, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
-        );
-
-        jDialog1.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        jDialog1.setUndecorated(true);
-
-        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
-        jDialog1.getContentPane().setLayout(jDialog1Layout);
-        jDialog1Layout.setHorizontalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        );
-        jDialog1Layout.setVerticalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -437,16 +426,16 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
 
         pnldieukhien1.setBackground(new java.awt.Color(0, 0, 0));
 
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/close_window_16px.png"))); // NOI18N
-        jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/close_window_16px.png"))); // NOI18N
+        lblExit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel12MouseClicked(evt);
+                lblExitMouseClicked(evt);
             }
         });
 
-        jLabel11.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("Login FarmSys");
+        lbltieude.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
+        lbltieude.setForeground(new java.awt.Color(255, 255, 255));
+        lbltieude.setText("Login FarmSys");
 
         javax.swing.GroupLayout pnldieukhien1Layout = new javax.swing.GroupLayout(pnldieukhien1);
         pnldieukhien1.setLayout(pnldieukhien1Layout);
@@ -454,16 +443,16 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
             pnldieukhien1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnldieukhien1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel11)
+                .addComponent(lbltieude)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 832, Short.MAX_VALUE)
-                .addComponent(jLabel12))
+                .addComponent(lblExit))
         );
         pnldieukhien1Layout.setVerticalGroup(
             pnldieukhien1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnldieukhien1Layout.createSequentialGroup()
                 .addGroup(pnldieukhien1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lblExit, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                    .addComponent(lbltieude, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(2, 2, 2))
         );
 
@@ -625,8 +614,8 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
 
         pnlTong.add(Pnlnhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(499, 0, 460, 470));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/logofarmSys.gif"))); // NOI18N
-        pnlTong.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 470));
+        lbllogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/logofarmSys.gif"))); // NOI18N
+        pnlTong.add(lbllogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 470));
         pnlTong.add(txtQRcode, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 280, -1, -1));
 
         getContentPane().add(pnlTong, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, -1, 470));
@@ -672,7 +661,7 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
     }//GEN-LAST:event_lblquenmkMouseClicked
 
     private void btndoimkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndoimkActionPerformed
-        this.doiMatKhau(manv);
+        this.doiMatKhau(manvotp);
     }//GEN-LAST:event_btndoimkActionPerformed
 
     private void lblquaylaidangnhapMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblquaylaidangnhapMouseClicked
@@ -696,9 +685,9 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
         this.Closelogin();
     }//GEN-LAST:event_jLabel9MouseClicked
 
-    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
+    private void lblExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblExitMouseClicked
         this.Closelogin();
-    }//GEN-LAST:event_jLabel12MouseClicked
+    }//GEN-LAST:event_lblExitMouseClicked
 
     private void lblquenmkMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblquenmkMouseEntered
         lblquenmk.setForeground(new Color(0, 230, 0));
@@ -718,7 +707,7 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
 
     private void lblloginwwithQRMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblloginwwithQRMouseClicked
         initWebcam(true);
-        jFrame1.setVisible(true);
+        WebcamQRcode.setVisible(true);
     }//GEN-LAST:event_lblloginwwithQRMouseClicked
 
     private void lblloginwwithQRMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblloginwwithQRMouseEntered
@@ -730,7 +719,7 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
     }//GEN-LAST:event_lblloginwwithQRMouseExited
 
     private void panelquetQRMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelquetQRMouseClicked
-        jFrame1.setVisible(false);
+        WebcamQRcode.setVisible(false);
     }//GEN-LAST:event_panelquetQRMouseClicked
 
     /**
@@ -781,16 +770,13 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Pnlnhap;
     private javax.swing.JPanel Pnlnhap1;
+    private javax.swing.JFrame WebcamQRcode;
     private javax.swing.JButton btnDangNhap;
     private javax.swing.JButton btndoimk;
     private javax.swing.JDialog doimkJDialog;
     private javax.swing.JButton jButton2;
-    private javax.swing.JDialog jDialog1;
-    private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -798,7 +784,6 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -811,9 +796,12 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator8;
+    private javax.swing.JLabel lblExit;
     private javax.swing.JLabel lblloginwwithQR;
+    private javax.swing.JLabel lbllogo;
     private javax.swing.JLabel lblquaylaidangnhap;
     private javax.swing.JLabel lblquenmk;
+    private javax.swing.JLabel lbltieude;
     private javax.swing.JPanel panelquetQR;
     private javax.swing.JPanel panelquetqr;
     private javax.swing.JLabel pn1;
@@ -848,7 +836,7 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
         txtxnmknew.setEnabled(true);
         txtmknew.setEnabled(true);
         doimkJDialog.setLocationRelativeTo(this);
-        this.jFrame1.setLocationRelativeTo(null);
+        this.WebcamQRcode.setLocationRelativeTo(null);
     }
 
     void update() {
@@ -864,8 +852,6 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
         }
 
     }
-
-    
 
     private void createQRcode() {
         try {
@@ -885,17 +871,35 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
         }
     }
 
+    void Sendmail() {
+        try {
+            manv = txtQRcode.getText();
+            NhanVien nhanVien = dao.selectByQR(manv);
+            if (nhanVien != null) {//check tk có tồn tại không
+                emailNV = dao.selectByQR(manv).getEmail();//check mail nv
+                if (emailNV == null) {
+                    MsgBox.alert(this, "Tài khoản này chưa có email");
+                } else {//tài khoản có mail --> gửi mail -->check otp
+                    this.sendQRcode(emailNV);
+
+                }
+            } else {
+                MsgBox.alert(this, "Tài khoản không tồn tại");
+            }
+        } catch (Exception e) {
+        }
+    }
+
     void SendOTP() {
         try {
-            manv = txtMaNV.getText();
-            NhanVien nhanVien = dao.selectById(manv);
+            manvotp = txttaikhoanlaymk.getText();
+            NhanVien nhanVien = dao.selectById(manvotp);
             if (nhanVien != null) {//check tk có tồn tại không
-                emailNV = dao.selectById(manv).getEmail();//check mail nv
+                emailNV = dao.selectById(manvotp).getEmail();//check mail nv
                 if (emailNV == null) {
                     MsgBox.alert(this, "Tài khoản này chưa có email");
                 } else {//tài khoản có mail --> gửi mail -->check otp
                     this.sendOTP(emailNV);
-
                 }
             } else {
                 MsgBox.alert(this, "Tài khoản không tồn tại");
@@ -906,11 +910,11 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
 
     void dangNhap() {
         try {
-            String manv = txtMaNV.getText().trim();
+            String taikhoan = txtMaNV.getText().trim();
             String matKhau = new String(txtMatKhau.getPassword());
             String QRcode = txtQRcode.getText().trim();
-            NhanVien nhanVien = dao.selectById(manv);
-            NhanVien nhanVienEM = dao.selectByEmail(manv);
+            NhanVien nhanVien = dao.selectById(taikhoan);
+            NhanVien nhanVienEM = dao.selectByEmail(taikhoan);
             NhanVien nhanvienQRcode = dao.selectByQRcodeFormNV(QRcode);
             if (nhanVien == null) {
                 if (nhanVienEM == null) {
@@ -921,7 +925,7 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
                     } else {
                         Auth.user = nhanvienQRcode;
                         initWebcam(false);
-                        this.jFrame1.dispose();
+                        this.WebcamQRcode.dispose();
                         this.dispose();
                     }
 
@@ -930,7 +934,7 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
                 } else {
                     Auth.user = nhanVienEM;
                     initWebcam(false);
-                    this.jFrame1.dispose();
+                    this.WebcamQRcode.dispose();
                     this.dispose();
                 }
             } else if (!matKhau.equals(nhanVien.getMatKhau())) {
@@ -939,7 +943,7 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
                 Auth.user = nhanVien;
                 this.dispose();
                 initWebcam(false);
-                this.jFrame1.dispose();
+                this.WebcamQRcode.dispose();
 
             }
 
@@ -967,25 +971,6 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
         OTP = UUID.randomUUID().toString();
         QRcoderandomString = UUID.randomUUID().toString();
         txtQRcode.setText(QRcoderandomString);
-    }
-
-    void Sendmail() {
-        try {
-            manv = txtQRcode.getText();
-            NhanVien nhanVien = dao.selectByQR(manv);
-            if (nhanVien != null) {//check tk có tồn tại không
-                emailNV = dao.selectByQR(manv).getEmail();//check mail nv
-                if (emailNV == null) {
-                    MsgBox.alert(this, "Tài khoản này chưa có email");
-                } else {//tài khoản có mail --> gửi mail -->check otp
-                    this.sendQRcode(emailNV);
-
-                }
-            } else {
-                MsgBox.alert(this, "Tài khoản không tồn tại");
-            }
-        } catch (Exception e) {
-        }
     }
 
     private void sendQRcode(String manv) {
@@ -1121,7 +1106,7 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
             executor.execute(this);
         } else {
             webcam.close();
-            jFrame1.setVisible(false);
+            WebcamQRcode.setVisible(false);
         }
 
     }

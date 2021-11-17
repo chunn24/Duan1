@@ -42,36 +42,36 @@ public class ChaoJdialog extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        PanelTong = new javax.swing.JPanel();
         pgbLogging = new javax.swing.JProgressBar();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        lblanh2 = new javax.swing.JLabel();
+        lblanh1 = new javax.swing.JLabel();
+        lblanh3 = new javax.swing.JLabel();
+        lblanh4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        PanelTong.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pgbLogging.setForeground(new java.awt.Color(0, 0, 0));
         pgbLogging.setStringPainted(true);
-        jPanel1.add(pgbLogging, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, 650, 30));
+        PanelTong.add(pgbLogging, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, 650, 30));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Path 2.png"))); // NOI18N
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 470, -1));
+        lblanh2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Path 2.png"))); // NOI18N
+        PanelTong.add(lblanh2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 470, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Path 1.png"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        lblanh1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Path 1.png"))); // NOI18N
+        PanelTong.add(lblanh1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Path 4.png"))); // NOI18N
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, -1, -1));
+        lblanh3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Path 4.png"))); // NOI18N
+        PanelTong.add(lblanh3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, -1, -1));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Path 5.png"))); // NOI18N
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 520, -1));
+        lblanh4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Path 5.png"))); // NOI18N
+        PanelTong.add(lblanh4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 520, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, -1));
+        getContentPane().add(PanelTong, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -120,11 +120,11 @@ public class ChaoJdialog extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel PanelTong;
+    private javax.swing.JLabel lblanh1;
+    private javax.swing.JLabel lblanh2;
+    private javax.swing.JLabel lblanh3;
+    private javax.swing.JLabel lblanh4;
     private javax.swing.JProgressBar pgbLogging;
     // End of variables declaration//GEN-END:variables
 
