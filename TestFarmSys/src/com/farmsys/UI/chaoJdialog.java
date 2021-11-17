@@ -5,14 +5,9 @@
  */
 package com.farmsys.UI;
 
-import AppPackage.AnimationClass;
 import com.farmsys.Helper.JdbcHelper;
-import jaco.mp3.player.MP3Player;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
-import java.awt.Dimension;
-import java.awt.Toolkit;
-import java.io.File;
 import javax.swing.Timer;
 
 /**
@@ -57,7 +52,7 @@ public class ChaoJdialog extends javax.swing.JDialog {
 
         pgbLogging.setForeground(new java.awt.Color(0, 0, 0));
         pgbLogging.setStringPainted(true);
-        PanelTong.add(pgbLogging, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, 650, 30));
+        PanelTong.add(pgbLogging, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, 660, 30));
 
         lblanh2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Path 2.png"))); // NOI18N
         PanelTong.add(lblanh2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 470, -1));

@@ -377,8 +377,10 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
         welcomeJDialog.getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 460));
 
         WebcamQRcode.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        WebcamQRcode.setTitle("Webcam");
         WebcamQRcode.setAlwaysOnTop(true);
         WebcamQRcode.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        WebcamQRcode.setLocationByPlatform(true);
         WebcamQRcode.setMinimumSize(new java.awt.Dimension(500, 380));
         WebcamQRcode.setUndecorated(true);
 
@@ -719,7 +721,7 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
     }//GEN-LAST:event_lblloginwwithQRMouseExited
 
     private void panelquetQRMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelquetQRMouseClicked
-        WebcamQRcode.setVisible(false);
+
     }//GEN-LAST:event_panelquetQRMouseClicked
 
     /**
@@ -912,15 +914,15 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
         try {
             String taikhoan = txtMaNV.getText().trim();
             String matKhau = new String(txtMatKhau.getPassword());
-            String QRcode = txtQRcode.getText().trim();
+            String QRcode1 = txtQRcode.getText().trim();
             NhanVien nhanVien = dao.selectById(taikhoan);
             NhanVien nhanVienEM = dao.selectByEmail(taikhoan);
-            NhanVien nhanvienQRcode = dao.selectByQRcodeFormNV(QRcode);
+            NhanVien nhanvienQRcode = dao.selectByQRcodeFormNV(QRcode1);
             if (nhanVien == null) {
                 if (nhanVienEM == null) {
                     if (nhanvienQRcode == null) {
                         MsgBox.alert(this, "Sai tên đăng nhập hoặc Email!");
-                    } else if (!QRcode.equals(nhanvienQRcode.getQRcodeString())) {
+                    } else if (!QRcode1.equals(nhanvienQRcode.getQRcodeString())) {
 
                     } else {
                         Auth.user = nhanvienQRcode;
@@ -1089,6 +1091,7 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
     private void clearForm() {
         txtmknew.setText("");
         txtxnmknew.setText("");
+        txtQRcode.setText("");
     }
 
     private void initWebcam(boolean webcamtruefalse) {
@@ -1106,7 +1109,7 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
             executor.execute(this);
         } else {
             webcam.close();
-            WebcamQRcode.setVisible(false);
+            this.WebcamQRcode.dispose();
         }
 
     }

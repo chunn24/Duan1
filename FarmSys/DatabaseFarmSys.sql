@@ -78,25 +78,24 @@ Create table NhatKy (
 );
 go
 
-Create table ThuHoach (	
+Create table KhoHang(
 	TenGian nvarchar(30),
 	TenCay nvarchar(30),
-	Soluong int,	
-	NgayBatDau date,
-	NgayKetThuc date,
-	TrangThai int 
-	/* 1 là bán
-	   0 là chưa bán*/
+	TrongLuong float,
+	ThoiGianThuHoach date,
+	Coin float,
 
-	Primary key (NhanVien,TenGian,TenCay,TenCV),
-	
-	foreign key (NhanVien) references NhanVien(MaNV),
+	Primary key (TenGian,TenCay),
 	foreign key (TenGian) references GianTrong(TenGian),
-	foreign key (TenCay) references LoaiCay(TenCay),
-	foreign key (TenCV) references CongViec(TenCV)
-	
+	foreign key (TenCay) references LoaiCay(TenCay)
 );
 go
+
+
+
+ 
+
+
 
 insert into NhanVien 
 values 
@@ -144,21 +143,21 @@ values
  
 INSERT INTO LoaiCay 
 VALUES 
-(N'Cây chuối','30','1260','3.5','28','18','Hinh1.jpg'),
-(N'Cây việt quốc','25','1300','2.7','30','12','Hinh2.jpg'),
-(N'Cây dưa lưới','15','1000','7.0','27','13','Hinh3.jpg'),
-(N'Cây đu đủ','20','1750','3.8','32','11','Hinh4.jpg'),
-(N'Cây Dưa Hấu','23','2590','3.8','32','15','Hinh5.jpg'),
-(N'Cây Măng Tây','37','2500','2.9','29','16','Hinh6.jpg'),
-(N'Cây Bông Cải Xanh','40','2000','5.6','27','20','Hinh7.jpg'),
-(N'Cây Củ Dền','19','2800','5.2','28','21','Hinh8.jpg'),
-(N'Cây Cải Bắp','18','1280','4.7','27','19','Hinh9.jpg'),
-(N'Cây Đậu Hà Lan','32','1370','4.8','29','16','Hinh10.jpg'),
+(N'Rau mầm','30','1260','3.5','28','18','rau_mam.jpg'),
+(N'Rau muống','25','1300','2.7','30','12','rau_muong.jpg'),
+(N'Rau xà lách','15','1000','7.0','27','13','rau_xa_lach.jpg'),
+(N'Rau cầu vòng','20','1750','3.8','32','11','Hinh4.jpg'),
+(N'Rau Bina (Cải bó xôi)','23','2590','3.8','32','15','Hinh5.jpg'),
+(N'Rau cải ngọt','37','2500','2.9','29','16','Hinh6.jpg'),
+(N'Rau cải xanh','40','2000','5.6','27','20','Hinh7.jpg'),
+(N'Rau cải xoan','19','2800','5.2','28','21','Hinh8.jpg'),
+(N'Rau dền','18','1280','4.7','27','19','Hinh9.jpg'),
+(N'Cần tây','32','1370','4.8','29','16','Hinh10.jpg'),
 (N'Cây Cà Chua','34','1120','4.8','26','17','Hinh11.jpg'),
-(N'Cây Bắp','35','3000','6.6','31','21','Hinh12.jpg'),
-(N'Cây Bí Ngô','15','2570','6.6','33','09','Hinh13.jpg'),
-(N'Cây Khoai Tây','15','2180','6.5','30','11','Hinh14.jpg'),
-(N'Cây Hành','15','1290','6.9','29','12','Hinh15.jpg')
+(N'Cây dưa leo','35','3000','6.6','31','21','Hinh12.jpg'),
+(N'Rau húng quế','15','2570','6.6','33','09','Hinh13.jpg'),
+(N'Rau mồng tơi','15','2180','6.5','30','11','Hinh14.jpg'),
+(N'Tía tô','15','1290','6.9','29','12','Hinh15.jpg')
 go
 
 insert into CongViec (TenCV)
@@ -170,10 +169,15 @@ go
 
  insert into NhatKy (TenCV,TenCay,TenGian,ChiTiet,NguoiTao,NhanVien,NgayBatDau,NgayKetThuc,TrangThai)
 values 
- (N'Trồng cây',N'Cây Chuối','C9',N'Trồng cây giàn A1','Trung','TrieuNHD','2021-11-05','2021-11-06','0'),
- (N'Chăm sóc',N'Cây Chuối','C9',N'Trồng cây giàn A2','Trung','TrieuNHD','2021-11-05','2021-11-06','1')
+ (N'Trồng cây',N'Rau mầm','C9',N'Trồng cây giàn A1','Trung','TrieuNHD','2021-11-05','2021-11-06','0'),
+ (N'Chăm sóc',N'Rau muống','C9',N'Trồng cây giàn A2','Trung','TrieuNHD','2021-11-05','2021-11-06','1')
  go
 
-
+ insert into KhoHang (TenGian,TenCay,TrongLuong,ThoiGianThuHoach,Coin)
+values 
+ ('C9',N'Rau xà lách','10',null,'35000'),
+ ('A2',N'Rau cải ngọt','10',null,'50000'),
+ ('A6',N'Rau muống','10',null,'40000')
+ go
 
 select (SELECT DATEADD(day, +(LoaiCay.ThoiGianThuHoach) , NhatKy.NgayBatDau )) as 'ngaythuhoach' from LoaiCay inner join NhatKy on LoaiCay.TenCay = NhatKy.TenCay

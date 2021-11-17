@@ -22,6 +22,7 @@ public class NhanViecJDialog extends javax.swing.JDialog {
 
     /**
      * Creates new form CongViecNhanVienJDialog
+     *
      * @param parent
      * @param modal
      */
