@@ -52,7 +52,7 @@ public class ChaoJdialog extends javax.swing.JDialog {
 
         pgbLogging.setForeground(new java.awt.Color(0, 0, 0));
         pgbLogging.setStringPainted(true);
-        PanelTong.add(pgbLogging, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, 660, 30));
+        PanelTong.add(pgbLogging, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 440, 670, 30));
 
         lblanh2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Path 2.png"))); // NOI18N
         PanelTong.add(lblanh2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 470, -1));
@@ -123,10 +123,8 @@ public class ChaoJdialog extends javax.swing.JDialog {
     private javax.swing.JProgressBar pgbLogging;
     // End of variables declaration//GEN-END:variables
 
-    
-
     private void init() {
-        
+
         this.setLocationRelativeTo(null);
         pgbLogging.setForeground(Color.black);
         new Timer(40, (ActionEvent e) -> {
@@ -148,13 +146,13 @@ public class ChaoJdialog extends javax.swing.JDialog {
 
                     JdbcHelper.ConnectDAO();
                 }
-                pgbLogging.setValue(value + 1);
+                pgbLogging.setValue(value + 5);
             } else {
                 ChaoJdialog.this.dispose();
 
             }
         }).start();
-        
+
     }
-   
+
 }

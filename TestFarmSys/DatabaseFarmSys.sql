@@ -79,13 +79,14 @@ Create table NhatKy (
 go
 
 Create table KhoHang(
+	MaTH int IDENTITY(1,1),
 	TenGian nvarchar(30),
 	TenCay nvarchar(30),
 	TrongLuong float,
 	ThoiGianThuHoach date,
 	Coin float,
 
-	Primary key (TenGian,TenCay),
+	Primary key (MaTH),
 	foreign key (TenGian) references GianTrong(TenGian),
 	foreign key (TenCay) references LoaiCay(TenCay)
 );
@@ -181,3 +182,5 @@ values
  go
 
 select (SELECT DATEADD(day, +(LoaiCay.ThoiGianThuHoach) , NhatKy.NgayBatDau )) as 'ngaythuhoach' from LoaiCay inner join NhatKy on LoaiCay.TenCay = NhatKy.TenCay
+
+select * from KhoHang

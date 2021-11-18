@@ -8,7 +8,6 @@ package com.farmsys.UI;
 import com.farmsys.DTO.GianTrong;
 import com.farmsys.Helper.MsgBox;
 import com.farmsys.dao.GianTrongDAO;
-import java.awt.Color;
 import static java.awt.Color.pink;
 import static java.awt.Color.white;
 import java.awt.event.ActionEvent;
@@ -66,11 +65,12 @@ public class GianTrongJPanel extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(1083, 750));
         setPreferredSize(new java.awt.Dimension(1083, 750));
 
+        panelTong.setBackground(new java.awt.Color(255, 255, 255));
         panelTong.setMinimumSize(new java.awt.Dimension(1083, 750));
         panelTong.setPreferredSize(new java.awt.Dimension(1083, 750));
         panelTong.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tabs.setBackground(new java.awt.Color(204, 204, 204));
+        tabs.setBackground(new java.awt.Color(255, 255, 255));
         tabs.setMinimumSize(new java.awt.Dimension(1083, 750));
         tabs.setPreferredSize(new java.awt.Dimension(1083, 750));
 
@@ -187,7 +187,7 @@ public class GianTrongJPanel extends javax.swing.JPanel {
 
         tabs.addTab("CẬP NHẬT", pnlEdit);
 
-        pnlList.setBackground(new java.awt.Color(204, 255, 204));
+        pnlList.setBackground(new java.awt.Color(255, 255, 255));
 
         tblDanTrong.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -241,14 +241,14 @@ public class GianTrongJPanel extends javax.swing.JPanel {
         pnlListLayout.setHorizontalGroup(
             pnlListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlListLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnlListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(pnlListLayout.createSequentialGroup()
+                        .addContainerGap()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cboLoc, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1045, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1044, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 21, Short.MAX_VALUE))
         );
         pnlListLayout.setVerticalGroup(
             pnlListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -258,13 +258,12 @@ public class GianTrongJPanel extends javax.swing.JPanel {
                     .addComponent(jLabel4)
                     .addComponent(cboLoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 658, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 649, Short.MAX_VALUE))
         );
 
         tabs.addTab("DANH SÁCH", pnlList);
 
-        panelTong.add(tabs, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 8, 1070, 740));
+        panelTong.add(tabs, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 8, 1070, 720));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -378,7 +377,7 @@ public class GianTrongJPanel extends javax.swing.JPanel {
     private void init() {
         this.load();
         this.updateStatus();
-        new Timer(5000, (ActionEvent e) -> {
+        new Timer(10000, (ActionEvent e) -> {
             this.load();
             
         }).start();

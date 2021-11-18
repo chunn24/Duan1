@@ -28,6 +28,10 @@ import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import jaco.mp3.player.MP3Player;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.LayoutManager;
+import java.awt.RenderingHints;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -51,6 +55,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
+import javax.swing.JPanel;
 
 /**
  *
@@ -113,14 +118,14 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         welcomeJDialog = new javax.swing.JDialog();
-        jPanel1 = new javax.swing.JPanel();
+        pnlwelcome = new javax.swing.JPanel();
         pn2 = new javax.swing.JLabel();
         pn1 = new javax.swing.JLabel();
         pn3 = new javax.swing.JLabel();
         pn4 = new javax.swing.JLabel();
         welcom = new javax.swing.JLabel();
         WebcamQRcode = new javax.swing.JFrame();
-        panelquetqr = new javax.swing.JPanel();
+        panelquetqr = new RoundedPanel(50, Color.WHITE);
         jSeparator8 = new javax.swing.JSeparator();
         panelquetQR = new javax.swing.JPanel();
         pnldieukhien1 = new javax.swing.JPanel();
@@ -356,25 +361,25 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
 
         welcomeJDialog.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pnlwelcome.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pn2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Path 2.png"))); // NOI18N
-        jPanel1.add(pn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, -9, 460, 380));
+        pnlwelcome.add(pn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, -9, 460, 380));
 
         pn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Path 1.png"))); // NOI18N
-        jPanel1.add(pn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -30, 480, 340));
+        pnlwelcome.add(pn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -30, 480, 340));
 
         pn3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Path 4.png"))); // NOI18N
-        jPanel1.add(pn3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 460, 340));
+        pnlwelcome.add(pn3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 460, 340));
 
         pn4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Path 5.png"))); // NOI18N
-        jPanel1.add(pn4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 610, 300));
+        pnlwelcome.add(pn4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 610, 300));
 
         welcom.setFont(new java.awt.Font("Forte", 1, 36)); // NOI18N
         welcom.setText("Welcome to FarmSys");
-        jPanel1.add(welcom, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 350, 80));
+        pnlwelcome.add(welcom, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 350, 80));
 
-        welcomeJDialog.getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 460));
+        welcomeJDialog.getContentPane().add(pnlwelcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 460));
 
         WebcamQRcode.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         WebcamQRcode.setTitle("Webcam");
@@ -388,7 +393,7 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
         panelquetqr.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jSeparator8.setForeground(new java.awt.Color(126, 167, 206));
-        panelquetqr.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 470, 10));
+        panelquetqr.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 470, 30));
 
         panelquetQR.setBackground(new java.awt.Color(250, 250, 250));
         panelquetQR.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 230, 230)));
@@ -790,7 +795,6 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
@@ -814,6 +818,7 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
     private javax.swing.JPanel pnlTong1;
     private javax.swing.JPanel pnldieukhien;
     private javax.swing.JPanel pnldieukhien1;
+    private javax.swing.JPanel pnlwelcome;
     private javax.swing.JTextField txtMaNV;
     private javax.swing.JPasswordField txtMatKhau;
     private javax.swing.JTextField txtOTP;
@@ -922,8 +927,9 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
                 if (nhanVienEM == null) {
                     if (nhanvienQRcode == null) {
                         MsgBox.alert(this, "Sai tên đăng nhập hoặc Email!");
+                        clearForm();
                     } else if (!QRcode1.equals(nhanvienQRcode.getQRcodeString())) {
-
+                        MsgBox.alert(this, "Mã QR code không đúng !");
                     } else {
                         Auth.user = nhanvienQRcode;
                         initWebcam(false);
@@ -932,7 +938,7 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
                     }
 
                 } else if (!matKhau.equals(nhanVienEM.getMatKhau())) {
-
+                    clearForm();
                 } else {
                     Auth.user = nhanVienEM;
                     initWebcam(false);
@@ -941,6 +947,7 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
                 }
             } else if (!matKhau.equals(nhanVien.getMatKhau())) {
                 MsgBox.alert(this, "Sai mật khẩu!");
+                clearForm();
             } else {
                 Auth.user = nhanVien;
                 this.dispose();
@@ -1089,9 +1096,12 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
     }
 
     private void clearForm() {
+        txtMaNV.setText("");
+        txtMatKhau.setText("");
         txtmknew.setText("");
         txtxnmknew.setText("");
         txtQRcode.setText("");
+        txtMaNV.grabFocus();
     }
 
     private void initWebcam(boolean webcamtruefalse) {
@@ -1162,5 +1172,54 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
         Thread t = new Thread(r, "My Thread");
         t.setDaemon(true);
         return t;
+    }
+
+    class RoundedPanel extends JPanel {
+
+        private Color backgroundColor;
+        private int cornerRadius = 15;
+
+        public RoundedPanel(LayoutManager layout, int radius) {
+            super(layout);
+            cornerRadius = radius;
+        }
+
+        public RoundedPanel(LayoutManager layout, int radius, Color bgColor) {
+            super(layout);
+            cornerRadius = radius;
+            backgroundColor = bgColor;
+        }
+
+        public RoundedPanel(int radius) {
+            super();
+            cornerRadius = radius;
+
+        }
+
+        public RoundedPanel(int radius, Color bgColor) {
+            super();
+            cornerRadius = radius;
+            backgroundColor = bgColor;
+        }
+
+        @Override
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            Dimension arcs = new Dimension(cornerRadius, cornerRadius);
+            int width = getWidth();
+            int height = getHeight();
+            Graphics2D graphics = (Graphics2D) g;
+            graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+            //Draws the rounded panel with borders.
+            if (backgroundColor != null) {
+                graphics.setColor(backgroundColor);
+            } else {
+                graphics.setColor(getBackground());
+            }
+            graphics.fillRoundRect(0, 0, width - 1, height - 1, arcs.width, arcs.height); //paint background
+            graphics.setColor(getForeground());
+//            graphics.drawRoundRect(0, 0, width-1, height-1, arcs.width, arcs.height); //paint border
+//             
+        }
     }
 }

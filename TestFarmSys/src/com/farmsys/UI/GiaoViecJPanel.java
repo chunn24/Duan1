@@ -17,10 +17,8 @@ import com.farmsys.dao.CongViecDAO;
 import com.farmsys.dao.GianTrongDAO;
 import com.farmsys.dao.NhanVienDAO;
 import com.farmsys.dao.NhatKyDAO;
-import java.awt.event.ActionEvent;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.Timer;
 
 /**
  *
@@ -246,12 +244,7 @@ public class GiaoViecJPanel extends javax.swing.JPanel {
         fillComboBoxCayTrong();
         fillComboBoxGianTrong();
         fillComboBoxNhanVien();
-        new Timer(5000, (ActionEvent e) -> {
-            fillComboBoxCongViec();
-            fillComboBoxCayTrong();
-            fillComboBoxGianTrong();
-            fillComboBoxNhanVien();
-        }).start();
+
     }
 
     void fillComboBoxCayTrong() {

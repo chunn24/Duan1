@@ -29,7 +29,7 @@ import org.opencv.objdetect.CascadeClassifier;
  *
  * @author Taha Emara
  */
-public class FaceDetection extends javax.swing.JFrame {
+public class LiveJFrame extends javax.swing.JFrame {
 ///
 
     private DaemonThread myThread = null;
@@ -37,7 +37,7 @@ public class FaceDetection extends javax.swing.JFrame {
     VideoCapture webSource = null;
     Mat frame = new Mat();
     MatOfByte mem = new MatOfByte();
-    CascadeClassifier faceDetector = new CascadeClassifier(FaceDetection.class.getResource("haarcascade_frontalface_alt.xml").getPath().substring(1));
+    CascadeClassifier faceDetector = new CascadeClassifier(LiveJFrame.class.getResource("haarcascade_frontalface_alt.xml").getPath().substring(1));
     MatOfRect faceDetections = new MatOfRect();
 ///    
 
@@ -52,7 +52,7 @@ public class FaceDetection extends javax.swing.JFrame {
                     if (webSource.grab()) {
                         try {
                             webSource.retrieve(frame);
-                            Graphics g = jPanel1.getGraphics();
+                            Graphics g = Manhinhlive.getGraphics();
                             faceDetector.detectMultiScale(frame, faceDetections);
                             for (Rect rect : faceDetections.toArray()) {
                                 // System.out.println("ttt");
@@ -82,9 +82,9 @@ public class FaceDetection extends javax.swing.JFrame {
     /**
      * Creates new form FaceDetection
      */
-    public FaceDetection() {
+    public LiveJFrame() {
         initComponents();
-        System.out.println(FaceDetection.class.getResource("haarcascade_frontalface_alt.xml").getPath().substring(1));
+        System.out.println(LiveJFrame.class.getResource("haarcascade_frontalface_alt.xml").getPath().substring(1));
     }
 
     /**
@@ -96,34 +96,34 @@ public class FaceDetection extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        Manhinhlive = new javax.swing.JPanel();
+        Start = new javax.swing.JButton();
+        Pause = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout ManhinhliveLayout = new javax.swing.GroupLayout(Manhinhlive);
+        Manhinhlive.setLayout(ManhinhliveLayout);
+        ManhinhliveLayout.setHorizontalGroup(
+            ManhinhliveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        ManhinhliveLayout.setVerticalGroup(
+            ManhinhliveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 376, Short.MAX_VALUE)
         );
 
-        jButton1.setText("Start");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Start.setText("Start");
+        Start.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                StartActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Pause");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        Pause.setText("Pause");
+        Pause.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                PauseActionPerformed(evt);
             }
         });
 
@@ -133,41 +133,41 @@ public class FaceDetection extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Manhinhlive, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(255, 255, 255)
-                .addComponent(jButton1)
+                .addComponent(Start)
                 .addGap(86, 86, 86)
-                .addComponent(jButton2)
+                .addComponent(Pause)
                 .addContainerGap(258, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Manhinhlive, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(Start)
+                    .addComponent(Pause))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void PauseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PauseActionPerformed
         myThread.runnable = false;            // stop thread
-        jButton2.setEnabled(false);   // activate start button 
-        jButton1.setEnabled(true);     // deactivate stop button
+        Pause.setEnabled(false);   // activate start button 
+        Start.setEnabled(true);     // deactivate stop button
 
         webSource.release();  // stop caturing fron cam
 
 
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_PauseActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void StartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StartActionPerformed
 
         webSource = new VideoCapture(0); // video capture from default cam
         myThread = new DaemonThread(); //create object of threat class
@@ -175,11 +175,11 @@ public class FaceDetection extends javax.swing.JFrame {
         t.setDaemon(true);
         myThread.runnable = true;
         t.start();                 //start thrad
-        jButton1.setEnabled(false);  // deactivate start button
-        jButton2.setEnabled(true);  //  activate stop button
+        Start.setEnabled(false);  // deactivate start button
+        Pause.setEnabled(true);  //  activate stop button
 
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_StartActionPerformed
 
     /**
      * @param args the command line arguments
@@ -199,14 +199,18 @@ public class FaceDetection extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FaceDetection.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LiveJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FaceDetection.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LiveJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FaceDetection.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LiveJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FaceDetection.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LiveJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -215,13 +219,13 @@ public class FaceDetection extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FaceDetection().setVisible(true);
+                new LiveJFrame().setVisible(true);
             }
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel Manhinhlive;
+    private javax.swing.JButton Pause;
+    private javax.swing.JButton Start;
     // End of variables declaration//GEN-END:variables
 }

@@ -69,7 +69,7 @@ public class NhanVienPanel extends javax.swing.JPanel {
             System.exit(0);
         }
         this.updateStatus();
-        new Timer(5000, (ActionEvent e) -> {
+        new Timer(10000, (ActionEvent e) -> {
             this.fillTable();
         }).start();
 
@@ -151,7 +151,7 @@ public class NhanVienPanel extends javax.swing.JPanel {
         String manv = (String) tblNhanVien.getValueAt(this.row, 0);
         NhanVien nv = dao.selectById(manv);
         this.setForm(nv);
-        Tabs.setSelectedIndex(0);
+        Tabs.setSelectedIndex(1);
         this.updateStatus();
 
     }
@@ -237,11 +237,7 @@ public class NhanVienPanel extends javax.swing.JPanel {
         btnThem.setEnabled(!edit);
         btnSua.setEnabled(edit);
         btnXoa.setEnabled(edit);
-        //Trạng thái điều hướng
-        btnFirst.setEnabled(edit && !first);
-        btnPrev.setEnabled(edit && !first);
-        btnNext.setEnabled(edit && !last);
-        btnLast.setEnabled(edit && !last);
+
     }
 
     private void randomString() {
@@ -299,7 +295,6 @@ public class NhanVienPanel extends javax.swing.JPanel {
 
             MimeBodyPart messageBodyPart = new MimeBodyPart();
             messageBodyPart.setText(body);
-            
 
             MimeBodyPart attachment = new MimeBodyPart();
             attachment.attachFile(new File("src\\QRcode\\a.png"));
@@ -341,6 +336,8 @@ public class NhanVienPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         Tabs = new javax.swing.JTabbedPane();
         pnlList = new javax.swing.JPanel();
@@ -360,10 +357,6 @@ public class NhanVienPanel extends javax.swing.JPanel {
         btnSua = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
         btnMoi = new javax.swing.JButton();
-        btnFirst = new javax.swing.JButton();
-        btnPrev = new javax.swing.JButton();
-        btnNext = new javax.swing.JButton();
-        btnLast = new javax.swing.JButton();
         rdoTruongPhong = new javax.swing.JRadioButton();
         rdoNhanVien = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
@@ -391,6 +384,8 @@ public class NhanVienPanel extends javax.swing.JPanel {
 
         pnlList.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        tblNhanVien.setAutoCreateRowSorter(true);
+        tblNhanVien.setBackground(new java.awt.Color(204, 255, 204));
         tblNhanVien.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -402,9 +397,16 @@ public class NhanVienPanel extends javax.swing.JPanel {
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         tblNhanVien.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -414,7 +416,7 @@ public class NhanVienPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblNhanVien);
 
-        pnlList.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 1050, 700));
+        pnlList.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 1060, 680));
 
         Tabs.addTab("DANH SÁCH", pnlList);
 
@@ -467,37 +469,11 @@ public class NhanVienPanel extends javax.swing.JPanel {
             }
         });
 
-        btnFirst.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/double_left_20px.png"))); // NOI18N
-        btnFirst.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFirstActionPerformed(evt);
-            }
-        });
-
-        btnPrev.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/left_20px.png"))); // NOI18N
-        btnPrev.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPrevActionPerformed(evt);
-            }
-        });
-
-        btnNext.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/right_20px.png"))); // NOI18N
-        btnNext.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNextActionPerformed(evt);
-            }
-        });
-
-        btnLast.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/double_right_20px.png"))); // NOI18N
-        btnLast.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLastActionPerformed(evt);
-            }
-        });
-
+        buttonGroup2.add(rdoTruongPhong);
         rdoTruongPhong.setSelected(true);
         rdoTruongPhong.setText("Trưởng phòng");
 
+        buttonGroup2.add(rdoNhanVien);
         rdoNhanVien.setText("Nhân viên");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -509,9 +485,11 @@ public class NhanVienPanel extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Lương cơ bản");
 
+        buttonGroup1.add(rdoNam);
         rdoNam.setSelected(true);
         rdoNam.setText("Nam");
 
+        buttonGroup1.add(rdoNu);
         rdoNu.setText("Nữ");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -524,41 +502,38 @@ public class NhanVienPanel extends javax.swing.JPanel {
         pnlEditLayout.setHorizontalGroup(
             pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlEditLayout.createSequentialGroup()
-                .addGap(138, 138, 138)
+                .addGap(272, 272, 272)
                 .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(lblMaNV)
+                        .addComponent(lblMatKhau)
+                        .addComponent(lblMatKhau2)
+                        .addComponent(txtMatKhau)
+                        .addComponent(txtMatKhau2)
+                        .addComponent(lblHoTen)
+                        .addComponent(jLabel1)
+                        .addGroup(pnlEditLayout.createSequentialGroup()
+                            .addComponent(rdoNam)
+                            .addGap(41, 41, 41)
+                            .addComponent(rdoNu))
+                        .addComponent(jLabel2)
+                        .addComponent(jLabel3)
+                        .addComponent(txtEmail)
+                        .addComponent(txtHoTen)
+                        .addComponent(txtLuong)
+                        .addComponent(txtMaNV, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(pnlEditLayout.createSequentialGroup()
+                            .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblVaiTro)
+                                .addGroup(pnlEditLayout.createSequentialGroup()
+                                    .addComponent(rdoTruongPhong)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(rdoNhanVien)))
+                            .addGap(58, 58, 58)
+                            .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtqrcode, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel4))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlEditLayout.createSequentialGroup()
-                        .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblMaNV)
-                            .addComponent(lblMatKhau)
-                            .addComponent(lblMatKhau2)
-                            .addComponent(txtMatKhau)
-                            .addComponent(txtMatKhau2)
-                            .addComponent(lblHoTen)
-                            .addComponent(jLabel1)
-                            .addGroup(pnlEditLayout.createSequentialGroup()
-                                .addComponent(rdoNam)
-                                .addGap(41, 41, 41)
-                                .addComponent(rdoNu))
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(txtEmail)
-                            .addComponent(txtHoTen)
-                            .addComponent(txtLuong)
-                            .addComponent(txtMaNV, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(pnlEditLayout.createSequentialGroup()
-                                .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblVaiTro)
-                                    .addGroup(pnlEditLayout.createSequentialGroup()
-                                        .addComponent(rdoTruongPhong)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(rdoNhanVien)))
-                                .addGap(58, 58, 58)
-                                .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtqrcode)
-                                    .addComponent(jLabel4))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlEditLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnThem)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnSua)
@@ -566,15 +541,8 @@ public class NhanVienPanel extends javax.swing.JPanel {
                         .addComponent(btnXoa)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnMoi)
-                        .addGap(165, 165, 165)
-                        .addComponent(btnFirst)
-                        .addGap(33, 33, 33)
-                        .addComponent(btnPrev)
-                        .addGap(23, 23, 23)
-                        .addComponent(btnNext)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnLast)
-                        .addGap(200, 200, 200))))
+                        .addGap(201, 201, 201)))
+                .addContainerGap(254, Short.MAX_VALUE))
         );
 
         pnlEditLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnMoi, btnSua, btnThem, btnXoa});
@@ -582,7 +550,7 @@ public class NhanVienPanel extends javax.swing.JPanel {
         pnlEditLayout.setVerticalGroup(
             pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlEditLayout.createSequentialGroup()
-                .addGap(68, 68, 68)
+                .addGap(55, 55, 55)
                 .addComponent(lblMaNV)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtMaNV, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -621,19 +589,13 @@ public class NhanVienPanel extends javax.swing.JPanel {
                     .addComponent(rdoTruongPhong)
                     .addComponent(rdoNhanVien)
                     .addComponent(txtqrcode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
-                .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnThem)
-                        .addComponent(btnSua)
-                        .addComponent(btnXoa)
-                        .addComponent(btnMoi))
-                    .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnFirst)
-                        .addComponent(btnPrev)
-                        .addComponent(btnNext)
-                        .addComponent(btnLast)))
-                .addGap(46, 46, 46))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnThem)
+                    .addComponent(btnSua)
+                    .addComponent(btnXoa)
+                    .addComponent(btnMoi))
+                .addGap(59, 59, 59))
         );
 
         pnlEditLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtEmail, txtHoTen, txtLuong, txtMaNV, txtMatKhau, txtMatKhau2});
@@ -642,9 +604,9 @@ public class NhanVienPanel extends javax.swing.JPanel {
 
         Tabs.addTab("CẬP NHẬT", pnlEdit);
 
-        jPanel1.add(Tabs, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 11, 1060, 739));
+        jPanel1.add(Tabs, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 11, 1070, 720));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1110, 750));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1110, 730));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
@@ -668,45 +630,24 @@ public class NhanVienPanel extends javax.swing.JPanel {
         this.clearForm();
     }//GEN-LAST:event_btnMoiActionPerformed
 
-    private void btnFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstActionPerformed
-        // TODO add your handling code here:
-        this.first();
-    }//GEN-LAST:event_btnFirstActionPerformed
-
-    private void btnPrevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrevActionPerformed
-        // TODO add your handling code here:
-        this.prev();
-    }//GEN-LAST:event_btnPrevActionPerformed
-
-    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
-        // TODO add your handling code here:
-        this.next();
-    }//GEN-LAST:event_btnNextActionPerformed
-
-    private void btnLastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastActionPerformed
-        // TODO add your handling code here:
-        this.last();
-    }//GEN-LAST:event_btnLastActionPerformed
-
     private void tblNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblNhanVienMouseClicked
         // TODO add your handling code here:
         if (evt.getClickCount() == 2) {
             this.row = tblNhanVien.getSelectedRow();
             this.edit();
+            
         }
     }//GEN-LAST:event_tblNhanVienMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane Tabs;
-    private javax.swing.JButton btnFirst;
-    private javax.swing.JButton btnLast;
     private javax.swing.JButton btnMoi;
-    private javax.swing.JButton btnNext;
-    private javax.swing.JButton btnPrev;
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnXoa;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

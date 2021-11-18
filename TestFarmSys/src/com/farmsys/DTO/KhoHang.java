@@ -11,30 +11,41 @@ import java.util.Date;
  * @author ASUS
  */
 public class KhoHang {
-    private String TenDan;
+
+    private int MaTH;
+    private String TenGian;
     private String TenCay;
-    private int TrongLuong;
+    private Float TrongLuong;
     private Date NgayTH;
-    private float GiaThanh;
-    
-    public KhoHang(){
-        
+    private Double GiaThanh;
+
+    public KhoHang() {
+
     }
 
-    public KhoHang(String TenDan, String TenCay, int TrongLuong, Date NgayTH, float GiaThanh) {
-        this.TenDan = TenDan;
+    public KhoHang(int MaTH, String TenDan, String TenCay, Float TrongLuong, Date NgayTH, Double GiaThanh) {
+        this.MaTH = MaTH;
+        this.TenGian = TenDan;
         this.TenCay = TenCay;
         this.TrongLuong = TrongLuong;
         this.NgayTH = NgayTH;
         this.GiaThanh = GiaThanh;
     }
 
-    public String getTenDan() {
-        return TenDan;
+    public int getMaTH() {
+        return MaTH;
     }
 
-    public void setTenDan(String TenDan) {
-        this.TenDan = TenDan;
+    public void setMaTH(int MaTH) {
+        this.MaTH = MaTH;
+    }
+
+    public String getTenGian() {
+        return TenGian;
+    }
+
+    public void setTenGian(String TenDan) {
+        this.TenGian = TenDan;
     }
 
     public String getTenCay() {
@@ -45,11 +56,11 @@ public class KhoHang {
         this.TenCay = TenCay;
     }
 
-    public int getTrongLuong() {
+    public Float getTrongLuong() {
         return TrongLuong;
     }
 
-    public void setTrongLuong(int TrongLuong) {
+    public void setTrongLuong(Float TrongLuong) {
         this.TrongLuong = TrongLuong;
     }
 
@@ -61,12 +72,12 @@ public class KhoHang {
         this.NgayTH = NgayTH;
     }
 
-    public float getGiaThanh() {
+    public Double getGiaThanh() {
         return GiaThanh;
     }
 
-    public void setGiaThanh(float GiaThanh) {
+    public void setGiaThanh(Double GiaThanh) {
         this.GiaThanh = GiaThanh;
     }
-    
+
 }

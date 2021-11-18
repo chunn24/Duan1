@@ -112,7 +112,7 @@ public class CayTrongPanel extends javax.swing.JPanel {
         pnlList.setLayout(pnlListLayout);
         pnlListLayout.setHorizontalGroup(
             pnlListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1043, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1058, Short.MAX_VALUE)
         );
         pnlListLayout.setVerticalGroup(
             pnlListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -266,7 +266,7 @@ public class CayTrongPanel extends javax.swing.JPanel {
                     .addGroup(pnlEditLayout.createSequentialGroup()
                         .addGap(12, 12, 12)
                         .addComponent(btnAdd)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlEditLayout.createSequentialGroup()
                         .addComponent(btnFirst)
@@ -347,9 +347,11 @@ public class CayTrongPanel extends javax.swing.JPanel {
             pnltongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnltongLayout.createSequentialGroup()
                 .addGap(0, 25, Short.MAX_VALUE)
-                .addGroup(pnltongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblTitle)
-                    .addComponent(tabs, javax.swing.GroupLayout.PREFERRED_SIZE, 1048, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(lblTitle)
+                .addGap(867, 867, 867))
+            .addGroup(pnltongLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(tabs)
                 .addContainerGap())
         );
         pnltongLayout.setVerticalGroup(
@@ -462,7 +464,7 @@ public class CayTrongPanel extends javax.swing.JPanel {
     public void init() {
         load();
         tblCayTrong.setDefaultEditor(Object.class, null);
-        new Timer(5000, (ActionEvent e) -> {
+        new Timer(10000, (ActionEvent e) -> {
             this.load();
         }).start();
     }

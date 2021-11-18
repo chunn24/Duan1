@@ -5,13 +5,13 @@
  */
 package com.farmsys.UI;
 
+import com.farmsys.DTO.KhoHang;
 import com.farmsys.DTO.NhatKy;
 import com.farmsys.Helper.MsgBox;
+import com.farmsys.dao.KhoHangDAO;
 import com.farmsys.dao.NhatKyDAO;
-import java.awt.event.ActionEvent;
 import java.sql.Date;
 import java.util.List;
-import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -74,17 +74,17 @@ public class HoanThanhcvJPanel extends javax.swing.JPanel {
 
         tblcv.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Stt", "Tên Công Việc", "Mô Tả", "Ngày Kết Thúc", "Trạng Thái"
+                "Stt", "Tên Công Việc", "Tên Giàn", "Tên Cây", "Mô Tả", "Ngày Kết Thúc", "Trạng Thái"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                true, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -270,8 +270,8 @@ public class HoanThanhcvJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 28, Short.MAX_VALUE)
-                .addComponent(tabs, javax.swing.GroupLayout.PREFERRED_SIZE, 1055, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 20, Short.MAX_VALUE)
+                .addComponent(tabs, javax.swing.GroupLayout.PREFERRED_SIZE, 1063, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -289,6 +289,11 @@ public class HoanThanhcvJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_tblcvMouseClicked
 
     private void btnhtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhtActionPerformed
+        String TenCV = txttencv.getText();
+        if (TenCV.equals("Thu hoạch")) {
+            SoLuong = Float.parseFloat(MsgBox.prompt(this, "Số Lượng Thu Hoạch(kg):"));
+            this.insertKhoHang();
+        }
         this.update();
     }//GEN-LAST:event_btnhtActionPerformed
 
@@ -317,17 +322,15 @@ public class HoanThanhcvJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtngaykt;
     private javax.swing.JTextField txttencv;
     // End of variables declaration//GEN-END:variables
-
+    KhoHangDAO khDAO = new KhoHangDAO();
     NhatKyDAO nkDAO = new NhatKyDAO();
     int row = -1;
+    Float SoLuong;
 
     private void init() {
         this.row = -1;
         loadLbl();
         fillTableNguoinhanviec();
-        new Timer(5000, (ActionEvent e) -> {            
-            fillTableNguoinhanviec();
-        }).start();
     }
 
     private void loadLbl() {
@@ -342,7 +345,7 @@ public class HoanThanhcvJPanel extends javax.swing.JPanel {
         for (NhatKy nv : list) {
             String status = trangThai(nv);
             model.addRow(new Object[]{
-                nv.getStt(), nv.getTenCV(), nv.getChiTiet(), nv.getNgayKetThuc(), status
+                nv.getStt(), nv.getTenCV(), nv.getTenGian(), nv.getTenCay(), nv.getChiTiet(), nv.getNgayKetThuc(), status
             });
         }
     }
@@ -384,9 +387,19 @@ public class HoanThanhcvJPanel extends javax.swing.JPanel {
         return null;
     }
 
+    KhoHang getTable() {
+        KhoHang kh = new KhoHang();
+        kh.setTenGian(tblcv.getValueAt(this.row, 2) + "");
+        System.out.println(tblcv.getValueAt(this.row, 2) + "");
+        kh.setTenCay(tblcv.getValueAt(this.row, 3) + "");
+        kh.setTrongLuong(SoLuong);
+        kh.setNgayTH((Date) tblcv.getValueAt(this.row, 5));
+        return kh;
+    }
+
     void edit() {
-        int manv = (int) tblcv.getValueAt(this.row, 0);
-        NhatKy nv = nkDAO.selectformtodoanddoing(manv);
+        String manv = (String) tblcv.getValueAt(this.row, 1);
+        NhatKy nv = nkDAO.selectById(manv);
         this.setForm(nv);
         tabs.setSelectedIndex(1);
 
@@ -416,5 +429,15 @@ public class HoanThanhcvJPanel extends javax.swing.JPanel {
             return false;
         }
         return true;
+    }
+
+    void insertKhoHang() {
+        KhoHang kh = getTable();
+        try {
+            khDAO.insert(kh);
+            MsgBox.alert(this, "abc");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 }
