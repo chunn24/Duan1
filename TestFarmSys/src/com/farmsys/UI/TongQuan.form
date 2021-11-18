@@ -1160,7 +1160,7 @@
                 <Component class="javax.swing.JLabel" name="lb_weather">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Gill Sans Ultra Bold Condensed" size="11" style="1"/>
+                      <Font name="Lucida Sans Typewriter" size="11" style="1"/>
                     </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/com/farmsys/icons/weather_16px.png"/>
@@ -1187,7 +1187,7 @@
                   </AuxValues>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="530" y="120" width="220" height="120"/>
+                      <AbsoluteConstraints x="520" y="120" width="220" height="120"/>
                     </Constraint>
                   </Constraints>
 
@@ -1342,7 +1342,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="270" y="100" width="-1" height="-1"/>
+                      <AbsoluteConstraints x="280" y="100" width="-1" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -1362,7 +1362,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="30" y="100" width="-1" height="-1"/>
+                      <AbsoluteConstraints x="40" y="100" width="-1" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>

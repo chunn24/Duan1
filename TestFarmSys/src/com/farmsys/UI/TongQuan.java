@@ -778,7 +778,7 @@ public class TongQuan extends javax.swing.JFrame {
         lblsunrain.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/sun_100px.png"))); // NOI18N
         pnltongquat.add(lblsunrain, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 10, 100, 100));
 
-        lb_weather.setFont(new java.awt.Font("Gill Sans Ultra Bold Condensed", 1, 11)); // NOI18N
+        lb_weather.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 11)); // NOI18N
         lb_weather.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/weather_16px.png"))); // NOI18N
         lb_weather.setText(":");
         pnltongquat.add(lb_weather, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 10, 230, 30));
@@ -811,7 +811,7 @@ public class TongQuan extends javax.swing.JFrame {
             .addComponent(jLabel30, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        pnltongquat.add(pnldone, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 120, 220, 120));
+        pnltongquat.add(pnldone, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 120, 220, 120));
 
         pnldoing.setBackground(new java.awt.Color(255, 255, 255));
         pnldoing.setToolTipText("");
@@ -875,13 +875,13 @@ public class TongQuan extends javax.swing.JFrame {
         pnltongquat.add(pnltodo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 220, 120));
 
         jLabel1.setText("Công việc đang làm:");
-        pnltongquat.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 100, -1, -1));
+        pnltongquat.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 100, -1, -1));
 
         jLabel2.setText("Kho hàng:");
         pnltongquat.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 100, -1, -1));
 
         jLabel3.setText("Nhận việc:");
-        pnltongquat.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
+        pnltongquat.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
 
         tabs.addTab("tab1", pnltongquat);
 
@@ -1204,7 +1204,7 @@ public class TongQuan extends javax.swing.JFrame {
         String date = " Ngày: " + result.getList()[idx].getDt_txt();
         String city = " Thành phố: " + result.getCity().getName();
         String nation = " Quốc gia: " + result.getCity().getCountry();
-        String weath = " Thời tiết: " + result.getList()[idx].getWeather()[0].getDescription();
+        String weath = " Weather: " + result.getList()[idx].getWeather()[0].getDescription();
         String nhietDo = " Nhiệt độ: " + result.getList()[idx].getMain().getTemp() + " độ C";
         String apXuat = " Áp xuất: " + result.getList()[idx].getMain().getPresure() + " Pa";
         String doAm = " Độ ẩm: " + result.getList()[idx].getMain().getHumidity() + " %";
@@ -1237,7 +1237,7 @@ public class TongQuan extends javax.swing.JFrame {
     private void openDangXuat() {
         int ask = JOptionPane.showConfirmDialog(this, "Bạn có chắc là mình muốn đăng xuất ?", "Xác nhận", JOptionPane.YES_NO_OPTION);
         if (ask == 0) {
-            this.dispose();            
+            this.dispose();
             new TongQuan().setVisible(true);
         }
     }
@@ -1247,26 +1247,26 @@ public class TongQuan extends javax.swing.JFrame {
     }
 
     private void OpenNhanVien() {
-        if (Auth.isLogin()) {
+        if (Auth.isManager()) {
             tabs.setSelectedIndex(5);
         } else {
-            MsgBox.alert(this, "Vui lòng đăng nhập!");
+            MsgBox.alert(this, "Bạn không có quyền truy cập!");
         }
     }
 
     private void OpenGianTrong() {
-        if (Auth.isLogin()) {
+        if (Auth.isManager()) {
             tabs.setSelectedIndex(7);
         } else {
-            MsgBox.alert(this, "Vui lòng đăng nhập!");
+            MsgBox.alert(this, "Bạn không có quyền truy cập!");
         }
     }
 
     private void OpenCayTrong() {
-        if (Auth.isLogin()) {
+        if (Auth.isManager()) {
             tabs.setSelectedIndex(3);
         } else {
-            MsgBox.alert(this, "Vui lòng đăng nhập!");
+            MsgBox.alert(this, "Bạn không có quyền truy cập!");
         }
     }
 
@@ -1279,10 +1279,10 @@ public class TongQuan extends javax.swing.JFrame {
     }
 
     private void OpenGiaoViec() {
-        if (Auth.isLogin()) {
+        if (Auth.isManager()) {
             tabs.setSelectedIndex(4);
         } else {
-            MsgBox.alert(this, "Vui lòng đăng nhập!");
+            MsgBox.alert(this, "Bạn không có quyền truy cập!");
         }
     }
 
@@ -1319,10 +1319,10 @@ public class TongQuan extends javax.swing.JFrame {
     }
 
     private void OpenKhohang() {
-        if (Auth.isLogin()) {
+        if (Auth.isManager()) {
             tabs.setSelectedIndex(9);
         } else {
-            MsgBox.alert(this, "Vui lòng đăng nhập!");
+            MsgBox.alert(this, "Bạn không có quyền truy cập!");
         }
     }
 
