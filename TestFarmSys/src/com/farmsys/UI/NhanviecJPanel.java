@@ -40,13 +40,12 @@ public class NhanViecJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         pnltong = new javax.swing.JPanel();
-        tabs = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
+        pnltbl = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblcv = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         lblnhanvien = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        pnlThaotac = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txttencv = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -60,21 +59,18 @@ public class NhanViecJPanel extends javax.swing.JPanel {
         btnnhanviec = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
-        setMinimumSize(new java.awt.Dimension(1083, 750));
-        setPreferredSize(new java.awt.Dimension(1083, 750));
+        setMinimumSize(new java.awt.Dimension(1090, 750));
+        setPreferredSize(new java.awt.Dimension(1090, 750));
 
         pnltong.setBackground(new java.awt.Color(255, 255, 255));
         pnltong.setMinimumSize(new java.awt.Dimension(1083, 750));
         pnltong.setPreferredSize(new java.awt.Dimension(1083, 750));
         pnltong.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tabs.setBackground(new java.awt.Color(204, 255, 204));
-        tabs.setMinimumSize(new java.awt.Dimension(1083, 750));
-        tabs.setPreferredSize(new java.awt.Dimension(1083, 750));
+        pnltbl.setBackground(new java.awt.Color(255, 255, 255));
+        pnltbl.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
+        tblcv.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         tblcv.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -101,18 +97,17 @@ public class NhanViecJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblcv);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 78, 1035, 506));
+        pnltbl.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 78, 540, 590));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setText("Chi Tiết Công Việc :");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 43, -1, -1));
+        pnltbl.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
 
         lblnhanvien.setText("jLabel8");
-        jPanel1.add(lblnhanvien, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 690, -1, -1));
+        pnltbl.add(lblnhanvien, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 550, -1, -1));
 
-        tabs.addTab("Danh Sách", jPanel1);
-
-        jPanel2.setBackground(new java.awt.Color(204, 255, 204));
+        pnlThaotac.setBackground(new java.awt.Color(255, 255, 255));
+        pnlThaotac.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel1.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         jLabel1.setText("Tên công việc: ");
@@ -159,73 +154,73 @@ public class NhanViecJPanel extends javax.swing.JPanel {
             }
         });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(261, 261, 261)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnlThaotacLayout = new javax.swing.GroupLayout(pnlThaotac);
+        pnlThaotac.setLayout(pnlThaotacLayout);
+        pnlThaotacLayout.setHorizontalGroup(
+            pnlThaotacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlThaotacLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(pnlThaotacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pnlThaotacLayout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
                         .addComponent(txttencv, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(pnlThaotacLayout.createSequentialGroup()
+                        .addGroup(pnlThaotacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlThaotacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(pnlThaotacLayout.createSequentialGroup()
                                     .addComponent(jLabel4)
                                     .addGap(77, 77, 77))
-                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(pnlThaotacLayout.createSequentialGroup()
                                     .addComponent(jLabel5)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(pnlThaotacLayout.createSequentialGroup()
                                 .addComponent(jLabel6)
                                 .addGap(22, 22, 22)))
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(btnnhanviec, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnhuy, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(pnlThaotacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtngaykt, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtgiaoviec, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(347, Short.MAX_VALUE))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pnlThaotacLayout.createSequentialGroup()
+                                .addComponent(btnnhanviec, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnhuy, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
-        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtgiaoviec, txtngaykt, txttencv});
+        pnlThaotacLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtgiaoviec, txtngaykt, txttencv});
 
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(116, 116, 116)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        pnlThaotacLayout.setVerticalGroup(
+            pnlThaotacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlThaotacLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(pnlThaotacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txttencv, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlThaotacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlThaotacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtgiaoviec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlThaotacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addComponent(txtngaykt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(93, 93, 93)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(53, 53, 53)
+                .addGroup(pnlThaotacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnhuy)
                     .addComponent(btnnhanviec))
-                .addContainerGap(139, Short.MAX_VALUE))
+                .addContainerGap(69, Short.MAX_VALUE))
         );
 
-        jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtgiaoviec, txtngaykt, txttencv});
+        pnlThaotacLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtgiaoviec, txtngaykt, txttencv});
 
-        tabs.addTab("Chi Tiết", jPanel2);
+        pnltbl.add(pnlThaotac, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 100, 490, 500));
 
-        pnltong.add(tabs, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 1060, 710));
+        pnltong.add(pnltbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 0, 204));
@@ -236,21 +231,17 @@ public class NhanViecJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1083, Short.MAX_VALUE)
+            .addGap(0, 1090, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(pnltong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                .addComponent(pnltong, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1090, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 490, Short.MAX_VALUE)
+            .addGap(0, 750, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(pnltong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addComponent(pnltong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -279,13 +270,12 @@ public class NhanViecJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblnhanvien;
+    private javax.swing.JPanel pnlThaotac;
+    private javax.swing.JPanel pnltbl;
     private javax.swing.JPanel pnltong;
-    private javax.swing.JTabbedPane tabs;
     private javax.swing.JTable tblcv;
     private javax.swing.JTextField txtgiaoviec;
     private javax.swing.JTextArea txtmota;
@@ -381,7 +371,7 @@ public class NhanViecJPanel extends javax.swing.JPanel {
         int manv = (int) tblcv.getValueAt(this.row, 0);
         NhatKy nv = nkDAO.selectformtodoanddoing(manv);
         this.setForm(nv);
-        tabs.setSelectedIndex(1);
+      
 
     }
 
