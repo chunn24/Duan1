@@ -21,11 +21,13 @@ public class CongViecDAO extends FarmSysDAO<CongViec, String> {
 
     String SELECT_ALL_SQL = "SELECT * FROM CongViec";
     String SELECT_BY_ID_SQL = "SELECT * FROM CongViec WHERE TenCV=?";
+    
 
     @Override
     public List<CongViec> selectAll() {
         return this.selectBySql(SELECT_ALL_SQL);
     }
+    
 
     @Override
     public CongViec selectById(String key) {
@@ -68,5 +70,5 @@ public class CongViecDAO extends FarmSysDAO<CongViec, String> {
     public void delete(String key) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
 }

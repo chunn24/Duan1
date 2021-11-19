@@ -66,7 +66,9 @@ Create table NhatKy (
 		1: doing
 		2: từ chối
 		3: hoàn thành
-		4: hoàn thành + trể */
+		4: hoàn thành + trể 
+		5: buy */
+		
 
 	Primary key (NhanVien,TenGian,TenCay,TenCV),
 	
@@ -92,10 +94,15 @@ Create table KhoHang(
 );
 go
 
+create table NganSach(
+	MaNS int IDENTITY(1,1),
+	TongNganSach float,
+	primary key (TongNganSach)
+);
 
-
- 
-
+insert into NganSach
+values 
+ ('10000000')
 
 
 insert into NhanVien 
@@ -171,16 +178,50 @@ go
  insert into NhatKy (TenCV,TenCay,TenGian,ChiTiet,NguoiTao,NhanVien,NgayBatDau,NgayKetThuc,TrangThai)
 values 
  (N'Trồng cây',N'Rau mầm','C9',N'Trồng cây giàn A1','Trung','TrieuNHD','2021-11-05','2021-11-06','0'),
- (N'Chăm sóc',N'Rau muống','C9',N'Trồng cây giàn A2','Trung','TrieuNHD','2021-11-05','2021-11-06','1')
+ (N'Chăm sóc',N'Rau muống','C9',N'Trồng cây giàn A2','Trung','TrieuNHD','2021-11-05','2021-11-06','1'),
+ (N'Trồng cây',N'Rau muống','C10',N'Trồng cây giàn A3','Trung','TrieuNHD','2021-10-23','2021-10-24','0')
  go
 
- insert into KhoHang (TenGian,TenCay,TrongLuong,ThoiGianThuHoach,Coin)
-values 
- ('C9',N'Rau xà lách','10',null,'35000'),
- ('A2',N'Rau cải ngọt','10',null,'50000'),
- ('A6',N'Rau muống','10',null,'40000')
- go
 
-select (SELECT DATEADD(day, +(LoaiCay.ThoiGianThuHoach) , NhatKy.NgayBatDau )) as 'ngaythuhoach' from LoaiCay inner join NhatKy on LoaiCay.TenCay = NhatKy.TenCay
 
-select * from KhoHang
+select NhatKy.TenGian,LoaiCay.TenCay,(SELECT DATEADD(day, +(LoaiCay.ThoiGianThuHoach) , NhatKy.NgayKetThuc)) as 'NgayTH' from LoaiCay inner join NhatKy on LoaiCay.TenCay = NhatKy.TenCay where TenCV like N'Trồng cây' and GETDATE() >= (SELECT DATEADD(day, +(LoaiCay.ThoiGianThuHoach) , NhatKy.NgayKetThuc))
+
+
+select * from NhatKy 
+
+select *from NhatKy where TrangThai = 3 and NhanVien like N'TrieuNHD' and  NgayKetThuc between (select CONVERT(varchar,dateadd(d,-(day(getdate()-1)),getdate()),106)) and (select CONVERT(varchar,dateadd(d,-(day(dateadd(m,1,getdate()))),dateadd(m,1,getdate())),106))
+
+
+select NhatKy.TenGian,LoaiCay.TenCay,(SELECT DATEADD(day, +(LoaiCay.ThoiGianThuHoach) , NhatKy.NgayKetThuc)) as 'NgayTH' from LoaiCay inner join NhatKy on LoaiCay.TenCay = NhatKy.TenCay where TenCV like N'Trồng cây' and GETDATE() >= (SELECT DATEADD(day, +(LoaiCay.ThoiGianThuHoach) , NhatKy.NgayKetThuc)) and TrangThai = 2
+    
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -10,6 +10,7 @@ import com.farmsys.DTO.CongViec;
 import com.farmsys.DTO.GianTrong;
 import com.farmsys.DTO.NhanVien;
 import com.farmsys.DTO.NhatKy;
+import com.farmsys.DTO.ThuHoach;
 import com.farmsys.Helper.Auth;
 import com.farmsys.Helper.MsgBox;
 import com.farmsys.dao.CayTrongDAO;
@@ -17,6 +18,7 @@ import com.farmsys.dao.CongViecDAO;
 import com.farmsys.dao.GianTrongDAO;
 import com.farmsys.dao.NhanVienDAO;
 import com.farmsys.dao.NhatKyDAO;
+import com.farmsys.dao.ThuHoachDAO;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 
@@ -110,6 +112,12 @@ public class GiaoViecJPanel extends javax.swing.JPanel {
         jLabel10.setText("Người tạo:");
 
         txtnguoitao.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        cboCongViec.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboCongViecActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PanelTongLayout = new javax.swing.GroupLayout(PanelTong);
         PanelTong.setLayout(PanelTongLayout);
@@ -210,6 +218,20 @@ public class GiaoViecJPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnGiaoVietActionPerformed
 
+    private void cboCongViecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboCongViecActionPerformed
+        if(cboCongViec.getSelectedIndex()== 0){
+            this.fillComboBoxGianTrongChamSoc();
+           
+        }else if(cboCongViec.getSelectedIndex() == 1){
+            this.fillComboBoxGianTrongThuHoach();
+        }else {
+            this.fillComboBoxGianTrongTrongCay();
+            
+            System.out.println(123);
+        }
+           
+    }//GEN-LAST:event_cboCongViecActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelTong;
@@ -237,6 +259,7 @@ public class GiaoViecJPanel extends javax.swing.JPanel {
     GianTrongDAO dtdao = new GianTrongDAO();
     CongViecDAO cvdao = new CongViecDAO();
     NhanVienDAO nvdao = new NhanVienDAO();
+    ThuHoachDAO thdao = new ThuHoachDAO();
 
     void init() {
         txtnguoitao.setText(Auth.user.getMaNV());
@@ -262,6 +285,31 @@ public class GiaoViecJPanel extends javax.swing.JPanel {
         List<GianTrong> list = dtdao.selectByTT(0);
         for (GianTrong dt : list) {
             model.addElement(dt);
+        }
+    }
+    void fillComboBoxGianTrongTrongCay() {
+        DefaultComboBoxModel model = (DefaultComboBoxModel) cboGianTrong.getModel();
+        model.removeAllElements();
+        List<GianTrong> list = dtdao.selectByTT(0);
+        for (GianTrong dt : list) {
+            model.addElement(dt);
+        }
+    }
+    void fillComboBoxGianTrongChamSoc() {
+        DefaultComboBoxModel model = (DefaultComboBoxModel) cboGianTrong.getModel();
+        model.removeAllElements();
+        List<GianTrong> list = dtdao.selectByTT(1);
+        for (GianTrong dt : list) {
+            model.addElement(dt);
+        }
+    }
+    void fillComboBoxGianTrongThuHoach() {
+        DefaultComboBoxModel model = (DefaultComboBoxModel) cboGianTrong.getModel();
+        model.removeAllElements();
+        List<ThuHoach> list = thdao.selectAll();
+        System.out.println(thdao.selectAll());
+        for (ThuHoach th : list) {
+            model.addElement(th);
         }
     }
 

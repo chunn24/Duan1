@@ -6,8 +6,10 @@
 package com.farmsys.UI;
 
 import com.farmsys.DTO.KhoHang;
+import com.farmsys.DTO.NhatKy;
 import com.farmsys.Helper.MsgBox;
 import com.farmsys.dao.KhoHangDAO;
+import com.farmsys.dao.NhatKyDAO;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -332,6 +334,7 @@ public class KhoHangJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtTrongLuong;
     // End of variables declaration//GEN-END:variables
     KhoHangDAO khdao = new KhoHangDAO();
+    NhatKyDAO nkdao = new NhatKyDAO();
     int index = 0;
 
     void init() {
@@ -357,6 +360,7 @@ public class KhoHangJPanel extends javax.swing.JPanel {
         } catch (Exception e) {
             MsgBox.alert(this, "Bán Thất Bại !");
         }
+        this.UpdateStt();
     }
 
     void fillTable() {
@@ -432,6 +436,16 @@ public class KhoHangJPanel extends javax.swing.JPanel {
         }
 
         return true;
+    }
+
+    void UpdateStt() {
+
+        try {
+            nkdao.updateTrangThaiTH(txtTenDan.getText());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

@@ -408,6 +408,7 @@ public class KhoHangJDialog extends java.awt.Dialog {
             MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
         }
     }
+    
 
     void edit() {
         try {

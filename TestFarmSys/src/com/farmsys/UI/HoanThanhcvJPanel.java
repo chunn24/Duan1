@@ -292,9 +292,13 @@ public class HoanThanhcvJPanel extends javax.swing.JPanel {
         String TenCV = txttencv.getText();
         if (TenCV.equals("Thu hoạch")) {
             SoLuong = Float.parseFloat(MsgBox.prompt(this, "Số Lượng Thu Hoạch(kg):"));
+
             this.insertKhoHang();
+
         }
+        
         this.update();
+
     }//GEN-LAST:event_btnhtActionPerformed
 
 
@@ -416,8 +420,12 @@ public class HoanThanhcvJPanel extends javax.swing.JPanel {
                 "Từ chối";
             case 3 ->
                 "Hoàn thành";
-            default ->
+            case 4 ->
+
                 "Hoàn thành muộn";
+            default ->
+                "Buy";
+
         };
         return status;
     }
@@ -440,4 +448,6 @@ public class HoanThanhcvJPanel extends javax.swing.JPanel {
             System.out.println(e);
         }
     }
+
+    
 }

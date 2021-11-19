@@ -10,6 +10,7 @@ import com.farmsys.DTO.CongViec;
 import com.farmsys.DTO.GianTrong;
 import com.farmsys.DTO.NhanVien;
 import com.farmsys.DTO.NhatKy;
+import com.farmsys.DTO.ThuHoach;
 import com.farmsys.Helper.Auth;
 import com.farmsys.Helper.MsgBox;
 import com.farmsys.dao.CayTrongDAO;
@@ -17,6 +18,7 @@ import com.farmsys.dao.CongViecDAO;
 import com.farmsys.dao.GianTrongDAO;
 import com.farmsys.dao.NhanVienDAO;
 import com.farmsys.dao.NhatKyDAO;
+import com.farmsys.dao.ThuHoachDAO;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 
@@ -38,7 +40,7 @@ public final class GiaoViecJDialog extends javax.swing.JDialog {
         init();
         fillComboBoxCongViec();
         fillComboBoxCayTrong();
-        fillComboBoxGianTrong();
+        fillComboBoxGianTrongTrongCay();
         fillComboBoxNhanVien();
     }
 
@@ -292,6 +294,7 @@ public final class GiaoViecJDialog extends javax.swing.JDialog {
     GianTrongDAO dtdao = new GianTrongDAO();
     CongViecDAO cvdao = new CongViecDAO();
     NhanVienDAO nvdao = new NhanVienDAO();
+    ThuHoachDAO thdao = new ThuHoachDAO();
     
 
     void init() {
@@ -308,13 +311,29 @@ public final class GiaoViecJDialog extends javax.swing.JDialog {
             model.addElement(ct);
         }
     }
-
-    void fillComboBoxGianTrong() {
+    
+    void fillComboBoxGianTrongTrongCay() {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cboGianTrong.getModel();
         model.removeAllElements();
         List<GianTrong> list = dtdao.selectByTT(0);
         for (GianTrong dt : list) {
             model.addElement(dt);
+        }
+    }
+    void fillComboBoxGianTrongChamSoc() {
+        DefaultComboBoxModel model = (DefaultComboBoxModel) cboGianTrong.getModel();
+        model.removeAllElements();
+        List<GianTrong> list = dtdao.selectByTT(1);
+        for (GianTrong dt : list) {
+            model.addElement(dt);
+        }
+    }
+    void fillComboBoxGianTrongThuHoach() {
+        DefaultComboBoxModel model = (DefaultComboBoxModel) cboGianTrong.getModel();
+        model.removeAllElements();
+        List<ThuHoach> list = thdao.selectAll();
+        for (ThuHoach th : list) {
+            model.addElement(th);
         }
     }
 
@@ -334,6 +353,7 @@ public final class GiaoViecJDialog extends javax.swing.JDialog {
             model.addElement(nv);
         }
     }
+     
 
     void insert() {
         NhatKy kh = getForm();
@@ -350,7 +370,7 @@ public final class GiaoViecJDialog extends javax.swing.JDialog {
                 MsgBox.alert(this, "Thêm thất bại!");
             }
         }
-        this.fillComboBoxGianTrong();
+        this.fillComboBoxGianTrongTrongCay();
     }
 
     NhatKy getForm() {
@@ -378,4 +398,5 @@ public final class GiaoViecJDialog extends javax.swing.JDialog {
         }
         return true;
     }
+    
 }
