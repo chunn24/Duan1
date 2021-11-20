@@ -167,6 +167,7 @@ public class TongQuan extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("FarmSys");
+        setAlwaysOnTop(true);
         setBackground(new java.awt.Color(255, 255, 255));
         setUndecorated(true);
 
@@ -731,7 +732,7 @@ public class TongQuan extends javax.swing.JFrame {
 
         pnlweatherLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {lb_apXuat, lb_city, lb_cloud, lb_doAm, lb_nation, lb_nhietDo});
 
-        pnltongquat.add(pnlweather, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 470, 400, 260));
+        pnltongquat.add(pnlweather, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, 400, 260));
 
         lblsunrain.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/sun_100px.png"))); // NOI18N
         pnltongquat.add(lblsunrain, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 10, 100, 100));

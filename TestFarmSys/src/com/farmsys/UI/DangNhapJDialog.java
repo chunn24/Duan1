@@ -105,7 +105,6 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
         welcom = new javax.swing.JLabel();
         WebcamQRcode = new javax.swing.JFrame();
         panelquetqr = new RoundedPanel(50, Color.WHITE);
-        jSeparator8 = new javax.swing.JSeparator();
         panelquetQR = new javax.swing.JPanel();
         pnldieukhien1 = new javax.swing.JPanel();
         lblExit = new javax.swing.JLabel();
@@ -367,12 +366,10 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
         WebcamQRcode.setLocationByPlatform(true);
         WebcamQRcode.setMinimumSize(new java.awt.Dimension(500, 380));
         WebcamQRcode.setUndecorated(true);
+        WebcamQRcode.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        panelquetqr.setBackground(new java.awt.Color(255, 255, 255));
+        panelquetqr.setBackground(new java.awt.Color(51, 51, 51));
         panelquetqr.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jSeparator8.setForeground(new java.awt.Color(126, 167, 206));
-        panelquetqr.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 470, 30));
 
         panelquetQR.setBackground(new java.awt.Color(250, 250, 250));
         panelquetQR.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 230, 230)));
@@ -382,28 +379,9 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
             }
         });
         panelquetQR.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        panelquetqr.add(panelquetQR, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 470, 300));
+        panelquetqr.add(panelquetQR, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 500, 320));
 
-        javax.swing.GroupLayout WebcamQRcodeLayout = new javax.swing.GroupLayout(WebcamQRcode.getContentPane());
-        WebcamQRcode.getContentPane().setLayout(WebcamQRcodeLayout);
-        WebcamQRcodeLayout.setHorizontalGroup(
-            WebcamQRcodeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
-            .addGroup(WebcamQRcodeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(WebcamQRcodeLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(panelquetqr, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        WebcamQRcodeLayout.setVerticalGroup(
-            WebcamQRcodeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 380, Short.MAX_VALUE)
-            .addGroup(WebcamQRcodeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(WebcamQRcodeLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(panelquetqr, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        WebcamQRcode.getContentPane().add(panelquetqr, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 450));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(950, 500));
@@ -780,7 +758,6 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
-    private javax.swing.JSeparator jSeparator8;
     private javax.swing.JLabel lblExit;
     private javax.swing.JLabel lblloginwwithQR;
     private javax.swing.JLabel lbllogo;
