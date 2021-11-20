@@ -66,7 +66,9 @@ Create table NhatKy (
 		1: doing
 		2: từ chối
 		3: hoàn thành
-		4: hoàn thành + trể */
+		4: hoàn thành + trể 
+		5: buy */
+		
 
 	Primary key (NhanVien,TenGian,TenCay,TenCV),
 	
@@ -79,22 +81,28 @@ Create table NhatKy (
 go
 
 Create table KhoHang(
+	MaTH int IDENTITY(1,1),
 	TenGian nvarchar(30),
 	TenCay nvarchar(30),
 	TrongLuong float,
 	ThoiGianThuHoach date,
 	Coin float,
 
-	Primary key (TenGian,TenCay),
+	Primary key (MaTH),
 	foreign key (TenGian) references GianTrong(TenGian),
 	foreign key (TenCay) references LoaiCay(TenCay)
 );
 go
 
+create table NganSach(
+	MaNS int IDENTITY(1,1),
+	TongNganSach float,
+	primary key (TongNganSach)
+);
 
-
- 
-
+insert into NganSach
+values 
+ ('10000000')
 
 
 insert into NhanVien 
@@ -170,14 +178,60 @@ go
  insert into NhatKy (TenCV,TenCay,TenGian,ChiTiet,NguoiTao,NhanVien,NgayBatDau,NgayKetThuc,TrangThai)
 values 
  (N'Trồng cây',N'Rau mầm','C9',N'Trồng cây giàn A1','Trung','TrieuNHD','2021-11-05','2021-11-06','0'),
- (N'Chăm sóc',N'Rau muống','C9',N'Trồng cây giàn A2','Trung','TrieuNHD','2021-11-05','2021-11-06','1')
+ (N'Chăm sóc',N'Rau muống','C9',N'Trồng cây giàn A2','Trung','TrieuNHD','2021-11-05','2021-11-06','1'),
+ (N'Trồng cây',N'Rau muống','C10',N'Trồng cây giàn A3','Trung','TrieuNHD','2021-10-23','2021-10-24','0')
  go
 
- insert into KhoHang (TenGian,TenCay,TrongLuong,ThoiGianThuHoach,Coin)
-values 
- ('C9',N'Rau xà lách','10',null,'35000'),
- ('A2',N'Rau cải ngọt','10',null,'50000'),
- ('A6',N'Rau muống','10',null,'40000')
- go
 
-select (SELECT DATEADD(day, +(LoaiCay.ThoiGianThuHoach) , NhatKy.NgayBatDau )) as 'ngaythuhoach' from LoaiCay inner join NhatKy on LoaiCay.TenCay = NhatKy.TenCay
+
+select NhatKy.TenGian,LoaiCay.TenCay,(SELECT DATEADD(day, +(LoaiCay.ThoiGianThuHoach) , NhatKy.NgayKetThuc)) as 'NgayTH' from LoaiCay inner join NhatKy on LoaiCay.TenCay = NhatKy.TenCay where TenCV like N'Trồng cây' and GETDATE() >= (SELECT DATEADD(day, +(LoaiCay.ThoiGianThuHoach) , NhatKy.NgayKetThuc))
+
+
+select * from NhatKy 
+
+select *from NhatKy where TrangThai = 3 and NhanVien like N'TrieuNHD' and  NgayKetThuc between (select CONVERT(varchar,dateadd(d,-(day(getdate()-1)),getdate()),106)) and (select CONVERT(varchar,dateadd(d,-(day(dateadd(m,1,getdate()))),dateadd(m,1,getdate())),106))
+
+
+select NhatKy.TenGian,LoaiCay.TenCay,(SELECT DATEADD(day, +(LoaiCay.ThoiGianThuHoach) , NhatKy.NgayKetThuc)) as 'NgayTH' from LoaiCay inner join NhatKy on LoaiCay.TenCay = NhatKy.TenCay where TenCV like N'Trồng cây' and GETDATE() >= (SELECT DATEADD(day, +(LoaiCay.ThoiGianThuHoach) , NhatKy.NgayKetThuc)) and TrangThai = 2
+    
+select distinct (select SUM(coin) from KhoHang where ThoiGianThuHoach between '2021/01/01' and '2021/01/31') as 'TongTien01',
+		(select SUM(coin) from KhoHang where ThoiGianThuHoach between '2021/02/01' and '2021/02/28')as 'TongTien02',
+		(select SUM(coin) from KhoHang where ThoiGianThuHoach between '2021/03/01' and '2021/03/31')as 'TongTien03',
+		(select SUM(coin) from KhoHang where ThoiGianThuHoach between '2021/04/01' and '2021/04/30')as 'TongTien04',
+		(select SUM(coin) from KhoHang where ThoiGianThuHoach between '2021/05/01' and '2021/05/31')as 'TongTien05',
+		(select SUM(coin) from KhoHang where ThoiGianThuHoach between '2021/06/01' and '2021/06/30')as 'TongTien06',
+		(select SUM(coin) from KhoHang where ThoiGianThuHoach between '2021/07/01' and '2021/07/31')as 'TongTien07',
+		(select SUM(coin) from KhoHang where ThoiGianThuHoach between '2021/08/01' and '2021/08/31')as 'TongTien08',
+		(select SUM(coin) from KhoHang where ThoiGianThuHoach between '2021/09/01' and '2021/09/30')as 'TongTien09',
+		(select SUM(coin) from KhoHang where ThoiGianThuHoach between '2021/10/01' and '2021/10/31')as 'TongTien10',
+		(select SUM(coin) from KhoHang where ThoiGianThuHoach between '2021/11/01' and '2021/11/30')as 'TongTien11',
+		(select SUM(coin) from KhoHang where ThoiGianThuHoach between '2021/12/01' and '2021/12/31')as 'TongTien12'
+		from KhoHang
+
+
+select * from LoaiCay
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
