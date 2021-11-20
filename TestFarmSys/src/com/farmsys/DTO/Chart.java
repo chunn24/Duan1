@@ -21,12 +21,12 @@ public class Chart {
     private Double Thang10;
     private Double Thang11;
     private Double Thang12;
-    private Double Thang13;
+    
 
     public Chart() {
     }
 
-    public Chart(Double Thang1, Double Thang2, Double Thang3, Double Thang4, Double Thang5, Double Thang6, Double Thang7, Double Thang8, Double Thang9, Double Thang10, Double Thang11, Double Thang12, Double Thang13) {
+    public Chart(Double Thang1, Double Thang2, Double Thang3, Double Thang4, Double Thang5, Double Thang6, Double Thang7, Double Thang8, Double Thang9, Double Thang10, Double Thang11, Double Thang12) {
         this.Thang1 = Thang1;
         this.Thang2 = Thang2;
         this.Thang3 = Thang3;
@@ -39,7 +39,6 @@ public class Chart {
         this.Thang10 = Thang10;
         this.Thang11 = Thang11;
         this.Thang12 = Thang12;
-        this.Thang13 = Thang13;
     }
 
     public Double getThang1() {
@@ -138,14 +137,7 @@ public class Chart {
         this.Thang12 = Thang12;
     }
 
-    public Double getThang13() {
-        return Thang13;
-    }
-
-    public void setThang13(Double Thang13) {
-        this.Thang13 = Thang13;
-    }
-    
+   
     
     
 }

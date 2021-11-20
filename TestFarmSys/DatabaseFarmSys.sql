@@ -209,7 +209,7 @@ select distinct (select SUM(coin) from KhoHang where ThoiGianThuHoach between '2
 		from KhoHang
 
 
-
+select * from LoaiCay
 
 
 
