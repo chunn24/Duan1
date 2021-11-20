@@ -194,9 +194,19 @@ select *from NhatKy where TrangThai = 3 and NhanVien like N'TrieuNHD' and  NgayK
 
 select NhatKy.TenGian,LoaiCay.TenCay,(SELECT DATEADD(day, +(LoaiCay.ThoiGianThuHoach) , NhatKy.NgayKetThuc)) as 'NgayTH' from LoaiCay inner join NhatKy on LoaiCay.TenCay = NhatKy.TenCay where TenCV like N'Trồng cây' and GETDATE() >= (SELECT DATEADD(day, +(LoaiCay.ThoiGianThuHoach) , NhatKy.NgayKetThuc)) and TrangThai = 2
     
-
-
-	
+select distinct (select SUM(coin) from KhoHang where ThoiGianThuHoach between '2021/01/01' and '2021/01/31') as 'TongTien01',
+		(select SUM(coin) from KhoHang where ThoiGianThuHoach between '2021/02/01' and '2021/02/28')as 'TongTien02',
+		(select SUM(coin) from KhoHang where ThoiGianThuHoach between '2021/03/01' and '2021/03/31')as 'TongTien03',
+		(select SUM(coin) from KhoHang where ThoiGianThuHoach between '2021/04/01' and '2021/04/30')as 'TongTien04',
+		(select SUM(coin) from KhoHang where ThoiGianThuHoach between '2021/05/01' and '2021/05/31')as 'TongTien05',
+		(select SUM(coin) from KhoHang where ThoiGianThuHoach between '2021/06/01' and '2021/06/30')as 'TongTien06',
+		(select SUM(coin) from KhoHang where ThoiGianThuHoach between '2021/07/01' and '2021/07/31')as 'TongTien07',
+		(select SUM(coin) from KhoHang where ThoiGianThuHoach between '2021/08/01' and '2021/08/31')as 'TongTien08',
+		(select SUM(coin) from KhoHang where ThoiGianThuHoach between '2021/09/01' and '2021/09/30')as 'TongTien09',
+		(select SUM(coin) from KhoHang where ThoiGianThuHoach between '2021/10/01' and '2021/10/31')as 'TongTien10',
+		(select SUM(coin) from KhoHang where ThoiGianThuHoach between '2021/11/01' and '2021/11/30')as 'TongTien11',
+		(select SUM(coin) from KhoHang where ThoiGianThuHoach between '2021/12/01' and '2021/12/31')as 'TongTien12'
+		from KhoHang
 
 
 

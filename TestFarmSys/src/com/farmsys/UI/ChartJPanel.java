@@ -5,6 +5,8 @@
  */
 package com.farmsys.UI;
 
+import com.farmsys.DTO.Chart;
+import com.farmsys.dao.ChartDAO;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import org.jfree.chart.ChartFactory;
@@ -32,6 +34,9 @@ public class ChartJPanel extends javax.swing.JPanel {
     }
     
     void showLineChart() {
+        ChartDAO dao = new ChartDAO();
+        
+        Chart chart = dao.selectAll();
         
         //create dataset for the graph
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
