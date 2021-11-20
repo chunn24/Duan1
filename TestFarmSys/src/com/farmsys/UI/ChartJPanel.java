@@ -32,6 +32,7 @@ public class ChartJPanel extends javax.swing.JPanel {
     }
     
     void showLineChart() {
+        
         //create dataset for the graph
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         dataset.setValue(200, "Amount", "1");
@@ -48,7 +49,7 @@ public class ChartJPanel extends javax.swing.JPanel {
         dataset.setValue(250, "Amount", "12");
 
         //create chart
-        JFreeChart linechart = ChartFactory.createLineChart("Thu hoạch", "Tháng", "Số lượng",
+        JFreeChart linechart = ChartFactory.createLineChart("Tổng doanh thu", "Tháng", "VNĐ",
                 dataset, PlotOrientation.VERTICAL, false, true, false);
 
         //create plot object

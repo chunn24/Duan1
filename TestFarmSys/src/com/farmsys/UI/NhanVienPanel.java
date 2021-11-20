@@ -7,6 +7,7 @@ package com.farmsys.UI;
 
 import com.farmsys.DTO.NhanVien;
 import com.farmsys.Helper.Auth;
+import com.farmsys.Helper.MailHelper;
 import com.farmsys.Helper.MsgBox;
 import com.farmsys.dao.NhanVienDAO;
 import java.awt.event.ActionEvent;
@@ -14,30 +15,17 @@ import java.util.List;
 import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 import java.io.File;
-import java.util.HashMap;
 import java.util.Map;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
 import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.WriterException;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
-import com.sun.mail.imap.IMAPBodyPart;
 import java.io.IOException;
-import java.util.Date;
-import java.util.Properties;
+import java.util.EnumMap;
 import java.util.UUID;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeBodyPart;
-import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMultipart;
 
 /**
  *
@@ -45,8 +33,6 @@ import javax.mail.internet.MimeMultipart;
  */
 public class NhanVienPanel extends javax.swing.JPanel {
 
-    private final String accountName = "farmsys.contact@gmail.com";
-    private final String accountPassword = "FarmSys@123456";
     private String manv;
     private String emailNV;
     private String tempOTP;
@@ -79,22 +65,23 @@ public class NhanVienPanel extends javax.swing.JPanel {
         if (!Auth.isManager()) {
             MsgBox.alert(this, "Không có quyền xóa nhân viên!");
         } else {
+            if (timKiemNhanVien() != 1) {
+                NhanVien nv = getForm();
+                String mk2 = new String(txtMatKhau2.getPassword());
+                if (!mk2.equals(nv.getMatKhau())) {
+                    MsgBox.alert(this, "Xác nhận mật khẩu không đúng");
+                } else {
+                    try {
 
-            NhanVien nv = getForm();
-            String mk2 = new String(txtMatKhau2.getPassword());
-            if (!mk2.equals(nv.getMatKhau())) {
-                MsgBox.alert(this, "Xác nhận mật khẩu không đúng");
-            } else {
-                try {
-
-                    this.createQRcode();
-                    dao.insert(nv);
-                    this.fillTable();
-
-                    MsgBox.alert(this, "Thêm mới thành công!");
-                } catch (Exception e) {
-                    MsgBox.alert(this, "Thêm thất bại!");
-                    System.out.println(e);
+                        this.createQRcode();
+                        dao.insert(nv);
+                        this.fillTable();
+                        MsgBox.alert(this, "Thêm mới thành công!");
+                        this.Sendmail();
+                    } catch (Exception e) {
+                        MsgBox.alert(this, "Thêm thất bại!");
+                        System.out.println(e);
+                    }
                 }
             }
         }
@@ -107,9 +94,11 @@ public class NhanVienPanel extends javax.swing.JPanel {
             MsgBox.alert(this, "Xác nhận mật khẩu không đúng!");
         } else {
             try {
+                this.createQRcode();
                 dao.update(nv);
                 this.fillTable();
                 MsgBox.alert(this, "Cập nhật thành công!");
+                this.Sendmail();
             } catch (Exception e) {
                 MsgBox.alert(this, "Cập nhật thất bại!");
                 System.out.println(e);
@@ -214,18 +203,21 @@ public class NhanVienPanel extends javax.swing.JPanel {
     }
 
     NhanVien getForm() {
-        NhanVien nv = new NhanVien();
-        nv.setMaNV(txtMaNV.getText());
-        nv.setHoTen(txtHoTen.getText());
-        nv.setMatKhau(new String(txtMatKhau.getPassword()));
-        nv.setVaiTro(rdoTruongPhong.isSelected());
-        //xét giới tính
+        if (validation()) {
+            NhanVien nv = new NhanVien();
+            nv.setMaNV(txtMaNV.getText());
+            nv.setHoTen(txtHoTen.getText());
+            nv.setMatKhau(new String(txtMatKhau.getPassword()));
+            nv.setVaiTro(rdoTruongPhong.isSelected());
+            //xét giới tính
 
-        nv.setGioiTinh(rdoNam.isSelected());
-        nv.setEmail(txtEmail.getText());
-        nv.setLuong(Integer.parseInt(txtLuong.getText()));
-        nv.setQRcodeString(txtqrcode.getText());
-        return nv;
+            nv.setGioiTinh(rdoNam.isSelected());
+            nv.setEmail(txtEmail.getText());
+            nv.setLuong(Integer.parseInt(txtLuong.getText()));
+            nv.setQRcodeString(txtqrcode.getText());
+            return nv;
+        }
+        return null;
     }
 
     void updateStatus() {
@@ -250,7 +242,7 @@ public class NhanVienPanel extends javax.swing.JPanel {
             String qrCodeData = QRcoderandomString;
             String filePath = "src\\QRcode\\a.png";
             String charset = "UTF-8"; // or "ISO-8859-1"
-            Map< EncodeHintType, ErrorCorrectionLevel> hintMap = new HashMap< EncodeHintType, ErrorCorrectionLevel>();
+            Map< EncodeHintType, ErrorCorrectionLevel> hintMap = new EnumMap< EncodeHintType, ErrorCorrectionLevel>(EncodeHintType.class);
             hintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
             BitMatrix matrix = new MultiFormatWriter().encode(
                     new String(qrCodeData.getBytes(charset), charset),
@@ -258,62 +250,13 @@ public class NhanVienPanel extends javax.swing.JPanel {
             MatrixToImageWriter.writeToFile(matrix, filePath.substring(filePath
                     .lastIndexOf('.') + 1), new File(filePath));
             System.out.println("QR Code image created successfully!");
-        } catch (Exception e) {
+        } catch (WriterException | IOException e) {
             System.err.println(e);
         }
     }
 
-    private void sendQRcode(String manv) {
-        try {
-            Properties p = new Properties();
-            p.put("mail.smtp.auth", "true");
-            p.put("mail.smtp.starttls.enable", "true");
-            p.put("mail.smtp.host", "smtp.gmail.com");
-            p.put("mail.smtp.port", 587);
-            Session s = Session.getInstance(p,
-                    new javax.mail.Authenticator() {
-                @Override
-                protected PasswordAuthentication getPasswordAuthentication() {
-                    return new PasswordAuthentication(accountName, accountPassword);
-                }
-            });
-
-            String from = accountName;
-            String to = manv;
-            String subject = "QR code";
-            this.randomString();
-            String body = "Đây là mã QR code cá nhân. Vui lòng không để cho người khác có được mã này !";
-
-            Message msg = new MimeMessage(s);
-            msg.setFrom(new InternetAddress(from));
-            msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
-            msg.setSubject(subject);
-            msg.setText(body);
-            msg.setSentDate(new Date());
-
-            MimeMultipart multipart = new MimeMultipart();
-
-            MimeBodyPart messageBodyPart = new MimeBodyPart();
-            messageBodyPart.setText(body);
-
-            MimeBodyPart attachment = new MimeBodyPart();
-            attachment.attachFile(new File("src\\QRcode\\a.png"));
-
-            multipart.addBodyPart(messageBodyPart);
-            multipart.addBodyPart(attachment);
-
-            msg.setContent(multipart);
-            Transport.send(msg);
-            MsgBox.alert(this, "Gửi mail thành công");
-            this.clearForm();
-        } catch (MessagingException ex) {
-            System.out.println(ex);
-        } catch (IOException ex) {
-            Logger.getLogger(NhanVienPanel.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
     void Sendmail() {
+        String body = "Đây là mã QR code cá nhân. Vui lòng không để cho người khác có được mã này !";
         try {
             manv = txtMaNV.getText();
             NhanVien nhanVien = dao.selectById(manv);
@@ -322,7 +265,7 @@ public class NhanVienPanel extends javax.swing.JPanel {
                 if (emailNV == null) {
                     MsgBox.alert(this, "Tài khoản này chưa có email");
                 } else {//tài khoản có mail --> gửi mail -->check otp
-                    this.sendQRcode(emailNV);
+                    MailHelper.sendFile(emailNV, "QRCode to FarmSys", body, "src\\QRCODE\\a.png");
 
                 }
             } else {
@@ -330,6 +273,71 @@ public class NhanVienPanel extends javax.swing.JPanel {
             }
         } catch (Exception e) {
         }
+    }
+
+    private boolean validation() {
+        if (txtMaNV.getText().isEmpty()) {
+            MsgBox.alert(this, "Bạn chưa nhập mã nhân viên!");
+            txtMaNV.requestFocus();
+            return false;
+        }
+        if (txtMatKhau.getPassword().toString().isEmpty()) {
+            MsgBox.alert(this, "Bạn chưa nhập mật khẩu!");
+            txtMatKhau.requestFocus();
+            return false;
+        }
+        if (txtMatKhau2.getPassword().toString().isEmpty()) {
+            MsgBox.alert(this, "Bạn chưa nhập xác nhận mật khẩu!");
+            txtMatKhau2.requestFocus();
+            return false;
+        }
+        if (txtHoTen.getText().isEmpty()) {
+            MsgBox.alert(this, "Bạn chưa nhập họ tên nhân viên!");
+            txtHoTen.requestFocus();
+            return false;
+        }
+        if (txtEmail.getText().isEmpty()) {
+            MsgBox.alert(this, "Bạn chưa nhập email!");
+            txtEmail.requestFocus();
+            return false;
+        }
+        if (txtLuong.getText().isEmpty()) {
+            MsgBox.alert(this, "Bạn chưa nhập lương!");
+            txtLuong.requestFocus();
+            return false;
+        }
+
+        if (!txtMatKhau2.getText().equals(txtMatKhau.getText())) {
+            MsgBox.alert(this, txtMatKhau.getText());
+            MsgBox.alert(this, "Xác nhận mật khẩu không chính xác!");
+            txtMatKhau2.requestFocus();
+            return false;
+        }
+
+        //kiểm tra tính hợp lệ đữ liệu bằng biểu thức chính quy
+        if (!(txtEmail.getText().matches("\\w+@\\w+\\.\\w+"))) {
+            MsgBox.alert(this, "Bạn nhập sai định dạng email!");
+            txtEmail.requestFocus();
+            return false;
+        }
+
+        return true;
+    }
+
+    //trả về vị trí tìm thấy sinh viên
+    public int timKiemNhanVien() {
+        for (int i = 0; i < dao.selectAll().size(); i++) {
+            if (txtMaNV.getText().equals(dao.selectAll().get(i).getMaNV())) {
+                MsgBox.alert(this, "Mã nhân viên đã tồn tại!");
+                txtMaNV.requestFocus();
+                return i;
+            } else if (txtEmail.getText().equals(dao.selectAll().get(i).getEmail())) {
+                MsgBox.alert(this, "Email đã tồn tại!");
+                txtEmail.requestFocus();
+                return i;
+            }
+        }
+        return -1;
     }
 
     @SuppressWarnings("unchecked")
@@ -503,46 +511,44 @@ public class NhanVienPanel extends javax.swing.JPanel {
             pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlEditLayout.createSequentialGroup()
                 .addGap(272, 272, 272)
-                .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(lblMaNV)
-                        .addComponent(lblMatKhau)
-                        .addComponent(lblMatKhau2)
-                        .addComponent(txtMatKhau)
-                        .addComponent(txtMatKhau2)
-                        .addComponent(lblHoTen)
-                        .addComponent(jLabel1)
-                        .addGroup(pnlEditLayout.createSequentialGroup()
-                            .addComponent(rdoNam)
-                            .addGap(41, 41, 41)
-                            .addComponent(rdoNu))
-                        .addComponent(jLabel2)
-                        .addComponent(jLabel3)
-                        .addComponent(txtEmail)
-                        .addComponent(txtHoTen)
-                        .addComponent(txtLuong)
-                        .addComponent(txtMaNV, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(pnlEditLayout.createSequentialGroup()
-                            .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblVaiTro)
-                                .addGroup(pnlEditLayout.createSequentialGroup()
-                                    .addComponent(rdoTruongPhong)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(rdoNhanVien)))
-                            .addGap(58, 58, 58)
-                            .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtqrcode, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel4))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlEditLayout.createSequentialGroup()
+                .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblMaNV)
+                    .addComponent(lblMatKhau)
+                    .addComponent(lblMatKhau2)
+                    .addComponent(txtMatKhau)
+                    .addComponent(txtMatKhau2)
+                    .addComponent(lblHoTen)
+                    .addComponent(jLabel1)
+                    .addGroup(pnlEditLayout.createSequentialGroup()
+                        .addComponent(rdoNam)
+                        .addGap(41, 41, 41)
+                        .addComponent(rdoNu))
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(txtEmail)
+                    .addComponent(txtHoTen)
+                    .addComponent(txtLuong)
+                    .addComponent(txtMaNV, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnlEditLayout.createSequentialGroup()
+                        .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblVaiTro)
+                            .addGroup(pnlEditLayout.createSequentialGroup()
+                                .addComponent(rdoTruongPhong)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(rdoNhanVien)))
+                        .addGap(58, 58, 58)
+                        .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtqrcode, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4)))
+                    .addGroup(pnlEditLayout.createSequentialGroup()
                         .addComponent(btnThem)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnSua)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnXoa)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnMoi)
-                        .addGap(201, 201, 201)))
-                .addContainerGap(254, Short.MAX_VALUE))
+                        .addComponent(btnMoi)))
+                .addContainerGap(239, Short.MAX_VALUE))
         );
 
         pnlEditLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnMoi, btnSua, btnThem, btnXoa});
@@ -589,7 +595,7 @@ public class NhanVienPanel extends javax.swing.JPanel {
                     .addComponent(rdoTruongPhong)
                     .addComponent(rdoNhanVien)
                     .addComponent(txtqrcode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnThem)
                     .addComponent(btnSua)
@@ -612,7 +618,6 @@ public class NhanVienPanel extends javax.swing.JPanel {
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         this.randomString();
         this.insert();
-        this.Sendmail();
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
@@ -635,7 +640,7 @@ public class NhanVienPanel extends javax.swing.JPanel {
         if (evt.getClickCount() == 2) {
             this.row = tblNhanVien.getSelectedRow();
             this.edit();
-            
+
         }
     }//GEN-LAST:event_tblNhanVienMouseClicked
 

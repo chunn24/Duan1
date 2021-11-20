@@ -7,6 +7,7 @@ package com.farmsys.UI;
 
 import com.farmsys.DTO.NhanVien;
 import com.farmsys.Helper.Auth;
+import com.farmsys.Helper.MailHelper;
 import com.farmsys.Helper.MsgBox;
 import com.farmsys.dao.NhanVienDAO;
 import com.github.sarxos.webcam.Webcam;
@@ -36,25 +37,12 @@ import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Properties;
 import java.util.UUID;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeBodyPart;
-import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMultipart;
 import javax.swing.JPanel;
 
 /**
@@ -75,15 +63,6 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
         init();
 
     }
-    NhanVienDAO dao = new NhanVienDAO();
-    NhanVien nv = new NhanVien();
-    private String OTP;
-    private final String accountName = "farmsys.contact@gmail.com";
-    private final String accountPassword = "FarmSys@123456";
-    private String manv;
-    private String manvotp;
-    private String emailNV;
-    private String tempOTP;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -833,7 +812,15 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
     private WebcamPanel panel = null;
     private Webcam webcam = null;
 
-    String QRcoderandomString;
+    NhanVienDAO dao = new NhanVienDAO();
+    NhanVien nv = new NhanVien();
+
+    private String OTP;
+    private String manv;
+    private String manvotp;
+    private String emailNV;
+    private String tempOTP;
+    private String QRcoderandomString;
 
     private static final long serialVersionUID = 6441489157408381878L;
     private final Executor executor = Executors.newSingleThreadExecutor(this);
@@ -887,13 +874,14 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
                 if (emailNV == null) {
                     MsgBox.alert(this, "Tài khoản này chưa có email");
                 } else {//tài khoản có mail --> gửi mail -->check otp
-                    this.sendQRcode(emailNV);
+                    this.randomString();
+                    MailHelper.sendFile(emailNV, "Mã QR code cá nhân", "Đây là mã QR code cá nhân. Vui lòng không để cho người khác có được mã này !", "src\\QRcode\\a.png");
 
                 }
             } else {
                 MsgBox.alert(this, "Tài khoản không tồn tại");
             }
-        } catch (Exception e) {
+        } catch (IOException e) {
         }
     }
 
@@ -906,7 +894,8 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
                 if (emailNV == null) {
                     MsgBox.alert(this, "Tài khoản này chưa có email");
                 } else {//tài khoản có mail --> gửi mail -->check otp
-                    this.sendOTP(emailNV);
+                    this.randomString();
+                    MailHelper.sendText(emailNV, "OTP - Quên mật khẩu", "OTP:" + " " + OTP);
                 }
             } else {
                 MsgBox.alert(this, "Tài khoản không tồn tại");
@@ -980,91 +969,6 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
         OTP = UUID.randomUUID().toString();
         QRcoderandomString = UUID.randomUUID().toString();
         txtQRcode.setText(QRcoderandomString);
-    }
-
-    private void sendQRcode(String manv) {
-        try {
-            Properties p = new Properties();
-            p.put("mail.smtp.auth", "true");
-            p.put("mail.smtp.starttls.enable", "true");
-            p.put("mail.smtp.host", "smtp.gmail.com");
-            p.put("mail.smtp.port", 587);
-            Session s = Session.getInstance(p,
-                    new javax.mail.Authenticator() {
-                @Override
-                protected PasswordAuthentication getPasswordAuthentication() {
-                    return new PasswordAuthentication(accountName, accountPassword);
-                }
-            });
-
-            String from = accountName;
-            String to = manv;
-            String subject = "QR code";
-            this.randomString();
-            String body = "Đây là mã QR code cá nhân. Vui lòng không để cho người khác có được mã này !";
-
-            Message msg = new MimeMessage(s);
-            msg.setFrom(new InternetAddress(from));
-            msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
-            msg.setSubject(subject);
-            msg.setText(body);
-            msg.setSentDate(new Date());
-
-            MimeMultipart multipart = new MimeMultipart();
-
-            MimeBodyPart messageBodyPart = new MimeBodyPart();
-            messageBodyPart.setText(body);
-
-            MimeBodyPart attachment = new MimeBodyPart();
-            attachment.attachFile(new File("src\\QRcode\\a.png"));
-
-            multipart.addBodyPart(messageBodyPart);
-            multipart.addBodyPart(attachment);
-
-            msg.setContent(multipart);
-            Transport.send(msg);
-
-            this.clearForm();
-        } catch (MessagingException ex) {
-            System.out.println(ex);
-        } catch (IOException ex) {
-            Logger.getLogger(NhanVienPanel.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    private void sendOTP(String email) {
-        try {
-            Properties p = new Properties();
-            p.put("mail.smtp.auth", "true");
-            p.put("mail.smtp.starttls.enable", "true");
-            p.put("mail.smtp.host", "smtp.gmail.com");
-            p.put("mail.smtp.port", 587);
-            Session s = Session.getInstance(p,
-                    new javax.mail.Authenticator() {
-                @Override
-                protected PasswordAuthentication getPasswordAuthentication() {
-                    return new PasswordAuthentication(accountName, accountPassword);
-                }
-            });
-            String from = accountName;
-            String to = email;
-            String subject = "OTP - Quên mật khẩu";
-            this.randomString();
-            String body = "Mã OTP: " + OTP;
-
-            Message msg = new MimeMessage(s);
-            msg.setFrom(new InternetAddress(from));
-            msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
-            msg.setSubject(subject);
-            msg.setText(body);
-            msg.setSentDate(new Date());
-
-            Transport.send(msg);
-            MsgBox.alert(this, "Một email chứa mã OTP đã gửi vào email của bạn!");
-
-        } catch (MessagingException ex) {
-            System.out.println(ex);
-        }
     }
 
     private void doiMatKhau(String manv) {

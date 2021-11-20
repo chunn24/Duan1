@@ -97,7 +97,6 @@ public class GianTrongJPanel extends javax.swing.JPanel {
         });
         pnlEdit.add(txtTenDanTrong, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 220, 480, 30));
 
-        btnThem.setBackground(new java.awt.Color(255, 255, 255));
         btnThem.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
         btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Add.png"))); // NOI18N
         btnThem.setText("Thêm");
@@ -108,7 +107,6 @@ public class GianTrongJPanel extends javax.swing.JPanel {
         });
         pnlEdit.add(btnThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 360, -1, 49));
 
-        btnSua.setBackground(new java.awt.Color(255, 255, 255));
         btnSua.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
         btnSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Refresh.png"))); // NOI18N
         btnSua.setText("Sửa");
@@ -119,7 +117,6 @@ public class GianTrongJPanel extends javax.swing.JPanel {
         });
         pnlEdit.add(btnSua, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 360, -1, 49));
 
-        btnXoa.setBackground(new java.awt.Color(255, 255, 255));
         btnXoa.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
         btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Delete.png"))); // NOI18N
         btnXoa.setText("Xóa");
@@ -130,7 +127,6 @@ public class GianTrongJPanel extends javax.swing.JPanel {
         });
         pnlEdit.add(btnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 360, -1, 49));
 
-        btnMoi.setBackground(new java.awt.Color(255, 255, 255));
         btnMoi.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
         btnMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/new.png"))); // NOI18N
         btnMoi.setText("Mới");
@@ -141,7 +137,6 @@ public class GianTrongJPanel extends javax.swing.JPanel {
         });
         pnlEdit.add(btnMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 360, -1, 50));
 
-        btnFirst.setBackground(new java.awt.Color(255, 255, 255));
         btnFirst.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/backward.png"))); // NOI18N
         btnFirst.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -150,7 +145,6 @@ public class GianTrongJPanel extends javax.swing.JPanel {
         });
         pnlEdit.add(btnFirst, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 360, -1, 50));
 
-        btnPrev.setBackground(new java.awt.Color(255, 255, 255));
         btnPrev.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/previous.png"))); // NOI18N
         btnPrev.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -159,7 +153,6 @@ public class GianTrongJPanel extends javax.swing.JPanel {
         });
         pnlEdit.add(btnPrev, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 360, -1, 50));
 
-        btnNext.setBackground(new java.awt.Color(255, 255, 255));
         btnNext.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/next.png"))); // NOI18N
         btnNext.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -168,7 +161,6 @@ public class GianTrongJPanel extends javax.swing.JPanel {
         });
         pnlEdit.add(btnNext, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 360, -1, 50));
 
-        btnLast.setBackground(new java.awt.Color(255, 255, 255));
         btnLast.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/fast-forward.png"))); // NOI18N
         btnLast.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -189,6 +181,7 @@ public class GianTrongJPanel extends javax.swing.JPanel {
 
         pnlList.setBackground(new java.awt.Color(255, 255, 255));
 
+        tblDanTrong.setAutoCreateRowSorter(true);
         tblDanTrong.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},

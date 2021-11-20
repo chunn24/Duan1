@@ -103,6 +103,7 @@ public class KhoHangJPanel extends javax.swing.JPanel {
 
         PnlTong.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 43, 548, -1));
 
+        tblKhoHang.setAutoCreateRowSorter(true);
         tblKhoHang.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         tblKhoHang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -123,10 +124,12 @@ public class KhoHangJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        tblKhoHang.setRowHeight(20);
         tblKhoHang.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblKhoHangMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                tblKhoHangMouseEntered(evt);
             }
         });
         jScrollPane4.setViewportView(tblKhoHang);
@@ -303,6 +306,10 @@ public class KhoHangJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         this.Buy();
     }//GEN-LAST:event_btnBuyActionPerformed
+
+    private void tblKhoHangMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblKhoHangMouseEntered
+        this.fillTable();
+    }//GEN-LAST:event_tblKhoHangMouseEntered
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

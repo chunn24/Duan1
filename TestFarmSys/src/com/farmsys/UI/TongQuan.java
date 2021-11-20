@@ -41,7 +41,7 @@ public class TongQuan extends javax.swing.JFrame {
     public TongQuan() {
         initComponents();
         init();
-        
+
     }
 
     /**
@@ -128,6 +128,7 @@ public class TongQuan extends javax.swing.JFrame {
         pnlCaycanTH = new javax.swing.JPanel();
         lblDemSoCayTH = new javax.swing.JLabel();
         logocaycanTH = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
 
         weather.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         weather.setMinimumSize(new java.awt.Dimension(418, 210));
@@ -628,7 +629,7 @@ public class TongQuan extends javax.swing.JFrame {
         lblDongHo.setFont(new java.awt.Font("Comic Sans MS", 1, 36)); // NOI18N
         lblDongHo.setForeground(new java.awt.Color(51, 51, 51));
         lblDongHo.setText("12:50 am");
-        pnltongquat.add(lblDongHo, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 110, 200, 60));
+        pnltongquat.add(lblDongHo, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 110, 190, 60));
 
         pnlweather.setBackground(new java.awt.Color(255, 255, 255));
         pnlweather.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -730,7 +731,7 @@ public class TongQuan extends javax.swing.JFrame {
 
         pnlweatherLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {lb_apXuat, lb_city, lb_cloud, lb_doAm, lb_nation, lb_nhietDo});
 
-        pnltongquat.add(pnlweather, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 400, 260));
+        pnltongquat.add(pnlweather, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 470, 400, 260));
 
         lblsunrain.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/sun_100px.png"))); // NOI18N
         pnltongquat.add(lblsunrain, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 10, 100, 100));
@@ -770,7 +771,7 @@ public class TongQuan extends javax.swing.JFrame {
             .addComponent(jLabel30, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        pnltongquat.add(pnlkhohang, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 120, 220, 120));
+        pnltongquat.add(pnlkhohang, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 300, 220, 120));
 
         pnldoing.setBackground(new java.awt.Color(255, 255, 204));
         pnldoing.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -851,13 +852,13 @@ public class TongQuan extends javax.swing.JFrame {
         pnltongquat.add(lblcongvieccanlam, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 100, -1, -1));
 
         lblkhohang.setText("Kho hàng:");
-        pnltongquat.add(lblkhohang, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 100, -1, -1));
+        pnltongquat.add(lblkhohang, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 280, -1, -1));
 
         lblnhanviec.setText("Nhận việc:");
         pnltongquat.add(lblnhanviec, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
 
         lblbonus.setText("Bonus:");
-        pnltongquat.add(lblbonus, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 70, -1));
+        pnltongquat.add(lblbonus, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 70, -1));
 
         pnlBonus.setBackground(new java.awt.Color(153, 153, 255));
         pnlBonus.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -894,10 +895,10 @@ public class TongQuan extends javax.swing.JFrame {
             .addComponent(jLabel31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        pnltongquat.add(pnlBonus, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 220, 120));
+        pnltongquat.add(pnlBonus, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 220, 120));
 
         lblcaycanTH.setText("Số cây cần thu hoạch:");
-        pnltongquat.add(lblcaycanTH, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 260, -1, -1));
+        pnltongquat.add(lblcaycanTH, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 280, -1, -1));
 
         pnlCaycanTH.setBackground(new java.awt.Color(153, 255, 153));
         pnlCaycanTH.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -934,7 +935,8 @@ public class TongQuan extends javax.swing.JFrame {
             .addComponent(logocaycanTH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        pnltongquat.add(pnlCaycanTH, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 280, 220, 120));
+        pnltongquat.add(pnlCaycanTH, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 300, 220, 120));
+        pnltongquat.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 700, 20));
 
         tabs.addTab("tab1", pnltongquat);
 
@@ -1132,7 +1134,7 @@ public class TongQuan extends javax.swing.JFrame {
     }//GEN-LAST:event_pnlCaycanTHMouseEntered
 
     private void pnlCaycanTHMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlCaycanTHMouseExited
-        pnlCaycanTH.setBackground(new Color(153,255,153));
+        pnlCaycanTH.setBackground(new Color(153, 255, 153));
     }//GEN-LAST:event_pnlCaycanTHMouseExited
 
     private void lbllogountMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbllogountMouseExited
@@ -1206,6 +1208,7 @@ public class TongQuan extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lb_apXuat;
     private javax.swing.JLabel lb_city;
     private javax.swing.JLabel lb_cloud;
@@ -1268,28 +1271,28 @@ public class TongQuan extends javax.swing.JFrame {
     Color c = new Color(14, 251, 137);
     private JsonResult result;
     private int idx = 0;
-    
+
     MP3Player Ping = new MP3Player(new File("src\\com\\farmsys\\icons\\thongbao.mp3"));
     MP3Player Ping2 = new MP3Player(new File("src\\com\\farmsys\\icons\\loading.mp3"));
     MP3Player Ping3 = new MP3Player(new File("src\\com\\farmsys\\icons\\UI.mp3"));
-    
+
     private void init() {
         result = HandleAPI.getJsonData((String) cb_city.getSelectedItem());
         setThoiTiet();
         //this.setIconImage(XImage.getAppIcon());
         this.setLocationRelativeTo(null);
         weather.setLocationRelativeTo(null);
-        
+
         new ChaoJdialog(this, true).setVisible(true);
-        
+
         Ping3.play();
         new DangNhapJDialog(this, true).setVisible(true);
         Ping3.stop();
         new Loadwelcome(this, true).setVisible(true);
         new Loadwelcome(this, true).setVisible(false);
-        
+
         Ping.play();
-        
+
         loadLbl();
         addpanel();
         new Timer(1000, (ActionEvent e) -> {
@@ -1297,8 +1300,12 @@ public class TongQuan extends javax.swing.JFrame {
             SimpleDateFormat formater = new SimpleDateFormat("hh:mm a");
             String text = formater.format(now);
             lblDongHo.setText(text);
+            this.count();
         }).start();
-        
+
+    }
+
+    void count() {
         NhatKyDAO nkdao = new NhatKyDAO();
         ThuHoachDAO thdao = new ThuHoachDAO();
         KhoHangDAO khdao = new KhoHangDAO();
@@ -1307,7 +1314,6 @@ public class TongQuan extends javax.swing.JFrame {
         lblDemKhoHang.setText(khdao.selectAll().size() + "");
         lblDemDoneByMonth.setText(5 * (nkdao.selectDoneByMonth(Auth.user.getMaNV()).size()) + "");
         lblDemSoCayTH.setText(thdao.selectAll().size() + "");
-        
     }
 
 // line chart
@@ -1320,7 +1326,7 @@ public class TongQuan extends javax.swing.JFrame {
         String apXuat = " Áp xuất: " + result.getList()[idx].getMain().getPresure() + " Pa";
         String doAm = " Độ ẩm: " + result.getList()[idx].getMain().getHumidity() + " %";
         String clouds = " Mây: " + result.getList()[idx].getClouds().getAll() + " %";
-        
+
         lb_apXuat.setText(apXuat);
         lb_city.setText(city);
         lb_cloud.setText(clouds);
@@ -1329,9 +1335,9 @@ public class TongQuan extends javax.swing.JFrame {
         lb_nation.setText(nation);
         lb_nhietDo.setText(nhietDo);
         lb_weather.setText(weath);
-        
+
         String text = lb_weather.getText();
-        
+
         if (text.contains("clouds")) {
             lblsunrain.setIcon(new ImageIcon("src\\com\\farmsys\\icons\\cloud_100px.png"));
         } else if (text.contains("sun")) {
@@ -1340,11 +1346,11 @@ public class TongQuan extends javax.swing.JFrame {
             lblsunrain.setIcon(new ImageIcon("src\\com\\farmsys\\icons\\rain_100px.png"));
         }
     }
-    
+
     private void loadLbl() {
         lblTrangThai.setText(DangNhapJDialog.HienThi());
     }
-    
+
     private void openDangXuat() {
         int ask = JOptionPane.showConfirmDialog(this, "Bạn có chắc là mình muốn đăng xuất ?", "Xác nhận", JOptionPane.YES_NO_OPTION);
         if (ask == 0) {
@@ -1352,11 +1358,11 @@ public class TongQuan extends javax.swing.JFrame {
             new TongQuan().setVisible(true);
         }
     }
-    
+
     private void closeFarmSys() {
         System.exit(0);
     }
-    
+
     private void OpenNhanVien() {
         if (Auth.isManager()) {
             tabs.setSelectedIndex(5);
@@ -1364,7 +1370,7 @@ public class TongQuan extends javax.swing.JFrame {
             MsgBox.alert(this, "Bạn không có quyền truy cập!");
         }
     }
-    
+
     private void OpenGianTrong() {
         if (Auth.isManager()) {
             tabs.setSelectedIndex(7);
@@ -1372,7 +1378,7 @@ public class TongQuan extends javax.swing.JFrame {
             MsgBox.alert(this, "Bạn không có quyền truy cập!");
         }
     }
-    
+
     private void OpenCayTrong() {
         if (Auth.isManager()) {
             tabs.setSelectedIndex(3);
@@ -1380,7 +1386,7 @@ public class TongQuan extends javax.swing.JFrame {
             MsgBox.alert(this, "Bạn không có quyền truy cập!");
         }
     }
-    
+
     private void OpenNhatky() {
         if (Auth.isLogin()) {
             tabs.setSelectedIndex(1);
@@ -1388,7 +1394,7 @@ public class TongQuan extends javax.swing.JFrame {
             MsgBox.alert(this, "Vui lòng đăng nhập!");
         }
     }
-    
+
     private void OpenGiaoViec() {
         if (Auth.isManager()) {
             tabs.setSelectedIndex(4);
@@ -1396,7 +1402,7 @@ public class TongQuan extends javax.swing.JFrame {
             MsgBox.alert(this, "Bạn không có quyền truy cập!");
         }
     }
-    
+
     private void OpenTodo() {
         if (Auth.isLogin()) {
             tabs.setSelectedIndex(2);
@@ -1404,7 +1410,7 @@ public class TongQuan extends javax.swing.JFrame {
             MsgBox.alert(this, "Vui lòng đăng nhập!");
         }
     }
-    
+
     private void Opendoing() {
         if (Auth.isLogin()) {
             tabs.setSelectedIndex(6);
@@ -1412,7 +1418,7 @@ public class TongQuan extends javax.swing.JFrame {
             MsgBox.alert(this, "Vui lòng đăng nhập!");
         }
     }
-    
+
     private void Openchart() {
         if (Auth.isLogin()) {
             tabs.setSelectedIndex(8);
@@ -1420,7 +1426,7 @@ public class TongQuan extends javax.swing.JFrame {
             MsgBox.alert(this, "Vui lòng đăng nhập!");
         }
     }
-    
+
     private void OpenLive() {
         if (Auth.isLogin()) {
             tabs.setSelectedIndex(9);
@@ -1428,7 +1434,7 @@ public class TongQuan extends javax.swing.JFrame {
             MsgBox.alert(this, "Vui lòng đăng nhập!");
         }
     }
-    
+
     private void OpenKhohang() {
         if (Auth.isManager()) {
             tabs.setSelectedIndex(9);
@@ -1436,7 +1442,7 @@ public class TongQuan extends javax.swing.JFrame {
             MsgBox.alert(this, "Bạn không có quyền truy cập!");
         }
     }
-    
+
     void addpanel() {
         NhatKyJPanel nkpnJPanel = new NhatKyJPanel();
         NhanViecJPanel nhanviecJPanel = new NhanViecJPanel();
@@ -1448,7 +1454,7 @@ public class TongQuan extends javax.swing.JFrame {
         ChartJPanel chartPanel = new ChartJPanel();
 //        LiveJPanel liveJPanel = new LiveJPanel();
         KhoHangJPanel khoHangJPanel = new KhoHangJPanel();
-        
+
         tabs.addTab("1", nkpnJPanel);
         tabs.addTab("2", nhanviecJPanel);
         tabs.addTab("3", cayTrongPanel);
@@ -1459,37 +1465,37 @@ public class TongQuan extends javax.swing.JFrame {
         tabs.addTab("8", chartPanel);
 //        tabs.addTab("9", liveJPanel);
         tabs.addTab("10", khoHangJPanel);
-        
+
     }
-    
+
     class RoundedPanel extends JPanel {
-        
+
         private Color backgroundColor;
         private int cornerRadius = 15;
-        
+
         public RoundedPanel(LayoutManager layout, int radius) {
             super(layout);
             cornerRadius = radius;
         }
-        
+
         public RoundedPanel(LayoutManager layout, int radius, Color bgColor) {
             super(layout);
             cornerRadius = radius;
             backgroundColor = bgColor;
         }
-        
+
         public RoundedPanel(int radius) {
             super();
             cornerRadius = radius;
-            
+
         }
-        
+
         public RoundedPanel(int radius, Color bgColor) {
             super();
             cornerRadius = radius;
             backgroundColor = bgColor;
         }
-        
+
         @Override
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);

@@ -81,6 +81,7 @@ public class CayTrongPanel extends javax.swing.JPanel {
         pnltong.setMinimumSize(new java.awt.Dimension(1083, 750));
         pnltong.setPreferredSize(new java.awt.Dimension(1083, 750));
 
+        tblCayTrong.setAutoCreateRowSorter(true);
         tblCayTrong.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tblCayTrong.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -346,7 +347,7 @@ public class CayTrongPanel extends javax.swing.JPanel {
         pnltongLayout.setHorizontalGroup(
             pnltongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnltongLayout.createSequentialGroup()
-                .addGap(0, 25, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(lblTitle)
                 .addGap(867, 867, 867))
             .addGroup(pnltongLayout.createSequentialGroup()

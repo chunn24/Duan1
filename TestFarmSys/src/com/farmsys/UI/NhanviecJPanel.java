@@ -40,6 +40,7 @@ public class NhanViecJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         pnltong = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         pnltbl = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblcv = new javax.swing.JTable();
@@ -57,7 +58,6 @@ public class NhanViecJPanel extends javax.swing.JPanel {
         txtngaykt = new javax.swing.JTextField();
         btnhuy = new javax.swing.JButton();
         btnnhanviec = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(1090, 750));
         setPreferredSize(new java.awt.Dimension(1090, 750));
@@ -66,6 +66,11 @@ public class NhanViecJPanel extends javax.swing.JPanel {
         pnltong.setMinimumSize(new java.awt.Dimension(1083, 750));
         pnltong.setPreferredSize(new java.awt.Dimension(1083, 750));
         pnltong.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(51, 0, 204));
+        jLabel2.setText("Quản Lí  Công Việc Nhân Viên");
+        pnltong.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
 
         pnltbl.setBackground(new java.awt.Color(255, 255, 255));
         pnltbl.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -93,6 +98,9 @@ public class NhanViecJPanel extends javax.swing.JPanel {
         tblcv.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblcvMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                tblcvMouseEntered(evt);
             }
         });
         jScrollPane1.setViewportView(tblcv);
@@ -222,11 +230,6 @@ public class NhanViecJPanel extends javax.swing.JPanel {
 
         pnltong.add(pnltbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, -1));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(51, 0, 204));
-        jLabel2.setText("Quản Lí  Công Việc Nhân Viên");
-        pnltong.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -259,6 +262,10 @@ public class NhanViecJPanel extends javax.swing.JPanel {
     private void btnhuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhuyActionPerformed
         this.updateAgain();
     }//GEN-LAST:event_btnhuyActionPerformed
+
+    private void tblcvMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblcvMouseEntered
+        this.fillTableNguoinhanviec();
+    }//GEN-LAST:event_tblcvMouseEntered
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -371,7 +378,6 @@ public class NhanViecJPanel extends javax.swing.JPanel {
         int manv = (int) tblcv.getValueAt(this.row, 0);
         NhatKy nv = nkDAO.selectformtodoanddoing(manv);
         this.setForm(nv);
-      
 
     }
 
