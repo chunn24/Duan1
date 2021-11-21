@@ -95,26 +95,35 @@ public class ChartJPanel extends javax.swing.JPanel {
         PanelTong.setBackground(new java.awt.Color(255, 255, 255));
         PanelTong.setMinimumSize(new java.awt.Dimension(1083, 750));
         PanelTong.setPreferredSize(new java.awt.Dimension(1083, 750));
-        PanelTong.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlchart.setBackground(new java.awt.Color(255, 255, 255));
         pnlchart.setLayout(new java.awt.BorderLayout());
-        PanelTong.add(pnlchart, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 1030, 710));
+
+        javax.swing.GroupLayout PanelTongLayout = new javax.swing.GroupLayout(PanelTong);
+        PanelTong.setLayout(PanelTongLayout);
+        PanelTongLayout.setHorizontalGroup(
+            PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelTongLayout.createSequentialGroup()
+                .addComponent(pnlchart, javax.swing.GroupLayout.PREFERRED_SIZE, 1080, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 3, Short.MAX_VALUE))
+        );
+        PanelTongLayout.setVerticalGroup(
+            PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnlchart, javax.swing.GroupLayout.DEFAULT_SIZE, 750, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(PanelTong, javax.swing.GroupLayout.PREFERRED_SIZE, 1212, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(PanelTong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(PanelTong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(PanelTong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents

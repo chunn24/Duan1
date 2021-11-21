@@ -90,4 +90,9 @@ public class KhoHangDAO {
             throw new RuntimeException(e);
         }
     }
+
+    public List<KhoHang> selectByKeyword(String keyword) {
+        String SELECT_BY_NAME_SQL = "SELECT * FROM KhoHang WHERE TenCay LIKE ? and TrongLuong > 0";
+        return this.selectBySql(SELECT_BY_NAME_SQL, "%" + keyword + "%");
+    }
 }

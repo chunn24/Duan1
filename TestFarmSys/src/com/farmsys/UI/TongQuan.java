@@ -167,7 +167,6 @@ public class TongQuan extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("FarmSys");
-        setAlwaysOnTop(true);
         setBackground(new java.awt.Color(255, 255, 255));
         setUndecorated(true);
 
@@ -1067,7 +1066,7 @@ public class TongQuan extends javax.swing.JFrame {
     }//GEN-LAST:event_pnlbarchartMouseExited
 
     private void pnlLiveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlLiveMouseClicked
-//        this.OpenLive();
+        this.OpenLive();
     }//GEN-LAST:event_pnlLiveMouseClicked
 
     private void pnlLiveMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlLiveMouseEntered
@@ -1430,7 +1429,8 @@ public class TongQuan extends javax.swing.JFrame {
 
     private void OpenLive() {
         if (Auth.isLogin()) {
-            tabs.setSelectedIndex(9);
+            LiveJPanel liveJPanel = new LiveJPanel();
+            liveJPanel.setVisible(true);
         } else {
             MsgBox.alert(this, "Vui lòng đăng nhập!");
         }
@@ -1453,7 +1453,7 @@ public class TongQuan extends javax.swing.JFrame {
         HoanThanhcvJPanel hoanThanhcvJPanel = new HoanThanhcvJPanel();
         GianTrongJPanel gianTrongJPanel = new GianTrongJPanel();
         ChartJPanel chartPanel = new ChartJPanel();
-//        LiveJPanel liveJPanel = new LiveJPanel();
+
         KhoHangJPanel khoHangJPanel = new KhoHangJPanel();
 
         tabs.addTab("1", nkpnJPanel);
@@ -1464,7 +1464,7 @@ public class TongQuan extends javax.swing.JFrame {
         tabs.addTab("6", hoanThanhcvJPanel);
         tabs.addTab("7", gianTrongJPanel);
         tabs.addTab("8", chartPanel);
-//        tabs.addTab("9", liveJPanel);
+
         tabs.addTab("10", khoHangJPanel);
 
     }

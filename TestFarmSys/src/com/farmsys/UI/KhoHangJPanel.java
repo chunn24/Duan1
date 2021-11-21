@@ -9,6 +9,7 @@ import com.farmsys.DTO.KhoHang;
 import com.farmsys.Helper.MsgBox;
 import com.farmsys.dao.KhoHangDAO;
 import com.farmsys.dao.NhatKyDAO;
+import java.awt.Color;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -40,10 +41,11 @@ public class KhoHangJPanel extends javax.swing.JPanel {
         jPanel7 = new javax.swing.JPanel();
         txtTimKiem = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
+        btnTim = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         tblKhoHang = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
-        txtTenDan = new javax.swing.JTextField();
+        txtTenGian = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         txtTenCay = new javax.swing.JTextField();
         txtTrongLuong = new javax.swing.JTextField();
@@ -79,6 +81,13 @@ public class KhoHangJPanel extends javax.swing.JPanel {
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel12.setText("Tên Cây");
 
+        btnTim.setText("Tìm");
+        btnTim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTimActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
@@ -87,16 +96,20 @@ public class KhoHangJPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtTimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, 441, Short.MAX_VALUE)
+                .addComponent(txtTimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(btnTim)
                 .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnTim, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(13, Short.MAX_VALUE))
         );
 
@@ -138,7 +151,7 @@ public class KhoHangJPanel extends javax.swing.JPanel {
         jPanel3.setBackground(new java.awt.Color(204, 255, 204));
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        txtTenDan.setEditable(false);
+        txtTenGian.setEditable(false);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setText("Tên giàn:");
@@ -169,6 +182,17 @@ public class KhoHangJPanel extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("SL Bán");
+
+        txtGiaBan.setForeground(new java.awt.Color(102, 102, 102));
+        txtGiaBan.setText("0$");
+        txtGiaBan.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtGiaBanFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtGiaBanFocusLost(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel6.setText("Mã TH:");
@@ -208,7 +232,7 @@ public class KhoHangJPanel extends javax.swing.JPanel {
                             .addComponent(txtNgayTH, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtTrongLuong, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtMaTH, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtTenDan, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtTenGian, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtTenCay, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
@@ -228,7 +252,7 @@ public class KhoHangJPanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtMaTH, txtTenCay, txtTenDan});
+        jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtMaTH, txtTenCay, txtTenGian});
 
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -239,7 +263,7 @@ public class KhoHangJPanel extends javax.swing.JPanel {
                     .addComponent(jLabel6))
                 .addGap(21, 21, 21)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtTenDan, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTenGian, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addGap(21, 21, 21)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -276,7 +300,7 @@ public class KhoHangJPanel extends javax.swing.JPanel {
                 .addGap(25, 25, 25))
         );
 
-        jPanel3Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtMaTH, txtTenCay, txtTenDan});
+        jPanel3Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtMaTH, txtTenCay, txtTenGian});
 
         PnlTong.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 40, 460, 570));
 
@@ -297,7 +321,7 @@ public class KhoHangJPanel extends javax.swing.JPanel {
         if (evt.getClickCount() == 2) {
             this.index = tblKhoHang.getSelectedRow();
             this.edit();
-
+            
         }
     }//GEN-LAST:event_tblKhoHangMouseClicked
 
@@ -310,10 +334,29 @@ public class KhoHangJPanel extends javax.swing.JPanel {
         this.fillTable();
     }//GEN-LAST:event_tblKhoHangMouseEntered
 
+    private void txtGiaBanFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtGiaBanFocusGained
+        if (txtGiaBan.getText().equalsIgnoreCase("0$")) {
+            txtGiaBan.setText("");
+            txtGiaBan.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_txtGiaBanFocusGained
+
+    private void txtGiaBanFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtGiaBanFocusLost
+        if (txtGiaBan.getText().length() == 0) {
+            txtGiaBan.setText("0$");
+            txtGiaBan.setForeground(Color.gray);
+        }
+    }//GEN-LAST:event_txtGiaBanFocusLost
+
+    private void btnTimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimActionPerformed
+        this.timKiem();
+    }//GEN-LAST:event_btnTimActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PnlTong;
     private javax.swing.JButton btnBuy;
+    private javax.swing.JButton btnTim;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -334,7 +377,7 @@ public class KhoHangJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtNgayTH;
     private javax.swing.JTextField txtSLBan;
     private javax.swing.JTextField txtTenCay;
-    private javax.swing.JTextField txtTenDan;
+    private javax.swing.JTextField txtTenGian;
     private javax.swing.JTextField txtThanhTien;
     private javax.swing.JTextField txtTimKiem;
     private javax.swing.JTextField txtTrongLuong;
@@ -342,23 +385,24 @@ public class KhoHangJPanel extends javax.swing.JPanel {
     KhoHangDAO khdao = new KhoHangDAO();
     NhatKyDAO nkdao = new NhatKyDAO();
     int index = 0;
-
+    
     void init() {
+        txtTimKiem.grabFocus();
         fillTable();
-
+        
     }
-
+    
     void Buy() {
         int kh = Integer.parseInt(txtMaTH.getText());
         Float TrongLuong = Float.parseFloat(txtTrongLuong.getText());
-
+        
         Double Coin = Double.parseDouble(txtThanhTien.getText());
-
+        
         Float gb = Float.parseFloat(txtGiaBan.getText());
         Float slb = Float.parseFloat(txtSLBan.getText());
         Double Coin2 = Coin + (gb * slb);
         Float TrongLuong2 = TrongLuong - slb;
-
+        
         try {
             khdao.update(TrongLuong2, Coin2, kh);
             this.fillTable();
@@ -368,12 +412,13 @@ public class KhoHangJPanel extends javax.swing.JPanel {
         }
         this.UpdateStt();
     }
-
+    
     void fillTable() {
         DefaultTableModel model = (DefaultTableModel) tblKhoHang.getModel();
         model.setRowCount(0);
         try {
-            List<KhoHang> list = khdao.selectAll();
+            String keywords = txtTimKiem.getText();
+            List<KhoHang> list = khdao.selectByKeyword(keywords);
             for (KhoHang kh : list) {
                 Object[] row = {
                     kh.getMaTH(), kh.getTenGian(), kh.getTenCay(), kh.getTrongLuong(),
@@ -385,45 +430,49 @@ public class KhoHangJPanel extends javax.swing.JPanel {
             MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
         }
     }
-
+    
     void edit() {
         try {
             String TenDan = (String) tblKhoHang.getValueAt(this.index, 1);
             KhoHang kh = khdao.selectById(TenDan);
             this.setForm(kh);
-
+            
             this.updateStatus();
         } catch (Exception e) {
             MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
         }
     }
-
+    
     void clear() {
-        KhoHang kh = new KhoHang();
-        this.setForm(kh);
-        this.index = -1;
+        txtMaTH.setText("");
+        txtNgayTH.setText("");
+        txtTrongLuong.setText("");
+        txtTenCay.setText("");
+        txtTenGian.setText("");
+        txtThanhTien.setText("");
+        this.index = 0;
         this.updateStatus();
-
+        
     }
-
+    
     void setForm(KhoHang kh) {
         txtMaTH.setText(String.valueOf(kh.getMaTH()));
-        txtTenDan.setText(kh.getTenGian());
+        txtTenGian.setText(kh.getTenGian());
         txtTenCay.setText(kh.getTenCay());
         txtTrongLuong.setText(String.valueOf(kh.getTrongLuong()));
         txtNgayTH.setText(kh.getNgayTH().toString());
         txtThanhTien.setText(kh.getGiaThanh() + "");
-
+        
     }
-
+    
     void updateStatus() {
         boolean edit = (this.index >= 0);
         boolean first = (this.index == 0);
         boolean last = (this.index == tblKhoHang.getRowCount() - 1);
         btnBuy.setEnabled(edit);
-
+        
     }
-
+    
     boolean Validation() {
 
         //Kiểm tra thời lượng
@@ -440,18 +489,23 @@ public class KhoHangJPanel extends javax.swing.JPanel {
                 return false;
             }
         }
-
+        
         return true;
     }
-
+    
     void UpdateStt() {
-
         try {
-            nkdao.updateTrangThaiTH(txtTenDan.getText());
-
+            nkdao.updateTrangThaiTH(txtTenGian.getText());
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
+    
+    void timKiem() {
+        this.fillTable();
+        this.clear();
+        this.index = 0;
+    }
+    
 }

@@ -104,8 +104,8 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
         pn4 = new javax.swing.JLabel();
         welcom = new javax.swing.JLabel();
         WebcamQRcode = new javax.swing.JFrame();
-        panelquetqr = new RoundedPanel(50, Color.WHITE);
         panelquetQR = new javax.swing.JPanel();
+        panelquetqr = new RoundedPanel(50, Color.WHITE);
         pnldieukhien1 = new javax.swing.JPanel();
         lblExit = new javax.swing.JLabel();
         lbltieude = new javax.swing.JLabel();
@@ -364,24 +364,27 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
         WebcamQRcode.setAlwaysOnTop(true);
         WebcamQRcode.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         WebcamQRcode.setLocationByPlatform(true);
-        WebcamQRcode.setMinimumSize(new java.awt.Dimension(500, 380));
+        WebcamQRcode.setMinimumSize(new java.awt.Dimension(457, 450));
         WebcamQRcode.setUndecorated(true);
+        WebcamQRcode.setPreferredSize(new java.awt.Dimension(457, 450));
         WebcamQRcode.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        panelquetqr.setBackground(new java.awt.Color(51, 51, 51));
-        panelquetqr.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        panelquetQR.setBackground(new java.awt.Color(250, 250, 250));
+        panelquetQR.setBackground(new java.awt.Color(51, 51, 51));
         panelquetQR.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 230, 230)));
+        panelquetQR.setMinimumSize(new java.awt.Dimension(457, 450));
+        panelquetQR.setPreferredSize(new java.awt.Dimension(457, 450));
         panelquetQR.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 panelquetQRMouseClicked(evt);
             }
         });
         panelquetQR.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        panelquetqr.add(panelquetQR, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 500, 320));
 
-        WebcamQRcode.getContentPane().add(panelquetqr, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 450));
+        panelquetqr.setBackground(new java.awt.Color(255, 255, 255));
+        panelquetqr.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelquetQR.add(panelquetqr, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 460, 300));
+
+        WebcamQRcode.getContentPane().add(panelquetQR, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -10, 470, 460));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(950, 500));
@@ -1012,6 +1015,7 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
                 Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
+
             }
 
             Result result = null;
@@ -1021,6 +1025,8 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
                 if ((image = webcam.getImage()) == null) {
                     continue;
                 }
+            } else {
+                MsgBox.alert(rootPane, "Hãy kiểm tra lại webcam của bạn!");
             }
 
             LuminanceSource source = new BufferedImageLuminanceSource(image);
@@ -1033,17 +1039,10 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
             }
 
             if (result != null) {
-//                txtMaNV.setText(result.getText());
                 txtQRcode.setText(result.getText());
-//                txtMaNV.setText("trung");
-//                txtMatKhau.setText("240102");
-
                 this.dangNhap();
-//                randomString();
-//                createQRcode();
-//                update();
-//                this.Sendmail();
-
+            } else {
+                MsgBox.alert(rootPane, "Hãy kiểm tra lại QR của bạn!");
             }
         } while (true);
     }
