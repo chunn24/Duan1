@@ -19,7 +19,6 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.LayoutManager;
 import java.awt.RenderingHints;
-import static java.awt.SystemColor.text;
 import java.awt.event.ActionEvent;
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -1429,8 +1428,8 @@ public class TongQuan extends javax.swing.JFrame {
 
     private void OpenLive() {
         if (Auth.isLogin()) {
-            LiveJPanel liveJPanel = new LiveJPanel();
-            liveJPanel.setVisible(true);
+            LiveJFrame live = new LiveJFrame();
+            live.setVisible(true);
         } else {
             MsgBox.alert(this, "Vui lòng đăng nhập!");
         }

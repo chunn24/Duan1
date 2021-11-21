@@ -21,6 +21,7 @@ import com.google.zxing.MultiFormatReader;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.NotFoundException;
 import com.google.zxing.Result;
+import com.google.zxing.WriterException;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
@@ -37,6 +38,7 @@ import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -96,13 +98,6 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
         txtxnmknew = new javax.swing.JPasswordField();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        welcomeJDialog = new javax.swing.JDialog();
-        pnlwelcome = new javax.swing.JPanel();
-        pn2 = new javax.swing.JLabel();
-        pn1 = new javax.swing.JLabel();
-        pn3 = new javax.swing.JLabel();
-        pn4 = new javax.swing.JLabel();
-        welcom = new javax.swing.JLabel();
         WebcamQRcode = new javax.swing.JFrame();
         panelquetQR = new javax.swing.JPanel();
         panelquetqr = new RoundedPanel(50, Color.WHITE);
@@ -337,28 +332,6 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
 
         doimkJDialog.getContentPane().add(pnlTong1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 950, 470));
 
-        welcomeJDialog.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        pnlwelcome.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        pn2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Path 2.png"))); // NOI18N
-        pnlwelcome.add(pn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, -9, 460, 380));
-
-        pn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Path 1.png"))); // NOI18N
-        pnlwelcome.add(pn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -30, 480, 340));
-
-        pn3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Path 4.png"))); // NOI18N
-        pnlwelcome.add(pn3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 460, 340));
-
-        pn4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Path 5.png"))); // NOI18N
-        pnlwelcome.add(pn4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 610, 300));
-
-        welcom.setFont(new java.awt.Font("Forte", 1, 36)); // NOI18N
-        welcom.setText("Welcome to FarmSys");
-        pnlwelcome.add(welcom, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 350, 80));
-
-        welcomeJDialog.getContentPane().add(pnlwelcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 460));
-
         WebcamQRcode.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         WebcamQRcode.setTitle("Webcam");
         WebcamQRcode.setAlwaysOnTop(true);
@@ -366,7 +339,6 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
         WebcamQRcode.setLocationByPlatform(true);
         WebcamQRcode.setMinimumSize(new java.awt.Dimension(457, 450));
         WebcamQRcode.setUndecorated(true);
-        WebcamQRcode.setPreferredSize(new java.awt.Dimension(457, 450));
         WebcamQRcode.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelquetQR.setBackground(new java.awt.Color(51, 51, 51));
@@ -769,15 +741,10 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
     private javax.swing.JLabel lbltieude;
     private javax.swing.JPanel panelquetQR;
     private javax.swing.JPanel panelquetqr;
-    private javax.swing.JLabel pn1;
-    private javax.swing.JLabel pn2;
-    private javax.swing.JLabel pn3;
-    private javax.swing.JLabel pn4;
     private javax.swing.JPanel pnlTong;
     private javax.swing.JPanel pnlTong1;
     private javax.swing.JPanel pnldieukhien;
     private javax.swing.JPanel pnldieukhien1;
-    private javax.swing.JPanel pnlwelcome;
     private javax.swing.JTextField txtMaNV;
     private javax.swing.JPasswordField txtMatKhau;
     private javax.swing.JTextField txtOTP;
@@ -785,8 +752,6 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
     private javax.swing.JPasswordField txtmknew;
     private javax.swing.JTextField txttaikhoanlaymk;
     private javax.swing.JPasswordField txtxnmknew;
-    private javax.swing.JLabel welcom;
-    private javax.swing.JDialog welcomeJDialog;
     // End of variables declaration//GEN-END:variables
     MP3Player Ping3 = new MP3Player(new File("src\\com\\farmsys\\icons\\UI.mp3"));
     private WebcamPanel panel = null;
@@ -832,7 +797,7 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
             String qrCodeData = QRcoderandomString;
             String filePath = "src\\QRcode\\a.png";
             String charset = "UTF-8"; // or "ISO-8859-1"
-            Map< EncodeHintType, ErrorCorrectionLevel> hintMap = new HashMap< EncodeHintType, ErrorCorrectionLevel>();
+            Map< EncodeHintType, ErrorCorrectionLevel> hintMap = new EnumMap< >(EncodeHintType.class);
             hintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
             BitMatrix matrix = new MultiFormatWriter().encode(
                     new String(qrCodeData.getBytes(charset), charset),
@@ -840,7 +805,7 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
             MatrixToImageWriter.writeToFile(matrix, filePath.substring(filePath
                     .lastIndexOf('.') + 1), new File(filePath));
             System.out.println("QR Code image created successfully!");
-        } catch (Exception e) {
+        } catch (WriterException | IOException e) {
             System.err.println(e);
         }
     }

@@ -71,7 +71,7 @@ public class HoanThanhcvJPanel extends javax.swing.JPanel {
                 btnhtActionPerformed(evt);
             }
         });
-        tong.add(btnht, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 540, 260, 60));
+        tong.add(btnht, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 540, 260, 60));
 
         tblcv.setAutoCreateRowSorter(true);
         tblcv.setModel(new javax.swing.table.DefaultTableModel(
@@ -113,10 +113,10 @@ public class HoanThanhcvJPanel extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setText("Tên công việc  :");
-        tong.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, -1, -1));
+        tong.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 340, -1, -1));
 
         txttencv.setEditable(false);
-        tong.add(txttencv, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, 260, -1));
+        tong.add(txttencv, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 340, 260, -1));
 
         txtchitiet.setEditable(false);
         txtchitiet.setColumns(20);
@@ -124,18 +124,18 @@ public class HoanThanhcvJPanel extends javax.swing.JPanel {
         txtchitiet.setText("\n");
         jScrollPane2.setViewportView(txtchitiet);
 
-        tong.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 370, 260, 112));
+        tong.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 370, 260, 112));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setText("Mô tả :");
-        tong.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, -1, -1));
+        tong.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 390, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setText("Ngày kết thúc :");
-        tong.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 490, -1, -1));
+        tong.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 490, -1, -1));
 
         txtngaykt.setEditable(false);
-        tong.add(txtngaykt, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 490, 260, 29));
+        tong.add(txtngaykt, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 490, 260, 29));
 
         paneldanhsach.add(tong, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 1050, 620));
 

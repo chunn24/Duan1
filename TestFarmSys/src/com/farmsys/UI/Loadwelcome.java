@@ -9,8 +9,6 @@ import AppPackage.AnimationClass;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import javax.swing.Timer;
 
 /**
@@ -141,7 +139,7 @@ public class Loadwelcome extends javax.swing.JDialog {
         anim.jLabelXLeft(pn4.getX(), -1000, 2, 1, pn4);
         //anim.jLabelXRight(-200, 170, 2, 1, welcom);
 
-        new Timer(5000, (ActionEvent e) -> {
+        new Timer(3000, (ActionEvent e) -> {
             this.dispose();
         }).start();
     }
