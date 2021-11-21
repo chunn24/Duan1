@@ -5,7 +5,7 @@
  */
 package com.farmsys.dao;
 
-import com.farmsys.DTO.GianTrong;
+import com.farmsys.Entity.GianTrong;
 import com.farmsys.Helper.JdbcHelper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -28,6 +28,7 @@ public class GianTrongDAO extends FarmSysDAO<GianTrong, String> {
     String SELECT_BY_ID_TT = "SELECT * FROM GianTrong WHERE TrangThai = ?";
     String UPDATE_TrangThai_SQL = "UPDATE GianTrong SET  TrangThai = 1 WHERE TenGian = ?";
     String UPDATE_TraVeCbo_SQL = "UPDATE GianTrong SET  TrangThai = 0 WHERE TenGian = ?";
+    String SELECT_BY_ID_TenGian = "SELECT * FROM GianTrong WHERE TenGian =?";
 
     @Override
     public void insert(GianTrong entity) {
@@ -111,6 +112,14 @@ public class GianTrongDAO extends FarmSysDAO<GianTrong, String> {
     @Override
     public GianTrong selectById(String key) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    public GianTrong selectByTenGian(String key) {
+        List<GianTrong> list = this.selectBySql(SELECT_BY_ID_TenGian, key);
+        if (list.isEmpty()) {
+            return null;
+        }
+        return list.get(0);
     }
 
 }

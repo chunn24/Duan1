@@ -5,7 +5,7 @@
  */
 package com.farmsys.UI;
 
-import com.farmsys.DTO.NhanVien;
+import com.farmsys.Entity.NhanVien;
 import com.farmsys.Helper.Auth;
 import com.farmsys.Helper.MailHelper;
 import com.farmsys.Helper.MsgBox;
@@ -39,7 +39,6 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.EnumMap;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.Executor;

@@ -5,7 +5,7 @@
  */
 package com.farmsys.UI;
 
-import com.farmsys.DTO.KhoHang;
+import com.farmsys.Entity.KhoHang;
 import com.farmsys.Helper.MsgBox;
 import com.farmsys.dao.KhoHangDAO;
 import com.farmsys.dao.NhatKyDAO;
@@ -122,7 +122,7 @@ public class KhoHangJPanel extends javax.swing.JPanel {
                 jLabel3MouseClicked(evt);
             }
         });
-        PnlTong.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 530, 30, -1));
+        PnlTong.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 580, 30, -1));
 
         tblKhoHang.setAutoCreateRowSorter(true);
         tblKhoHang.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -155,7 +155,7 @@ public class KhoHangJPanel extends javax.swing.JPanel {
         });
         jScrollPane4.setViewportView(tblKhoHang);
 
-        PnlTong.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 548, 410));
+        PnlTong.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 548, 420));
 
         pnledit.setBackground(new java.awt.Color(204, 255, 204));
         pnledit.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -330,7 +330,7 @@ public class KhoHangJPanel extends javax.swing.JPanel {
         if (evt.getClickCount() == 2) {
             this.index = tblKhoHang.getSelectedRow();
             this.edit();
-            
+
         }
     }//GEN-LAST:event_tblKhoHangMouseClicked
 
@@ -362,7 +362,7 @@ public class KhoHangJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnTimActionPerformed
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        this.fillTable();       
+        this.fillTable();
     }//GEN-LAST:event_jLabel3MouseClicked
 
 
@@ -399,24 +399,24 @@ public class KhoHangJPanel extends javax.swing.JPanel {
     KhoHangDAO khdao = new KhoHangDAO();
     NhatKyDAO nkdao = new NhatKyDAO();
     int index = 0;
-    
+
     void init() {
         txtTimKiem.grabFocus();
         fillTable();
-        
+
     }
-    
+
     void Buy() {
         int kh = Integer.parseInt(txtMaTH.getText());
         Float TrongLuong = Float.parseFloat(txtTrongLuong.getText());
-        
+
         Double Coin = Double.parseDouble(txtThanhTien.getText());
-        
+
         Float gb = Float.parseFloat(txtGiaBan.getText());
         Float slb = Float.parseFloat(txtSLBan.getText());
         Double Coin2 = Coin + (gb * slb);
         Float TrongLuong2 = TrongLuong - slb;
-        
+
         try {
             khdao.update(TrongLuong2, Coin2, kh);
             this.fillTable();
@@ -426,7 +426,7 @@ public class KhoHangJPanel extends javax.swing.JPanel {
         }
         this.UpdateStt();
     }
-    
+
     void fillTable() {
         DefaultTableModel model = (DefaultTableModel) tblKhoHang.getModel();
         model.setRowCount(0);
@@ -444,19 +444,19 @@ public class KhoHangJPanel extends javax.swing.JPanel {
             MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
         }
     }
-    
+
     void edit() {
         try {
             String TenDan = (String) tblKhoHang.getValueAt(this.index, 1);
             KhoHang kh = khdao.selectById(TenDan);
             this.setForm(kh);
-            
+
             this.updateStatus();
         } catch (Exception e) {
             MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
         }
     }
-    
+
     void clear() {
         txtMaTH.setText("");
         txtNgayTH.setText("");
@@ -466,9 +466,9 @@ public class KhoHangJPanel extends javax.swing.JPanel {
         txtThanhTien.setText("");
         this.index = 0;
         this.updateStatus();
-        
+
     }
-    
+
     void setForm(KhoHang kh) {
         txtMaTH.setText(String.valueOf(kh.getMaTH()));
         txtTenGian.setText(kh.getTenGian());
@@ -476,17 +476,17 @@ public class KhoHangJPanel extends javax.swing.JPanel {
         txtTrongLuong.setText(String.valueOf(kh.getTrongLuong()));
         txtNgayTH.setText(kh.getNgayTH().toString());
         txtThanhTien.setText(kh.getGiaThanh() + "");
-        
+
     }
-    
+
     void updateStatus() {
         boolean edit = (this.index >= 0);
         boolean first = (this.index == 0);
         boolean last = (this.index == tblKhoHang.getRowCount() - 1);
         btnBuy.setEnabled(edit);
-        
+
     }
-    
+
     boolean Validation() {
 
         //Kiểm tra thời lượng
@@ -503,23 +503,23 @@ public class KhoHangJPanel extends javax.swing.JPanel {
                 return false;
             }
         }
-        
+
         return true;
     }
-    
+
     void UpdateStt() {
         try {
             nkdao.updateTrangThaiTH(txtTenGian.getText());
-            
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
+
     void timKiem() {
         this.fillTable();
         this.clear();
         this.index = 0;
     }
-    
+
 }

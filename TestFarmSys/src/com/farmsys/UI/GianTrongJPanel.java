@@ -5,7 +5,7 @@
  */
 package com.farmsys.UI;
 
-import com.farmsys.DTO.GianTrong;
+import com.farmsys.Entity.GianTrong;
 import com.farmsys.Helper.MsgBox;
 import com.farmsys.dao.GianTrongDAO;
 import static java.awt.Color.pink;
@@ -279,12 +279,16 @@ public class GianTrongJPanel extends javax.swing.JPanel {
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
-        this.insert();
+        if (checkTrungTen(txtTenDanTrong)) {
+            insert();
+        }
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
-        this.update();
+        if (checkTrungTen(txtTenDanTrong)) {
+            update();
+        }
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
@@ -372,7 +376,7 @@ public class GianTrongJPanel extends javax.swing.JPanel {
         this.updateStatus();
         new Timer(10000, (ActionEvent e) -> {
             this.load();
-            
+
         }).start();
     }
 
@@ -537,5 +541,16 @@ public class GianTrongJPanel extends javax.swing.JPanel {
     void last() {
         this.index = tblDanTrong.getRowCount() - 1;
         this.edit();
+    }
+
+    public boolean checkTrungTen(JTextField txt) {
+        txt.setBackground(white);
+        if (dtdao.selectByTenGian(txt.getText()) == null) {
+            return true;
+        } else {
+            txt.setBackground(pink);
+            MsgBox.alert(this, "Tên giàn đã bị tồn tại !");
+            return false;
+        }
     }
 }

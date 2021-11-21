@@ -5,8 +5,8 @@
  */
 package com.farmsys.UI;
 
-import com.farmsys.DTO.Chart;
-import com.farmsys.DTO.NhatKy;
+import com.farmsys.Entity.Chart;
+import com.farmsys.Entity.NhatKy;
 import com.farmsys.dao.ChartDAO;
 import java.awt.BorderLayout;
 import java.awt.Color;

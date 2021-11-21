@@ -5,7 +5,7 @@
  */
 package com.farmsys.UI;
 
-import com.farmsys.DTO.CayTrong;
+import com.farmsys.Entity.CayTrong;
 import com.farmsys.Helper.MsgBox;
 import com.farmsys.Helper.XImage;
 import com.farmsys.dao.CayTrongDAO;

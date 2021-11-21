@@ -5,8 +5,8 @@
  */
 package com.farmsys.UI;
 
-import com.farmsys.DTO.KhoHang;
-import com.farmsys.DTO.NhatKy;
+import com.farmsys.Entity.KhoHang;
+import com.farmsys.Entity.NhatKy;
 import com.farmsys.Helper.MsgBox;
 import com.farmsys.dao.GianTrongDAO;
 import com.farmsys.dao.KhoHangDAO;
@@ -41,17 +41,18 @@ public class HoanThanhcvJPanel extends javax.swing.JPanel {
         paneldanhsach = new javax.swing.JPanel();
         tong = new javax.swing.JPanel();
         btnht = new javax.swing.JButton();
+        lblreload = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblcv = new javax.swing.JTable();
         lblnhanvien = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lbltencv = new javax.swing.JLabel();
         txttencv = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtchitiet = new javax.swing.JTextArea();
         jLabel6 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lblngaykt = new javax.swing.JLabel();
         txtngaykt = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        lblhinh = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(1083, 750));
         setPreferredSize(new java.awt.Dimension(1083, 750));
@@ -75,6 +76,14 @@ public class HoanThanhcvJPanel extends javax.swing.JPanel {
             }
         });
         tong.add(btnht, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 540, 260, 60));
+
+        lblreload.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/icons8_synchronize_25px.png"))); // NOI18N
+        lblreload.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblreloadMouseClicked(evt);
+            }
+        });
+        tong.add(lblreload, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 350, 30, -1));
 
         tblcv.setAutoCreateRowSorter(true);
         tblcv.setModel(new javax.swing.table.DefaultTableModel(
@@ -114,9 +123,9 @@ public class HoanThanhcvJPanel extends javax.swing.JPanel {
         lblnhanvien.setText("jLabel8");
         tong.add(lblnhanvien, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 270, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel2.setText("Tên công việc  :");
-        tong.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, -1, -1));
+        lbltencv.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lbltencv.setText("Tên công việc  :");
+        tong.add(lbltencv, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, -1, -1));
 
         txttencv.setEditable(false);
         tong.add(txttencv, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 340, 260, -1));
@@ -133,17 +142,17 @@ public class HoanThanhcvJPanel extends javax.swing.JPanel {
         jLabel6.setText("Mô tả :");
         tong.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel4.setText("Ngày kết thúc :");
-        tong.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 490, -1, -1));
+        lblngaykt.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblngaykt.setText("Ngày kết thúc :");
+        tong.add(lblngaykt, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 490, -1, -1));
 
         txtngaykt.setEditable(false);
         tong.add(txtngaykt, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 490, 260, 29));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/hoanthanh.gif"))); // NOI18N
-        jLabel1.setText("jLabel1");
-        jLabel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        tong.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 340, 670, 340));
+        lblhinh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/hoanthanh.gif"))); // NOI18N
+        lblhinh.setText("jLabel1");
+        lblhinh.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        tong.add(lblhinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 340, 670, 340));
 
         paneldanhsach.add(tong, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 1050, 690));
 
@@ -169,25 +178,30 @@ public class HoanThanhcvJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnhtActionPerformed
 
     private void tblcvMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblcvMouseEntered
-        this.fillTableNguoinhanviec();
+        this.fillTableXacNhanHT();
 
     }//GEN-LAST:event_tblcvMouseEntered
 
     private void tblcvMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblcvMouseExited
-        this.fillTableNguoinhanviec();
+        this.fillTableXacNhanHT();
 
     }//GEN-LAST:event_tblcvMouseExited
+
+    private void lblreloadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblreloadMouseClicked
+        this.fillTableXacNhanHT();
+    }//GEN-LAST:event_lblreloadMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnht;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblhinh;
+    private javax.swing.JLabel lblngaykt;
     private javax.swing.JLabel lblnhanvien;
+    private javax.swing.JLabel lblreload;
+    private javax.swing.JLabel lbltencv;
     private javax.swing.JPanel paneldanhsach;
     private javax.swing.JTable tblcv;
     private javax.swing.JPanel tong;
@@ -204,14 +218,14 @@ public class HoanThanhcvJPanel extends javax.swing.JPanel {
     private void init() {
         this.row = -1;
         loadLbl();
-        fillTableNguoinhanviec();
+        fillTableXacNhanHT();
     }
 
     private void loadLbl() {
         lblnhanvien.setText(DangNhapJDialog.HienThiTen());
     }
 
-    void fillTableNguoinhanviec() {
+    void fillTableXacNhanHT() {
         DefaultTableModel model = (DefaultTableModel) tblcv.getModel();
         model.setRowCount(0);
         String ten = lblnhanvien.getText();
@@ -232,7 +246,7 @@ public class HoanThanhcvJPanel extends javax.swing.JPanel {
             try {
                 nkDAO.updateTrangThai((int) tblcv.getValueAt(this.row, 0));
 
-                this.fillTableNguoinhanviec();
+                this.fillTableXacNhanHT();
                 MsgBox.alert(this, "Nhận việc thành công!");
             } catch (Exception e) {
                 MsgBox.alert(this, "Nhận việc thất bại!");
@@ -243,7 +257,7 @@ public class HoanThanhcvJPanel extends javax.swing.JPanel {
     void updateGianTrong() {
         try {
             gtDAO.updateAgain((String) tblcv.getValueAt(this.row, 2));
-            this.fillTableNguoinhanviec();
+            this.fillTableXacNhanHT();
             MsgBox.alert(this, "Nhận việc thành công!");
         } catch (Exception e) {
             MsgBox.alert(this, "Nhận việc thất bại!");

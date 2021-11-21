@@ -5,8 +5,8 @@
  */
 package com.farmsys.UI;
 
-import com.farmsys.DTO.GianTrong;
-import com.farmsys.DTO.NhatKy;
+import com.farmsys.Entity.GianTrong;
+import com.farmsys.Entity.NhatKy;
 import com.farmsys.Helper.MsgBox;
 import com.farmsys.dao.GianTrongDAO;
 import com.farmsys.dao.NhatKyDAO;

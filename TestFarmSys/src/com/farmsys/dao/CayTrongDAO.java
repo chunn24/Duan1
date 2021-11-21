@@ -5,7 +5,7 @@
  */
 package com.farmsys.dao;
 
-import com.farmsys.DTO.CayTrong;
+import com.farmsys.Entity.CayTrong;
 import com.farmsys.Helper.JdbcHelper;
 import java.sql.ResultSet;
 import java.sql.SQLException;

@@ -4,8 +4,8 @@
  */
 package com.farmsys.dao;
 
-import com.farmsys.DTO.Chart;
-import com.farmsys.DTO.ThuHoach;
+import com.farmsys.Entity.Chart;
+import com.farmsys.Entity.ThuHoach;
 import com.farmsys.Helper.JdbcHelper;
 import java.sql.ResultSet;
 import java.sql.SQLException;

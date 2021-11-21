@@ -5,7 +5,7 @@
  */
 package com.farmsys.dao;
 
-import com.farmsys.DTO.CongViec;
+import com.farmsys.Entity.CongViec;
 
 import com.farmsys.Helper.JdbcHelper;
 import java.sql.ResultSet;

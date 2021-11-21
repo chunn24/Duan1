@@ -5,7 +5,7 @@
  */
 package com.farmsys.Helper;
 
-import com.farmsys.DTO.NhanVien;
+import com.farmsys.Entity.NhanVien;
 
 /**
  *

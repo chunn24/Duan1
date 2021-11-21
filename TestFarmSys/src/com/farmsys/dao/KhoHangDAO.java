@@ -4,7 +4,7 @@
  */
 package com.farmsys.dao;
 
-import com.farmsys.DTO.KhoHang;
+import com.farmsys.Entity.KhoHang;
 import com.farmsys.Helper.JdbcHelper;
 import java.sql.ResultSet;
 import java.sql.SQLException;

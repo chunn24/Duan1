@@ -5,12 +5,12 @@
  */
 package com.farmsys.UI;
 
-import com.farmsys.DTO.CayTrong;
-import com.farmsys.DTO.CongViec;
-import com.farmsys.DTO.GianTrong;
-import com.farmsys.DTO.NhanVien;
-import com.farmsys.DTO.NhatKy;
-import com.farmsys.DTO.ThuHoach;
+import com.farmsys.Entity.CayTrong;
+import com.farmsys.Entity.CongViec;
+import com.farmsys.Entity.GianTrong;
+import com.farmsys.Entity.NhanVien;
+import com.farmsys.Entity.NhatKy;
+import com.farmsys.Entity.ThuHoach;
 import com.farmsys.Helper.Auth;
 import com.farmsys.Helper.MsgBox;
 import com.farmsys.dao.CayTrongDAO;
@@ -217,17 +217,16 @@ public class GiaoViecJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnGiaoVietActionPerformed
 
     private void cboCongViecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboCongViecActionPerformed
-        if(cboCongViec.getSelectedIndex()== 0){
-            this.fillComboBoxGianTrongChamSoc();
-           
-        }else if(cboCongViec.getSelectedIndex() == 1){
-            this.fillComboBoxGianTrongThuHoach();
-        }else {
-            this.fillComboBoxGianTrongTrongCay();
-            
-            System.out.println(123);
+        switch (cboCongViec.getSelectedIndex()) {
+            case 0 ->
+                this.fillComboBoxGianTrongChamSoc();
+            case 1 ->
+                this.fillComboBoxGianTrongThuHoach();
+            default -> {
+                this.fillComboBoxGianTrongTrongCay();
+            }
         }
-           
+
     }//GEN-LAST:event_cboCongViecActionPerformed
 
 
@@ -285,6 +284,7 @@ public class GiaoViecJPanel extends javax.swing.JPanel {
             model.addElement(dt);
         }
     }
+
     void fillComboBoxGianTrongTrongCay() {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cboGianTrong.getModel();
         model.removeAllElements();
@@ -293,6 +293,7 @@ public class GiaoViecJPanel extends javax.swing.JPanel {
             model.addElement(dt);
         }
     }
+
     void fillComboBoxGianTrongChamSoc() {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cboGianTrong.getModel();
         model.removeAllElements();
@@ -301,6 +302,7 @@ public class GiaoViecJPanel extends javax.swing.JPanel {
             model.addElement(dt);
         }
     }
+
     void fillComboBoxGianTrongThuHoach() {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cboGianTrong.getModel();
         model.removeAllElements();
@@ -373,11 +375,7 @@ public class GiaoViecJPanel extends javax.swing.JPanel {
     }
 
     boolean Validation() {
-        //Kiểm tra mã nhân viên
-        if (txtnguoitao.getText().length() == 0) {
-
-            return false;
-        }
-        return true;
+        //Kiểm tra mã nhân viên       
+        return txtnguoitao.getText().length() != 0;
     }
 }
