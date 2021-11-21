@@ -50,6 +50,7 @@ public class HoanThanhcvJPanel extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         txtngaykt = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(1083, 750));
         setPreferredSize(new java.awt.Dimension(1083, 750));
@@ -64,6 +65,7 @@ public class HoanThanhcvJPanel extends javax.swing.JPanel {
         tong.setBackground(new java.awt.Color(255, 255, 255));
         tong.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btnht.setBackground(new java.awt.Color(153, 255, 153));
         btnht.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/icons8_ok_40px.png"))); // NOI18N
         btnht.setText("Hoàn thành");
         btnht.addActionListener(new java.awt.event.ActionListener() {
@@ -71,7 +73,7 @@ public class HoanThanhcvJPanel extends javax.swing.JPanel {
                 btnhtActionPerformed(evt);
             }
         });
-        tong.add(btnht, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 540, 260, 60));
+        tong.add(btnht, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 540, 260, 60));
 
         tblcv.setAutoCreateRowSorter(true);
         tblcv.setModel(new javax.swing.table.DefaultTableModel(
@@ -113,10 +115,10 @@ public class HoanThanhcvJPanel extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setText("Tên công việc  :");
-        tong.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 340, -1, -1));
+        tong.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, -1, -1));
 
         txttencv.setEditable(false);
-        tong.add(txttencv, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 340, 260, -1));
+        tong.add(txttencv, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 340, 260, -1));
 
         txtchitiet.setEditable(false);
         txtchitiet.setColumns(20);
@@ -124,20 +126,25 @@ public class HoanThanhcvJPanel extends javax.swing.JPanel {
         txtchitiet.setText("\n");
         jScrollPane2.setViewportView(txtchitiet);
 
-        tong.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 370, 260, 112));
+        tong.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 370, 260, 112));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setText("Mô tả :");
-        tong.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 390, -1, -1));
+        tong.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setText("Ngày kết thúc :");
-        tong.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 490, -1, -1));
+        tong.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 490, -1, -1));
 
         txtngaykt.setEditable(false);
-        tong.add(txtngaykt, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 490, 260, 29));
+        tong.add(txtngaykt, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 490, 260, 29));
 
-        paneldanhsach.add(tong, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 1050, 620));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/hoanthanh.gif"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        jLabel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        tong.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 340, 670, 340));
+
+        paneldanhsach.add(tong, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 1050, 690));
 
         add(paneldanhsach, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1090, 740));
     }// </editor-fold>//GEN-END:initComponents
@@ -175,6 +182,7 @@ public class HoanThanhcvJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnht;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;

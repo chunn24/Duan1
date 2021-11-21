@@ -115,7 +115,7 @@ public class NhanViecJPanel extends javax.swing.JPanel {
         pnltbl.add(lblnhanvien, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 550, -1, -1));
 
         pnlThaotac.setBackground(new java.awt.Color(255, 255, 255));
-        pnlThaotac.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        pnlThaotac.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.lightGray, java.awt.Color.lightGray, null, null));
 
         jLabel1.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         jLabel1.setText("Tên công việc: ");
