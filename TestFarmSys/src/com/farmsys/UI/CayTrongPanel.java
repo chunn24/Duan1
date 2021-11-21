@@ -11,13 +11,16 @@ import com.farmsys.Helper.XImage;
 import com.farmsys.dao.CayTrongDAO;
 import static java.awt.Color.red;
 import static java.awt.Color.white;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.io.File;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JTextField;
 import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
+
 
 /**
  *
@@ -124,24 +127,37 @@ public class CayTrongPanel extends javax.swing.JPanel {
         jLabel1.setText("Mã cây trồng");
 
         txtMaCay.setEditable(false);
+        txtMaCay.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("Tên cây trồng");
 
+        txtTenCay.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Thời gian thu hoạch (đơn vị: ngày)");
+
+        txtThoiGianThuHoach.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setText("Nồng độ TDS (ppm)");
 
+        txtDoTDS.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setText("Nồng độ pH");
+
+        txtDoPH.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel6.setText("Nhiệt độ");
 
+        txtNhietDo.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel7.setText("Độ ẩm");
+
+        txtDoAm.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
 
         btnAdd.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Add.png"))); // NOI18N
@@ -179,49 +195,57 @@ public class CayTrongPanel extends javax.swing.JPanel {
             }
         });
 
+        lblHinh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/FarmSys.png"))); // NOI18N
+        lblHinh.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblHinhMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlEditLayout = new javax.swing.GroupLayout(pnlEdit);
         pnlEdit.setLayout(pnlEditLayout);
         pnlEditLayout.setHorizontalGroup(
             pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlEditLayout.createSequentialGroup()
-                .addGap(132, 132, 132)
-                .addComponent(lblHinh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(89, 89, 89))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlEditLayout.createSequentialGroup()
-                .addContainerGap(48, Short.MAX_VALUE)
-                .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(pnlEditLayout.createSequentialGroup()
-                        .addComponent(btnAdd)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnUpdate)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnDelete)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnNew))
-                    .addComponent(txtMaCay)
-                    .addComponent(txtTenCay)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel3)
-                    .addGroup(pnlEditLayout.createSequentialGroup()
-                        .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel6)
-                            .addComponent(txtNhietDo, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtDoTDS, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(98, 98, 98)
+                .addContainerGap(47, Short.MAX_VALUE)
+                .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlEditLayout.createSequentialGroup()
                         .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel7)
-                            .addComponent(txtDoPH)
-                            .addComponent(txtDoAm, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(txtThoiGianThuHoach, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34))
+                            .addGroup(pnlEditLayout.createSequentialGroup()
+                                .addComponent(btnAdd)
+                                .addGap(28, 28, 28)
+                                .addComponent(btnUpdate)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnDelete)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnNew))
+                            .addComponent(txtMaCay)
+                            .addComponent(txtTenCay)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel3)
+                            .addGroup(pnlEditLayout.createSequentialGroup()
+                                .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel6)
+                                    .addComponent(txtNhietDo, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtDoTDS, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(98, 98, 98)
+                                .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel7)
+                                    .addComponent(txtDoPH)
+                                    .addComponent(txtDoAm, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtThoiGianThuHoach, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(34, 34, 34))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlEditLayout.createSequentialGroup()
+                        .addComponent(lblHinh, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(124, 124, 124))))
         );
         pnlEditLayout.setVerticalGroup(
             pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlEditLayout.createSequentialGroup()
-                .addComponent(lblHinh, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
+                .addComponent(lblHinh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -261,7 +285,7 @@ public class CayTrongPanel extends javax.swing.JPanel {
 
         pnlEditLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtDoAm, txtDoPH, txtDoTDS, txtMaCay, txtNhietDo, txtTenCay, txtThoiGianThuHoach});
 
-        pnltong.add(pnlEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(598, 24, 470, 700));
+        pnltong.add(pnlEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(598, 34, 470, 690));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -301,6 +325,11 @@ public class CayTrongPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         this.clear();
     }//GEN-LAST:event_btnNewActionPerformed
+
+    private void lblHinhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHinhMouseClicked
+        // TODO add your handling code here:
+        this.chonAnh();
+    }//GEN-LAST:event_lblHinhMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -434,8 +463,13 @@ public class CayTrongPanel extends javax.swing.JPanel {
         txtNhietDo.setText(String.valueOf(model.getNhietDo()));
         txtDoAm.setText(String.valueOf(model.getDoAm()));
         lblHinh.setToolTipText(model.getHinh());
-        if (model.getHinh() != null) {
-            lblHinh.setIcon(XImage.read(model.getHinh()));
+        if(model.getHinh() != null){
+            lblHinh.setToolTipText(model.getHinh());
+            ImageIcon icon = XImage.read(model.getHinh()); // Lấy địa chỉ của file Icon
+            
+            //Chuyển Icon sang image và điều chỉnh kích thước
+            Image scaleIcon = icon.getImage().getScaledInstance(lblHinh.getWidth(), lblHinh.getHeight(), Image.SCALE_DEFAULT);
+            lblHinh.setIcon(new javax.swing.ImageIcon(scaleIcon));
         }
     }
 
@@ -465,16 +499,28 @@ public class CayTrongPanel extends javax.swing.JPanel {
 
     }
 
-    void selectImage() {
-        JFileChooser files = new JFileChooser("src\\ImageCayTrong");
-        int fileChooser = files.showOpenDialog(null);
-        if (fileChooser == JFileChooser.APPROVE_OPTION) {
-            File file = files.getSelectedFile();
-            if (XImage.saveImage(file)) {
-                // Hiển thị hình lên form 
-                lblHinh.setIcon(XImage.read(file.getName()));
-                lblHinh.setToolTipText(file.getName());
-            }
+//    void selectImage() {
+//        JFileChooser files = new JFileChooser("D:\\Du An 1\\Github\\Duan1\\TestFarmSys\\logos\\fpt.png");
+//        int fileChooser = files.showOpenDialog(null);
+//        if (fileChooser == JFileChooser.APPROVE_OPTION) {
+//            File file = files.getSelectedFile();
+//            if (XImage.saveImage(file)) {
+//                // Hiển thị hình lên form 
+//                lblHinh.setIcon(XImage.read(file.getName()));
+//                Image scaleIcon = file.().getScaledInstance(lblHinh.getWidth(), lblHinh.getHeight(), Image.SCALE_DEFAULT);
+//                lblHinh.setIcon(new javax.swing.ImageIcon(scaleIcon));
+//                lblHinh.setToolTipText(file.getName());
+//            }
+//        }
+//    }
+    void chonAnh(){
+        if(fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION){
+            File file = fileChooser.getSelectedFile();
+            XImage.save(file); // Lưu hình vào thư mục logos
+            ImageIcon icon = XImage.read(file.getName()); // Đọc hình từ logos
+            Image scaleIcon = icon.getImage().getScaledInstance(lblHinh.getWidth(), lblHinh.getHeight(), Image.SCALE_DEFAULT);
+            lblHinh.setIcon(new javax.swing.ImageIcon(scaleIcon));
+            lblHinh.setToolTipText(file.getName()); //Giữ tên hình trong toolTip
         }
     }
 

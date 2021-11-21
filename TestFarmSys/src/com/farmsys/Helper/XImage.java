@@ -22,7 +22,7 @@ import javax.swing.ImageIcon;
 public class XImage {
 
     public static Image getAppIcon() {
-        URL url = XImage.class.getResource("com/farmsys/icons/fpt.png");
+        URL url = XImage.class.getResource("com/farmsys/icons/avatar.png");
         return new ImageIcon(url).getImage();
         //Lấy địa chỉ hình ảnh và tạo ảnh --> return
     }
@@ -65,5 +65,26 @@ public class XImage {
         return new ImageIcon(path.getAbsolutePath());
     }
 
-    
+//    public static Image getAppIcon(){
+//        URL url = XImage.class.getResource("/com/edusys/Icon/ong.jpg");
+//        return new ImageIcon(url).getImage();
+//    }
+//    public static void save(File src){
+//        File dst = new File("logos", src.getName());
+//        if(!dst.getParentFile().exists()){
+//            dst.getParentFile().mkdirs();
+//        }
+//        try{
+//            Path from = Paths.get(src.getAbsolutePath());
+//            Path to = Paths.get(dst.getAbsolutePath());
+//            Files.copy(from, to,StandardCopyOption.REPLACE_EXISTING);
+//        }catch(Exception ex){
+//            throw new RuntimeException(ex);
+//        }
+//    }
+//    public static ImageIcon read(String fileName){
+//        File path = new File("logos", fileName);
+//        return new ImageIcon(path.getAbsolutePath());
+//    }
+//    
 }
