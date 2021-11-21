@@ -8,6 +8,7 @@ package com.farmsys.UI;
 import com.farmsys.DTO.KhoHang;
 import com.farmsys.DTO.NhatKy;
 import com.farmsys.Helper.MsgBox;
+import com.farmsys.dao.GianTrongDAO;
 import com.farmsys.dao.KhoHangDAO;
 import com.farmsys.dao.NhatKyDAO;
 import java.sql.Date;
@@ -159,12 +160,10 @@ public class HoanThanhcvJPanel extends javax.swing.JPanel {
     private void btnhtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhtActionPerformed
         String TenCV = txttencv.getText();
         if (TenCV.equals("Thu hoạch")) {
-            SoLuong = Float.parseFloat(MsgBox.prompt(this, "Số Lượng Thu Hoạch(kg):"));
-
+            SoLuong = Float.parseFloat(MsgBox.prompt(this, "Nhập số lượng mà bạn thu hoạch được (kg): "));
             this.insertKhoHang();
-
+            this.updateGianTrong();
         }
-
         this.update();
 
     }//GEN-LAST:event_btnhtActionPerformed
@@ -198,6 +197,7 @@ public class HoanThanhcvJPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
     KhoHangDAO khDAO = new KhoHangDAO();
     NhatKyDAO nkDAO = new NhatKyDAO();
+    GianTrongDAO gtDAO = new GianTrongDAO();
     int row = -1;
     Float SoLuong;
 
@@ -231,12 +231,23 @@ public class HoanThanhcvJPanel extends javax.swing.JPanel {
         } else {
             try {
                 nkDAO.updateTrangThai((int) tblcv.getValueAt(this.row, 0));
+
                 this.fillTableNguoinhanviec();
                 MsgBox.alert(this, "Nhận việc thành công!");
             } catch (Exception e) {
                 MsgBox.alert(this, "Nhận việc thất bại!");
-                e.printStackTrace();
             }
+        }
+    }
+
+    void updateGianTrong() {
+        try {
+            gtDAO.updateAgain((String) tblcv.getValueAt(this.row, 2));
+            this.fillTableNguoinhanviec();
+            MsgBox.alert(this, "Nhận việc thành công!");
+        } catch (Exception e) {
+            MsgBox.alert(this, "Nhận việc thất bại!");
+
         }
     }
 

@@ -6,7 +6,6 @@
 package com.farmsys.dao;
 
 import com.farmsys.DTO.GianTrong;
-import com.farmsys.DTO.NhanVien;
 import com.farmsys.Helper.JdbcHelper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
