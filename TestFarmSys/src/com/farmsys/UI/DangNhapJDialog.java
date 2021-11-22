@@ -779,57 +779,15 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
 
     void update() {
         String nv = txtQRcode.getText();
-
         try {
-            this.createQRcode();
             dao.updateQRcode(nv);
-
         } catch (Exception e) {
-
             System.out.println(e);
-        }
-
-    }
-
-    private void createQRcode() {
-        try {
-            String qrCodeData = QRcoderandomString;
-            String filePath = "src\\QRcode\\a.png";
-            String charset = "UTF-8"; // or "ISO-8859-1"
-            Map< EncodeHintType, ErrorCorrectionLevel> hintMap = new EnumMap< >(EncodeHintType.class);
-            hintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
-            BitMatrix matrix = new MultiFormatWriter().encode(
-                    new String(qrCodeData.getBytes(charset), charset),
-                    BarcodeFormat.QR_CODE, 200, 200, hintMap);
-            MatrixToImageWriter.writeToFile(matrix, filePath.substring(filePath
-                    .lastIndexOf('.') + 1), new File(filePath));
-            System.out.println("QR Code image created successfully!");
-        } catch (WriterException | IOException e) {
-            System.err.println(e);
-        }
-    }
-
-    void Sendmail() {
-        try {
-            manv = txtQRcode.getText();
-            NhanVien nhanVien = dao.selectByQR(manv);
-            if (nhanVien != null) {//check tk có tồn tại không
-                emailNV = dao.selectByQR(manv).getEmail();//check mail nv
-                if (emailNV == null) {
-                    MsgBox.alert(this, "Tài khoản này chưa có email");
-                } else {//tài khoản có mail --> gửi mail -->check otp
-                    this.randomString();
-                    MailHelper.sendFile(emailNV, "Mã QR code cá nhân", "Đây là mã QR code cá nhân. Vui lòng không để cho người khác có được mã này !", "src\\QRcode\\a.png");
-
-                }
-            } else {
-                MsgBox.alert(this, "Tài khoản không tồn tại");
-            }
-        } catch (IOException e) {
         }
     }
 
     void SendOTP() {
+        MsgBox.alert(this, "Đang gửi mail...");
         try {
             manvotp = txttaikhoanlaymk.getText();
             NhanVien nhanVien = dao.selectById(manvotp);
@@ -840,6 +798,7 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
                 } else {//tài khoản có mail --> gửi mail -->check otp
                     this.randomString();
                     MailHelper.sendText(emailNV, "OTP - Quên mật khẩu", "OTP:" + " " + OTP);
+                    MsgBox.alert(this, "Có 1 mã OTP đã được gửi vào mail của bạn !");
                 }
             } else {
                 MsgBox.alert(this, "Tài khoản không tồn tại");
@@ -911,8 +870,6 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
 
     private void randomString() {
         OTP = UUID.randomUUID().toString();
-        QRcoderandomString = UUID.randomUUID().toString();
-        txtQRcode.setText(QRcoderandomString);
     }
 
     private void doiMatKhau(String manv) {
