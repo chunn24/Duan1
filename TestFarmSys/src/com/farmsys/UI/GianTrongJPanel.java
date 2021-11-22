@@ -279,12 +279,20 @@ public class GianTrongJPanel extends javax.swing.JPanel {
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
-        this.insert();
+        if (validation()) {
+            if (checkTrungTen(txtTenDanTrong)) {
+                insert();
+            }
+        }
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
-        this.update();
+        if (validation()) {
+            if (checkTrungTen(txtTenDanTrong)) {
+                update();
+            }
+        }
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
@@ -513,6 +521,30 @@ public class GianTrongJPanel extends javax.swing.JPanel {
             MsgBox.alert(this, txt.getName() + " đã bị tồn tại.");
             return false;
         }
+    }
+    public boolean checkTrungTen(JTextField txt) {
+        txt.setBackground(white);
+        if (dtdao.selectByTenGian(txt.getText()) == null) {
+            return true;
+        } else {
+            txt.setBackground(pink);
+            MsgBox.alert(this, "Tên giàn đã bị tồn tại !");
+            return false;
+        }
+    }
+
+    private boolean validation() {
+        if (txtTenDanTrong.getText().isEmpty()) {
+            MsgBox.alert(this, "Bạn chưa nhập tên dàn trồng !");
+            txtTenDanTrong.requestFocus();
+            return false;
+        }
+        if (txtTenDanTrong.getText().equalsIgnoreCase("Nhập tên dàn trồng !")) {
+            MsgBox.alert(this, "Bạn chưa nhập tên dàn trồng !");
+            txtTenDanTrong.requestFocus();
+            return false;
+        }
+        return true;
     }
 
     void first() {
