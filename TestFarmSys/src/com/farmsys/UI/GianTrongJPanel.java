@@ -514,7 +514,18 @@ public class GianTrongJPanel extends javax.swing.JPanel {
             return true;
         } else {
             txt.setBackground(pink);
-            MsgBox.alert(this, txt.getName() + " đã bị tồn tại.");
+            MsgBox.alert(this, txt.getName() + " Đã tồn tại.");
+            return false;
+        }
+    }
+
+    public boolean checkTrungTen(JTextField txt) {
+        txt.setBackground(white);
+        if (dtdao.selectByTenGian(txt.getText()) == null) {
+            return true;
+        } else {
+            txt.setBackground(pink);
+            MsgBox.alert(this, "Tên giàn đã tồn tại !");
             return false;
         }
     }
@@ -543,14 +554,4 @@ public class GianTrongJPanel extends javax.swing.JPanel {
         this.edit();
     }
 
-    public boolean checkTrungTen(JTextField txt) {
-        txt.setBackground(white);
-        if (dtdao.selectByTenGian(txt.getText()) == null) {
-            return true;
-        } else {
-            txt.setBackground(pink);
-            MsgBox.alert(this, "Tên giàn đã bị tồn tại !");
-            return false;
-        }
-    }
 }
