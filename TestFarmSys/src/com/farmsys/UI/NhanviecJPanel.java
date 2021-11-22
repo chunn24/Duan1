@@ -249,7 +249,7 @@ public class NhanViecJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tblcvMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblcvMouseClicked
-        if (evt.getClickCount() == 2) {
+        if (evt.getClickCount() == 1) {
             this.row = tblcv.getSelectedRow();
             this.edit();
         }
@@ -340,7 +340,6 @@ public class NhanViecJPanel extends javax.swing.JPanel {
         NhatKy nv = getForm();
         GianTrong gt = new GianTrong();
         if (nv == null) {
-            return;
         } else {
             try {
                 nkDAO.updateTuChoi((int) tblcv.getValueAt(this.row, 0));
@@ -401,7 +400,6 @@ public class NhanViecJPanel extends javax.swing.JPanel {
     boolean Validation() {
         //Kiểm tra mã nhân viên
         if (txttencv.getText().length() == 0) {
-
             return false;
         }
         return true;

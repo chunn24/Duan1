@@ -26,9 +26,10 @@ public class GianTrongDAO extends FarmSysDAO<GianTrong, String> {
     String SELECT_ALL_SQL = "SELECT * FROM GianTrong";
     String SELECT_BY_ID_SQL = "SELECT * FROM GianTrong WHERE MaGian =?";
     String SELECT_BY_ID_TT = "SELECT * FROM GianTrong WHERE TrangThai = ?";
+    String SELECT_BY_ID_TenGian = "SELECT * FROM GianTrong WHERE TenGian =?";
     String UPDATE_TrangThai_SQL = "UPDATE GianTrong SET  TrangThai = 1 WHERE TenGian = ?";
     String UPDATE_TraVeCbo_SQL = "UPDATE GianTrong SET  TrangThai = 0 WHERE TenGian = ?";
-    String SELECT_BY_ID_TenGian = "SELECT * FROM GianTrong WHERE TenGian =?";
+  
 
     @Override
     public void insert(GianTrong entity) {
@@ -89,6 +90,13 @@ public class GianTrongDAO extends FarmSysDAO<GianTrong, String> {
         }
         return list.get(0);
     }
+    public GianTrong selectByTenGian(String key) {
+        List<GianTrong> list = this.selectBySql(SELECT_BY_ID_TenGian, key);
+        if (list.isEmpty()) {
+            return null;
+        }
+        return list.get(0);
+    }
 
     @Override
     protected List<GianTrong> selectBySql(String sql, Object... args) {
@@ -114,12 +122,6 @@ public class GianTrongDAO extends FarmSysDAO<GianTrong, String> {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    public GianTrong selectByTenGian(String key) {
-        List<GianTrong> list = this.selectBySql(SELECT_BY_ID_TenGian, key);
-        if (list.isEmpty()) {
-            return null;
-        }
-        return list.get(0);
-    }
+
 
 }
