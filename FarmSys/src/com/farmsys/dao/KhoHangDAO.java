@@ -4,7 +4,7 @@
  */
 package com.farmsys.dao;
 
-import com.farmsys.DTO.KhoHang;
+import com.farmsys.Entity.KhoHang;
 import com.farmsys.Helper.JdbcHelper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -89,5 +89,10 @@ public class KhoHangDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public List<KhoHang> selectByKeyword(String keyword) {
+        String SELECT_BY_NAME_SQL = "SELECT * FROM KhoHang WHERE TenCay LIKE ? and TrongLuong > 0";
+        return this.selectBySql(SELECT_BY_NAME_SQL, "%" + keyword + "%");
     }
 }

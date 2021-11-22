@@ -1,11 +1,3 @@
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Author: Taha Emara
-// WebSite : www.Emaraic.com
-// E-mail  : taha@emaraic.com
-//
-//                   Realtime face detection using OpenCV with Java
-//
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 package com.farmsys.UI;
 
 import java.awt.Graphics;
@@ -31,6 +23,12 @@ import org.opencv.objdetect.CascadeClassifier;
  */
 public class LiveJFrame extends javax.swing.JFrame {
 ///
+
+    public LiveJFrame() {
+        initComponents();
+        System.out.println(LiveJFrame.class.getResource("haarcascade_frontalface_alt.xml").getPath().substring(1));
+        start();
+    }
 
     private DaemonThread myThread = null;
     int count = 0;
@@ -82,9 +80,18 @@ public class LiveJFrame extends javax.swing.JFrame {
     /**
      * Creates new form FaceDetection
      */
-    public LiveJFrame() {
-        initComponents();
-        System.out.println(LiveJFrame.class.getResource("haarcascade_frontalface_alt.xml").getPath().substring(1));
+    public void start() {
+        webSource = new VideoCapture(0); // video capture from default cam
+        myThread = new DaemonThread(); //create object of threat class
+        Thread t = new Thread(myThread);
+        t.setDaemon(true);
+        myThread.runnable = true;
+        t.start();                 //start thrad
+    }
+
+    public void pause() {
+        myThread.runnable = false;            // stop thread       
+        webSource.release();  // stop caturing fron cam
     }
 
     /**
@@ -96,90 +103,55 @@ public class LiveJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
         Manhinhlive = new javax.swing.JPanel();
-        Start = new javax.swing.JButton();
-        Pause = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(1090, 750));
+        setPreferredSize(new java.awt.Dimension(1090, 750));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/youtube_live_25px.png"))); // NOI18N
+        jLabel1.setText("Trực Tiếp");
+
+        Manhinhlive.setMinimumSize(new java.awt.Dimension(1090, 750));
+        Manhinhlive.setPreferredSize(new java.awt.Dimension(1090, 750));
+        Manhinhlive.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ManhinhliveMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout ManhinhliveLayout = new javax.swing.GroupLayout(Manhinhlive);
         Manhinhlive.setLayout(ManhinhliveLayout);
         ManhinhliveLayout.setHorizontalGroup(
             ManhinhliveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 1090, Short.MAX_VALUE)
         );
         ManhinhliveLayout.setVerticalGroup(
             ManhinhliveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 376, Short.MAX_VALUE)
+            .addGap(0, 770, Short.MAX_VALUE)
         );
-
-        Start.setText("Start");
-        Start.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                StartActionPerformed(evt);
-            }
-        });
-
-        Pause.setText("Pause");
-        Pause.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PauseActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(Manhinhlive, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(255, 255, 255)
-                .addComponent(Start)
-                .addGap(86, 86, 86)
-                .addComponent(Pause)
-                .addContainerGap(258, Short.MAX_VALUE))
+            .addComponent(jLabel1)
+            .addComponent(Manhinhlive, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Manhinhlive, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Start)
-                    .addComponent(Pause))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jLabel1)
+            .addComponent(Manhinhlive, javax.swing.GroupLayout.PREFERRED_SIZE, 770, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void PauseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PauseActionPerformed
-        myThread.runnable = false;            // stop thread
-        Pause.setEnabled(false);   // activate start button 
-        Start.setEnabled(true);     // deactivate stop button
-
-        webSource.release();  // stop caturing fron cam
-
-
-    }//GEN-LAST:event_PauseActionPerformed
-
-    private void StartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StartActionPerformed
-
-        webSource = new VideoCapture(0); // video capture from default cam
-        myThread = new DaemonThread(); //create object of threat class
-        Thread t = new Thread(myThread);
-        t.setDaemon(true);
-        myThread.runnable = true;
-        t.start();                 //start thrad
-        Start.setEnabled(false);  // deactivate start button
-        Pause.setEnabled(true);  //  activate stop button
-
-
-    }//GEN-LAST:event_StartActionPerformed
+    private void ManhinhliveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ManhinhliveMouseClicked
+        pause();
+    }//GEN-LAST:event_ManhinhliveMouseClicked
 
     /**
      * @param args the command line arguments
@@ -225,7 +197,6 @@ public class LiveJFrame extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Manhinhlive;
-    private javax.swing.JButton Pause;
-    private javax.swing.JButton Start;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

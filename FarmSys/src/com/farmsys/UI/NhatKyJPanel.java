@@ -5,7 +5,7 @@
  */
 package com.farmsys.UI;
 
-import com.farmsys.DTO.NhatKy;
+import com.farmsys.Entity.NhatKy;
 import com.farmsys.Helper.MsgBox;
 import com.farmsys.dao.CongViecDAO;
 import com.farmsys.dao.NhatKyDAO;
@@ -47,9 +47,11 @@ public class NhatKyJPanel extends javax.swing.JPanel {
         cboLocTrangThai = new javax.swing.JComboBox<>();
         btnXuatPDF = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblNhatKy = new javax.swing.JTable();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(1083, 750));
         setPreferredSize(new java.awt.Dimension(1083, 750));
 
@@ -102,6 +104,14 @@ public class NhatKyJPanel extends javax.swing.JPanel {
         jLabel3.setForeground(new java.awt.Color(25, 69, 107));
         jLabel3.setText("Lọc theo trạng thái:");
         pnlBenTrai.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 136, -1));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/icons8_synchronize_25px.png"))); // NOI18N
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
+        pnlBenTrai.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 640, 30, -1));
 
         pnlNhatKy.add(pnlBenTrai, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 300, 670));
 
@@ -157,48 +167,40 @@ public class NhatKyJPanel extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(pnlNhatKy, javax.swing.GroupLayout.PREFERRED_SIZE, 744, Short.MAX_VALUE)
+                .addComponent(pnlNhatKy, javax.swing.GroupLayout.PREFERRED_SIZE, 739, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void cboLocTenCVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboLocTenCVActionPerformed
         // TODO add your handling code here:
-        if (cboLocTenCV.getSelectedIndex() == 0) {
-            //đổ tất cà thông tin lên table
-            this.fillTableNhatKyAll();
-        } else if (cboLocTenCV.getSelectedIndex() == 1) {
-            //đổ chỉ hiển thị tên công việc là TRỒNG CÂY
-            this.fillTableNhatKyByCongViec("Trồng cây");
-        } else if (cboLocTenCV.getSelectedIndex() == 2) {
-            //đổ chỉ hiển thị tên công việc là CHĂM SÓC
-            this.fillTableNhatKyByCongViec("Chăm sóc");
-        } else {
-            //đổ chỉ hiển thị tên công việc là THU HOẠCH
-            this.fillTableNhatKyByCongViec("Thu hoạch");
+        switch (cboLocTenCV.getSelectedIndex()) {
+            case 0 -> //đổ tất cà thông tin lên table
+                this.fillTableNhatKyAll();
+            case 1 -> //đổ chỉ hiển thị tên công việc là TRỒNG CÂY
+                this.fillTableNhatKyByCongViec("Trồng cây");
+            case 2 -> //đổ chỉ hiển thị tên công việc là CHĂM SÓC
+                this.fillTableNhatKyByCongViec("Chăm sóc");
+            default -> //đổ chỉ hiển thị tên công việc là THU HOẠCH
+                this.fillTableNhatKyByCongViec("Thu hoạch");
         }
     }//GEN-LAST:event_cboLocTenCVActionPerformed
 
     private void cboLocTrangThaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboLocTrangThaiActionPerformed
         // TODO add your handling code here:
-        if (cboLocTrangThai.getSelectedIndex() == 0) {
-            //đổ tất cà thông tin lên table
-            this.fillTableNhatKyAll();
-        } else if (cboLocTrangThai.getSelectedIndex() == 1) {
-            //trạng thái chưa nhận
-            this.fillTableNhatKyByTrangThai(0);
-        } else if (cboLocTrangThai.getSelectedIndex() == 2) {
-            //trạng thái đang làm
-            this.fillTableNhatKyByTrangThai(1);
-        } else if (cboLocTrangThai.getSelectedIndex() == 3) {
-            //trạng thái từ chối
-            this.fillTableNhatKyByTrangThai(2);
-        } else if (cboLocTrangThai.getSelectedIndex() == 4) {
-            //trạng thái Hoàn Thành
-            this.fillTableNhatKyByTrangThai(3);
-        } else {
-            // trạng thái Hoàn thành trễ
-            this.fillTableNhatKyByTrangThai(4);
+        switch (cboLocTrangThai.getSelectedIndex()) {
+            case 0 -> //đổ tất cà thông tin lên table
+                this.fillTableNhatKyAll();
+            case 1 -> //trạng thái chưa nhận
+                this.fillTableNhatKyByTrangThai(0);
+            case 2 -> //trạng thái đang làm
+                this.fillTableNhatKyByTrangThai(1);
+            case 3 -> //trạng thái từ chối
+                this.fillTableNhatKyByTrangThai(2);
+            case 4 -> //trạng thái Hoàn Thành
+                this.fillTableNhatKyByTrangThai(3);
+            default -> // trạng thái Hoàn thành trễ
+                this.fillTableNhatKyByTrangThai(4);
         }
     }//GEN-LAST:event_cboLocTrangThaiActionPerformed
 
@@ -214,12 +216,17 @@ public class NhatKyJPanel extends javax.swing.JPanel {
         fillTableNhatKyAll();
     }//GEN-LAST:event_tblNhatKyMouseExited
 
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        this.fillTableNhatKyAll();
+    }//GEN-LAST:event_jLabel4MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnXuatPDF;
     private javax.swing.JComboBox<String> cboLocTenCV;
     private javax.swing.JComboBox<String> cboLocTrangThai;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblLocTrangThai;
     private javax.swing.JPanel pnlBenTrai;
@@ -231,7 +238,7 @@ public class NhatKyJPanel extends javax.swing.JPanel {
 
     private void init() {
         this.fillTableNhatKyAll();
-        new Timer(30000, (ActionEvent e) -> {
+        new Timer(60000, (ActionEvent e) -> {
             this.fillTableNhatKyAll();
         }).start();
     }

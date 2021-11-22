@@ -4,8 +4,8 @@
  */
 package com.farmsys.dao;
 
-import com.farmsys.DTO.CongViec;
-import com.farmsys.DTO.ThuHoach;
+import com.farmsys.Entity.CongViec;
+import com.farmsys.Entity.ThuHoach;
 import com.farmsys.Helper.JdbcHelper;
 import java.sql.ResultSet;
 import java.sql.SQLException;

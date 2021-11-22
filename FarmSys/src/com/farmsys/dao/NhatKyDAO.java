@@ -5,8 +5,8 @@
  */
 package com.farmsys.dao;
 
-import com.farmsys.DTO.CayTrong;
-import com.farmsys.DTO.NhatKy;
+import com.farmsys.Entity.CayTrong;
+import com.farmsys.Entity.NhatKy;
 import com.farmsys.Helper.JdbcHelper;
 import java.util.List;
 import java.sql.ResultSet;

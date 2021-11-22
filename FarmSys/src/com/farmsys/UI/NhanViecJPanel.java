@@ -5,8 +5,8 @@
  */
 package com.farmsys.UI;
 
-import com.farmsys.DTO.GianTrong;
-import com.farmsys.DTO.NhatKy;
+import com.farmsys.Entity.GianTrong;
+import com.farmsys.Entity.NhatKy;
 import com.farmsys.Helper.MsgBox;
 import com.farmsys.dao.GianTrongDAO;
 import com.farmsys.dao.NhatKyDAO;
@@ -115,7 +115,7 @@ public class NhanViecJPanel extends javax.swing.JPanel {
         pnltbl.add(lblnhanvien, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 550, -1, -1));
 
         pnlThaotac.setBackground(new java.awt.Color(255, 255, 255));
-        pnlThaotac.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        pnlThaotac.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.lightGray, java.awt.Color.lightGray, null, null));
 
         jLabel1.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         jLabel1.setText("Tên công việc: ");
@@ -249,7 +249,7 @@ public class NhanViecJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tblcvMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblcvMouseClicked
-        if (evt.getClickCount() == 2) {
+        if (evt.getClickCount() == 1) {
             this.row = tblcv.getSelectedRow();
             this.edit();
         }
@@ -340,7 +340,6 @@ public class NhanViecJPanel extends javax.swing.JPanel {
         NhatKy nv = getForm();
         GianTrong gt = new GianTrong();
         if (nv == null) {
-            return;
         } else {
             try {
                 nkDAO.updateTuChoi((int) tblcv.getValueAt(this.row, 0));
@@ -401,7 +400,6 @@ public class NhanViecJPanel extends javax.swing.JPanel {
     boolean Validation() {
         //Kiểm tra mã nhân viên
         if (txttencv.getText().length() == 0) {
-
             return false;
         }
         return true;

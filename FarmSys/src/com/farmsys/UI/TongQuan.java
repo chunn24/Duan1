@@ -19,7 +19,6 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.LayoutManager;
 import java.awt.RenderingHints;
-import static java.awt.SystemColor.text;
 import java.awt.event.ActionEvent;
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -167,7 +166,6 @@ public class TongQuan extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("FarmSys");
-        setAlwaysOnTop(true);
         setBackground(new java.awt.Color(255, 255, 255));
         setUndecorated(true);
 
@@ -573,7 +571,7 @@ public class TongQuan extends javax.swing.JFrame {
                 .addComponent(LogoNhanvien)
                 .addGap(29, 29, 29)
                 .addComponent(lblNhanvien)
-                .addContainerGap(89, Short.MAX_VALUE))
+                .addContainerGap(91, Short.MAX_VALUE))
         );
         pnlNhanvienLayout.setVerticalGroup(
             pnlNhanvienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -600,7 +598,7 @@ public class TongQuan extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        pnlnhanvienLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {pnlCaytron, pnlDanTrong, pnlGiaoviec, pnlNhatky});
+        pnlnhanvienLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {pnlCaytron, pnlDanTrong, pnlGiaoviec, pnlNhanvien, pnlNhatky});
 
         pnlnhanvienLayout.setVerticalGroup(
             pnlnhanvienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -629,7 +627,6 @@ public class TongQuan extends javax.swing.JFrame {
 
         lblDongHo.setFont(new java.awt.Font("Comic Sans MS", 1, 36)); // NOI18N
         lblDongHo.setForeground(new java.awt.Color(51, 51, 51));
-        lblDongHo.setText("12:50 am");
         pnltongquat.add(lblDongHo, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 110, 190, 60));
 
         pnlweather.setBackground(new java.awt.Color(255, 255, 255));
@@ -1067,7 +1064,7 @@ public class TongQuan extends javax.swing.JFrame {
     }//GEN-LAST:event_pnlbarchartMouseExited
 
     private void pnlLiveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlLiveMouseClicked
-//        this.OpenLive();
+        this.OpenLive();
     }//GEN-LAST:event_pnlLiveMouseClicked
 
     private void pnlLiveMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlLiveMouseEntered
@@ -1274,7 +1271,6 @@ public class TongQuan extends javax.swing.JFrame {
     private int idx = 0;
 
     MP3Player Ping = new MP3Player(new File("src\\com\\farmsys\\icons\\thongbao.mp3"));
-    MP3Player Ping2 = new MP3Player(new File("src\\com\\farmsys\\icons\\loading.mp3"));
     MP3Player Ping3 = new MP3Player(new File("src\\com\\farmsys\\icons\\UI.mp3"));
 
     private void init() {
@@ -1283,15 +1279,12 @@ public class TongQuan extends javax.swing.JFrame {
         //this.setIconImage(XImage.getAppIcon());
         this.setLocationRelativeTo(null);
         weather.setLocationRelativeTo(null);
-
         new ChaoJdialog(this, true).setVisible(true);
-
         Ping3.play();
         new DangNhapJDialog(this, true).setVisible(true);
         Ping3.stop();
         new Loadwelcome(this, true).setVisible(true);
         new Loadwelcome(this, true).setVisible(false);
-
         Ping.play();
 
         loadLbl();
@@ -1430,7 +1423,8 @@ public class TongQuan extends javax.swing.JFrame {
 
     private void OpenLive() {
         if (Auth.isLogin()) {
-            tabs.setSelectedIndex(9);
+            LiveJFrame live = new LiveJFrame();
+            live.setVisible(true);
         } else {
             MsgBox.alert(this, "Vui lòng đăng nhập!");
         }
@@ -1453,7 +1447,6 @@ public class TongQuan extends javax.swing.JFrame {
         HoanThanhcvJPanel hoanThanhcvJPanel = new HoanThanhcvJPanel();
         GianTrongJPanel gianTrongJPanel = new GianTrongJPanel();
         ChartJPanel chartPanel = new ChartJPanel();
-//        LiveJPanel liveJPanel = new LiveJPanel();
         KhoHangJPanel khoHangJPanel = new KhoHangJPanel();
 
         tabs.addTab("1", nkpnJPanel);
@@ -1464,8 +1457,7 @@ public class TongQuan extends javax.swing.JFrame {
         tabs.addTab("6", hoanThanhcvJPanel);
         tabs.addTab("7", gianTrongJPanel);
         tabs.addTab("8", chartPanel);
-//        tabs.addTab("9", liveJPanel);
-        tabs.addTab("10", khoHangJPanel);
+        tabs.addTab("9", khoHangJPanel);
 
     }
 
