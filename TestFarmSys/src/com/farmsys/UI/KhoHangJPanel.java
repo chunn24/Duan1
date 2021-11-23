@@ -325,7 +325,7 @@ public class KhoHangJPanel extends javax.swing.JPanel {
 
     private void tblKhoHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblKhoHangMouseClicked
         // TODO add your handling code here:
-        if (evt.getClickCount() == 2) {
+        if (evt.getClickCount() == 1) {
             this.index = tblKhoHang.getSelectedRow();
             this.edit();
 

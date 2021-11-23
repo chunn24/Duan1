@@ -111,7 +111,7 @@ public class NhatKyJPanel extends javax.swing.JPanel {
                 jLabel4MouseClicked(evt);
             }
         });
-        pnlBenTrai.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 640, 30, -1));
+        pnlBenTrai.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 410, 30, -1));
 
         pnlNhatKy.add(pnlBenTrai, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 300, 670));
 
@@ -146,14 +146,6 @@ public class NhatKyJPanel extends javax.swing.JPanel {
         tblNhatKy.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         tblNhatKy.setMinimumSize(new java.awt.Dimension(750, 480));
         tblNhatKy.setRowHeight(40);
-        tblNhatKy.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                tblNhatKyMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                tblNhatKyMouseExited(evt);
-            }
-        });
         jScrollPane1.setViewportView(tblNhatKy);
 
         pnlNhatKy.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(318, 40, 750, 670));
@@ -207,14 +199,6 @@ public class NhatKyJPanel extends javax.swing.JPanel {
     private void btnXuatPDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatPDFActionPerformed
         print();
     }//GEN-LAST:event_btnXuatPDFActionPerformed
-
-    private void tblNhatKyMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblNhatKyMouseEntered
-        fillTableNhatKyAll();
-    }//GEN-LAST:event_tblNhatKyMouseEntered
-
-    private void tblNhatKyMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblNhatKyMouseExited
-        fillTableNhatKyAll();
-    }//GEN-LAST:event_tblNhatKyMouseExited
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
         this.fillTableNhatKyAll();
