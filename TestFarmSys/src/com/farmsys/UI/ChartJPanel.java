@@ -6,7 +6,10 @@
 package com.farmsys.UI;
 
 import com.farmsys.Entity.Chart;
+import com.farmsys.Helper.HandleAPI;
 import com.farmsys.dao.ChartDAO;
+import com.farmsys.dao.NhatKyDAO;
+import com.farmsys.data.JsonResult;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.util.List;
@@ -47,7 +50,7 @@ public class ChartJPanel extends javax.swing.JPanel {
         pnlchart = new javax.swing.JPanel();
         pnlcharttron = new javax.swing.JPanel();
         pnlchartcot = new javax.swing.JPanel();
-        pnlchartnhietdo = new javax.swing.JPanel();
+        cb_city = new javax.swing.JComboBox<>();
 
         setMinimumSize(new java.awt.Dimension(1083, 750));
         setPreferredSize(new java.awt.Dimension(1083, 750));
@@ -55,48 +58,29 @@ public class ChartJPanel extends javax.swing.JPanel {
         PanelTong.setBackground(new java.awt.Color(255, 255, 255));
         PanelTong.setMinimumSize(new java.awt.Dimension(1083, 750));
         PanelTong.setPreferredSize(new java.awt.Dimension(1083, 750));
+        PanelTong.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlchart.setBackground(new java.awt.Color(255, 255, 255));
         pnlchart.setLayout(new java.awt.BorderLayout());
+        PanelTong.add(pnlchart, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 1020, 370));
 
         pnlcharttron.setBackground(new java.awt.Color(255, 255, 255));
         pnlcharttron.setLayout(new java.awt.BorderLayout());
+        PanelTong.add(pnlcharttron, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 20, 440, 280));
 
         pnlchartcot.setBackground(new java.awt.Color(255, 255, 255));
         pnlchartcot.setLayout(new java.awt.BorderLayout());
+        PanelTong.add(pnlchartcot, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 515, 313));
 
-        pnlchartnhietdo.setBackground(new java.awt.Color(255, 255, 255));
-        pnlchartnhietdo.setLayout(new java.awt.BorderLayout());
-
-        javax.swing.GroupLayout PanelTongLayout = new javax.swing.GroupLayout(PanelTong);
-        PanelTong.setLayout(PanelTongLayout);
-        PanelTongLayout.setHorizontalGroup(
-            PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelTongLayout.createSequentialGroup()
-                .addGroup(PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelTongLayout.createSequentialGroup()
-                        .addComponent(pnlchart, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(pnlcharttron, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PanelTongLayout.createSequentialGroup()
-                        .addComponent(pnlchartcot, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(pnlchartnhietdo, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 35, Short.MAX_VALUE))
-        );
-        PanelTongLayout.setVerticalGroup(
-            PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelTongLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(pnlcharttron, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pnlchart, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(pnlchartcot, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pnlchartnhietdo, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(95, Short.MAX_VALUE))
-        );
+        cb_city.setBackground(new java.awt.Color(255, 153, 153));
+        cb_city.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Saigon", "Hanoi", "Danang", " " }));
+        cb_city.setToolTipText("");
+        cb_city.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_cityActionPerformed(evt);
+            }
+        });
+        PanelTong.add(cb_city, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 30, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -114,43 +98,53 @@ public class ChartJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void cb_cityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_cityActionPerformed
+        result = HandleAPI.getJsonData((String) cb_city.getSelectedItem());
+
+    }//GEN-LAST:event_cb_cityActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelTong;
+    private javax.swing.JComboBox<String> cb_city;
     private javax.swing.JPanel pnlchart;
     private javax.swing.JPanel pnlchartcot;
-    private javax.swing.JPanel pnlchartnhietdo;
     private javax.swing.JPanel pnlcharttron;
     // End of variables declaration//GEN-END:variables
 
+    NhatKyDAO nkDAO = new NhatKyDAO();
+    private JsonResult result;
+    private int idx = 0;
+
     private void init() {
+        result = HandleAPI.getJsonData((String) cb_city.getSelectedItem());
         this.fillTableChart();
         this.showLineChart();
         this.showPieChart();
-        this.showHistogram();
         this.showBarChart();
     }
     ChartDAO dao = new ChartDAO();
     Double Thang1, Thang2, Thang3, Thang4, Thang5, Thang6, Thang7, Thang8, Thang9, Thang10, Thang11, Thang12;
 
     void showLineChart() {
-        //create dataset for the graph
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        dataset.setValue(Thang1, "Amount", "1");
-        dataset.setValue(Thang2, "Amount", "2");
-        dataset.setValue(Thang3, "Amount", "3");
-        dataset.setValue(Thang4, "Amount", "4");
-        dataset.setValue(Thang5, "Amount", "5");
-        dataset.setValue(Thang6, "Amount", "6");
-        dataset.setValue(Thang7, "Amount", "7");
-        dataset.setValue(Thang8, "Amount", "8");
-        dataset.setValue(Thang9, "Amount", "9");
-        dataset.setValue(Thang10, "Amount", "10");
-        dataset.setValue(Thang11, "Amount", "11");
-        dataset.setValue(Thang12, "Amount", "12");
+        Double nhietDo;
+        String date;
 
+        for (idx = 0; idx < 39; idx = idx + 3) {
+
+            nhietDo = result.getList()[idx].getMain().getTemp();
+            date = result.getList()[idx].getDt_txt();
+            int i = date.indexOf(' ');
+            String xuat = date.substring(i + 1);
+            System.out.println(nhietDo);
+            System.out.println(xuat);
+            dataset.setValue(nhietDo, "Amount", xuat);
+        }
+
+        //create dataset for the graph
         //create chart
-        JFreeChart linechart = ChartFactory.createLineChart("Tổng doanh thu", "Tháng", "VNĐ",
+        JFreeChart linechart = ChartFactory.createLineChart("Nhiệt độ trung bình", "Giờ", "Độ C",
                 dataset, PlotOrientation.VERTICAL, false, true, false);
 
         //create plot object
@@ -193,10 +187,22 @@ public class ChartJPanel extends javax.swing.JPanel {
     public void showPieChart() {
         //create dataset
         DefaultPieDataset barDataset = new DefaultPieDataset();
-        barDataset.setValue("Nhận việc", 20);
-        barDataset.setValue("Đang làm", 20);
-        barDataset.setValue("Hoàn thành", 40);
-        barDataset.setValue("Hủy", 20);
+        int todo = ((100 / nkDAO.selectAll().size()) * nkDAO.selectByTrangThai(0).size());
+        int doing = ((100 / nkDAO.selectAll().size()) * nkDAO.selectByTrangThai(1).size());
+        int done = ((100 / nkDAO.selectAll().size()) * nkDAO.selectByTrangThai(3).size());
+        int cancel = ((100 / nkDAO.selectAll().size()) * nkDAO.selectByTrangThai(2).size());
+        if (todo > 0) {
+            barDataset.setValue("Nhận việc", todo);
+        }
+        if (doing > 0) {
+            barDataset.setValue("Đang làm", doing);
+        }
+        if (done > 0) {
+            barDataset.setValue("Hoàn thành", done);
+        }
+        if (cancel > 0) {
+            barDataset.setValue("Hủy", cancel);
+        }
 
         //create chart
         JFreeChart piechart = ChartFactory.createPieChart("Tiến độ công việc", barDataset, false, true, false);//explain
@@ -216,37 +222,22 @@ public class ChartJPanel extends javax.swing.JPanel {
         pnlcharttron.validate();
     }
 
-    public void showHistogram() {
-        double[] values = {0, 0, 0, 59, 50, 66, 47, 40, 1, 67,
-            12, 58, 28, 63, 14, 9, 31, 17, 94, 71,
-            49, 64, 73, 97, 15, 63, 10, 12, 31, 62,
-            93, 49, 74, 90, 59, 14, 15, 88, 26, 57,
-            77, 44, 58, 91, 10, 67, 57, 19, 88, 84
-        };
-
-        HistogramDataset dataset = new HistogramDataset();
-        dataset.addSeries("key", values, 20);
-
-        JFreeChart chart = ChartFactory.createHistogram("JFreeChart Histogram", "Data", "Frequency", dataset, PlotOrientation.VERTICAL, false, true, false);
-        XYPlot plot = chart.getXYPlot();
-        plot.setBackgroundPaint(Color.WHITE);
-
-        ChartPanel barpChartPanel2 = new ChartPanel(chart);
-        pnlchartnhietdo.removeAll();
-        pnlchartnhietdo.add(barpChartPanel2, BorderLayout.CENTER);
-        pnlchartnhietdo.validate();
-    }
-
     public void showBarChart() {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        dataset.setValue(200, "Amount", "january");
-        dataset.setValue(150, "Amount", "february");
-        dataset.setValue(18, "Amount", "march");
-        dataset.setValue(100, "Amount", "april");
-        dataset.setValue(80, "Amount", "may");
-        dataset.setValue(250, "Amount", "june");
+        dataset.setValue(Thang1, "Amount", "1");
+        dataset.setValue(Thang2, "Amount", "2");
+        dataset.setValue(Thang3, "Amount", "3");
+        dataset.setValue(Thang4, "Amount", "4");
+        dataset.setValue(Thang5, "Amount", "5");
+        dataset.setValue(Thang6, "Amount", "6");
+        dataset.setValue(Thang7, "Amount", "7");
+        dataset.setValue(Thang8, "Amount", "8");
+        dataset.setValue(Thang9, "Amount", "9");
+        dataset.setValue(Thang10, "Amount", "10");
+        dataset.setValue(Thang11, "Amount", "11");
+        dataset.setValue(Thang12, "Amount", "12");
 
-        JFreeChart chart = ChartFactory.createBarChart("contribution", "monthly", "amount",
+        JFreeChart chart = ChartFactory.createBarChart("Tổng doanh thu", "Tháng", "$",
                 dataset, PlotOrientation.VERTICAL, false, true, false);
 
         CategoryPlot categoryPlot = chart.getCategoryPlot();
