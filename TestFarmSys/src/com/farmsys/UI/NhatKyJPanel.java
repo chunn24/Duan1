@@ -307,7 +307,7 @@ public class NhatKyJPanel extends javax.swing.JPanel {
             case 4 ->
                 "Hoàn thành muộn";
             default ->
-                "Buy";
+                "Đang bán";
         };
         return status;
     }

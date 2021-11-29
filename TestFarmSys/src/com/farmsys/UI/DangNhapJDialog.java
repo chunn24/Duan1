@@ -587,7 +587,7 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
     }//GEN-LAST:event_txtMaNVFocusLost
 
     private void lblquenmkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblquenmkMouseClicked
-        Ping3.play();       
+        Ping3.play();
         doimkJDialog.setVisible(true);
     }//GEN-LAST:event_lblquenmkMouseClicked
 
@@ -851,8 +851,12 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
         }
     }
 
-    public static String HienThi() {
-        return Auth.user.getHoTen() + (Auth.user.isVaiTro() ? " - Trưởng phòng" : " - Nhân viên");
+    public static String HienThihoten() {
+        return Auth.user.getHoTen();
+    }
+
+    public static String HienThivaitro() {
+        return (Auth.user.isVaiTro() ? "Trưởng phòng" : "Nhân viên");
     }
 
     public static String HienThiTen() {
