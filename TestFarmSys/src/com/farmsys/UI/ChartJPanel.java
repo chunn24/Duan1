@@ -134,7 +134,6 @@ public class ChartJPanel extends javax.swing.JPanel {
     Double Thang1, Thang2, Thang3, Thang4, Thang5, Thang6, Thang7, Thang8, Thang9, Thang10, Thang11, Thang12;
 
     void showLineChart() {
-
         //create dataset for the graph
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         dataset.setValue(Thang1, "Amount", "1");
@@ -192,27 +191,24 @@ public class ChartJPanel extends javax.swing.JPanel {
     }
 
     public void showPieChart() {
-
         //create dataset
         DefaultPieDataset barDataset = new DefaultPieDataset();
-        barDataset.setValue("IPhone 5s", new Double(20));
-        barDataset.setValue("SamSung Grand", new Double(20));
-        barDataset.setValue("MotoG", new Double(40));
-        barDataset.setValue("Nokia Lumia", new Double(10));
+        barDataset.setValue("Nhận việc", 20);
+        barDataset.setValue("Đang làm", 20);
+        barDataset.setValue("Hoàn thành", 40);
+        barDataset.setValue("Hủy", 20);
 
         //create chart
-        JFreeChart piechart = ChartFactory.createPieChart("mobile sales", barDataset, false, true, false);//explain
+        JFreeChart piechart = ChartFactory.createPieChart("Tiến độ công việc", barDataset, false, true, false);//explain
 
         PiePlot piePlot = (PiePlot) piechart.getPlot();
 
         //changing pie chart blocks colors
-        piePlot.setSectionPaint("IPhone 5s", new Color(255, 255, 102));
-        piePlot.setSectionPaint("SamSung Grand", new Color(102, 255, 102));
-        piePlot.setSectionPaint("MotoG", new Color(255, 102, 153));
-        piePlot.setSectionPaint("Nokia Lumia", new Color(0, 204, 204));
-
+        piePlot.setSectionPaint("Nhận việc", new Color(255, 255, 102));
+        piePlot.setSectionPaint("Đang làm", new Color(102, 255, 102));
+        piePlot.setSectionPaint("Hoàn thành", new Color(255, 102, 153));
+        piePlot.setSectionPaint("Hủy", new Color(0, 204, 204));
         piePlot.setBackgroundPaint(Color.white);
-
         //create chartPanel to display chart(graph)
         ChartPanel barChartPanel = new ChartPanel(piechart);
         pnlcharttron.removeAll();
@@ -221,7 +217,6 @@ public class ChartJPanel extends javax.swing.JPanel {
     }
 
     public void showHistogram() {
-
         double[] values = {0, 0, 0, 59, 50, 66, 47, 40, 1, 67,
             12, 58, 28, 63, 14, 9, 31, 17, 94, 71,
             49, 64, 73, 97, 15, 63, 10, 12, 31, 62,
