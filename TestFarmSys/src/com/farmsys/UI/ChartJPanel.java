@@ -14,9 +14,14 @@ import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.plot.PiePlot;
 import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.plot.XYPlot;
+import org.jfree.chart.renderer.category.BarRenderer;
 import org.jfree.chart.renderer.category.LineAndShapeRenderer;
 import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.general.DefaultPieDataset;
+import org.jfree.data.statistics.HistogramDataset;
 
 /**
  *
@@ -28,6 +33,7 @@ public class ChartJPanel extends javax.swing.JPanel {
         initComponents();
         init();
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -39,6 +45,9 @@ public class ChartJPanel extends javax.swing.JPanel {
 
         PanelTong = new javax.swing.JPanel();
         pnlchart = new javax.swing.JPanel();
+        pnlcharttron = new javax.swing.JPanel();
+        pnlchartcot = new javax.swing.JPanel();
+        pnlchartnhietdo = new javax.swing.JPanel();
 
         setMinimumSize(new java.awt.Dimension(1083, 750));
         setPreferredSize(new java.awt.Dimension(1083, 750));
@@ -50,20 +59,43 @@ public class ChartJPanel extends javax.swing.JPanel {
         pnlchart.setBackground(new java.awt.Color(255, 255, 255));
         pnlchart.setLayout(new java.awt.BorderLayout());
 
+        pnlcharttron.setBackground(new java.awt.Color(255, 255, 255));
+        pnlcharttron.setLayout(new java.awt.BorderLayout());
+
+        pnlchartcot.setBackground(new java.awt.Color(255, 255, 255));
+        pnlchartcot.setLayout(new java.awt.BorderLayout());
+
+        pnlchartnhietdo.setBackground(new java.awt.Color(255, 255, 255));
+        pnlchartnhietdo.setLayout(new java.awt.BorderLayout());
+
         javax.swing.GroupLayout PanelTongLayout = new javax.swing.GroupLayout(PanelTong);
         PanelTong.setLayout(PanelTongLayout);
         PanelTongLayout.setHorizontalGroup(
             PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelTongLayout.createSequentialGroup()
-                .addComponent(pnlchart, javax.swing.GroupLayout.PREFERRED_SIZE, 1080, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 3, Short.MAX_VALUE))
+                .addGroup(PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelTongLayout.createSequentialGroup()
+                        .addComponent(pnlchart, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(pnlcharttron, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PanelTongLayout.createSequentialGroup()
+                        .addComponent(pnlchartcot, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(pnlchartnhietdo, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 35, Short.MAX_VALUE))
         );
         PanelTongLayout.setVerticalGroup(
             PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelTongLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(pnlchart, javax.swing.GroupLayout.PREFERRED_SIZE, 706, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addGroup(PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(pnlcharttron, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnlchart, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(pnlchartcot, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnlchartnhietdo, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(95, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -86,11 +118,17 @@ public class ChartJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelTong;
     private javax.swing.JPanel pnlchart;
+    private javax.swing.JPanel pnlchartcot;
+    private javax.swing.JPanel pnlchartnhietdo;
+    private javax.swing.JPanel pnlcharttron;
     // End of variables declaration//GEN-END:variables
 
     private void init() {
         this.fillTableChart();
         this.showLineChart();
+        this.showPieChart();
+        this.showHistogram();
+        this.showBarChart();
     }
     ChartDAO dao = new ChartDAO();
     Double Thang1, Thang2, Thang3, Thang4, Thang5, Thang6, Thang7, Thang8, Thang9, Thang10, Thang11, Thang12;
@@ -153,4 +191,79 @@ public class ChartJPanel extends javax.swing.JPanel {
         }
     }
 
+    public void showPieChart() {
+
+        //create dataset
+        DefaultPieDataset barDataset = new DefaultPieDataset();
+        barDataset.setValue("IPhone 5s", new Double(20));
+        barDataset.setValue("SamSung Grand", new Double(20));
+        barDataset.setValue("MotoG", new Double(40));
+        barDataset.setValue("Nokia Lumia", new Double(10));
+
+        //create chart
+        JFreeChart piechart = ChartFactory.createPieChart("mobile sales", barDataset, false, true, false);//explain
+
+        PiePlot piePlot = (PiePlot) piechart.getPlot();
+
+        //changing pie chart blocks colors
+        piePlot.setSectionPaint("IPhone 5s", new Color(255, 255, 102));
+        piePlot.setSectionPaint("SamSung Grand", new Color(102, 255, 102));
+        piePlot.setSectionPaint("MotoG", new Color(255, 102, 153));
+        piePlot.setSectionPaint("Nokia Lumia", new Color(0, 204, 204));
+
+        piePlot.setBackgroundPaint(Color.white);
+
+        //create chartPanel to display chart(graph)
+        ChartPanel barChartPanel = new ChartPanel(piechart);
+        pnlcharttron.removeAll();
+        pnlcharttron.add(barChartPanel, BorderLayout.CENTER);
+        pnlcharttron.validate();
+    }
+
+    public void showHistogram() {
+
+        double[] values = {0, 0, 0, 59, 50, 66, 47, 40, 1, 67,
+            12, 58, 28, 63, 14, 9, 31, 17, 94, 71,
+            49, 64, 73, 97, 15, 63, 10, 12, 31, 62,
+            93, 49, 74, 90, 59, 14, 15, 88, 26, 57,
+            77, 44, 58, 91, 10, 67, 57, 19, 88, 84
+        };
+
+        HistogramDataset dataset = new HistogramDataset();
+        dataset.addSeries("key", values, 20);
+
+        JFreeChart chart = ChartFactory.createHistogram("JFreeChart Histogram", "Data", "Frequency", dataset, PlotOrientation.VERTICAL, false, true, false);
+        XYPlot plot = chart.getXYPlot();
+        plot.setBackgroundPaint(Color.WHITE);
+
+        ChartPanel barpChartPanel2 = new ChartPanel(chart);
+        pnlchartnhietdo.removeAll();
+        pnlchartnhietdo.add(barpChartPanel2, BorderLayout.CENTER);
+        pnlchartnhietdo.validate();
+    }
+
+    public void showBarChart() {
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        dataset.setValue(200, "Amount", "january");
+        dataset.setValue(150, "Amount", "february");
+        dataset.setValue(18, "Amount", "march");
+        dataset.setValue(100, "Amount", "april");
+        dataset.setValue(80, "Amount", "may");
+        dataset.setValue(250, "Amount", "june");
+
+        JFreeChart chart = ChartFactory.createBarChart("contribution", "monthly", "amount",
+                dataset, PlotOrientation.VERTICAL, false, true, false);
+
+        CategoryPlot categoryPlot = chart.getCategoryPlot();
+        //categoryPlot.setRangeGridlinePaint(Color.BLUE);
+        categoryPlot.setBackgroundPaint(Color.WHITE);
+        BarRenderer renderer = (BarRenderer) categoryPlot.getRenderer();
+        Color clr3 = new Color(204, 0, 51);
+        renderer.setSeriesPaint(0, clr3);
+
+        ChartPanel barpChartPanel = new ChartPanel(chart);
+        pnlchartcot.removeAll();
+        pnlchartcot.add(barpChartPanel, BorderLayout.CENTER);
+        pnlchartcot.validate();
+    }
 }
