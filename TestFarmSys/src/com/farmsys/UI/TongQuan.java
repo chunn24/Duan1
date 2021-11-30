@@ -1239,7 +1239,7 @@ public class TongQuan extends javax.swing.JFrame {
         GianTrongJPanel gianTrongJPanel = new GianTrongJPanel();
         ChartJPanel chartPanel = new ChartJPanel();
         KhoHangJPanel khoHangJPanel = new KhoHangJPanel();
-        LiveJFrame live = new LiveJFrame();
+//        LiveJFrame live = new LiveJFrame();
         
         tabs.addTab("1", nkpnJPanel);
         tabs.addTab("2", nhanviecJPanel);
@@ -1250,7 +1250,7 @@ public class TongQuan extends javax.swing.JFrame {
         tabs.addTab("7", gianTrongJPanel);
         tabs.addTab("8", chartPanel);
         tabs.addTab("9", khoHangJPanel);
-        tabs.addTab("10", live);
+//        tabs.addTab("10", live);
     }
     
     class RoundedPanel extends JPanel {
