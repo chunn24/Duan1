@@ -52,7 +52,7 @@ public class ChaoJdialog extends javax.swing.JDialog {
         PanelTong.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/loading.gif"))); // NOI18N
-        PanelTong.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, -1, -1));
+        PanelTong.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, -1, -1));
 
         lblanh2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Path 2.png"))); // NOI18N
         PanelTong.add(lblanh2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 470, -1));
