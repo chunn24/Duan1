@@ -31,6 +31,7 @@ public class NhanVienDAO extends FarmSysDAO<NhanVien, String> {
     String RESET_PASS_SQL = "UPDATE NhanVien SET MatKhau=? WHERE MaNV=?";
     String SELECT_NhanVien_SQL = "SELECT *FROM NhanVien WHERE VaiTro= 0";
     String SELECT_NhanVienQRcode_SQL = "SELECT *FROM NhanVien WHERE QRcode = ?";
+    String SELECT_BY_img_SQL = "SELECT * FROM NhanVien WHERE HoTen=?";
 
     @Override
     public void insert(NhanVien entity) {
@@ -84,6 +85,7 @@ public class NhanVienDAO extends FarmSysDAO<NhanVien, String> {
         }
         return list.get(0);
     }
+
     public NhanVien selectByQR(String key) {
         List<NhanVien> list = this.selectBySql(SELECT_BY_QR_SQL, key);
         if (list.isEmpty()) {
@@ -140,4 +142,13 @@ public class NhanVienDAO extends FarmSysDAO<NhanVien, String> {
             System.out.println(e);
         }
     }
+
+    public NhanVien selectHinh(String hoten) {
+        List<NhanVien> list = this.selectBySql(SELECT_BY_img_SQL, hoten);
+        if (list.isEmpty()) {
+            return null;
+        }
+        return list.get(0);
+    }
+
 }

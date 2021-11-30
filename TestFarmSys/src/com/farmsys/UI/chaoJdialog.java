@@ -38,11 +38,12 @@ public class ChaoJdialog extends javax.swing.JDialog {
     private void initComponents() {
 
         PanelTong = new javax.swing.JPanel();
-        pgbLogging = new javax.swing.JProgressBar();
+        jLabel1 = new javax.swing.JLabel();
         lblanh2 = new javax.swing.JLabel();
         lblanh1 = new javax.swing.JLabel();
         lblanh3 = new javax.swing.JLabel();
         lblanh4 = new javax.swing.JLabel();
+        pgbLogging = new javax.swing.JProgressBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -50,9 +51,8 @@ public class ChaoJdialog extends javax.swing.JDialog {
 
         PanelTong.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        pgbLogging.setForeground(new java.awt.Color(0, 0, 0));
-        pgbLogging.setStringPainted(true);
-        PanelTong.add(pgbLogging, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 440, 670, 30));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/loading.gif"))); // NOI18N
+        PanelTong.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, -1, -1));
 
         lblanh2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Path 2.png"))); // NOI18N
         PanelTong.add(lblanh2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 470, -1));
@@ -65,6 +65,10 @@ public class ChaoJdialog extends javax.swing.JDialog {
 
         lblanh4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Path 5.png"))); // NOI18N
         PanelTong.add(lblanh4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 520, -1));
+
+        pgbLogging.setForeground(new java.awt.Color(0, 0, 0));
+        pgbLogging.setStringPainted(true);
+        PanelTong.add(pgbLogging, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, 650, 20));
 
         getContentPane().add(PanelTong, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, -1));
 
@@ -116,6 +120,7 @@ public class ChaoJdialog extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelTong;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblanh1;
     private javax.swing.JLabel lblanh2;
     private javax.swing.JLabel lblanh3;

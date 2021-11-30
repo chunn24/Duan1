@@ -13,20 +13,13 @@ import com.farmsys.dao.NhanVienDAO;
 import com.github.sarxos.webcam.Webcam;
 import com.github.sarxos.webcam.WebcamPanel;
 import com.github.sarxos.webcam.WebcamResolution;
-import com.google.zxing.BarcodeFormat;
 import com.google.zxing.BinaryBitmap;
-import com.google.zxing.EncodeHintType;
 import com.google.zxing.LuminanceSource;
 import com.google.zxing.MultiFormatReader;
-import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.NotFoundException;
 import com.google.zxing.Result;
-import com.google.zxing.WriterException;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
-import com.google.zxing.client.j2se.MatrixToImageWriter;
-import com.google.zxing.common.BitMatrix;
 import com.google.zxing.common.HybridBinarizer;
-import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import jaco.mp3.player.MP3Player;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -37,9 +30,6 @@ import java.awt.RenderingHints;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.IOException;
-import java.util.EnumMap;
-import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
@@ -120,6 +110,9 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
         lbllogo = new javax.swing.JLabel();
         txtQRcode = new javax.swing.JTextField();
 
+        doimkJDialog.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        doimkJDialog.setTitle("Đổi mật khẩu");
+        doimkJDialog.setBackground(new java.awt.Color(255, 255, 255));
         doimkJDialog.setMinimumSize(new java.awt.Dimension(950, 500));
         doimkJDialog.setModal(true);
         doimkJDialog.setUndecorated(true);
@@ -760,11 +753,9 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
     NhanVien nv = new NhanVien();
 
     private String OTP;
-    private String manv;
     private String manvotp;
     private String emailNV;
     private String tempOTP;
-    private String QRcoderandomString;
 
     private static final long serialVersionUID = 6441489157408381878L;
     private final Executor executor = Executors.newSingleThreadExecutor(this);
@@ -773,8 +764,8 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
         setLocationRelativeTo(null);
         txtxnmknew.setEnabled(true);
         txtmknew.setEnabled(true);
-        doimkJDialog.setLocationRelativeTo(this);
-        this.WebcamQRcode.setLocationRelativeTo(null);
+        doimkJDialog.setLocationRelativeTo(null);
+        this.WebcamQRcode.setLocationRelativeTo(this);
     }
 
     void update() {
@@ -860,8 +851,12 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
         }
     }
 
-    public static String HienThi() {
-        return Auth.user.getHoTen() + (Auth.user.isVaiTro() ? " - Trưởng phòng" : " - Nhân viên");
+    public static String HienThihoten() {
+        return Auth.user.getHoTen();
+    }
+
+    public static String HienThivaitro() {
+        return (Auth.user.isVaiTro() ? "Trưởng phòng" : "Nhân viên");
     }
 
     public static String HienThiTen() {

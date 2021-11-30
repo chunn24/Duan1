@@ -1017,15 +1017,15 @@ public class TongQuan extends javax.swing.JFrame {
     Color c = new Color(204, 255, 204);
     private JsonResult result;
     private int idx = 0;
-    
+
     NhatKyDAO nkdao = new NhatKyDAO();
     NhanVienDAO nvdao = new NhanVienDAO();
     ThuHoachDAO thdao = new ThuHoachDAO();
     KhoHangDAO khdao = new KhoHangDAO();
-    
+
     MP3Player Ping = new MP3Player(new File("src\\com\\farmsys\\icons\\thongbao.mp3"));
     MP3Player Ping3 = new MP3Player(new File("src\\com\\farmsys\\icons\\UI.mp3"));
-    
+
     private void init() {
         result = HandleAPI.getJsonData((String) "Saigon");
         setThoiTiet();
@@ -1033,11 +1033,12 @@ public class TongQuan extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         weather.setLocationRelativeTo(null);
         new ChaoJdialog(this, true).setVisible(true);
+        new Loadwelcome(this, true).setVisible(true);
+        new Loadwelcome(this, true).setVisible(false);
         Ping3.play();
         new DangNhapJDialog(this, true).setVisible(true);
         Ping3.stop();
-        new Loadwelcome(this, true).setVisible(true);
-        new Loadwelcome(this, true).setVisible(false);
+
         Ping.play();
         loadLbl();
         addpanel();
@@ -1049,9 +1050,9 @@ public class TongQuan extends javax.swing.JFrame {
             this.count();
         }).start();
         this.fillTableNhatKyAll();
-        
+
     }
-    
+
     void count() {
         lblDemNhanViec.setText(nkdao.selectByTrangThaivaTennv(0, Auth.user.getMaNV()).size() + "");
         lblDemDangLam.setText(nkdao.selectByTrangThaivaTennv(1, Auth.user.getMaNV()).size() + "");
@@ -1074,13 +1075,13 @@ public class TongQuan extends javax.swing.JFrame {
             lblsunrain.setIcon(new ImageIcon("src\\com\\farmsys\\icons\\rain_100px.png"));
         }
     }
-    
+
     private void loadLbl() {
         lblhoten.setText(DangNhapJDialog.HienThihoten());
         lblvaitro.setText(DangNhapJDialog.HienThivaitro());
         edit();
     }
-    
+
     private void openDangXuat() {
         int ask = JOptionPane.showConfirmDialog(this, "Bạn có chắc là mình muốn đăng xuất ?", "Xác nhận", JOptionPane.YES_NO_OPTION);
         if (ask == 0) {
@@ -1088,11 +1089,11 @@ public class TongQuan extends javax.swing.JFrame {
             new TongQuan().setVisible(true);
         }
     }
-    
+
     private void closeFarmSys() {
         System.exit(0);
     }
-    
+
     private void OpenNhanVien() {
         if (Auth.isManager()) {
             tabs.setSelectedIndex(5);
@@ -1100,7 +1101,7 @@ public class TongQuan extends javax.swing.JFrame {
             MsgBox.alert(this, "Bạn không có quyền truy cập!");
         }
     }
-    
+
     private void OpenGianTrong() {
         if (Auth.isManager()) {
             tabs.setSelectedIndex(7);
@@ -1108,7 +1109,7 @@ public class TongQuan extends javax.swing.JFrame {
             MsgBox.alert(this, "Bạn không có quyền truy cập!");
         }
     }
-    
+
     private void OpenCayTrong() {
         if (Auth.isManager()) {
             tabs.setSelectedIndex(3);
@@ -1116,7 +1117,7 @@ public class TongQuan extends javax.swing.JFrame {
             MsgBox.alert(this, "Bạn không có quyền truy cập!");
         }
     }
-    
+
     private void OpenNhatky() {
         if (Auth.isLogin()) {
             tabs.setSelectedIndex(1);
@@ -1124,7 +1125,7 @@ public class TongQuan extends javax.swing.JFrame {
             MsgBox.alert(this, "Vui lòng đăng nhập!");
         }
     }
-    
+
     private void OpenGiaoViec() {
         if (Auth.isManager()) {
             tabs.setSelectedIndex(4);
@@ -1132,7 +1133,7 @@ public class TongQuan extends javax.swing.JFrame {
             MsgBox.alert(this, "Bạn không có quyền truy cập!");
         }
     }
-    
+
     private void OpenTodo() {
         if (Auth.isLogin()) {
             tabs.setSelectedIndex(2);
@@ -1140,7 +1141,7 @@ public class TongQuan extends javax.swing.JFrame {
             MsgBox.alert(this, "Vui lòng đăng nhập!");
         }
     }
-    
+
     private void Opendoing() {
         if (Auth.isLogin()) {
             tabs.setSelectedIndex(6);
@@ -1148,7 +1149,7 @@ public class TongQuan extends javax.swing.JFrame {
             MsgBox.alert(this, "Vui lòng đăng nhập!");
         }
     }
-    
+
     private void Openchart() {
         if (Auth.isLogin()) {
             tabs.setSelectedIndex(8);
@@ -1156,7 +1157,7 @@ public class TongQuan extends javax.swing.JFrame {
             MsgBox.alert(this, "Vui lòng đăng nhập!");
         }
     }
-    
+
     private void OpenLive() {
         if (Auth.isLogin()) {
             LiveJFrame live = new LiveJFrame();
@@ -1165,7 +1166,7 @@ public class TongQuan extends javax.swing.JFrame {
             MsgBox.alert(this, "Vui lòng đăng nhập!");
         }
     }
-    
+
     private void OpenKhohang() {
         if (Auth.isManager()) {
             tabs.setSelectedIndex(9);
@@ -1173,7 +1174,7 @@ public class TongQuan extends javax.swing.JFrame {
             MsgBox.alert(this, "Bạn không có quyền truy cập!");
         }
     }
-    
+
     void addpanel() {
         NhatKyJPanel nkpnJPanel = new NhatKyJPanel();
         NhanViecJPanel nhanviecJPanel = new NhanViecJPanel();
@@ -1184,7 +1185,7 @@ public class TongQuan extends javax.swing.JFrame {
         GianTrongJPanel gianTrongJPanel = new GianTrongJPanel();
         ChartJPanel chartPanel = new ChartJPanel();
         KhoHangJPanel khoHangJPanel = new KhoHangJPanel();
-        
+
         tabs.addTab("1", nkpnJPanel);
         tabs.addTab("2", nhanviecJPanel);
         tabs.addTab("3", cayTrongPanel);
@@ -1195,35 +1196,35 @@ public class TongQuan extends javax.swing.JFrame {
         tabs.addTab("8", chartPanel);
         tabs.addTab("9", khoHangJPanel);
     }
-    
+
     class RoundedPanel extends JPanel {
-        
+
         private Color backgroundColor;
         private int cornerRadius = 15;
-        
+
         public RoundedPanel(LayoutManager layout, int radius) {
             super(layout);
             cornerRadius = radius;
         }
-        
+
         public RoundedPanel(LayoutManager layout, int radius, Color bgColor) {
             super(layout);
             cornerRadius = radius;
             backgroundColor = bgColor;
         }
-        
+
         public RoundedPanel(int radius) {
             super();
             cornerRadius = radius;
-            
+
         }
-        
+
         public RoundedPanel(int radius, Color bgColor) {
             super();
             cornerRadius = radius;
             backgroundColor = bgColor;
         }
-        
+
         @Override
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
@@ -1244,7 +1245,7 @@ public class TongQuan extends javax.swing.JFrame {
 //             
         }
     }
-    
+
     private void fillTableNhatKyAll() {
         DefaultTableModel model = (DefaultTableModel) tblNhatKy.getModel();
         model.setRowCount(0);
@@ -1266,7 +1267,7 @@ public class TongQuan extends javax.swing.JFrame {
             });
         }
     }
-    
+
     private String trangThai(NhatKy nk) {
         String status = null;
         status = switch (nk.getTrangThai()) {
@@ -1285,7 +1286,7 @@ public class TongQuan extends javax.swing.JFrame {
         };
         return status;
     }
-    
+
     void setAvatar(NhanVien nv) {
         if (nv.getHinh() != null) {
             imageAvatar.setToolTipText(nv.getHinh());
@@ -1295,7 +1296,7 @@ public class TongQuan extends javax.swing.JFrame {
             imageAvatar.setImage(new javax.swing.ImageIcon(scaleIcon));
         }
     }
-    
+
     void edit() {
         String name = lblhoten.getText();
         NhanVien nv = nvdao.selectHinh(name);
