@@ -91,7 +91,7 @@ public class TongQuan extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblNhatKy = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
-        lb_weather = new javax.swing.JLabel();
+        lblweather = new javax.swing.JLabel();
         pnlhienthiNV = new javax.swing.JPanel();
         lbldemNV = new javax.swing.JLabel();
         logocaycanTH1 = new javax.swing.JLabel();
@@ -184,6 +184,11 @@ public class TongQuan extends javax.swing.JFrame {
         pnltongquat.add(lblDongHo, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 140, 190, 60));
 
         lblsunrain.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/sun_100px.png"))); // NOI18N
+        lblsunrain.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblsunrainMouseClicked(evt);
+            }
+        });
         pnltongquat.add(lblsunrain, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 10, 100, 100));
 
         pnlkhohang.setBackground(new java.awt.Color(255, 204, 153));
@@ -426,10 +431,21 @@ public class TongQuan extends javax.swing.JFrame {
         });
         pnltongquat.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 50, 30));
 
-        lb_weather.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 11)); // NOI18N
-        lb_weather.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/weather_16px.png"))); // NOI18N
-        lb_weather.setText(":");
-        pnltongquat.add(lb_weather, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 110, 200, 30));
+        lblweather.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 11)); // NOI18N
+        lblweather.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/weather_16px.png"))); // NOI18N
+        lblweather.setText(":");
+        lblweather.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblweatherMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblweatherMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblweatherMouseExited(evt);
+            }
+        });
+        pnltongquat.add(lblweather, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 110, 190, 30));
 
         pnlhienthiNV.setBackground(new java.awt.Color(102, 255, 204));
         pnlhienthiNV.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -915,6 +931,22 @@ public class TongQuan extends javax.swing.JFrame {
         lblLogout.setForeground(new Color(51, 153, 255));
     }//GEN-LAST:event_lblLogoutMouseExited
 
+    private void lblsunrainMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblsunrainMouseClicked
+        new WeatherJDialog(this, true).setVisible(true);
+    }//GEN-LAST:event_lblsunrainMouseClicked
+
+    private void lblweatherMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblweatherMouseClicked
+        new WeatherJDialog(this, true).setVisible(true);
+    }//GEN-LAST:event_lblweatherMouseClicked
+
+    private void lblweatherMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblweatherMouseEntered
+        lblweather.setForeground(new Color(51, 153, 255));
+    }//GEN-LAST:event_lblweatherMouseEntered
+
+    private void lblweatherMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblweatherMouseExited
+        lblweather.setForeground(Color.BLACK);
+    }//GEN-LAST:event_lblweatherMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -962,7 +994,6 @@ public class TongQuan extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JLabel lb_weather;
     private javax.swing.JLabel lblDemDangLam;
     private javax.swing.JLabel lblDemDoneByMonth;
     private javax.swing.JLabel lblDemKhoHang;
@@ -985,6 +1016,7 @@ public class TongQuan extends javax.swing.JFrame {
     private javax.swing.JLabel lblsunrain;
     private javax.swing.JLabel lbltrangchu;
     private javax.swing.JLabel lblvaitro;
+    private javax.swing.JLabel lblweather;
     private javax.swing.JLabel logocaycanTH;
     private javax.swing.JLabel logocaycanTH1;
     private javax.swing.JLabel logocaytrong;
@@ -1065,8 +1097,8 @@ public class TongQuan extends javax.swing.JFrame {
 // line chart
     void setThoiTiet() {
         String weath = " Weather: " + result.getList()[idx].getWeather()[0].getDescription();
-        lb_weather.setText(weath);
-        String text = lb_weather.getText();
+        lblweather.setText(weath);
+        String text = lblweather.getText();
         if (text.contains("clouds")) {
             lblsunrain.setIcon(new ImageIcon("src\\com\\farmsys\\icons\\cloud_100px.png"));
         } else if (text.contains("sun")) {

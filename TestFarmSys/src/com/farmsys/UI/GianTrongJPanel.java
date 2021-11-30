@@ -40,12 +40,14 @@ public class GianTrongJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         panelTong = new javax.swing.JPanel();
-        tabs = new javax.swing.JTabbedPane();
-        pnlEdit = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblDanTrong = new javax.swing.JTable();
         txtMaDanTrong = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtTenDanTrong = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        txtTrangThai = new javax.swing.JTextField();
         btnThem = new javax.swing.JButton();
         btnSua = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
@@ -54,13 +56,8 @@ public class GianTrongJPanel extends javax.swing.JPanel {
         btnPrev = new javax.swing.JButton();
         btnNext = new javax.swing.JButton();
         btnLast = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
-        txtTrangThai = new javax.swing.JTextField();
-        pnlList = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblDanTrong = new javax.swing.JTable();
-        jLabel4 = new javax.swing.JLabel();
         cboLoc = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(1083, 750));
         setPreferredSize(new java.awt.Dimension(1083, 750));
@@ -69,117 +66,6 @@ public class GianTrongJPanel extends javax.swing.JPanel {
         panelTong.setMinimumSize(new java.awt.Dimension(1083, 750));
         panelTong.setPreferredSize(new java.awt.Dimension(1083, 750));
         panelTong.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        tabs.setBackground(new java.awt.Color(255, 255, 255));
-        tabs.setMinimumSize(new java.awt.Dimension(1083, 750));
-        tabs.setPreferredSize(new java.awt.Dimension(1083, 750));
-
-        pnlEdit.setBackground(new java.awt.Color(255, 255, 255));
-        pnlEdit.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setText("Mã dàn trồng:");
-        pnlEdit.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 160, -1, -1));
-
-        txtMaDanTrong.setEditable(false);
-        txtMaDanTrong.setBackground(new java.awt.Color(204, 204, 204));
-        pnlEdit.add(txtMaDanTrong, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 160, 480, 30));
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel2.setText("Tên dàn trồng:");
-        pnlEdit.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, -1, -1));
-
-        txtTenDanTrong.setText("Nhập tên dàn trồng !");
-        txtTenDanTrong.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtTenDanTrongFocusGained(evt);
-            }
-        });
-        pnlEdit.add(txtTenDanTrong, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 220, 480, 30));
-
-        btnThem.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
-        btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Add.png"))); // NOI18N
-        btnThem.setText("Thêm");
-        btnThem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnThemActionPerformed(evt);
-            }
-        });
-        pnlEdit.add(btnThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 360, -1, 49));
-
-        btnSua.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
-        btnSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Refresh.png"))); // NOI18N
-        btnSua.setText("Sửa");
-        btnSua.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSuaActionPerformed(evt);
-            }
-        });
-        pnlEdit.add(btnSua, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 360, -1, 49));
-
-        btnXoa.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
-        btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Delete.png"))); // NOI18N
-        btnXoa.setText("Xóa");
-        btnXoa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnXoaActionPerformed(evt);
-            }
-        });
-        pnlEdit.add(btnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 360, -1, 49));
-
-        btnMoi.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
-        btnMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/new.png"))); // NOI18N
-        btnMoi.setText("Mới");
-        btnMoi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMoiActionPerformed(evt);
-            }
-        });
-        pnlEdit.add(btnMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 360, -1, 50));
-
-        btnFirst.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/backward.png"))); // NOI18N
-        btnFirst.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFirstActionPerformed(evt);
-            }
-        });
-        pnlEdit.add(btnFirst, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 360, -1, 50));
-
-        btnPrev.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/previous.png"))); // NOI18N
-        btnPrev.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPrevActionPerformed(evt);
-            }
-        });
-        pnlEdit.add(btnPrev, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 360, -1, 50));
-
-        btnNext.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/next.png"))); // NOI18N
-        btnNext.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNextActionPerformed(evt);
-            }
-        });
-        pnlEdit.add(btnNext, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 360, -1, 50));
-
-        btnLast.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/fast-forward.png"))); // NOI18N
-        btnLast.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLastActionPerformed(evt);
-            }
-        });
-        pnlEdit.add(btnLast, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 360, -1, 50));
-
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel5.setText("Trạng thái:");
-        pnlEdit.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 280, -1, -1));
-
-        txtTrangThai.setEditable(false);
-        txtTrangThai.setBackground(new java.awt.Color(204, 204, 204));
-        pnlEdit.add(txtTrangThai, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, 480, 30));
-
-        tabs.addTab("CẬP NHẬT", pnlEdit);
-
-        pnlList.setBackground(new java.awt.Color(255, 255, 255));
 
         tblDanTrong.setAutoCreateRowSorter(true);
         tblDanTrong.setModel(new javax.swing.table.DefaultTableModel(
@@ -215,7 +101,107 @@ public class GianTrongJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblDanTrong);
 
-        jLabel4.setText("Lọc theo:");
+        panelTong.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 1040, 360));
+
+        txtMaDanTrong.setEditable(false);
+        txtMaDanTrong.setBackground(new java.awt.Color(204, 204, 204));
+        panelTong.add(txtMaDanTrong, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 430, 480, 30));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setText("Mã dàn trồng:");
+        panelTong.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 430, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setText("Tên dàn trồng:");
+        panelTong.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 490, -1, -1));
+
+        txtTenDanTrong.setText("Nhập tên dàn trồng !");
+        txtTenDanTrong.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtTenDanTrongFocusGained(evt);
+            }
+        });
+        panelTong.add(txtTenDanTrong, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 490, 480, 30));
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel5.setText("Trạng thái:");
+        panelTong.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 550, -1, -1));
+
+        txtTrangThai.setEditable(false);
+        txtTrangThai.setBackground(new java.awt.Color(204, 204, 204));
+        panelTong.add(txtTrangThai, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 550, 480, 30));
+
+        btnThem.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
+        btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Add.png"))); // NOI18N
+        btnThem.setText("Thêm");
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemActionPerformed(evt);
+            }
+        });
+        panelTong.add(btnThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 630, -1, 49));
+
+        btnSua.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
+        btnSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Refresh.png"))); // NOI18N
+        btnSua.setText("Sửa");
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaActionPerformed(evt);
+            }
+        });
+        panelTong.add(btnSua, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 630, -1, 49));
+
+        btnXoa.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
+        btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Delete.png"))); // NOI18N
+        btnXoa.setText("Xóa");
+        btnXoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaActionPerformed(evt);
+            }
+        });
+        panelTong.add(btnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 630, -1, 49));
+
+        btnMoi.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
+        btnMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/new.png"))); // NOI18N
+        btnMoi.setText("Mới");
+        btnMoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMoiActionPerformed(evt);
+            }
+        });
+        panelTong.add(btnMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 630, -1, 50));
+
+        btnFirst.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/backward.png"))); // NOI18N
+        btnFirst.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFirstActionPerformed(evt);
+            }
+        });
+        panelTong.add(btnFirst, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 630, -1, 50));
+
+        btnPrev.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/previous.png"))); // NOI18N
+        btnPrev.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrevActionPerformed(evt);
+            }
+        });
+        panelTong.add(btnPrev, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 630, -1, 50));
+
+        btnNext.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/next.png"))); // NOI18N
+        btnNext.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNextActionPerformed(evt);
+            }
+        });
+        panelTong.add(btnNext, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 630, -1, 50));
+
+        btnLast.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/fast-forward.png"))); // NOI18N
+        btnLast.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLastActionPerformed(evt);
+            }
+        });
+        panelTong.add(btnLast, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 630, -1, 50));
 
         cboLoc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả", "Chưa hoạt động", "Đang hoạt động" }));
         cboLoc.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -228,35 +214,10 @@ public class GianTrongJPanel extends javax.swing.JPanel {
                 cboLocActionPerformed(evt);
             }
         });
+        panelTong.add(cboLoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 210, 30));
 
-        javax.swing.GroupLayout pnlListLayout = new javax.swing.GroupLayout(pnlList);
-        pnlList.setLayout(pnlListLayout);
-        pnlListLayout.setHorizontalGroup(
-            pnlListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlListLayout.createSequentialGroup()
-                .addGroup(pnlListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(pnlListLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cboLoc, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1044, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 21, Short.MAX_VALUE))
-        );
-        pnlListLayout.setVerticalGroup(
-            pnlListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlListLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(pnlListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(cboLoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 649, Short.MAX_VALUE))
-        );
-
-        tabs.addTab("DANH SÁCH", pnlList);
-
-        panelTong.add(tabs, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 8, 1070, 720));
+        jLabel4.setText("Lọc theo:");
+        panelTong.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -323,7 +284,7 @@ public class GianTrongJPanel extends javax.swing.JPanel {
 
     private void tblDanTrongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDanTrongMouseClicked
         // TODO add your handling code here:
-        if (evt.getClickCount() == 2) {
+        if (evt.getClickCount() == 1) {
             this.index = tblDanTrong.getSelectedRow();
             this.edit();
         }
@@ -359,9 +320,6 @@ public class GianTrongJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel panelTong;
-    private javax.swing.JPanel pnlEdit;
-    private javax.swing.JPanel pnlList;
-    private javax.swing.JTabbedPane tabs;
     private javax.swing.JTable tblDanTrong;
     private javax.swing.JTextField txtMaDanTrong;
     private javax.swing.JTextField txtTenDanTrong;
@@ -458,7 +416,6 @@ public class GianTrongJPanel extends javax.swing.JPanel {
             Integer magt = (Integer) tblDanTrong.getValueAt(this.index, 0);
             GianTrong model = dtdao.selectById(magt);
             this.setModel(model);
-            tabs.setSelectedIndex(0);
             this.updateStatus();
         } catch (Exception e) {
             MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");

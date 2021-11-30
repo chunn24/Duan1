@@ -21,7 +21,6 @@ import javax.swing.JTextField;
 import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 
-
 /**
  *
  * @author ASUS
@@ -300,7 +299,7 @@ public class CayTrongPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tblCayTrongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCayTrongMouseClicked
-        if (evt.getClickCount() == 2) {
+        if (evt.getClickCount() == 1) {
             this.index = tblCayTrong.getSelectedRow();
             this.edit();
         }
@@ -463,10 +462,10 @@ public class CayTrongPanel extends javax.swing.JPanel {
         txtNhietDo.setText(String.valueOf(model.getNhietDo()));
         txtDoAm.setText(String.valueOf(model.getDoAm()));
         lblHinh.setToolTipText(model.getHinh());
-        if(model.getHinh() != null){
+        if (model.getHinh() != null) {
             lblHinh.setToolTipText(model.getHinh());
             ImageIcon icon = XImage.read(model.getHinh()); // Lấy địa chỉ của file Icon
-            
+
             //Chuyển Icon sang image và điều chỉnh kích thước
             Image scaleIcon = icon.getImage().getScaledInstance(lblHinh.getWidth(), lblHinh.getHeight(), Image.SCALE_DEFAULT);
             lblHinh.setIcon(new javax.swing.ImageIcon(scaleIcon));
@@ -513,8 +512,8 @@ public class CayTrongPanel extends javax.swing.JPanel {
 //            }
 //        }
 //    }
-    void chonAnh(){
-        if(fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION){
+    void chonAnh() {
+        if (fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
             File file = fileChooser.getSelectedFile();
             XImage.save(file); // Lưu hình vào thư mục logos
             ImageIcon icon = XImage.read(file.getName()); // Đọc hình từ logos

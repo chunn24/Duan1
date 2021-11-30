@@ -209,7 +209,7 @@ public class NhatKyJPanel extends javax.swing.JPanel {
 
         buttonGroup1.add(rdoNu);
         rdoNu.setText("Nữ");
-        pnlEdit1.add(rdoNu, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 350, -1, -1));
+        pnlEdit1.add(rdoNu, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 350, -1, -1));
 
         txtLuongNV.setEditable(false);
         pnlEdit1.add(txtLuongNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 400, 480, 30));
