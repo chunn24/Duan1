@@ -67,7 +67,7 @@ Create table NhatKy (
 		2: từ chối
 		3: hoàn thành
 		4: hoàn thành + trể 
-		5: buy */
+		5: đang bán */
 		
 
 	Primary key (NhanVien,TenGian,TenCay,TenCV),
@@ -234,7 +234,7 @@ select * from LoaiCay
 
 
 
-
+select*from NhatKy WHERE TenCay LIKE N'%3%' or TenCV like N'Thu hoạch'
 
 
 

@@ -34,6 +34,7 @@ import java.awt.Image;
 import java.awt.RenderingHints;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
+import org.opencv.core.Core;
 
 /**
  *
@@ -449,6 +450,17 @@ public class TongQuan extends javax.swing.JFrame {
 
         pnlhienthiNV.setBackground(new java.awt.Color(102, 255, 204));
         pnlhienthiNV.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        pnlhienthiNV.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlhienthiNVMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlhienthiNVMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlhienthiNVMouseExited(evt);
+            }
+        });
 
         lbldemNV.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         lbldemNV.setText("0");
@@ -872,7 +884,7 @@ public class TongQuan extends javax.swing.JFrame {
     }//GEN-LAST:event_pnlTrangchuMouseExited
 
     private void pnlCameraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlCameraMouseClicked
-        // TODO add your handling code here:
+//        this.OpenLive();
     }//GEN-LAST:event_pnlCameraMouseClicked
 
     private void pnlCameraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlCameraMouseEntered
@@ -947,6 +959,18 @@ public class TongQuan extends javax.swing.JFrame {
         lblweather.setForeground(Color.BLACK);
     }//GEN-LAST:event_lblweatherMouseExited
 
+    private void pnlhienthiNVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlhienthiNVMouseClicked
+        this.OpenNhanVien();
+    }//GEN-LAST:event_pnlhienthiNVMouseClicked
+
+    private void pnlhienthiNVMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlhienthiNVMouseEntered
+        pnlhienthiNV.setBackground(c);
+    }//GEN-LAST:event_pnlhienthiNVMouseEntered
+
+    private void pnlhienthiNVMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlhienthiNVMouseExited
+        pnlhienthiNV.setBackground(new Color(102, 255, 204));
+    }//GEN-LAST:event_pnlhienthiNVMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -973,7 +997,6 @@ public class TongQuan extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(TongQuan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -1049,15 +1072,15 @@ public class TongQuan extends javax.swing.JFrame {
     Color c = new Color(204, 255, 204);
     private JsonResult result;
     private int idx = 0;
-
+    
     NhatKyDAO nkdao = new NhatKyDAO();
     NhanVienDAO nvdao = new NhanVienDAO();
     ThuHoachDAO thdao = new ThuHoachDAO();
     KhoHangDAO khdao = new KhoHangDAO();
-
+    
     MP3Player Ping = new MP3Player(new File("src\\Sounds\\thongbao.mp3"));
     MP3Player Ping3 = new MP3Player(new File("src\\Sounds\\UI.mp3"));
-
+    
     private void init() {
         result = HandleAPI.getJsonData((String) "Saigon");
         setThoiTiet();
@@ -1070,7 +1093,7 @@ public class TongQuan extends javax.swing.JFrame {
         Ping3.play();
         new DangNhapJDialog(this, true).setVisible(true);
         Ping3.stop();
-
+        
         Ping.play();
         loadLbl();
         addpanel();
@@ -1082,9 +1105,9 @@ public class TongQuan extends javax.swing.JFrame {
             this.count();
         }).start();
         this.fillTableNhatKyAll();
-
+        
     }
-
+    
     void count() {
         lblDemNhanViec.setText(nkdao.selectByTrangThaivaTennv(0, Auth.user.getMaNV()).size() + "");
         lblDemDangLam.setText(nkdao.selectByTrangThaivaTennv(1, Auth.user.getMaNV()).size() + "");
@@ -1107,13 +1130,13 @@ public class TongQuan extends javax.swing.JFrame {
             lblsunrain.setIcon(new ImageIcon("src\\com\\farmsys\\icons\\rain_100px.png"));
         }
     }
-
+    
     private void loadLbl() {
         lblhoten.setText(DangNhapJDialog.HienThihoten());
         lblvaitro.setText(DangNhapJDialog.HienThivaitro());
         edit();
     }
-
+    
     private void openDangXuat() {
         int ask = JOptionPane.showConfirmDialog(this, "Bạn có chắc là mình muốn đăng xuất ?", "Xác nhận", JOptionPane.YES_NO_OPTION);
         if (ask == 0) {
@@ -1121,11 +1144,11 @@ public class TongQuan extends javax.swing.JFrame {
             new TongQuan().setVisible(true);
         }
     }
-
+    
     private void closeFarmSys() {
         System.exit(0);
     }
-
+    
     private void OpenNhanVien() {
         if (Auth.isManager()) {
             tabs.setSelectedIndex(5);
@@ -1133,7 +1156,7 @@ public class TongQuan extends javax.swing.JFrame {
             MsgBox.alert(this, "Bạn không có quyền truy cập!");
         }
     }
-
+    
     private void OpenGianTrong() {
         if (Auth.isManager()) {
             tabs.setSelectedIndex(7);
@@ -1141,7 +1164,7 @@ public class TongQuan extends javax.swing.JFrame {
             MsgBox.alert(this, "Bạn không có quyền truy cập!");
         }
     }
-
+    
     private void OpenCayTrong() {
         if (Auth.isManager()) {
             tabs.setSelectedIndex(3);
@@ -1149,7 +1172,7 @@ public class TongQuan extends javax.swing.JFrame {
             MsgBox.alert(this, "Bạn không có quyền truy cập!");
         }
     }
-
+    
     private void OpenNhatky() {
         if (Auth.isLogin()) {
             tabs.setSelectedIndex(1);
@@ -1157,7 +1180,7 @@ public class TongQuan extends javax.swing.JFrame {
             MsgBox.alert(this, "Vui lòng đăng nhập!");
         }
     }
-
+    
     private void OpenGiaoViec() {
         if (Auth.isManager()) {
             tabs.setSelectedIndex(4);
@@ -1165,7 +1188,7 @@ public class TongQuan extends javax.swing.JFrame {
             MsgBox.alert(this, "Bạn không có quyền truy cập!");
         }
     }
-
+    
     private void OpenTodo() {
         if (Auth.isLogin()) {
             tabs.setSelectedIndex(2);
@@ -1173,7 +1196,7 @@ public class TongQuan extends javax.swing.JFrame {
             MsgBox.alert(this, "Vui lòng đăng nhập!");
         }
     }
-
+    
     private void Opendoing() {
         if (Auth.isLogin()) {
             tabs.setSelectedIndex(6);
@@ -1181,7 +1204,7 @@ public class TongQuan extends javax.swing.JFrame {
             MsgBox.alert(this, "Vui lòng đăng nhập!");
         }
     }
-
+    
     private void Openchart() {
         if (Auth.isLogin()) {
             tabs.setSelectedIndex(8);
@@ -1189,16 +1212,15 @@ public class TongQuan extends javax.swing.JFrame {
             MsgBox.alert(this, "Vui lòng đăng nhập!");
         }
     }
-
+    
     private void OpenLive() {
         if (Auth.isLogin()) {
-            LiveJFrame live = new LiveJFrame();
-            live.setVisible(true);
+            new LiveJFrame().setVisible(true);
         } else {
             MsgBox.alert(this, "Vui lòng đăng nhập!");
         }
     }
-
+    
     private void OpenKhohang() {
         if (Auth.isManager()) {
             tabs.setSelectedIndex(9);
@@ -1206,7 +1228,7 @@ public class TongQuan extends javax.swing.JFrame {
             MsgBox.alert(this, "Bạn không có quyền truy cập!");
         }
     }
-
+    
     void addpanel() {
         NhatKyJPanel nkpnJPanel = new NhatKyJPanel();
         NhanViecJPanel nhanviecJPanel = new NhanViecJPanel();
@@ -1217,7 +1239,8 @@ public class TongQuan extends javax.swing.JFrame {
         GianTrongJPanel gianTrongJPanel = new GianTrongJPanel();
         ChartJPanel chartPanel = new ChartJPanel();
         KhoHangJPanel khoHangJPanel = new KhoHangJPanel();
-
+        LiveJFrame live = new LiveJFrame();
+        
         tabs.addTab("1", nkpnJPanel);
         tabs.addTab("2", nhanviecJPanel);
         tabs.addTab("3", cayTrongPanel);
@@ -1227,36 +1250,37 @@ public class TongQuan extends javax.swing.JFrame {
         tabs.addTab("7", gianTrongJPanel);
         tabs.addTab("8", chartPanel);
         tabs.addTab("9", khoHangJPanel);
+        tabs.addTab("10", live);
     }
-
+    
     class RoundedPanel extends JPanel {
-
+        
         private Color backgroundColor;
         private int cornerRadius = 15;
-
+        
         public RoundedPanel(LayoutManager layout, int radius) {
             super(layout);
             cornerRadius = radius;
         }
-
+        
         public RoundedPanel(LayoutManager layout, int radius, Color bgColor) {
             super(layout);
             cornerRadius = radius;
             backgroundColor = bgColor;
         }
-
+        
         public RoundedPanel(int radius) {
             super();
             cornerRadius = radius;
-
+            
         }
-
+        
         public RoundedPanel(int radius, Color bgColor) {
             super();
             cornerRadius = radius;
             backgroundColor = bgColor;
         }
-
+        
         @Override
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
@@ -1277,7 +1301,7 @@ public class TongQuan extends javax.swing.JFrame {
 //             
         }
     }
-
+    
     private void fillTableNhatKyAll() {
         DefaultTableModel model = (DefaultTableModel) tblNhatKy.getModel();
         model.setRowCount(0);
@@ -1299,7 +1323,7 @@ public class TongQuan extends javax.swing.JFrame {
             });
         }
     }
-
+    
     private String trangThai(NhatKy nk) {
         String status = null;
         status = switch (nk.getTrangThai()) {
@@ -1318,7 +1342,7 @@ public class TongQuan extends javax.swing.JFrame {
         };
         return status;
     }
-
+    
     void setAvatar(NhanVien nv) {
         if (nv.getHinh() != null) {
             imageAvatar.setToolTipText(nv.getHinh());
@@ -1328,7 +1352,7 @@ public class TongQuan extends javax.swing.JFrame {
             imageAvatar.setImage(new javax.swing.ImageIcon(scaleIcon));
         }
     }
-
+    
     void edit() {
         String name = lblhoten.getText();
         NhanVien nv = nvdao.selectHinh(name);

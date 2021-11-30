@@ -30,9 +30,9 @@ public class NhatKyDAO extends FarmSysDAO<NhatKy, String> {
     String UPDATE_Done_SQL = "UPDATE NhatKy SET TrangThai = 3 where STT = ?";
     String UPDATE_SQL = "UPDATE NhatKy SET TrangThai = 1 where STT = ?";
     String UPDATE_TuChoi_SQL = "UPDATE NhatKy SET TrangThai = 2 where STT = ?";
-    String select_by_Done_Month_SQL ="select *from NhatKy where TrangThai = 3 and NhanVien like ? and  NgayKetThuc between (select CONVERT(varchar,dateadd(d,-(day(getdate()-1)),getdate()),106)) and (select CONVERT(varchar,dateadd(d,-(day(dateadd(m,1,getdate()))),dateadd(m,1,getdate())),106))" ;
+    String select_by_Done_Month_SQL = "select *from NhatKy where TrangThai = 3 and NhanVien like ? and  NgayKetThuc between (select CONVERT(varchar,dateadd(d,-(day(getdate()-1)),getdate()),106)) and (select CONVERT(varchar,dateadd(d,-(day(dateadd(m,1,getdate()))),dateadd(m,1,getdate())),106))";
     String UPDATE_TrangThaiTH_SQL = "UPDATE NhatKy SET TrangThai = 5 where TenGian = ? ";
-    
+
     @Override
     public void insert(NhatKy entity) {
         try {
@@ -84,7 +84,6 @@ public class NhatKyDAO extends FarmSysDAO<NhatKy, String> {
         }
         return list.get(0);
     }
-
 
     public NhatKy selectformtodoanddoing(Integer macv) {
         List<NhatKy> list = this.selectBySql(select_formtodoanddoing_sql, macv);
@@ -144,9 +143,11 @@ public class NhatKyDAO extends FarmSysDAO<NhatKy, String> {
     public void update(NhatKy entity) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
     public List<NhatKy> selectDoneByMonth(String MaNV) {
-        return selectBySql(select_by_Done_Month_SQL,MaNV);
+        return selectBySql(select_by_Done_Month_SQL, MaNV);
     }
+
     public void updateTrangThaiTH(String TenGian) {
         try {
             JdbcHelper.update(UPDATE_TrangThaiTH_SQL, TenGian);
@@ -154,4 +155,21 @@ public class NhatKyDAO extends FarmSysDAO<NhatKy, String> {
             Logger.getLogger(NhanVienDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    public List<NhatKy> selectByTenCay(String keyword) {
+        String SELECT_BY_NAME_SQL = "select*from NhatKy WHERE TenCay LIKE ?";
+        return this.selectBySql(SELECT_BY_NAME_SQL, "%" + keyword + "%");
+    }
+
+    public List<NhatKy> selectByTenCV(String keyword) {
+        String SELECT_BY_NAME_SQL = "select*from NhatKy WHERE TenCV LIKE ?";
+        return this.selectBySql(SELECT_BY_NAME_SQL, "%" + keyword + "%");
+    }
+
+    public List<NhatKy> selectByTenNV(String keyword) {
+        String SELECT_BY_NAME_SQL = "select*from NhatKy WHERE NhanVien LIKE ?";
+        return this.selectBySql(SELECT_BY_NAME_SQL, "%" + keyword + "%");
+    }
+
+
 }

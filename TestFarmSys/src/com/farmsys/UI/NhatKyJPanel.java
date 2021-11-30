@@ -11,6 +11,7 @@ import com.farmsys.Helper.Auth;
 import com.farmsys.Helper.MsgBox;
 import com.farmsys.Helper.XImage;
 import com.farmsys.dao.CongViecDAO;
+import com.farmsys.dao.NhanVienDAO;
 import com.farmsys.dao.NhatKyDAO;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -50,30 +51,10 @@ public class NhatKyJPanel extends javax.swing.JPanel {
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
         pnlNhatKy = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        panelTong = new javax.swing.JPanel();
-        tabs = new javax.swing.JTabbedPane();
-        pnlList = new javax.swing.JPanel();
+        txttimkiem = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblNhatKy = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
-        pnlEdit = new javax.swing.JPanel();
-        pnlEdit1 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        txtMaNV = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        txtTenNV = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        txtMatKhau = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        rdoNam = new javax.swing.JRadioButton();
-        rdoNu = new javax.swing.JRadioButton();
-        txtLuongNV = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        txtEmail = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        lblHinh1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(1083, 750));
@@ -86,20 +67,16 @@ public class NhatKyJPanel extends javax.swing.JPanel {
         pnlNhatKy.setPreferredSize(new java.awt.Dimension(1083, 749));
         pnlNhatKy.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setMinimumSize(new java.awt.Dimension(1083, 750));
+        txttimkiem.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txttimkiemKeyPressed(evt);
+            }
+        });
+        pnlNhatKy.add(txttimkiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, 970, 30));
 
-        panelTong.setBackground(new java.awt.Color(255, 255, 255));
-        panelTong.setMinimumSize(new java.awt.Dimension(1083, 750));
-        panelTong.setPreferredSize(new java.awt.Dimension(1083, 750));
-        panelTong.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        tabs.setBackground(new java.awt.Color(255, 255, 255));
-        tabs.setMinimumSize(new java.awt.Dimension(1083, 750));
-        tabs.setPreferredSize(new java.awt.Dimension(1083, 750));
-
-        pnlList.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel6.setText("Lọc Theo Tên Công Việc:");
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel6.setText("Tìm kiếm:");
+        pnlNhatKy.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 90, 30));
 
         tblNhatKy.setAutoCreateRowSorter(true);
         tblNhatKy.setModel(new javax.swing.table.DefaultTableModel(
@@ -134,126 +111,7 @@ public class NhatKyJPanel extends javax.swing.JPanel {
         tblNhatKy.setRowHeight(40);
         jScrollPane1.setViewportView(tblNhatKy);
 
-        javax.swing.GroupLayout pnlListLayout = new javax.swing.GroupLayout(pnlList);
-        pnlList.setLayout(pnlListLayout);
-        pnlListLayout.setHorizontalGroup(
-            pnlListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlListLayout.createSequentialGroup()
-                .addGroup(pnlListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlListLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 920, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(39, 39, 39))
-                    .addComponent(jScrollPane1))
-                .addContainerGap())
-        );
-        pnlListLayout.setVerticalGroup(
-            pnlListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlListLayout.createSequentialGroup()
-                .addGap(9, 9, 9)
-                .addGroup(pnlListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        tabs.addTab("DANH SÁCH", pnlList);
-
-        pnlEdit.setBackground(new java.awt.Color(255, 255, 255));
-        pnlEdit.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        pnlEdit1.setBackground(new java.awt.Color(255, 255, 255));
-        pnlEdit1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel3.setText("Mã Nhân Viên:");
-        pnlEdit1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, -1, -1));
-
-        txtMaNV.setEditable(false);
-        pnlEdit1.add(txtMaNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, 480, 30));
-
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel4.setText("Tên Nhân Viên:");
-        pnlEdit1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, -1, -1));
-
-        txtTenNV.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtTenNVFocusGained(evt);
-            }
-        });
-        pnlEdit1.add(txtTenNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, 480, 30));
-
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel7.setText("Mật Khẩu:");
-        pnlEdit1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 290, -1, -1));
-
-        txtMatKhau.setEditable(false);
-        pnlEdit1.add(txtMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 290, 480, 30));
-
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel5.setText("Giới Tính:");
-        pnlEdit1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 340, -1, -1));
-
-        buttonGroup1.add(rdoNam);
-        rdoNam.setText("Nam");
-        rdoNam.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rdoNamActionPerformed(evt);
-            }
-        });
-        pnlEdit1.add(rdoNam, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 350, -1, -1));
-
-        buttonGroup1.add(rdoNu);
-        rdoNu.setText("Nữ");
-        pnlEdit1.add(rdoNu, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 350, -1, -1));
-
-        txtLuongNV.setEditable(false);
-        pnlEdit1.add(txtLuongNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 400, 480, 30));
-
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel8.setText("Lương:");
-        pnlEdit1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 400, -1, -1));
-
-        txtEmail.setEditable(false);
-        pnlEdit1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 460, 480, 30));
-
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel9.setText("Email:");
-        pnlEdit1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 460, -1, -1));
-
-        lblHinh1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblHinh1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/avatar.png"))); // NOI18N
-        lblHinh1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        lblHinh1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        lblHinh1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblHinh1MouseClicked(evt);
-            }
-        });
-        pnlEdit1.add(lblHinh1, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 190, 230, 240));
-
-        pnlEdit.add(pnlEdit1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1070, 720));
-
-        tabs.addTab("CẬP NHẬT", pnlEdit);
-
-        panelTong.add(tabs, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 8, 1070, 720));
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelTong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelTong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        pnlNhatKy.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        pnlNhatKy.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 1040, 600));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -264,113 +122,111 @@ public class NhatKyJPanel extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(pnlNhatKy, javax.swing.GroupLayout.PREFERRED_SIZE, 739, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(pnlNhatKy, javax.swing.GroupLayout.PREFERRED_SIZE, 728, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtTenNVFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTenNVFocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTenNVFocusGained
+    private void txttimkiemKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txttimkiemKeyPressed
+//        this.fillTableNhatKyByTenCV();
+//        this.fillTableNhatKyByTenCay();
+        this.fillTableNhatKyByTenNV();
 
-    private void rdoNamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoNamActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rdoNamActionPerformed
 
-    private void lblHinh1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHinh1MouseClicked
-        // TODO add your handling code here:
-        this.chonAnh();
-    }//GEN-LAST:event_lblHinh1MouseClicked
+    }//GEN-LAST:event_txttimkiemKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JLabel lblHinh1;
-    private javax.swing.JPanel panelTong;
-    private javax.swing.JPanel pnlEdit;
-    private javax.swing.JPanel pnlEdit1;
-    private javax.swing.JPanel pnlList;
     private javax.swing.JPanel pnlNhatKy;
-    private javax.swing.JRadioButton rdoNam;
-    private javax.swing.JRadioButton rdoNu;
-    private javax.swing.JTabbedPane tabs;
     private javax.swing.JTable tblNhatKy;
-    private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtLuongNV;
-    private javax.swing.JTextField txtMaNV;
-    private javax.swing.JTextField txtMatKhau;
-    private javax.swing.JTextField txtTenNV;
+    private javax.swing.JTextField txttimkiem;
     // End of variables declaration//GEN-END:variables
     NhatKyDAO nkdao = new NhatKyDAO();
     CongViecDAO cvdao = new CongViecDAO();
+    NhanVienDAO nvdao = new NhanVienDAO();
 
     private void init() {
-        this.fillTableNhatKyAll();
+        this.fillTableNhatALL();
         new Timer(60000, (ActionEvent e) -> {
-            this.fillTableNhatKyAll();
+            this.fillTableNhatALL();
         }).start();
     }
 
-    private void fillTableNhatKyByCongViec(String tencv) {
+    private void fillTableNhatALL() {
         DefaultTableModel model = (DefaultTableModel) tblNhatKy.getModel();
         model.setRowCount(0);
-        NhatKy nhatKy = new NhatKy();
-        List<NhatKy> list = nkdao.selectByTen(tencv);
-        for (NhatKy nk : list) {
-            String status = trangThai(nk);
-            model.addRow(new Object[]{
-                nk.getStt(),
-                nk.getTenCV(),
-                nk.getTenCay(),
-                nk.getTenGian(),
-                nk.getChiTiet(),
-                nk.getNguoiTao(),
-                nk.getNhanVien(),
-                nk.getNgayBatDau(),
-                nk.getNgayKetThuc(),
-                status
-            });
-        }
-    }
-
-    private void fillTableNhatKyByTrangThai(int trangThai) {
-        DefaultTableModel model = (DefaultTableModel) tblNhatKy.getModel();
-        model.setRowCount(0);
-        NhatKy nhatKy = new NhatKy();
-        List<NhatKy> list = nkdao.selectByTrangThai(trangThai);
-        for (NhatKy nk : list) {
-            String status = trangThai(nk);
-            model.addRow(new Object[]{
-                nk.getStt(),
-                nk.getTenCV(),
-                nk.getTenCay(),
-                nk.getTenGian(),
-                nk.getChiTiet(),
-                nk.getNguoiTao(),
-                nk.getNhanVien(),
-                nk.getNgayBatDau(),
-                nk.getNgayKetThuc(),
-                status
-            });
-        }
-    }
-
-    private void fillTableNhatKyAll() {
-        DefaultTableModel model = (DefaultTableModel) tblNhatKy.getModel();
-        model.setRowCount(0);
-        NhatKy nhatKy = new NhatKy();
         List<NhatKy> list = nkdao.selectAll();
+        for (NhatKy nk : list) {
+            String status = trangThai(nk);
+            model.addRow(new Object[]{
+                nk.getStt(),
+                nk.getTenCV(),
+                nk.getTenCay(),
+                nk.getTenGian(),
+                nk.getChiTiet(),
+                nk.getNguoiTao(),
+                nk.getNhanVien(),
+                nk.getNgayBatDau(),
+                nk.getNgayKetThuc(),
+                status
+            });
+        }
+    }
+
+    private void fillTableNhatKyByTenCay() {
+        DefaultTableModel model = (DefaultTableModel) tblNhatKy.getModel();
+        model.setRowCount(0);
+        String TimKiem = txttimkiem.getText();
+        List<NhatKy> list = nkdao.selectByTenCay(TimKiem);
+        for (NhatKy nk : list) {
+            String status = trangThai(nk);
+            model.addRow(new Object[]{
+                nk.getStt(),
+                nk.getTenCV(),
+                nk.getTenCay(),
+                nk.getTenGian(),
+                nk.getChiTiet(),
+                nk.getNguoiTao(),
+                nk.getNhanVien(),
+                nk.getNgayBatDau(),
+                nk.getNgayKetThuc(),
+                status
+            });
+        }
+    }
+
+    private void fillTableNhatKyByTenCV() {
+        DefaultTableModel model = (DefaultTableModel) tblNhatKy.getModel();
+        model.setRowCount(0);
+        String TimKiem = txttimkiem.getText();
+        List<NhatKy> list = nkdao.selectByTenCay(TimKiem);
+        for (NhatKy nk : list) {
+            String status = trangThai(nk);
+            model.addRow(new Object[]{
+                nk.getStt(),
+                nk.getTenCV(),
+                nk.getTenCay(),
+                nk.getTenGian(),
+                nk.getChiTiet(),
+                nk.getNguoiTao(),
+                nk.getNhanVien(),
+                nk.getNgayBatDau(),
+                nk.getNgayKetThuc(),
+                status
+            });
+        }
+    }
+
+    private void fillTableNhatKyByTenNV() {
+        DefaultTableModel model = (DefaultTableModel) tblNhatKy.getModel();
+        model.setRowCount(0);
+        String TimKiem = txttimkiem.getText();
+        List<NhatKy> list = nkdao.selectByTenNV(TimKiem);
         for (NhatKy nk : list) {
             String status = trangThai(nk);
             model.addRow(new Object[]{
@@ -419,17 +275,27 @@ public class NhatKyJPanel extends javax.swing.JPanel {
             Logger.getLogger(NhatKyJPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     JFileChooser fileChooser = new JFileChooser();
-    
-    void chonAnh() {
-        if (fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
-            File file = fileChooser.getSelectedFile();
-            XImage.save(file); // Lưu hình vào thư mục logos
-            ImageIcon icon = XImage.read(file.getName()); // Đọc hình từ logos
-            Image scaleIcon = icon.getImage().getScaledInstance(lblHinh1.getWidth(), lblHinh1.getHeight(), Image.SCALE_DEFAULT);
-            lblHinh1.setIcon(new javax.swing.ImageIcon(scaleIcon));
-            lblHinh1.setToolTipText(file.getName()); //Giữ tên hình trong toolTip
-        }
-    }
+
+//
+//    void setForm(NhanVien nv) {
+//        txtMaNV.setText(nv.getMaNV());
+//        txtHoTen.setText(nv.getHoTen());
+//        txtMatKhau.setText(nv.getMatKhau());
+// 
+//
+//        rdoNam.setSelected(nv.isGioiTinh());
+//        rdoNu.setSelected(!nv.isGioiTinh());
+//        txtEmail.setText(nv.getEmail());
+//        txtLuong.setText(nv.getLuong() + "");
+//        if (nv.getHinh() != null) {
+//            lblHinh1.setToolTipText(nv.getHinh());
+//            ImageIcon icon = XImage.read(nv.getHinh()); // Lấy địa chỉ của file Icon
+//
+//            //Chuyển Icon sang image và điều chỉnh kích thước
+//            Image scaleIcon = icon.getImage().getScaledInstance(lblHinh1.getWidth(), lblHinh1.getHeight(), Image.SCALE_DEFAULT);
+//            lblHinh1.setIcon(new javax.swing.ImageIcon(scaleIcon));
+//        }
+//    }
 }
