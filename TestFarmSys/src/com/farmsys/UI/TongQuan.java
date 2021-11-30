@@ -59,7 +59,6 @@ public class TongQuan extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        weather = new javax.swing.JDialog();
         penalTong = new RoundedPanel(50)
         ;
         pnlfoot = new javax.swing.JPanel();
@@ -122,21 +121,6 @@ public class TongQuan extends javax.swing.JFrame {
         logotrangchu = new javax.swing.JLabel();
         lbltrangchu = new javax.swing.JLabel();
         lblLogout = new javax.swing.JLabel();
-
-        weather.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        weather.setMinimumSize(new java.awt.Dimension(418, 210));
-        weather.setUndecorated(true);
-
-        javax.swing.GroupLayout weatherLayout = new javax.swing.GroupLayout(weather.getContentPane());
-        weather.getContentPane().setLayout(weatherLayout);
-        weatherLayout.setHorizontalGroup(
-            weatherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 418, Short.MAX_VALUE)
-        );
-        weatherLayout.setVerticalGroup(
-            weatherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 192, Short.MAX_VALUE)
-        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("FarmSys");
@@ -1067,7 +1051,6 @@ public class TongQuan extends javax.swing.JFrame {
     private javax.swing.JPanel pnltongquat;
     private javax.swing.JTabbedPane tabs;
     private javax.swing.JTable tblNhatKy;
-    private javax.swing.JDialog weather;
     // End of variables declaration//GEN-END:variables
     Color c = new Color(204, 255, 204);
     private JsonResult result;
@@ -1086,7 +1069,7 @@ public class TongQuan extends javax.swing.JFrame {
         setThoiTiet();
         //this.setIconImage(XImage.getAppIcon());
         this.setLocationRelativeTo(null);
-        weather.setLocationRelativeTo(null);
+ 
         new ChaoJdialog(this, true).setVisible(true);
         new Loadwelcome(this, true).setVisible(true);
         new Loadwelcome(this, true).setVisible(false);

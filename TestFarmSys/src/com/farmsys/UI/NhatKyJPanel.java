@@ -5,22 +5,16 @@
  */
 package com.farmsys.UI;
 
-import com.farmsys.Entity.NhanVien;
 import com.farmsys.Entity.NhatKy;
-import com.farmsys.Helper.Auth;
 import com.farmsys.Helper.MsgBox;
-import com.farmsys.Helper.XImage;
 import com.farmsys.dao.CongViecDAO;
 import com.farmsys.dao.NhanVienDAO;
 import com.farmsys.dao.NhatKyDAO;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.print.PrinterException;
-import java.io.File;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
