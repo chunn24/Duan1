@@ -26,7 +26,7 @@ public class Loadwelcome extends javax.swing.JDialog {
     public Loadwelcome(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        init2();
+        init();
     }
 
     /**
@@ -127,7 +127,7 @@ public class Loadwelcome extends javax.swing.JDialog {
     private javax.swing.JLabel welcom;
     // End of variables declaration//GEN-END:variables
 
-    private void init2() {
+    private void init() {
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
 

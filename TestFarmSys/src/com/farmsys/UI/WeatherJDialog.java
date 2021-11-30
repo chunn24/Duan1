@@ -5,9 +5,18 @@
  */
 package com.farmsys.UI;
 
+import AppPackage.AnimationClass;
 import com.farmsys.Helper.HandleAPI;
 import com.farmsys.data.JsonResult;
+import jaco.mp3.player.MP3Player;
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.ImageIcon;
+import javax.swing.Timer;
 
 /**
  *
@@ -24,6 +33,13 @@ public class WeatherJDialog extends javax.swing.JDialog {
     public WeatherJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        new Timer(1700, (ActionEvent e) -> {
+            Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+            this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
+            AnimationClass anim = new AnimationClass();
+            anim.jLabelXRight(lblload.getX(), 1000, 3, 1, lblload);
+        }).start();
+
         this.init();
     }
 
@@ -37,6 +53,8 @@ public class WeatherJDialog extends javax.swing.JDialog {
     private void initComponents() {
 
         pnlweather = new javax.swing.JPanel();
+        lblload = new javax.swing.JLabel();
+        lblexit = new javax.swing.JLabel();
         lbldate = new javax.swing.JLabel();
         lblcity = new javax.swing.JLabel();
         lblnhietdo = new javax.swing.JLabel();
@@ -50,7 +68,7 @@ public class WeatherJDialog extends javax.swing.JDialog {
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setAlwaysOnTop(true);
+        setTitle("FarmSys's Weather");
         setLocationByPlatform(true);
         setModal(true);
         setUndecorated(true);
@@ -67,78 +85,87 @@ public class WeatherJDialog extends javax.swing.JDialog {
         });
         pnlweather.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lbldate.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblload.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/weather.gif"))); // NOI18N
+        pnlweather.add(lblload, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        lblexit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/cancel_30px.png"))); // NOI18N
+        lblexit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblexit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblexitMouseClicked(evt);
+            }
+        });
+        pnlweather.add(lblexit, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 10, -1, -1));
+
+        lbldate.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         lbldate.setForeground(new java.awt.Color(255, 255, 255));
         lbldate.setText(":");
-        pnlweather.add(lbldate, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 210, 40));
+        pnlweather.add(lbldate, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, 250, 40));
 
         lblcity.setBackground(new java.awt.Color(204, 204, 204));
-        lblcity.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblcity.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         lblcity.setForeground(new java.awt.Color(255, 255, 255));
         lblcity.setText(":");
-        pnlweather.add(lblcity, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, 210, 40));
+        pnlweather.add(lblcity, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 100, 350, 40));
 
-        lblnhietdo.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        lblnhietdo.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
         lblnhietdo.setForeground(new java.awt.Color(255, 255, 255));
-        lblnhietdo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblnhietdo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/icons8_rain_cloud_30px_1.png"))); // NOI18N
         lblnhietdo.setText("27 C");
-        pnlweather.add(lblnhietdo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 120, 40));
+        pnlweather.add(lblnhietdo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, 220, 40));
 
         lblapxuat.setBackground(new java.awt.Color(204, 204, 204));
-        lblapxuat.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lblapxuat.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         lblapxuat.setForeground(new java.awt.Color(255, 255, 255));
-        lblapxuat.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblapxuat.setText(":");
-        pnlweather.add(lblapxuat, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, 120, 44));
+        pnlweather.add(lblapxuat, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 290, 180, 44));
 
         lblcloud.setBackground(new java.awt.Color(204, 204, 204));
-        lblcloud.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lblcloud.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         lblcloud.setForeground(new java.awt.Color(255, 255, 255));
-        lblcloud.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblcloud.setText(":");
-        pnlweather.add(lblcloud, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, 120, 43));
+        pnlweather.add(lblcloud, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 290, 130, 43));
 
         lbldoam.setBackground(new java.awt.Color(204, 204, 204));
-        lbldoam.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lbldoam.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         lbldoam.setForeground(new java.awt.Color(255, 255, 255));
-        lbldoam.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbldoam.setText(":");
-        pnlweather.add(lbldoam, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, 110, 44));
+        pnlweather.add(lbldoam, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 290, 170, 44));
 
         lblnext.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/forward_16px.png"))); // NOI18N
+        lblnext.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblnext.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblnextMouseClicked(evt);
             }
         });
-        pnlweather.add(lblnext, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, 40, -1));
+        pnlweather.add(lblnext, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 420, 40, -1));
 
         lblpre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/back_16px.png"))); // NOI18N
+        lblpre.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblpre.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblpreMouseClicked(evt);
             }
         });
-        pnlweather.add(lblpre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
+        pnlweather.add(lblpre, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 420, 40, -1));
 
         lblweather.setBackground(new java.awt.Color(204, 204, 204));
-        lblweather.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 12)); // NOI18N
+        lblweather.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         lblweather.setForeground(new java.awt.Color(255, 255, 255));
         lblweather.setText("rain");
-        pnlweather.add(lblweather, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 70, 210, 40));
+        pnlweather.add(lblweather, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 200, 210, 40));
 
         lblwind.setBackground(new java.awt.Color(204, 204, 204));
-        lblwind.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lblwind.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         lblwind.setForeground(new java.awt.Color(255, 255, 255));
-        lblwind.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblwind.setText(":");
-        pnlweather.add(lblwind, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 120, 44));
+        pnlweather.add(lblwind, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, 170, 44));
 
-        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/rain.jpeg"))); // NOI18N
-        pnlweather.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(-6, -6, 620, 300));
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/rain.jpg"))); // NOI18N
+        pnlweather.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(-6, -6, 810, 610));
 
-        getContentPane().add(pnlweather, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 612, 288));
+        getContentPane().add(pnlweather, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 600));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -160,6 +187,11 @@ public class WeatherJDialog extends javax.swing.JDialog {
     private void pnlweatherMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlweatherMouseExited
 
     }//GEN-LAST:event_pnlweatherMouseExited
+
+    private void lblexitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblexitMouseClicked
+        this.dispose();
+        music.stop();
+    }//GEN-LAST:event_lblexitMouseClicked
 
     /**
      * @param args the command line arguments
@@ -210,6 +242,8 @@ public class WeatherJDialog extends javax.swing.JDialog {
     private javax.swing.JLabel lblcloud;
     private javax.swing.JLabel lbldate;
     private javax.swing.JLabel lbldoam;
+    private javax.swing.JLabel lblexit;
+    private javax.swing.JLabel lblload;
     private javax.swing.JLabel lblnext;
     private javax.swing.JLabel lblnhietdo;
     private javax.swing.JLabel lblpre;
@@ -218,12 +252,15 @@ public class WeatherJDialog extends javax.swing.JDialog {
     private javax.swing.JPanel pnlweather;
     // End of variables declaration//GEN-END:variables
 
+    MP3Player music = new MP3Player(new File("src\\Sounds\\raining.mp3"));
+
     private JsonResult result;
     private int idx = 0;
 
     private void init() {
         result = HandleAPI.getJsonData((String) "Saigon");
         setThoiTiet();
+        setLocationRelativeTo(this);
     }
 
     void setThoiTiet() {
@@ -249,12 +286,16 @@ public class WeatherJDialog extends javax.swing.JDialog {
         if (text.contains("clouds")) {
             lblnhietdo.setIcon(new ImageIcon("src\\com\\farmsys\\icons\\cloud_30px.png"));
             background.setIcon(new ImageIcon("src\\com\\farmsys\\icons\\may.jpg"));
+
         } else if (text.contains("sun")) {
             lblnhietdo.setIcon(new ImageIcon("src\\com\\farmsys\\icons\\icons8_summer_30px.png"));
             background.setIcon(new ImageIcon("src\\com\\farmsys\\icons\\nangsaigon.jpg"));
+
         } else if (text.contains("rain")) {
             lblnhietdo.setIcon(new ImageIcon("src\\com\\farmsys\\icons\\icons8_rain_cloud_30px_1.png"));
             background.setIcon(new ImageIcon("src\\com\\farmsys\\icons\\rain.jpg"));
+            music.play();
         }
     }
+
 }

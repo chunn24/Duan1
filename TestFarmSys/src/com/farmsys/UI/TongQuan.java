@@ -1055,8 +1055,8 @@ public class TongQuan extends javax.swing.JFrame {
     ThuHoachDAO thdao = new ThuHoachDAO();
     KhoHangDAO khdao = new KhoHangDAO();
 
-    MP3Player Ping = new MP3Player(new File("src\\com\\farmsys\\icons\\thongbao.mp3"));
-    MP3Player Ping3 = new MP3Player(new File("src\\com\\farmsys\\icons\\UI.mp3"));
+    MP3Player Ping = new MP3Player(new File("src\\Sounds\\thongbao.mp3"));
+    MP3Player Ping3 = new MP3Player(new File("src\\Sounds\\UI.mp3"));
 
     private void init() {
         result = HandleAPI.getJsonData((String) "Saigon");
