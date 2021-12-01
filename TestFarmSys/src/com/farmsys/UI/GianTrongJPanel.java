@@ -59,6 +59,7 @@ public class GianTrongJPanel extends javax.swing.JPanel {
         cboLoc = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(1083, 750));
         setPreferredSize(new java.awt.Dimension(1083, 750));
 
@@ -131,6 +132,7 @@ public class GianTrongJPanel extends javax.swing.JPanel {
         txtTrangThai.setBackground(new java.awt.Color(204, 204, 204));
         panelTong.add(txtTrangThai, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 550, 480, 30));
 
+        btnThem.setBackground(new java.awt.Color(255, 255, 255));
         btnThem.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
         btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Add.png"))); // NOI18N
         btnThem.setText("Thêm");
@@ -141,6 +143,7 @@ public class GianTrongJPanel extends javax.swing.JPanel {
         });
         panelTong.add(btnThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 630, -1, 49));
 
+        btnSua.setBackground(new java.awt.Color(255, 255, 255));
         btnSua.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
         btnSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Refresh.png"))); // NOI18N
         btnSua.setText("Sửa");
@@ -151,6 +154,7 @@ public class GianTrongJPanel extends javax.swing.JPanel {
         });
         panelTong.add(btnSua, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 630, -1, 49));
 
+        btnXoa.setBackground(new java.awt.Color(255, 255, 255));
         btnXoa.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
         btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Delete.png"))); // NOI18N
         btnXoa.setText("Xóa");
@@ -161,6 +165,7 @@ public class GianTrongJPanel extends javax.swing.JPanel {
         });
         panelTong.add(btnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 630, -1, 49));
 
+        btnMoi.setBackground(new java.awt.Color(255, 255, 255));
         btnMoi.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
         btnMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/new.png"))); // NOI18N
         btnMoi.setText("Mới");
@@ -171,6 +176,7 @@ public class GianTrongJPanel extends javax.swing.JPanel {
         });
         panelTong.add(btnMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 630, -1, 50));
 
+        btnFirst.setBackground(new java.awt.Color(255, 255, 255));
         btnFirst.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/backward.png"))); // NOI18N
         btnFirst.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -179,6 +185,7 @@ public class GianTrongJPanel extends javax.swing.JPanel {
         });
         panelTong.add(btnFirst, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 630, -1, 50));
 
+        btnPrev.setBackground(new java.awt.Color(255, 255, 255));
         btnPrev.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/previous.png"))); // NOI18N
         btnPrev.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -187,6 +194,7 @@ public class GianTrongJPanel extends javax.swing.JPanel {
         });
         panelTong.add(btnPrev, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 630, -1, 50));
 
+        btnNext.setBackground(new java.awt.Color(255, 255, 255));
         btnNext.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/next.png"))); // NOI18N
         btnNext.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -195,6 +203,7 @@ public class GianTrongJPanel extends javax.swing.JPanel {
         });
         panelTong.add(btnNext, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 630, -1, 50));
 
+        btnLast.setBackground(new java.awt.Color(255, 255, 255));
         btnLast.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/fast-forward.png"))); // NOI18N
         btnLast.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

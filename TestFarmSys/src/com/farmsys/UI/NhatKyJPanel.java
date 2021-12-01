@@ -66,6 +66,7 @@ public class NhatKyJPanel extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblNhatKy = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
 
         TheNVJDialog.setTitle("Thẻ nhân viên");
         TheNVJDialog.setMinimumSize(new java.awt.Dimension(472, 223));
@@ -237,7 +238,11 @@ public class NhatKyJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblNhatKy);
 
-        pnlNhatKy.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 1040, 600));
+        pnlNhatKy.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 1040, 510));
+
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Print");
+        pnlNhatKy.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 610, 70, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -258,7 +263,7 @@ public class NhatKyJPanel extends javax.swing.JPanel {
 //        this.fillTableNhatKyByTenCV();
 //        this.fillTableNhatKyByTenCay();
         this.fillTableNhatKyByTenNV();
-        
+
 
     }//GEN-LAST:event_txttimkiemKeyPressed
 
@@ -281,6 +286,7 @@ public class NhatKyJPanel extends javax.swing.JPanel {
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
     private com.farmsys.Helper.ImageAvatar imageAvatar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblEmail;
@@ -301,7 +307,7 @@ public class NhatKyJPanel extends javax.swing.JPanel {
     NhatKyDAO nkdao = new NhatKyDAO();
     CongViecDAO cvdao = new CongViecDAO();
     NhanVienDAO nvdao = new NhanVienDAO();
-    
+
     private void init() {
         this.fillTableNhatALL();
         this.TheNVJDialog.setLocationRelativeTo(null);
@@ -309,7 +315,7 @@ public class NhatKyJPanel extends javax.swing.JPanel {
             this.fillTableNhatALL();
         }).start();
     }
-    
+
     private void fillTableNhatALL() {
         DefaultTableModel model = (DefaultTableModel) tblNhatKy.getModel();
         model.setRowCount(0);
@@ -330,7 +336,7 @@ public class NhatKyJPanel extends javax.swing.JPanel {
             });
         }
     }
-    
+
     private void fillTableNhatKyByTenCay() {
         DefaultTableModel model = (DefaultTableModel) tblNhatKy.getModel();
         model.setRowCount(0);
@@ -352,7 +358,7 @@ public class NhatKyJPanel extends javax.swing.JPanel {
             });
         }
     }
-    
+
     private void fillTableNhatKyByTenCV() {
         DefaultTableModel model = (DefaultTableModel) tblNhatKy.getModel();
         model.setRowCount(0);
@@ -374,7 +380,7 @@ public class NhatKyJPanel extends javax.swing.JPanel {
             });
         }
     }
-    
+
     private void fillTableNhatKyByTenNV() {
         DefaultTableModel model = (DefaultTableModel) tblNhatKy.getModel();
         model.setRowCount(0);
@@ -396,7 +402,7 @@ public class NhatKyJPanel extends javax.swing.JPanel {
             });
         }
     }
-    
+
     private String trangThai(NhatKy nk) {
         String status = null;
         status = switch (nk.getTrangThai()) {
@@ -415,42 +421,22 @@ public class NhatKyJPanel extends javax.swing.JPanel {
         };
         return status;
     }
-    
+
     void print() {
         try {
             Boolean print = tblNhatKy.print();
             if (print) {
                 MsgBox.alert(this, "Đã xuất file PDF");
             } else {
-                
+
             }
         } catch (PrinterException ex) {
             Logger.getLogger(NhatKyJPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     JFileChooser fileChooser = new JFileChooser();
 
-//
-//    void setForm(NhanVien nv) {
-//        txtMaNV.setText(nv.getMaNV());
-//        txtHoTen.setText(nv.getHoTen());
-//        txtMatKhau.setText(nv.getMatKhau());
-// 
-//
-//        rdoNam.setSelected(nv.isGioiTinh());
-//        rdoNu.setSelected(!nv.isGioiTinh());
-//        txtEmail.setText(nv.getEmail());
-//        txtLuong.setText(nv.getLuong() + "");
-//        if (nv.getHinh() != null) {
-//            lblHinh1.setToolTipText(nv.getHinh());
-//            ImageIcon icon = XImage.read(nv.getHinh()); // Lấy địa chỉ của file Icon
-//
-//            //Chuyển Icon sang image và điều chỉnh kích thước
-//            Image scaleIcon = icon.getImage().getScaledInstance(lblHinh1.getWidth(), lblHinh1.getHeight(), Image.SCALE_DEFAULT);
-//            lblHinh1.setIcon(new javax.swing.ImageIcon(scaleIcon));
-//        }
-//    }
     private void edit() {
         String manv = (String) tblNhatKy.getValueAt(this.row, 6);
         String name = txtTenNV.getText();
@@ -458,9 +444,9 @@ public class NhatKyJPanel extends javax.swing.JPanel {
         NhanVien nv1 = nvdao.selectHinh(name);
         this.setForm(nv);
         this.setAvatar(nv1);
-        
+
     }
-    
+
     private void setForm(NhanVien nv) {
         txtTenNV.setText(nv.getHoTen());
         txtEmail.setText(nv.getEmail());
@@ -474,9 +460,9 @@ public class NhatKyJPanel extends javax.swing.JPanel {
         } else {
             rdoNu.setSelected(true);
         }
-        
+
     }
-    
+
     private void setAvatar(NhanVien nv) {
         if (nv.getHinh() != null) {
             imageAvatar.setToolTipText(nv.getHinh());

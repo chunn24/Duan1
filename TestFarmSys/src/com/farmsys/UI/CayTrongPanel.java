@@ -194,6 +194,7 @@ public class CayTrongPanel extends javax.swing.JPanel {
             }
         });
 
+        lblHinh.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHinh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/FarmSys.png"))); // NOI18N
         lblHinh.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -206,17 +207,17 @@ public class CayTrongPanel extends javax.swing.JPanel {
         pnlEditLayout.setHorizontalGroup(
             pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlEditLayout.createSequentialGroup()
-                .addContainerGap(47, Short.MAX_VALUE)
+                .addContainerGap(48, Short.MAX_VALUE)
                 .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlEditLayout.createSequentialGroup()
                         .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(pnlEditLayout.createSequentialGroup()
                                 .addComponent(btnAdd)
-                                .addGap(28, 28, 28)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnUpdate)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnDelete)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnNew))
                             .addComponent(txtMaCay)
                             .addComponent(txtTenCay)
@@ -238,14 +239,14 @@ public class CayTrongPanel extends javax.swing.JPanel {
                             .addComponent(txtThoiGianThuHoach, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(34, 34, 34))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlEditLayout.createSequentialGroup()
-                        .addComponent(lblHinh, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblHinh, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(124, 124, 124))))
         );
         pnlEditLayout.setVerticalGroup(
             pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlEditLayout.createSequentialGroup()
-                .addComponent(lblHinh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblHinh, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtMaCay, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)

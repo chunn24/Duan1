@@ -65,6 +65,8 @@ public class KhoHangJPanel extends javax.swing.JPanel {
         jLabel11 = new javax.swing.JLabel();
         txtThanhTien = new javax.swing.JTextField();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
         PnlTong.setBackground(new java.awt.Color(255, 255, 255));
         PnlTong.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -181,6 +183,7 @@ public class KhoHangJPanel extends javax.swing.JPanel {
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel13.setText("Giá Bán");
 
+        btnBuy.setBackground(new java.awt.Color(255, 255, 255));
         btnBuy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Dollar.png"))); // NOI18N
         btnBuy.setText("BUY");
         btnBuy.addActionListener(new java.awt.event.ActionListener() {

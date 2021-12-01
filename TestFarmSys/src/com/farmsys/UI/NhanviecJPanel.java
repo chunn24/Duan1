@@ -138,6 +138,7 @@ public class NhanViecJPanel extends javax.swing.JPanel {
 
         txtngaykt.setEditable(false);
 
+        btnhuy.setBackground(new java.awt.Color(255, 255, 255));
         btnhuy.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnhuy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/icons8_cancel_40px.png"))); // NOI18N
         btnhuy.setText("Từ chối");
@@ -149,6 +150,7 @@ public class NhanViecJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnnhanviec.setBackground(new java.awt.Color(255, 255, 255));
         btnnhanviec.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnnhanviec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/icons8_ok_40px.png"))); // NOI18N
         btnnhanviec.setText("Nhận việc");
