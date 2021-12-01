@@ -25,6 +25,7 @@ public class CayTrongDAO extends FarmSysDAO<CayTrong, String> {
     String DELETE_SQL = "DELETE FROM LoaiCay WHERE MaCay=?";
     String SELECT_ALL_SQL = "SELECT *FROM LoaiCay";
     String SELECT_BY_ID_SQL = "SELECT * FROM LoaiCay WHERE MaCay=?";
+    String SELECT_BY_ID_TenCay = "SELECT * FROM LoaiCay WHERE TenCay =?";
 
     @Override
     public void insert(CayTrong entity) {
@@ -61,6 +62,13 @@ public class CayTrongDAO extends FarmSysDAO<CayTrong, String> {
     @Override
     public CayTrong selectById(String key) {
         List<CayTrong> list = this.selectBySql(SELECT_BY_ID_SQL, key);
+        if (list.isEmpty()) {
+            return null;
+        }
+        return list.get(0);
+    }
+    public CayTrong selectByTenCay(String key) {
+        List<CayTrong> list = this.selectBySql(SELECT_BY_ID_TenCay, key);
         if (list.isEmpty()) {
             return null;
         }

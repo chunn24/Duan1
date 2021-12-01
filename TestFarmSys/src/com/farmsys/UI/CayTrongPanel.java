@@ -28,7 +28,7 @@ import javax.swing.table.DefaultTableModel;
 public class CayTrongPanel extends javax.swing.JPanel {
 
     int index = -1;
-    CayTrongDAO dao = new CayTrongDAO();
+    CayTrongDAO ctdao = new CayTrongDAO();
     JFileChooser fileChooser = new JFileChooser();
 
     /**
@@ -125,7 +125,6 @@ public class CayTrongPanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Mã cây trồng");
 
-        txtMaCay.setEditable(false);
         txtMaCay.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -207,17 +206,17 @@ public class CayTrongPanel extends javax.swing.JPanel {
         pnlEditLayout.setHorizontalGroup(
             pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlEditLayout.createSequentialGroup()
-                .addContainerGap(48, Short.MAX_VALUE)
+                .addContainerGap(47, Short.MAX_VALUE)
                 .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlEditLayout.createSequentialGroup()
                         .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(pnlEditLayout.createSequentialGroup()
                                 .addComponent(btnAdd)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnUpdate)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGap(18, 18, 18)
                                 .addComponent(btnDelete)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnNew))
                             .addComponent(txtMaCay)
                             .addComponent(txtTenCay)
@@ -308,12 +307,20 @@ public class CayTrongPanel extends javax.swing.JPanel {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
-        this.insert();
+        if (Validation()) {
+            if (checkTrungTen(txtTenCay)) {
+                insert();
+            }
+        }
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
-        this.update();
+        if (Validation()) {
+            if (checkTrungTen(txtTenCay)) {
+                update();
+            }
+        }
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
@@ -361,6 +368,7 @@ public class CayTrongPanel extends javax.swing.JPanel {
 
     public void init() {
         load();
+        txtMaCay.setEnabled(true);
         tblCayTrong.setDefaultEditor(Object.class, null);
         new Timer(10000, (ActionEvent e) -> {
             this.load();
@@ -371,7 +379,7 @@ public class CayTrongPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblCayTrong.getModel();
         model.setRowCount(0);
         try {
-            List<CayTrong> list = dao.selectAll();
+            List<CayTrong> list = ctdao.selectAll();
             for (CayTrong ct : list) {
                 Object[] row = {
                     ct.getMaCay(),
@@ -393,7 +401,7 @@ public class CayTrongPanel extends javax.swing.JPanel {
     void insert() {
         CayTrong model = getModel();
         try {
-            dao.insert(model);
+            ctdao.insert(model);
             this.load();
             this.clear();
             MsgBox.alert(this, "Thêm mới thành công!");
@@ -406,7 +414,7 @@ public class CayTrongPanel extends javax.swing.JPanel {
     void update() {
         CayTrong model = getModel();
         try {
-            dao.update(model);
+            ctdao.update(model);
             this.load();
             this.clear();
             MsgBox.alert(this, "Cập nhật thành công!");
@@ -423,7 +431,7 @@ public class CayTrongPanel extends javax.swing.JPanel {
             if (MsgBox.confirm(this, "Bạn có muốn xóa hay không?")) {
                 String mact = txtMaCay.getText();
                 try {
-                    dao.delete(mact);
+                    ctdao.delete(mact);
                     this.load();
                     this.clear();
                     MsgBox.alert(this, "Xóa thành công!");
@@ -443,7 +451,7 @@ public class CayTrongPanel extends javax.swing.JPanel {
     void edit() {
         try {
             Integer mact = (Integer) tblCayTrong.getValueAt(this.index, 0);
-            CayTrong model = dao.selectByIdInt(mact);
+            CayTrong model = ctdao.selectByIdInt(mact);
 
             if (model != null) {
                 this.setModel(model);
@@ -524,17 +532,6 @@ public class CayTrongPanel extends javax.swing.JPanel {
         }
     }
 
-    public boolean checkTrungMa(JTextField txt) {
-        txt.setBackground(white);
-        if (dao.selectById(txt.getText()) == null) {
-            return true;
-        } else {
-            txt.setBackground(red);
-            MsgBox.alert(this, txt.getName() + " đã bị tồn tại.");
-            return false;
-        }
-    }
-
     public boolean checkNullHinh() {
         if (lblHinh.getToolTipText() != null) {
             return true;
@@ -543,33 +540,79 @@ public class CayTrongPanel extends javax.swing.JPanel {
             return false;
         }
     }
+    
+    public boolean checkTrungTen(JTextField txt) {
+        if (ctdao.selectByTenCay(txt.getText()) == null) {
+            return true;
+        } else {
+            MsgBox.alert(this, "Tên giàn đã tồn tại !");
+            txtTenCay.requestFocus();
+            return false;
+        }
+    }
 
     boolean Validation() {
         if (txtTenCay.getText().isEmpty()) {
             MsgBox.alert(this, "Tên cây không được để trống ");
+            txtTenCay.requestFocus();
             return false;
         }
         if (txtThoiGianThuHoach.getText().isEmpty()) {
             MsgBox.alert(this, "Thời gian thu hoạch cây không được để trống ");
+            txtThoiGianThuHoach.requestFocus();
             return false;
         }
         if (txtDoTDS.getText().isEmpty()) {
             MsgBox.alert(this, "Độ TDS của cây không được để trống ");
+            txtDoTDS.requestFocus();
             return false;
         }
         if (txtDoPH.getText().isEmpty()) {
             MsgBox.alert(this, "Độ PH của cây không được để trống ");
+            txtDoPH.requestFocus();
             return false;
         }
         if (txtNhietDo.getText().isEmpty()) {
             MsgBox.alert(this, "Nhiệt độ cây không được để trống ");
+            txtNhietDo.requestFocus();
             return false;
         }
         if (txtDoAm.getText().isEmpty()) {
             MsgBox.alert(this, "Độ ẩm của cây không được để trống ");
+            txtDoAm.requestFocus();
             return false;
         }
-
+        if (!(txtThoiGianThuHoach.getText().matches("\"^\\\\d+$\""))){
+            MsgBox.alert(this, "Thời gian thu hoạch phải là số nguyên dương");
+            txtThoiGianThuHoach.requestFocus();
+            return false;
+        }
+        
+        float doph = Float.parseFloat(txtDoPH.getText());
+        if (doph <= 0 && doph > 12){
+            MsgBox.alert(this, "Độ PH của cây từ 1 -> 12");
+            txtDoPH.requestFocus();
+            return false;
+        }
+        
+        if (!(txtDoTDS.getText().matches("[+]?[0-9]"))){
+            MsgBox.alert(this, "Độ TDS phải là số dương");
+            txtDoTDS.requestFocus();
+            return false;
+        }
+        
+        if (!(txtNhietDo.getText().matches("[+]?[0-9]"))){
+            MsgBox.alert(this, "Nhiệt độ phải là số dương");
+            txtNhietDo.requestFocus();
+            return false;
+        }
+        
+        if (!(txtDoAm.getText().matches("[+]?[0-9]"))){
+            MsgBox.alert(this, "Độ ẩm phải là số dương");
+            txtDoAm.requestFocus();
+            return false;
+        }
+        
         return true;
     }
 }
