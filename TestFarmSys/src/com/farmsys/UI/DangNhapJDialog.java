@@ -558,7 +558,7 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
     private void lblloginwwithQRMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblloginwwithQRMouseClicked
         pnlfootQR.setBackground(new Color(0, 230, 0));
         btnDangNhap.setEnabled(false);
-        QuetMaQR();
+//        QuetMaQR();
         initWebcam(true);
     }//GEN-LAST:event_lblloginwwithQRMouseClicked
 
