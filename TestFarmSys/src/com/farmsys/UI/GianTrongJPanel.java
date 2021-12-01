@@ -240,15 +240,23 @@ public class GianTrongJPanel extends javax.swing.JPanel {
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
-        if (checkTrungTen(txtTenDanTrong)) {
-            insert();
+        if (validation()) {
+            if (checkTenGian(txtTenDanTrong)) {
+                if (checkTrungTen(txtTenDanTrong)) {
+                    insert();
+                }
+            }
         }
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
-        if (checkTrungTen(txtTenDanTrong)) {
-            update();
+        if (validation()) {
+            if (checkTenGian(txtTenDanTrong)) {
+                if (checkTrungTen(txtTenDanTrong)) {
+                    update();
+                }
+            }
         }
     }//GEN-LAST:event_btnSuaActionPerformed
 
@@ -483,6 +491,33 @@ public class GianTrongJPanel extends javax.swing.JPanel {
         } else {
             txt.setBackground(pink);
             MsgBox.alert(this, "Tên giàn đã tồn tại !");
+            return false;
+        }
+    }
+    
+    private boolean validation() {
+        if (txtTenDanTrong.getText().isEmpty()) {
+            MsgBox.alert(this, "Bạn chưa nhập tên dàn trồng !");
+            txtTenDanTrong.requestFocus();
+            return false;
+        }
+        if (txtTenDanTrong.getText().equalsIgnoreCase("Nhập tên dàn trồng !")) {
+            MsgBox.alert(this, "Bạn chưa nhập tên dàn trồng !");
+            txtTenDanTrong.requestFocus();
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean checkTenGian(JTextField txt) {
+        txt.setBackground(white);
+        String id = txt.getText();
+        String rgx = "[a-zA-Z_0-9]{1,15}";
+        if (id.matches(rgx)) {
+            return true;
+        } else {
+            txt.setBackground(pink);
+            MsgBox.alert(txt.getRootPane(), "Tên giàn phải có 1-15 kí tự\nChữ hoa, thường không dấu hoặc số !");
             return false;
         }
     }
