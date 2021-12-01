@@ -886,12 +886,12 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
         return t;
     }
 
-    public void QuetMaQR() {
-        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
-        AnimationClass anim = new AnimationClass();
-        anim.jLabelXRight(lbllogo.getX(), 450, 5, 1, lbllogo);
-        txtMaNV.setEnabled(false);
-        txtMatKhau.setEnabled(false);
-    }
+//    public void QuetMaQR() {
+//        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+//        this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
+//        AnimationClass anim = new AnimationClass();
+//        anim.jLabelXRight(lbllogo.getX(), 450, 5, 1, lbllogo);
+//        txtMaNV.setEnabled(false);
+//        txtMatKhau.setEnabled(false);
+//    }
 }
