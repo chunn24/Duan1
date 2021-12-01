@@ -242,6 +242,11 @@ public class NhatKyJPanel extends javax.swing.JPanel {
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Print");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         pnlNhatKy.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 610, 70, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -278,6 +283,10 @@ public class NhatKyJPanel extends javax.swing.JPanel {
     private void pnlTongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlTongMouseClicked
         TheNVJDialog.setVisible(false);
     }//GEN-LAST:event_pnlTongMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.print();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -441,9 +450,7 @@ public class NhatKyJPanel extends javax.swing.JPanel {
         String manv = (String) tblNhatKy.getValueAt(this.row, 6);
         String name = txtTenNV.getText();
         NhanVien nv = nvdao.selectById(manv);
-        NhanVien nv1 = nvdao.selectHinh(name);
         this.setForm(nv);
-        this.setAvatar(nv1);
 
     }
 
@@ -460,10 +467,6 @@ public class NhatKyJPanel extends javax.swing.JPanel {
         } else {
             rdoNu.setSelected(true);
         }
-
-    }
-
-    private void setAvatar(NhanVien nv) {
         if (nv.getHinh() != null) {
             imageAvatar.setToolTipText(nv.getHinh());
             ImageIcon icon = XImage.read(nv.getHinh()); // Lấy địa chỉ của file Icon
@@ -471,5 +474,6 @@ public class NhatKyJPanel extends javax.swing.JPanel {
             Image scaleIcon = icon.getImage().getScaledInstance(imageAvatar.getWidth(), imageAvatar.getHeight(), Image.SCALE_DEFAULT);
             imageAvatar.setImage(new javax.swing.ImageIcon(scaleIcon));
         }
+
     }
 }

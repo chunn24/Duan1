@@ -88,8 +88,20 @@ Create table KhoHang(
 	ThoiGianThuHoach date,
 	Coin float,
 
-	Primary key (MaTH),
+	Primary key (TrongLuong,MaTH),
 	foreign key (TenGian) references GianTrong(TenGian),
+	foreign key (TenCay) references LoaiCay(TenCay)
+);
+go
+
+Create table HoaDon(
+	MaHD int IDENTITY(1,1),
+	TenCay nvarchar(30),	
+	TrongLuong float,
+	ThoiGian date,
+	ThanhTien float,
+
+	Primary key (MaHD),	
 	foreign key (TenCay) references LoaiCay(TenCay)
 );
 go

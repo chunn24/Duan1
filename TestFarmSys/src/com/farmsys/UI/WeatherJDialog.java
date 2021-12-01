@@ -9,6 +9,8 @@ import AppPackage.AnimationClass;
 import com.farmsys.Helper.HandleAPI;
 import com.farmsys.data.JsonResult;
 import jaco.mp3.player.MP3Player;
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -17,6 +19,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.ImageIcon;
 import javax.swing.Timer;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.renderer.category.LineAndShapeRenderer;
+import org.jfree.data.category.DefaultCategoryDataset;
 
 /**
  *
@@ -54,6 +63,7 @@ public class WeatherJDialog extends javax.swing.JDialog {
 
         pnlweather = new javax.swing.JPanel();
         lblload = new javax.swing.JLabel();
+        pnlchart = new javax.swing.JPanel();
         lblexit = new javax.swing.JLabel();
         lbldate = new javax.swing.JLabel();
         lblcity = new javax.swing.JLabel();
@@ -83,10 +93,20 @@ public class WeatherJDialog extends javax.swing.JDialog {
                 pnlweatherMouseExited(evt);
             }
         });
-        pnlweather.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pnlweather.setLayout(null);
 
         lblload.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/weather.gif"))); // NOI18N
-        pnlweather.add(lblload, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        pnlweather.add(lblload);
+        lblload.setBounds(0, 0, 800, 600);
+
+        pnlchart.setBackground(new java.awt.Color(255, 255, 255,100));
+        pnlchart.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        pnlchart.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pnlchart.setInheritsPopupMenu(true);
+        pnlchart.setOpaque(false);
+        pnlchart.setLayout(new javax.swing.BoxLayout(pnlchart, javax.swing.BoxLayout.LINE_AXIS));
+        pnlweather.add(pnlchart);
+        pnlchart.setBounds(50, 380, 700, 200);
 
         lblexit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/cancel_30px.png"))); // NOI18N
         lblexit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -95,75 +115,87 @@ public class WeatherJDialog extends javax.swing.JDialog {
                 lblexitMouseClicked(evt);
             }
         });
-        pnlweather.add(lblexit, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 10, -1, -1));
+        pnlweather.add(lblexit);
+        lblexit.setBounds(760, 10, 30, 30);
 
         lbldate.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         lbldate.setForeground(new java.awt.Color(255, 255, 255));
         lbldate.setText(":");
-        pnlweather.add(lbldate, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, 250, 40));
+        pnlweather.add(lbldate);
+        lbldate.setBounds(60, 100, 250, 40);
 
         lblcity.setBackground(new java.awt.Color(204, 204, 204));
         lblcity.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         lblcity.setForeground(new java.awt.Color(255, 255, 255));
         lblcity.setText(":");
-        pnlweather.add(lblcity, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 100, 350, 40));
+        pnlweather.add(lblcity);
+        lblcity.setBounds(310, 100, 350, 40);
 
         lblnhietdo.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
         lblnhietdo.setForeground(new java.awt.Color(255, 255, 255));
         lblnhietdo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/icons8_rain_cloud_30px_1.png"))); // NOI18N
         lblnhietdo.setText("27 C");
-        pnlweather.add(lblnhietdo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, 220, 40));
+        pnlweather.add(lblnhietdo);
+        lblnhietdo.setBounds(50, 200, 220, 40);
 
         lblapxuat.setBackground(new java.awt.Color(204, 204, 204));
         lblapxuat.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         lblapxuat.setForeground(new java.awt.Color(255, 255, 255));
         lblapxuat.setText(":");
-        pnlweather.add(lblapxuat, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 290, 180, 44));
+        pnlweather.add(lblapxuat);
+        lblapxuat.setBounds(240, 290, 180, 44);
 
         lblcloud.setBackground(new java.awt.Color(204, 204, 204));
         lblcloud.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         lblcloud.setForeground(new java.awt.Color(255, 255, 255));
         lblcloud.setText(":");
-        pnlweather.add(lblcloud, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 290, 130, 43));
+        pnlweather.add(lblcloud);
+        lblcloud.setBounds(610, 290, 130, 43);
 
         lbldoam.setBackground(new java.awt.Color(204, 204, 204));
         lbldoam.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         lbldoam.setForeground(new java.awt.Color(255, 255, 255));
         lbldoam.setText(":");
-        pnlweather.add(lbldoam, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 290, 170, 44));
+        pnlweather.add(lbldoam);
+        lbldoam.setBounds(430, 290, 170, 44);
 
-        lblnext.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/forward_16px.png"))); // NOI18N
+        lblnext.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/icons8_next_30px.png"))); // NOI18N
         lblnext.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblnext.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblnextMouseClicked(evt);
             }
         });
-        pnlweather.add(lblnext, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 420, 40, -1));
+        pnlweather.add(lblnext);
+        lblnext.setBounds(760, 460, 30, 30);
 
-        lblpre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/back_16px.png"))); // NOI18N
+        lblpre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/icons8_previous_30px_1.png"))); // NOI18N
         lblpre.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblpre.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblpreMouseClicked(evt);
             }
         });
-        pnlweather.add(lblpre, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 420, 40, -1));
+        pnlweather.add(lblpre);
+        lblpre.setBounds(10, 460, 40, 30);
 
         lblweather.setBackground(new java.awt.Color(204, 204, 204));
         lblweather.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         lblweather.setForeground(new java.awt.Color(255, 255, 255));
         lblweather.setText("rain");
-        pnlweather.add(lblweather, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 200, 210, 40));
+        pnlweather.add(lblweather);
+        lblweather.setBounds(320, 200, 210, 40);
 
         lblwind.setBackground(new java.awt.Color(204, 204, 204));
         lblwind.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         lblwind.setForeground(new java.awt.Color(255, 255, 255));
         lblwind.setText(":");
-        pnlweather.add(lblwind, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, 170, 44));
+        pnlweather.add(lblwind);
+        lblwind.setBounds(60, 290, 170, 44);
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/rain.jpg"))); // NOI18N
-        pnlweather.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(-6, -6, 810, 610));
+        pnlweather.add(background);
+        background.setBounds(-6, -6, 810, 610);
 
         getContentPane().add(pnlweather, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 600));
 
@@ -249,6 +281,7 @@ public class WeatherJDialog extends javax.swing.JDialog {
     private javax.swing.JLabel lblpre;
     private javax.swing.JLabel lblweather;
     private javax.swing.JLabel lblwind;
+    private javax.swing.JPanel pnlchart;
     private javax.swing.JPanel pnlweather;
     // End of variables declaration//GEN-END:variables
 
@@ -261,6 +294,7 @@ public class WeatherJDialog extends javax.swing.JDialog {
         result = HandleAPI.getJsonData((String) "Saigon");
         setThoiTiet();
         setLocationRelativeTo(this);
+        this.showLineChart();
     }
 
     void setThoiTiet() {
@@ -298,4 +332,41 @@ public class WeatherJDialog extends javax.swing.JDialog {
         }
     }
 
+    void showLineChart() {
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        Double nhietDo;
+        String date;
+
+        for (idx = 0; idx < 39; idx = idx + 3) {
+
+            nhietDo = result.getList()[idx].getMain().getTemp();
+            date = result.getList()[idx].getDt_txt();
+            int i = date.indexOf(' ');
+            String xuat = date.substring(i + 1);
+            System.out.println(nhietDo);
+            System.out.println(xuat);
+            dataset.setValue(nhietDo, "Amount", xuat);
+        }
+
+        //create dataset for the graph
+        //create chart
+        JFreeChart linechart = ChartFactory.createLineChart("Nhiệt độ trung bình", "Giờ", "Độ C",
+                dataset, PlotOrientation.VERTICAL, false, true, false);
+
+        //create plot object
+        CategoryPlot lineCategoryPlot = linechart.getCategoryPlot();
+        // lineCategoryPlot.setRangeGridlinePaint(Color.BLUE);
+        lineCategoryPlot.setBackgroundPaint(Color.white);
+
+        //create render object to change the moficy the line properties like color
+        LineAndShapeRenderer lineRenderer = (LineAndShapeRenderer) lineCategoryPlot.getRenderer();
+        Color lineChartColor = new Color(204, 0, 51);
+        lineRenderer.setSeriesPaint(0, lineChartColor);
+
+        //create chartPanel to display chart(graph)
+        ChartPanel lineChartPanel = new ChartPanel(linechart);
+        pnlchart.removeAll();
+        pnlchart.add(lineChartPanel, BorderLayout.CENTER);
+        pnlchart.validate();
+    }
 }

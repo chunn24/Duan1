@@ -390,6 +390,13 @@ public class TongQuan extends javax.swing.JFrame {
         pnltongquat.add(pnlCaycanTH, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 250, 220, 120));
         pnltongquat.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 700, 10));
 
+        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setBorder(null);
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane1.setAutoscrolls(true);
+        jScrollPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        tblNhatKy.setAutoCreateRowSorter(true);
         tblNhatKy.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null},
@@ -417,9 +424,18 @@ public class TongQuan extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        tblNhatKy.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tblNhatKy.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_NEXT_COLUMN);
+        tblNhatKy.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tblNhatKy.setDropMode(javax.swing.DropMode.INSERT);
+        tblNhatKy.setFillsViewportHeight(true);
+        tblNhatKy.setFocusable(false);
+        tblNhatKy.setGridColor(new java.awt.Color(255, 255, 255));
         tblNhatKy.setMinimumSize(new java.awt.Dimension(750, 480));
         tblNhatKy.setRowHeight(40);
+        tblNhatKy.setRowSorter(null);
+        tblNhatKy.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tblNhatKy.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tblNhatKy.setUpdateSelectionOnSort(false);
         tblNhatKy.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblNhatKyMouseClicked(evt);
@@ -428,18 +444,29 @@ public class TongQuan extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblNhatKy);
         if (tblNhatKy.getColumnModel().getColumnCount() > 0) {
             tblNhatKy.getColumnModel().getColumn(0).setResizable(false);
+            tblNhatKy.getColumnModel().getColumn(0).setHeaderValue("STT");
             tblNhatKy.getColumnModel().getColumn(1).setResizable(false);
+            tblNhatKy.getColumnModel().getColumn(1).setHeaderValue("Tên công việc");
             tblNhatKy.getColumnModel().getColumn(2).setResizable(false);
+            tblNhatKy.getColumnModel().getColumn(2).setHeaderValue("Tên Cây");
             tblNhatKy.getColumnModel().getColumn(3).setResizable(false);
+            tblNhatKy.getColumnModel().getColumn(3).setHeaderValue("Tên Giàn");
             tblNhatKy.getColumnModel().getColumn(4).setResizable(false);
+            tblNhatKy.getColumnModel().getColumn(4).setHeaderValue("Chi tiết công việc");
             tblNhatKy.getColumnModel().getColumn(5).setResizable(false);
+            tblNhatKy.getColumnModel().getColumn(5).setHeaderValue("Người tạo");
             tblNhatKy.getColumnModel().getColumn(6).setResizable(false);
+            tblNhatKy.getColumnModel().getColumn(6).setHeaderValue("Nhân viên");
             tblNhatKy.getColumnModel().getColumn(7).setResizable(false);
+            tblNhatKy.getColumnModel().getColumn(7).setHeaderValue("Bắt đầu");
             tblNhatKy.getColumnModel().getColumn(8).setResizable(false);
+            tblNhatKy.getColumnModel().getColumn(8).setHeaderValue("Kết thúc");
             tblNhatKy.getColumnModel().getColumn(9).setResizable(false);
+            tblNhatKy.getColumnModel().getColumn(9).setHeaderValue("Trạng thái");
         }
+        tblNhatKy.getAccessibleContext().setAccessibleParent(pnltongquat);
 
-        pnltongquat.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, 840, 300));
+        pnltongquat.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, 980, 300));
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/refresh_25px.png"))); // NOI18N
@@ -1092,10 +1119,6 @@ public class TongQuan extends javax.swing.JFrame {
         this.fillTableNhatKyAll();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void tblNhatKyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblNhatKyMouseClicked
-        this.OpenNhatky();
-    }//GEN-LAST:event_tblNhatKyMouseClicked
-
     private void pnlDashboardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlDashboardMouseClicked
         this.Openchart();
     }//GEN-LAST:event_pnlDashboardMouseClicked
@@ -1261,6 +1284,10 @@ public class TongQuan extends javax.swing.JFrame {
     private void pnlThoiTiet1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlThoiTiet1MouseExited
         pnlThoiTiet1.setBackground(Color.WHITE);
     }//GEN-LAST:event_pnlThoiTiet1MouseExited
+
+    private void tblNhatKyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblNhatKyMouseClicked
+        this.OpenNhatky();
+    }//GEN-LAST:event_tblNhatKyMouseClicked
 
     /**
      * @param args the command line arguments
@@ -1463,10 +1490,6 @@ public class TongQuan extends javax.swing.JFrame {
             this.dispose();
             new TongQuan().setVisible(true);
         }
-    }
-
-    private void closeFarmSys() {
-        System.exit(0);
     }
 
     private void OpenNhanVien() {
