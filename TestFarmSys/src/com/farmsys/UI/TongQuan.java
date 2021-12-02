@@ -111,6 +111,8 @@ public class TongQuan extends javax.swing.JFrame {
         lbldemNV = new javax.swing.JLabel();
         logocaycanTH1 = new javax.swing.JLabel();
         lblNhanvien = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         Manhinhlive = new javax.swing.JPanel();
         pnlavatar = new javax.swing.JPanel();
@@ -531,6 +533,12 @@ public class TongQuan extends javax.swing.JFrame {
 
         lblNhanvien.setText("Nhân viên:");
         pnltongquat.add(lblNhanvien, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 230, -1, -1));
+
+        jLabel1.setText("jLabel1");
+        pnltongquat.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 710, -1, -1));
+
+        jLabel2.setText("jLabel2");
+        pnltongquat.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 710, -1, -1));
 
         tabs.addTab("tab1", pnltongquat);
 
@@ -1346,6 +1354,8 @@ public class TongQuan extends javax.swing.JFrame {
     private javax.swing.JTabbedPane TabsMnu;
     private com.farmsys.Helper.ImageAvatar imageAvatar;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
@@ -1554,15 +1564,15 @@ public class TongQuan extends javax.swing.JFrame {
 
     private void openDangXuat() {
         int ask = JOptionPane.showConfirmDialog(this, "Bạn có chắc là mình muốn đăng xuất ?", "Xác nhận", JOptionPane.YES_NO_OPTION);
-        if (ask == 0) {
-           
-            new TongQuan().setVisible(true);
+        if (ask == 0) {       
+            this.dispose();
+            new TongQuan().setVisible(true);          
         }
     }
 
     private void OpenNhanVien() {
         if (Auth.isManager()) {
-           
+            
             tabs.setSelectedIndex(6);
         } else {
             MsgBox.alert(this, "Bạn không có quyền truy cập!");

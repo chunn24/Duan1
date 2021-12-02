@@ -175,6 +175,7 @@ public class NhatKyJPanel extends javax.swing.JPanel {
         tblNhatKy.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         tblNhatKy.setMinimumSize(new java.awt.Dimension(750, 480));
         tblNhatKy.setRowHeight(40);
+        tblNhatKy.setShowGrid(false);
         tblNhatKy.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblNhatKyMouseClicked(evt);

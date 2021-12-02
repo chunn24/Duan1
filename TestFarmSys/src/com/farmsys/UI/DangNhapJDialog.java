@@ -51,7 +51,6 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
         init();
         WebcamQRcode.setBackground(new Color(0, 0, 0, 0));
         animation(false);
-        
 
 //        WebcamQRcode.setBackground(new Color(1.0f, 1.0f, 1.0f, 0.0f));
     }
@@ -139,6 +138,11 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
         pnlTong.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbllogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/logofarmSys.gif"))); // NOI18N
+        lbllogo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lbllogoMouseEntered(evt);
+            }
+        });
         pnlTong.add(lbllogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 500));
 
         pnldoimk.setBackground(new java.awt.Color(255, 255, 255));
@@ -520,6 +524,10 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
         WebcamQRcode.setVisible(false);
     }//GEN-LAST:event_panelquetqrMouseClicked
 
+    private void lbllogoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbllogoMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lbllogoMouseEntered
+
     /**
      * @param args the command line arguments
      */
@@ -633,8 +641,9 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
         }
     }
 
+    
+    //Gửi mã QR mới
     void SendOTP() {
-        MsgBox.alert(this, "Đang gửi mail...");
         try {
             manvotp = txttaikhoanlaymk.getText();
             NhanVien nhanVien = dao.selectById(manvotp);
@@ -643,6 +652,7 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
                 if (emailNV == null) {
                     MsgBox.alert(this, "Tài khoản này chưa có email");
                 } else {//tài khoản có mail --> gửi mail -->check otp
+                    MsgBox.alert(this, "Đang gửi mail...");
                     this.randomString();
                     MailHelper.sendText(emailNV, "OTP - Quên mật khẩu", "OTP:" + " " + OTP);
                     MsgBox.alert(this, "Có 1 mã OTP đã được gửi vào mail của bạn !");
@@ -834,6 +844,7 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
             txtOTP.setEnabled(true);
             txtmknew.setEnabled(true);
             txtxnmknew.setEnabled(true);
+
         } else {
             Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
             this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);

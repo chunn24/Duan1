@@ -57,9 +57,10 @@ public class NhanVienPanel extends javax.swing.JPanel {
     
     void init() {
         if (!Auth.isLogin()) {
-            MsgBox.alert(this, "Chưa đăng nhập, vô cái loz");
+            MsgBox.alert(this, "Chưa đăng nhập");
             System.exit(0);
         }
+      
         this.updateStatus();
         new Timer(60000, (ActionEvent e) -> {
             this.fillTable();
@@ -443,6 +444,8 @@ public class NhanVienPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tblNhanVien.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tblNhanVien.setShowGrid(false);
         tblNhanVien.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblNhanVienMouseClicked(evt);

@@ -95,6 +95,9 @@ public class GianTrongJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tblDanTrong.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tblDanTrong.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tblDanTrong.setShowGrid(false);
         tblDanTrong.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblDanTrongMouseClicked(evt);
@@ -261,11 +264,7 @@ public class GianTrongJPanel extends javax.swing.JPanel {
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
         if (validation()) {
-            if (checkTenGian(txtTenDanTrong)) {
-                if (checkTrungTen(txtTenDanTrong)) {
-                    update();
-                }
-            }
+            update();
         }
     }//GEN-LAST:event_btnSuaActionPerformed
 
@@ -344,15 +343,12 @@ public class GianTrongJPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     GianTrongDAO dtdao = new GianTrongDAO();
-    int index = 0;
+    int index = -1;
 
     private void init() {
         this.load();
         this.updateStatus();
-        new Timer(10000, (ActionEvent e) -> {
-            this.load();
-
-        }).start();
+        
     }
 
     void load() {
@@ -469,8 +465,8 @@ public class GianTrongJPanel extends javax.swing.JPanel {
     }
 
     void updateStatus() {
-        boolean edit = (this.index > 0);
-        boolean first = (this.index == 0);
+        boolean edit = (this.index > -1);
+        boolean first = (this.index == -1);
         boolean last = (this.index == tblDanTrong.getRowCount() - 1);
         txtMaDanTrong.setEditable(!edit);
         btnThem.setEnabled(!edit);

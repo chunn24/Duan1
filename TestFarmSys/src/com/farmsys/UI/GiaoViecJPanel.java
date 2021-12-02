@@ -217,16 +217,19 @@ public class GiaoViecJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnGiaoVietActionPerformed
 
     private void cboCongViecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboCongViecActionPerformed
+
         switch (cboCongViec.getSelectedIndex()) {
             case 0 ->
                 this.fillComboBoxGianTrongChamSoc();
+
             case 1 ->
                 this.fillComboBoxGianTrongThuHoach();
+
             default -> {
                 this.fillComboBoxGianTrongTrongCay();
+
             }
         }
-
     }//GEN-LAST:event_cboCongViecActionPerformed
 
 

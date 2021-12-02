@@ -98,6 +98,9 @@ public class CayTrongPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tblCayTrong.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tblCayTrong.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tblCayTrong.setShowGrid(false);
         tblCayTrong.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblCayTrongMouseClicked(evt);
@@ -333,9 +336,8 @@ public class CayTrongPanel extends javax.swing.JPanel {
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
         if (Validation()) {
-            if (checkTrungTen(txtTenCay)) {
-                update();
-            }
+            update();
+
         }
     }//GEN-LAST:event_btnUpdateActionPerformed
 
@@ -345,7 +347,7 @@ public class CayTrongPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
-
+        
         this.clear();
     }//GEN-LAST:event_btnNewActionPerformed
 
@@ -467,7 +469,8 @@ public class CayTrongPanel extends javax.swing.JPanel {
         txtDoPH.setText("");
         txtDoTDS.setText("");
         txtNhietDo.setText("");
-        lblHinh.setIcon(new ImageIcon("src\\com\\farmsys\\icons\\FarmSys.png"));     
+        lblHinh.setIcon(new ImageIcon("src\\com\\farmsys\\icons\\FarmSys.png"));  
+        this.getstatus(true);
     }
 
     void edit() {
@@ -627,7 +630,7 @@ public class CayTrongPanel extends javax.swing.JPanel {
         }
 
         float nhietdo = Float.parseFloat(txtNhietDo.getText());
-        if (nhietdo>=24 && nhietdo<=27) {
+        if (nhietdo<24 && nhietdo>27) {
             MsgBox.alert(this, "Nhiệt độ tốt cho cây phải từ 24°C -> 27°C");
             txtNhietDo.requestFocus();
             return false;

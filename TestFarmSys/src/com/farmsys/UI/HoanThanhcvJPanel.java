@@ -88,32 +88,28 @@ public class HoanThanhcvJPanel extends javax.swing.JPanel {
         tblcv.setAutoCreateRowSorter(true);
         tblcv.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Tên Công Việc", "Tên Giàn", "Tên Cây", "Mô Tả", "Ngày Kết Thúc", "Trạng Thái"
+                "STT", "Tên Công Việc", "Tên Giàn", "Tên Cây", "Mô Tả", "Ngày Kết Thúc", "Trạng Thái"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                true, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
+        tblcv.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tblcv.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblcv.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblcvMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                tblcvMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                tblcvMouseExited(evt);
             }
         });
         jScrollPane1.setViewportView(tblcv);
@@ -170,20 +166,12 @@ public class HoanThanhcvJPanel extends javax.swing.JPanel {
             SoLuong = Float.parseFloat(MsgBox.prompt(this, "Nhập số lượng mà bạn thu hoạch được (kg): "));
             this.insertKhoHang();
             this.updateGianTrong();
+            this.clear();
         }
         this.update();
+        this.clear();
 
     }//GEN-LAST:event_btnhtActionPerformed
-
-    private void tblcvMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblcvMouseEntered
-        this.fillTableXacNhanHT();
-
-    }//GEN-LAST:event_tblcvMouseEntered
-
-    private void tblcvMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblcvMouseExited
-        this.fillTableXacNhanHT();
-
-    }//GEN-LAST:event_tblcvMouseExited
 
     private void lblreloadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblreloadMouseClicked
         this.fillTableXacNhanHT();
@@ -231,7 +219,7 @@ public class HoanThanhcvJPanel extends javax.swing.JPanel {
         for (NhatKy nv : list) {
             String status = trangThai(nv);
             model.addRow(new Object[]{
-                nv.getTenCV(), nv.getTenGian(), nv.getTenCay(), nv.getChiTiet(), nv.getNgayKetThuc(), status
+                nv.getStt(), nv.getTenCV(), nv.getTenGian(), nv.getTenCay(), nv.getChiTiet(), nv.getNgayKetThuc(), status
             });
         }
     }
@@ -243,7 +231,6 @@ public class HoanThanhcvJPanel extends javax.swing.JPanel {
         } else {
             try {
                 nkDAO.updateTrangThai((int) tblcv.getValueAt(this.row, 0));
-
                 this.fillTableXacNhanHT();
                 MsgBox.alert(this, "Nhận việc thành công!");
             } catch (Exception e) {
@@ -264,11 +251,10 @@ public class HoanThanhcvJPanel extends javax.swing.JPanel {
     }
 
     void setForm(NhatKy nv) {
-
         txttencv.setText(nv.getTenCV());
         txtchitiet.setText(nv.getChiTiet());
         txtngaykt.setText(String.valueOf(nv.getNgayKetThuc()));
-
+        System.out.println(String.valueOf(nv.getNgayKetThuc()));
     }
 
     NhatKy getForm() {
@@ -294,11 +280,11 @@ public class HoanThanhcvJPanel extends javax.swing.JPanel {
         return kh;
     }
 
+    //cần fix
     void edit() {
-        String manv = (String) tblcv.getValueAt(this.row, 0);
+        String manv = (String) tblcv.getValueAt(this.row, 1);
         NhatKy nv = nkDAO.selectById(manv);
         this.setForm(nv);
-
     }
 
     private String trangThai(NhatKy nk) {
@@ -313,18 +299,17 @@ public class HoanThanhcvJPanel extends javax.swing.JPanel {
             case 3 ->
                 "Hoàn thành";
             case 4 ->
-
                 "Hoàn thành muộn";
             default ->
-                "Buy";
+                "Đang bán";
 
         };
         return status;
     }
 
     boolean Validation() {
-        //Kiểm tra mã nhân viên
-        if (txttencv.getText().length() == 0) {
+
+        if (txtngaykt.getText() == null) {
 
             return false;
         }
@@ -335,10 +320,16 @@ public class HoanThanhcvJPanel extends javax.swing.JPanel {
         KhoHang kh = getTable();
         try {
             khDAO.insert(kh);
-            MsgBox.alert(this, "abc");
+            MsgBox.alert(this, "Thu hoạch thành công! cảm ơn bạn");
         } catch (Exception e) {
             System.out.println(e);
         }
+    }
+
+    private void clear() {
+        txttencv.setText("");
+        txtngaykt.setText("");
+        txtchitiet.setText("");
     }
 
 }

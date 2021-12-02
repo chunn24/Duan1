@@ -147,12 +147,12 @@ public class KhoHangJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tblKhoHang.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tblKhoHang.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tblKhoHang.setShowGrid(false);
         tblKhoHang.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblKhoHangMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                tblKhoHangMouseEntered(evt);
             }
         });
         jScrollPane4.setViewportView(tblKhoHang);
@@ -340,10 +340,6 @@ public class KhoHangJPanel extends javax.swing.JPanel {
         this.Buy();
     }//GEN-LAST:event_btnBuyActionPerformed
 
-    private void tblKhoHangMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblKhoHangMouseEntered
-        this.fillTable();
-    }//GEN-LAST:event_tblKhoHangMouseEntered
-
     private void txtGiaBanFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtGiaBanFocusGained
         if (txtGiaBan.getText().equalsIgnoreCase("0$")) {
             txtGiaBan.setText("");
@@ -410,9 +406,7 @@ public class KhoHangJPanel extends javax.swing.JPanel {
     void Buy() {
         int kh = Integer.parseInt(txtMaTH.getText());
         Float TrongLuong = Float.parseFloat(txtTrongLuong.getText());
-
         Double Coin = Double.parseDouble(txtThanhTien.getText());
-
         Float gb = Float.parseFloat(txtGiaBan.getText());
         Float slb = Float.parseFloat(txtSLBan.getText());
         Double Coin2 = Coin + (gb * slb);
@@ -421,7 +415,8 @@ public class KhoHangJPanel extends javax.swing.JPanel {
         try {
             khdao.update(TrongLuong2, Coin2, kh);
             this.fillTable();
-            MsgBox.alert(this, "Bán Thành Công :> ");
+            MsgBox.alert(this, "Bán Thành Công !");
+            clear();
         } catch (Exception e) {
             MsgBox.alert(this, "Bán Thất Bại !");
         }
@@ -465,6 +460,8 @@ public class KhoHangJPanel extends javax.swing.JPanel {
         txtTenCay.setText("");
         txtTenGian.setText("");
         txtThanhTien.setText("");
+        txtGiaBan.setText("");
+        txtSLBan.setText("");
         this.index = 0;
         this.updateStatus();
 
@@ -486,7 +483,7 @@ public class KhoHangJPanel extends javax.swing.JPanel {
         boolean last = (this.index == tblKhoHang.getRowCount() - 1);
         btnBuy.setEnabled(edit);
 
-    }
+    }   
 
     boolean Validation() {
 

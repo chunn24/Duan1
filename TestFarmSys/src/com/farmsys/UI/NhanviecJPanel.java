@@ -79,23 +79,26 @@ public class NhanViecJPanel extends javax.swing.JPanel {
         tblcv.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         tblcv.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Tên Công Việc", "Mô Tả", "Người Giao Việc", "Ngày Kết Thúc", "Trạng Thái"
+                "STT", "Tên Công Việc", "Mô Tả", "Người Giao Việc", "Ngày Kết Thúc", "Trạng Thái"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                true, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
+        tblcv.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tblcv.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tblcv.setShowGrid(false);
         tblcv.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblcvMouseClicked(evt);
@@ -270,10 +273,12 @@ public class NhanViecJPanel extends javax.swing.JPanel {
 
     private void btnnhanviecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnhanviecActionPerformed
         this.update();
+        this.clear();
     }//GEN-LAST:event_btnnhanviecActionPerformed
 
     private void btnhuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhuyActionPerformed
         this.updateAgain();
+        this.clear();
     }//GEN-LAST:event_btnhuyActionPerformed
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
@@ -419,4 +424,10 @@ public class NhanViecJPanel extends javax.swing.JPanel {
         return true;
     }
 
+    private void clear() {
+        txttencv.setText("");
+        txtngaykt.setText("");
+        txtmota.setText("");
+        txtgiaoviec.setText("");
+    }
 }
