@@ -113,6 +113,7 @@ public class TongQuan extends javax.swing.JFrame {
         lbldemNV = new javax.swing.JLabel();
         logocaycanTH1 = new javax.swing.JLabel();
         lblNhanvien = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         Manhinhlive = new javax.swing.JPanel();
         pnlavatar = new javax.swing.JPanel();
         lblhoten = new javax.swing.JLabel();
@@ -399,25 +400,25 @@ public class TongQuan extends javax.swing.JFrame {
         tblNhatKy.setAutoCreateRowSorter(true);
         tblNhatKy.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "STT", "Tên công việc", "Tên Cây", "Tên Giàn", "Chi tiết công việc", "Người tạo", "Nhân viên", "Bắt đầu", "Kết thúc", "Trạng thái"
+                "Tên công việc", "Tên Cây", "Tên Giàn", "Chi tiết công việc", "Người tạo", "Nhân viên", "Bắt đầu", "Kết thúc", "Trạng thái"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -432,7 +433,6 @@ public class TongQuan extends javax.swing.JFrame {
         tblNhatKy.setGridColor(new java.awt.Color(255, 255, 255));
         tblNhatKy.setMinimumSize(new java.awt.Dimension(750, 480));
         tblNhatKy.setRowHeight(40);
-        tblNhatKy.setRowSorter(null);
         tblNhatKy.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblNhatKy.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblNhatKy.setUpdateSelectionOnSort(false);
@@ -444,25 +444,14 @@ public class TongQuan extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblNhatKy);
         if (tblNhatKy.getColumnModel().getColumnCount() > 0) {
             tblNhatKy.getColumnModel().getColumn(0).setResizable(false);
-            tblNhatKy.getColumnModel().getColumn(0).setHeaderValue("STT");
             tblNhatKy.getColumnModel().getColumn(1).setResizable(false);
-            tblNhatKy.getColumnModel().getColumn(1).setHeaderValue("Tên công việc");
             tblNhatKy.getColumnModel().getColumn(2).setResizable(false);
-            tblNhatKy.getColumnModel().getColumn(2).setHeaderValue("Tên Cây");
             tblNhatKy.getColumnModel().getColumn(3).setResizable(false);
-            tblNhatKy.getColumnModel().getColumn(3).setHeaderValue("Tên Giàn");
             tblNhatKy.getColumnModel().getColumn(4).setResizable(false);
-            tblNhatKy.getColumnModel().getColumn(4).setHeaderValue("Chi tiết công việc");
             tblNhatKy.getColumnModel().getColumn(5).setResizable(false);
-            tblNhatKy.getColumnModel().getColumn(5).setHeaderValue("Người tạo");
             tblNhatKy.getColumnModel().getColumn(6).setResizable(false);
-            tblNhatKy.getColumnModel().getColumn(6).setHeaderValue("Nhân viên");
             tblNhatKy.getColumnModel().getColumn(7).setResizable(false);
-            tblNhatKy.getColumnModel().getColumn(7).setHeaderValue("Bắt đầu");
             tblNhatKy.getColumnModel().getColumn(8).setResizable(false);
-            tblNhatKy.getColumnModel().getColumn(8).setHeaderValue("Kết thúc");
-            tblNhatKy.getColumnModel().getColumn(9).setResizable(false);
-            tblNhatKy.getColumnModel().getColumn(9).setHeaderValue("Trạng thái");
         }
         tblNhatKy.getAccessibleContext().setAccessibleParent(pnltongquat);
 
@@ -536,25 +525,22 @@ public class TongQuan extends javax.swing.JFrame {
 
         tabs.addTab("tab1", pnltongquat);
 
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.setMinimumSize(new java.awt.Dimension(1090, 750));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1090, 750));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         Manhinhlive.setMinimumSize(new java.awt.Dimension(1090, 750));
+        Manhinhlive.setPreferredSize(new java.awt.Dimension(1090, 750));
         Manhinhlive.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ManhinhliveMouseClicked(evt);
             }
         });
+        Manhinhlive.setLayout(new javax.swing.BoxLayout(Manhinhlive, javax.swing.BoxLayout.LINE_AXIS));
+        jPanel1.add(Manhinhlive, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 108, 1020, 563));
 
-        javax.swing.GroupLayout ManhinhliveLayout = new javax.swing.GroupLayout(Manhinhlive);
-        Manhinhlive.setLayout(ManhinhliveLayout);
-        ManhinhliveLayout.setHorizontalGroup(
-            ManhinhliveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1090, Short.MAX_VALUE)
-        );
-        ManhinhliveLayout.setVerticalGroup(
-            ManhinhliveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 762, Short.MAX_VALUE)
-        );
-
-        tabs.addTab("tab2", Manhinhlive);
+        tabs.addTab("tab3", jPanel1);
 
         penalTong.add(tabs, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, -22, 1080, 790));
 
@@ -1133,6 +1119,7 @@ public class TongQuan extends javax.swing.JFrame {
 
     private void pnlTrangchuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlTrangchuMouseClicked
         tabs.setSelectedIndex(0);
+        this.pause();
     }//GEN-LAST:event_pnlTrangchuMouseClicked
 
     private void pnlTrangchuMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlTrangchuMouseEntered
@@ -1331,6 +1318,7 @@ public class TongQuan extends javax.swing.JFrame {
     private javax.swing.JTabbedPane TabsMnu;
     private com.farmsys.Helper.ImageAvatar imageAvatar;
     private javax.swing.JButton jButton1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
@@ -1435,7 +1423,7 @@ public class TongQuan extends javax.swing.JFrame {
         Ping3.play();
         new DangNhapJDialog(this, true).setVisible(true);
         Ping3.stop();
-
+        new welcomeunscreen(this, true).setVisible(true);
         Ping.play();
         loadLbl();
         addpanel();
@@ -1494,6 +1482,7 @@ public class TongQuan extends javax.swing.JFrame {
 
     private void OpenNhanVien() {
         if (Auth.isManager()) {
+            this.pause();
             tabs.setSelectedIndex(6);
         } else {
             MsgBox.alert(this, "Bạn không có quyền truy cập!");
@@ -1502,6 +1491,7 @@ public class TongQuan extends javax.swing.JFrame {
 
     private void OpenGianTrong() {
         if (Auth.isManager()) {
+            this.pause();
             tabs.setSelectedIndex(8);
         } else {
             MsgBox.alert(this, "Bạn không có quyền truy cập!");
@@ -1510,6 +1500,7 @@ public class TongQuan extends javax.swing.JFrame {
 
     private void OpenCayTrong() {
         if (Auth.isManager()) {
+            this.pause();
             tabs.setSelectedIndex(4);
         } else {
             MsgBox.alert(this, "Bạn không có quyền truy cập!");
@@ -1518,6 +1509,7 @@ public class TongQuan extends javax.swing.JFrame {
 
     private void OpenNhatky() {
         if (Auth.isLogin()) {
+            this.pause();
             tabs.setSelectedIndex(2);
         } else {
             MsgBox.alert(this, "Vui lòng đăng nhập!");
@@ -1526,6 +1518,7 @@ public class TongQuan extends javax.swing.JFrame {
 
     private void OpenGiaoViec() {
         if (Auth.isManager()) {
+            this.pause();
             tabs.setSelectedIndex(5);
         } else {
             MsgBox.alert(this, "Bạn không có quyền truy cập!");
@@ -1534,6 +1527,7 @@ public class TongQuan extends javax.swing.JFrame {
 
     private void OpenTodo() {
         if (Auth.isLogin()) {
+            this.pause();
             tabs.setSelectedIndex(3);
         } else {
             MsgBox.alert(this, "Vui lòng đăng nhập!");
@@ -1542,6 +1536,7 @@ public class TongQuan extends javax.swing.JFrame {
 
     private void Opendoing() {
         if (Auth.isLogin()) {
+            this.pause();
             tabs.setSelectedIndex(7);
         } else {
             MsgBox.alert(this, "Vui lòng đăng nhập!");
@@ -1550,6 +1545,7 @@ public class TongQuan extends javax.swing.JFrame {
 
     private void Openchart() {
         if (Auth.isLogin()) {
+            this.pause();
             tabs.setSelectedIndex(9);
         } else {
             MsgBox.alert(this, "Vui lòng đăng nhập!");
@@ -1567,6 +1563,7 @@ public class TongQuan extends javax.swing.JFrame {
 
     private void OpenKhohang() {
         if (Auth.isManager()) {
+            this.pause();
             tabs.setSelectedIndex(10);
         } else {
             MsgBox.alert(this, "Bạn không có quyền truy cập!");
@@ -1653,7 +1650,6 @@ public class TongQuan extends javax.swing.JFrame {
         for (NhatKy nk : list) {
             String status = trangThai(nk);
             model.addRow(new Object[]{
-                nk.getStt(),
                 nk.getTenCV(),
                 nk.getTenCay(),
                 nk.getTenGian(),

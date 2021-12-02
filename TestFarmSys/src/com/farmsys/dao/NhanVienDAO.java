@@ -21,7 +21,7 @@ import java.util.logging.Logger;
 public class NhanVienDAO extends FarmSysDAO<NhanVien, String> {
 
     String INSERT_SQL = "INSERT INTO NhanVien(MaNV, MatKhau, HoTen, GioiTinh, Email, Luong, VaiTro, Hinh, QRcode) VALUES(?,?,?,?,?,?,?,?,?)";
-    String UPDATE_SQL = "UPDATE NhanVien SET MatKhau=?,HoTen=?,GioiTinh=?,Email=?, Luong=?, VaiTro=?, Hinh=? WHERE MaNV=?";
+    String UPDATE_SQL = "UPDATE NhanVien SET MatKhau=?,HoTen=?,GioiTinh=?,Email=?, Luong=?, VaiTro=?, Hinh=?,QRcode=? WHERE MaNV=?";
     String UPDATEQRcode_SQL = "UPDATE NhanVien SET QRcode = ? WHERE QRcode = ?";
     String DELETE_SQL = "DELETE FROM NhanVien WHERE MaNV=?";
     String SELECT_ALL_SQL = "SELECT *FROM NhanVien";
@@ -45,7 +45,7 @@ public class NhanVienDAO extends FarmSysDAO<NhanVien, String> {
     @Override
     public void update(NhanVien entity) {
         try {
-            JdbcHelper.update(UPDATE_SQL, entity.getMatKhau(), entity.getHoTen(), entity.isGioiTinh(), entity.getEmail(), entity.getLuong(), entity.isVaiTro(), entity.getHinh(), entity.getMaNV());
+            JdbcHelper.update(UPDATE_SQL, entity.getMatKhau(), entity.getHoTen(), entity.isGioiTinh(), entity.getEmail(), entity.getLuong(), entity.isVaiTro(), entity.getHinh(), entity.getQRcodeString(), entity.getMaNV());
         } catch (SQLException ex) {
             Logger.getLogger(NhanVienDAO.class.getName()).log(Level.SEVERE, null, ex);
         }

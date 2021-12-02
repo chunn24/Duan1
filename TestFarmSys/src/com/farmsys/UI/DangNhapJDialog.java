@@ -49,7 +49,11 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
         super(parent, modal);
         initComponents();
         init();
+        WebcamQRcode.setBackground(new Color(0, 0, 0, 0));
+        animation(false);
+        
 
+//        WebcamQRcode.setBackground(new Color(1.0f, 1.0f, 1.0f, 0.0f));
     }
 
     /**
@@ -61,9 +65,11 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        doimkJDialog = new javax.swing.JDialog();
-        pnlTong1 = new javax.swing.JPanel();
-        Pnlnhap1 = new javax.swing.JPanel();
+        WebcamQRcode = new javax.swing.JFrame();
+        panelquetqr = new javax.swing.JPanel();
+        pnlTong = new javax.swing.JPanel();
+        lbllogo = new javax.swing.JLabel();
+        pnldoimk = new javax.swing.JPanel();
         txttaikhoanlaymk = new javax.swing.JTextField();
         txtmknew = new javax.swing.JPasswordField();
         btndoimk = new javax.swing.JButton();
@@ -80,9 +86,6 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
         txtxnmknew = new javax.swing.JPasswordField();
         lblxn = new javax.swing.JLabel();
         Doimk = new javax.swing.JLabel();
-        WebcamQRcode = new javax.swing.JFrame();
-        pnlTong = new javax.swing.JPanel();
-        lbllogo = new javax.swing.JLabel();
         Pnlnhap = new javax.swing.JPanel();
         txtMaNV = new javax.swing.JTextField();
         txtMatKhau = new javax.swing.JPasswordField();
@@ -97,25 +100,48 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
         lblsaitk = new javax.swing.JLabel();
         pnlfootQR = new javax.swing.JPanel();
         lblloginwwithQR = new javax.swing.JLabel();
-        lblreturn = new javax.swing.JLabel();
-        panelquetQR = new javax.swing.JPanel();
-        panelquetqr = new javax.swing.JPanel();
         txtQRcode = new javax.swing.JTextField();
 
-        doimkJDialog.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        doimkJDialog.setTitle("Đổi mật khẩu");
-        doimkJDialog.setBackground(new java.awt.Color(255, 255, 255));
-        doimkJDialog.setMinimumSize(new java.awt.Dimension(450, 525));
-        doimkJDialog.setModal(true);
-        doimkJDialog.setPreferredSize(new java.awt.Dimension(450, 525));
-        doimkJDialog.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        WebcamQRcode.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        WebcamQRcode.setTitle("Webcam");
+        WebcamQRcode.setAlwaysOnTop(true);
+        WebcamQRcode.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        WebcamQRcode.setLocationByPlatform(true);
+        WebcamQRcode.setMinimumSize(new java.awt.Dimension(470, 300));
+        WebcamQRcode.setUndecorated(true);
 
-        pnlTong1.setBackground(new java.awt.Color(150, 250, 150));
-        pnlTong1.setMinimumSize(new java.awt.Dimension(950, 470));
-        pnlTong1.setPreferredSize(new java.awt.Dimension(950, 470));
-        pnlTong1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelquetqr.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelquetqrMouseClicked(evt);
+            }
+        });
+        panelquetqr.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Pnlnhap1.setBackground(new java.awt.Color(255, 255, 255));
+        javax.swing.GroupLayout WebcamQRcodeLayout = new javax.swing.GroupLayout(WebcamQRcode.getContentPane());
+        WebcamQRcode.getContentPane().setLayout(WebcamQRcodeLayout);
+        WebcamQRcodeLayout.setHorizontalGroup(
+            WebcamQRcodeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panelquetqr, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        WebcamQRcodeLayout.setVerticalGroup(
+            WebcamQRcodeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panelquetqr, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Đăng nhập");
+        setMinimumSize(new java.awt.Dimension(950, 500));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        pnlTong.setBackground(new java.awt.Color(150, 250, 150));
+        pnlTong.setMinimumSize(new java.awt.Dimension(950, 470));
+        pnlTong.setPreferredSize(new java.awt.Dimension(950, 470));
+        pnlTong.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lbllogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/logofarmSys.gif"))); // NOI18N
+        pnlTong.add(lbllogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 500));
+
+        pnldoimk.setBackground(new java.awt.Color(255, 255, 255));
 
         txttaikhoanlaymk.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         txttaikhoanlaymk.setForeground(new java.awt.Color(51, 51, 51));
@@ -189,42 +215,42 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
         Doimk.setForeground(new java.awt.Color(0, 230, 0));
         Doimk.setText("Đổi mật khẩu");
 
-        javax.swing.GroupLayout Pnlnhap1Layout = new javax.swing.GroupLayout(Pnlnhap1);
-        Pnlnhap1.setLayout(Pnlnhap1Layout);
-        Pnlnhap1Layout.setHorizontalGroup(
-            Pnlnhap1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Pnlnhap1Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnldoimkLayout = new javax.swing.GroupLayout(pnldoimk);
+        pnldoimk.setLayout(pnldoimkLayout);
+        pnldoimkLayout.setHorizontalGroup(
+            pnldoimkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnldoimkLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(Pnlnhap1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Pnlnhap1Layout.createSequentialGroup()
+                .addGroup(pnldoimkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnldoimkLayout.createSequentialGroup()
                         .addComponent(lmltk, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(441, 441, 441))
-                    .addGroup(Pnlnhap1Layout.createSequentialGroup()
+                    .addGroup(pnldoimkLayout.createSequentialGroup()
                         .addComponent(txttaikhoanlaymk, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(Pnlnhap1Layout.createSequentialGroup()
+                    .addGroup(pnldoimkLayout.createSequentialGroup()
                         .addComponent(lblmkmoi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(262, 262, 262))
-                    .addGroup(Pnlnhap1Layout.createSequentialGroup()
-                        .addGroup(Pnlnhap1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnldoimkLayout.createSequentialGroup()
+                        .addGroup(pnldoimkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(Pnlnhap1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(pnldoimkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(Pnlnhap1Layout.createSequentialGroup()
+                                .addGroup(pnldoimkLayout.createSequentialGroup()
                                     .addComponent(lblOTP, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(txtOTP, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(Pnlnhap1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(Pnlnhap1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(Pnlnhap1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(pnldoimkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(pnldoimkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pnldoimkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(bntgetOPT)
-                                        .addGroup(Pnlnhap1Layout.createSequentialGroup()
+                                        .addGroup(pnldoimkLayout.createSequentialGroup()
                                             .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGap(1, 1, 1)))
                                     .addComponent(txtmknew, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtxnmknew, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(Pnlnhap1Layout.createSequentialGroup()
+                                .addGroup(pnldoimkLayout.createSequentialGroup()
                                     .addComponent(btndoimk, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(lblquaylaidangnhap)))
@@ -232,9 +258,9 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
                             .addComponent(Doimk))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
-        Pnlnhap1Layout.setVerticalGroup(
-            Pnlnhap1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Pnlnhap1Layout.createSequentialGroup()
+        pnldoimkLayout.setVerticalGroup(
+            pnldoimkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnldoimkLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(Doimk)
                 .addGap(33, 33, 33)
@@ -244,8 +270,8 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
-                .addGroup(Pnlnhap1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Pnlnhap1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pnldoimkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnldoimkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtOTP, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(bntgetOPT, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(lblOTP))
@@ -264,39 +290,15 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(Pnlnhap1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(pnldoimkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblquaylaidangnhap)
                     .addComponent(btndoimk, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(22, 22, 22))
         );
 
-        Pnlnhap1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtOTP, txtmknew, txttaikhoanlaymk, txtxnmknew});
+        pnldoimkLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtOTP, txtmknew, txttaikhoanlaymk, txtxnmknew});
 
-        pnlTong1.add(Pnlnhap1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 500));
-
-        doimkJDialog.getContentPane().add(pnlTong1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 500));
-
-        WebcamQRcode.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        WebcamQRcode.setTitle("Webcam");
-        WebcamQRcode.setAlwaysOnTop(true);
-        WebcamQRcode.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        WebcamQRcode.setLocationByPlatform(true);
-        WebcamQRcode.setMinimumSize(new java.awt.Dimension(457, 450));
-        WebcamQRcode.setUndecorated(true);
-        WebcamQRcode.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Đăng nhập");
-        setMinimumSize(new java.awt.Dimension(950, 500));
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        pnlTong.setBackground(new java.awt.Color(150, 250, 150));
-        pnlTong.setMinimumSize(new java.awt.Dimension(950, 470));
-        pnlTong.setPreferredSize(new java.awt.Dimension(950, 470));
-        pnlTong.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lbllogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/logofarmSys.gif"))); // NOI18N
-        pnlTong.add(lbllogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 500));
+        pnlTong.add(pnldoimk, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 500));
 
         Pnlnhap.setBackground(new java.awt.Color(255, 255, 255));
         Pnlnhap.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -371,7 +373,7 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
                 lblquenmkMouseExited(evt);
             }
         });
-        Pnlnhap.add(lblquenmk, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 320, 151, -1));
+        Pnlnhap.add(lblquenmk, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, -1, -1));
 
         lblsaimk.setForeground(new java.awt.Color(255, 0, 51));
         Pnlnhap.add(lblsaimk, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, -1, -1));
@@ -397,7 +399,7 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
             .addGap(0, 10, Short.MAX_VALUE)
         );
 
-        Pnlnhap.add(pnlfootQR, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, 120, 10));
+        Pnlnhap.add(pnlfootQR, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 330, 120, 10));
 
         lblloginwwithQR.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
         lblloginwwithQR.setText("Login with QR code");
@@ -412,44 +414,10 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
                 lblloginwwithQRMouseExited(evt);
             }
         });
-        Pnlnhap.add(lblloginwwithQR, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, 120, 20));
+        Pnlnhap.add(lblloginwwithQR, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 310, 120, 20));
 
         pnlTong.add(Pnlnhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(499, 0, 460, 500));
-
-        lblreturn.setBackground(new java.awt.Color(255, 255, 255));
-        lblreturn.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
-        lblreturn.setForeground(new java.awt.Color(255, 255, 255));
-        lblreturn.setText("Return");
-        lblreturn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblreturnMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lblreturnMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                lblreturnMouseExited(evt);
-            }
-        });
-        pnlTong.add(lblreturn, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 470, 50, 20));
-
-        panelquetQR.setBackground(new java.awt.Color(51, 51, 51));
-        panelquetQR.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 230, 230)));
-        panelquetQR.setMinimumSize(new java.awt.Dimension(457, 450));
-        panelquetQR.setPreferredSize(new java.awt.Dimension(457, 450));
-        panelquetQR.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                panelquetQRMouseClicked(evt);
-            }
-        });
-        panelquetQR.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        panelquetqr.setBackground(new java.awt.Color(255, 255, 255));
-        panelquetqr.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        panelquetQR.add(panelquetqr, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 500, 300));
-
-        pnlTong.add(panelquetQR, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 500));
-        pnlTong.add(txtQRcode, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 280, -1, -1));
+        pnlTong.add(txtQRcode, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 360, 200, -1));
 
         getContentPane().add(pnlTong, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 500));
 
@@ -489,8 +457,7 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
     }//GEN-LAST:event_txtMaNVFocusLost
 
     private void lblquenmkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblquenmkMouseClicked
-        Ping3.play();
-        doimkJDialog.setVisible(true);
+        animation(true);
     }//GEN-LAST:event_lblquenmkMouseClicked
 
     private void btndoimkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndoimkActionPerformed
@@ -498,8 +465,7 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
     }//GEN-LAST:event_btndoimkActionPerformed
 
     private void lblquaylaidangnhapMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblquaylaidangnhapMouseClicked
-        doimkJDialog.setVisible(false);
-        Ping3.play();
+        animation(false);
     }//GEN-LAST:event_lblquaylaidangnhapMouseClicked
 
     private void txtOTPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtOTPKeyPressed
@@ -530,36 +496,15 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
         lblquaylaidangnhap.setForeground(Color.BLACK);
     }//GEN-LAST:event_lblquaylaidangnhapMouseExited
 
-    private void lblreturnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblreturnMouseClicked
-        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
-        AnimationClass anim = new AnimationClass();
-        anim.jLabelXLeft(450, 0, 5, 1, lbllogo);
-        txtMaNV.setEnabled(false);
-        txtMatKhau.setEnabled(false);
-    }//GEN-LAST:event_lblreturnMouseClicked
-
-    private void lblreturnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblreturnMouseEntered
-        lblreturn.setForeground(new Color(0, 230, 0));
-    }//GEN-LAST:event_lblreturnMouseEntered
-
-    private void lblreturnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblreturnMouseExited
-        lblreturn.setForeground(Color.WHITE);
-    }//GEN-LAST:event_lblreturnMouseExited
-
-    private void panelquetQRMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelquetQRMouseClicked
-
-    }//GEN-LAST:event_panelquetQRMouseClicked
-
     private void pnlfootQRMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlfootQRMouseClicked
 
     }//GEN-LAST:event_pnlfootQRMouseClicked
 
     private void lblloginwwithQRMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblloginwwithQRMouseClicked
         pnlfootQR.setBackground(new Color(0, 230, 0));
-        btnDangNhap.setEnabled(false);
-//        QuetMaQR();
         initWebcam(true);
+        WebcamQRcode.setVisible(true);
+
     }//GEN-LAST:event_lblloginwwithQRMouseClicked
 
     private void lblloginwwithQRMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblloginwwithQRMouseEntered
@@ -569,6 +514,11 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
     private void lblloginwwithQRMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblloginwwithQRMouseExited
         lblloginwwithQR.setForeground(Color.BLACK);
     }//GEN-LAST:event_lblloginwwithQRMouseExited
+
+    private void panelquetqrMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelquetqrMouseClicked
+        webcam.close();
+        WebcamQRcode.setVisible(false);
+    }//GEN-LAST:event_panelquetqrMouseClicked
 
     /**
      * @param args the command line arguments
@@ -618,12 +568,10 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Doimk;
     private javax.swing.JPanel Pnlnhap;
-    private javax.swing.JPanel Pnlnhap1;
     private javax.swing.JFrame WebcamQRcode;
     private javax.swing.JButton bntgetOPT;
     private javax.swing.JButton btnDangNhap;
     private javax.swing.JButton btndoimk;
-    private javax.swing.JDialog doimkJDialog;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
@@ -638,16 +586,14 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
     private javax.swing.JLabel lblmkmoi;
     private javax.swing.JLabel lblquaylaidangnhap;
     private javax.swing.JLabel lblquenmk;
-    private javax.swing.JLabel lblreturn;
     private javax.swing.JLabel lblsaimk;
     private javax.swing.JLabel lblsaitk;
     private javax.swing.JLabel lbltk;
     private javax.swing.JLabel lblxn;
     private javax.swing.JLabel lmltk;
-    private javax.swing.JPanel panelquetQR;
     private javax.swing.JPanel panelquetqr;
     private javax.swing.JPanel pnlTong;
-    private javax.swing.JPanel pnlTong1;
+    private javax.swing.JPanel pnldoimk;
     private javax.swing.JPanel pnlfootQR;
     private javax.swing.JTextField txtMaNV;
     private javax.swing.JPasswordField txtMatKhau;
@@ -674,10 +620,8 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
 
     private void init() {
         setLocationRelativeTo(null);
-        txtxnmknew.setEnabled(true);
-        txtmknew.setEnabled(true);
-        doimkJDialog.setLocationRelativeTo(null);
-        this.WebcamQRcode.setLocationRelativeTo(this);
+        WebcamQRcode.setLocationRelativeTo(null);
+        txtMaNV.grabFocus();
     }
 
     void update() {
@@ -729,8 +673,7 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
                         MsgBox.alert(this, "Mã QR code không đúng !");
                     } else {
                         Auth.user = nhanvienQRcode;
-                        initWebcam(false);
-                        this.WebcamQRcode.dispose();
+                        webcam.close();
                         this.dispose();
                     }
 
@@ -738,8 +681,7 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
 //                    clearForm();
                 } else {
                     Auth.user = nhanVienEM;
-                    initWebcam(false);
-                    this.WebcamQRcode.dispose();
+                    webcam.close();
                     this.dispose();
                 }
             } else if (!matKhau.equals(nhanVien.getMatKhau())) {
@@ -750,8 +692,8 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
             } else {
                 Auth.user = nhanVien;
                 this.dispose();
-                initWebcam(false);
-                this.WebcamQRcode.dispose();
+                webcam.close();
+                this.dispose();
 
             }
 
@@ -807,10 +749,6 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
         }
     }
 
-    private void Closelogin() {
-        System.exit(0);
-    }
-
     private void clearForm() {
         txtMaNV.setText("");
         txtMatKhau.setText("");
@@ -820,8 +758,8 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
         txtMaNV.grabFocus();
     }
 
-    private void initWebcam(boolean webcamtruefalse) {
-        if (webcamtruefalse == true) {
+    private void initWebcam(boolean truefalse) {
+        if (truefalse) {
             Dimension size = WebcamResolution.QVGA.getSize();
             webcam = Webcam.getWebcams().get(0); //0 is default webcam
             webcam.setViewSize(size);
@@ -834,8 +772,7 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
 
             executor.execute(this);
         } else {
-            webcam.close();
-            this.WebcamQRcode.dispose();
+
         }
 
     }
@@ -847,7 +784,6 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
                 Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
-
             }
 
             Result result = null;
@@ -857,8 +793,6 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
                 if ((image = webcam.getImage()) == null) {
                     continue;
                 }
-            } else {
-                MsgBox.alert(rootPane, "Hãy kiểm tra lại webcam của bạn!");
             }
 
             LuminanceSource source = new BufferedImageLuminanceSource(image);
@@ -873,8 +807,6 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
             if (result != null) {
                 txtQRcode.setText(result.getText());
                 this.dangNhap();
-            } else {
-                MsgBox.alert(rootPane, "Hãy kiểm tra lại QR của bạn!");
             }
         } while (true);
     }
@@ -886,12 +818,38 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
         return t;
     }
 
-//    public void QuetMaQR() {
-//        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-//        this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
-//        AnimationClass anim = new AnimationClass();
-//        anim.jLabelXRight(lbllogo.getX(), 450, 5, 1, lbllogo);
-//        txtMaNV.setEnabled(false);
-//        txtMatKhau.setEnabled(false);
-//    }
+    public void animation(boolean evt) {
+        if (evt) {
+            Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+            this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
+            AnimationClass anim = new AnimationClass();
+            anim.jLabelXRight(lbllogo.getX(), 450, 1, 1, lbllogo);
+            txtMaNV.setEnabled(false);
+            txtMatKhau.setEnabled(false);
+            btnDangNhap.setEnabled(false);
+            lblquenmk.setEnabled(false);
+            lblloginwwithQR.setEnabled(false);
+            lblquaylaidangnhap.setEnabled(true);
+            txttaikhoanlaymk.setEnabled(true);
+            txtOTP.setEnabled(true);
+            txtmknew.setEnabled(true);
+            txtxnmknew.setEnabled(true);
+        } else {
+            Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+            this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
+            AnimationClass anim = new AnimationClass();
+            anim.jLabelXLeft(450, 0, 1, 1, lbllogo);
+            txtMaNV.setEnabled(true);
+            txtMatKhau.setEnabled(true);
+            btnDangNhap.setEnabled(true);
+            lblquenmk.setEnabled(true);
+            lblloginwwithQR.setEnabled(true);
+            lblquaylaidangnhap.setEnabled(false);
+            txttaikhoanlaymk.setEnabled(false);
+            txtOTP.setEnabled(false);
+            txtmknew.setEnabled(false);
+            txtxnmknew.setEnabled(false);
+        }
+
+    }
 }

@@ -73,110 +73,54 @@ public class NhatKyJPanel extends javax.swing.JPanel {
         TheNVJDialog.setUndecorated(true);
         TheNVJDialog.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        pnlTong.setBackground(new java.awt.Color(255, 255, 255));
         pnlTong.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnlTongMouseClicked(evt);
             }
         });
+        pnlTong.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         imageAvatar.setBackground(new java.awt.Color(255, 255, 255));
         imageAvatar.setForeground(new java.awt.Color(255, 255, 255));
+        pnlTong.add(imageAvatar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 124, 124));
 
         lblTenNV.setText("Tên");
+        pnlTong.add(lblTenNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, 52, 27));
 
         lblEmail.setText("Email:");
+        pnlTong.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 52, 34));
 
         lblVaiTro.setText("Vai Trò:");
+        pnlTong.add(lblVaiTro, new org.netbeans.lib.awtextra.AbsoluteConstraints(152, 115, 52, 34));
 
         lblGioiTinh.setText("Giới Tính: ");
+        pnlTong.add(lblGioiTinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 68, 34));
 
         txtEmail.setEditable(false);
         txtEmail.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        txtEmail.setText("jTextField1");
+        pnlTong.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(208, 76, 243, -1));
 
         txtVaiTro.setEditable(false);
         txtVaiTro.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        txtVaiTro.setText("jTextField1");
+        pnlTong.add(txtVaiTro, new org.netbeans.lib.awtextra.AbsoluteConstraints(208, 121, 243, -1));
 
         buttonGroup3.add(rdoNam);
         rdoNam.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         rdoNam.setText("Nam");
         rdoNam.setEnabled(false);
+        pnlTong.add(rdoNam, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 160, 60, -1));
 
         buttonGroup3.add(rdoNu);
         rdoNu.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         rdoNu.setText("Nữ");
         rdoNu.setEnabled(false);
+        pnlTong.add(rdoNu, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 160, 60, -1));
 
         txtTenNV.setEditable(false);
         txtTenNV.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        txtTenNV.setText("jTextField1");
+        pnlTong.add(txtTenNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(208, 32, 243, -1));
 
-        javax.swing.GroupLayout pnlTongLayout = new javax.swing.GroupLayout(pnlTong);
-        pnlTong.setLayout(pnlTongLayout);
-        pnlTongLayout.setHorizontalGroup(
-            pnlTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlTongLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(imageAvatar, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(pnlTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlTongLayout.createSequentialGroup()
-                        .addGroup(pnlTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlTongLayout.createSequentialGroup()
-                                .addGap(16, 16, 16)
-                                .addGroup(pnlTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblTenNV, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(pnlTongLayout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(lblVaiTro, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnlTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtVaiTro, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtTenNV, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(pnlTongLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(lblGioiTinh, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(rdoNam, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
-                        .addComponent(rdoNu, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(21, Short.MAX_VALUE))
-        );
-        pnlTongLayout.setVerticalGroup(
-            pnlTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlTongLayout.createSequentialGroup()
-                .addGroup(pnlTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlTongLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(imageAvatar, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlTongLayout.createSequentialGroup()
-                        .addGroup(pnlTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlTongLayout.createSequentialGroup()
-                                .addGap(70, 70, 70)
-                                .addGroup(pnlTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lblEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(pnlTongLayout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addGroup(pnlTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lblTenNV, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtTenNV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(pnlTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtVaiTro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblVaiTro, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
-                .addGroup(pnlTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblGioiTinh, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rdoNam)
-                    .addComponent(rdoNu))
-                .addContainerGap())
-        );
-
-        TheNVJDialog.getContentPane().add(pnlTong, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 220));
+        TheNVJDialog.getContentPane().add(pnlTong, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 220));
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(1083, 750));
@@ -203,25 +147,25 @@ public class NhatKyJPanel extends javax.swing.JPanel {
         tblNhatKy.setAutoCreateRowSorter(true);
         tblNhatKy.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "STT", "Tên công việc", "Tên Cây", "Tên Giàn", "Chi tiết công việc", "Người tạo", "Nhân viên", "Bắt đầu", "Kết thúc", "Trạng thái"
+                "Tên công việc", "Tên Cây", "Tên Giàn", "Chi tiết công việc", "Người tạo", "Nhân viên", "Bắt đầu", "Kết thúc", "Trạng thái"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -277,6 +221,7 @@ public class NhatKyJPanel extends javax.swing.JPanel {
             TheNVJDialog.setVisible(true);
             this.row = tblNhatKy.getSelectedRow();
             this.edit();
+            this.editimage();
         }
     }//GEN-LAST:event_tblNhatKyMouseClicked
 
@@ -332,7 +277,6 @@ public class NhatKyJPanel extends javax.swing.JPanel {
         for (NhatKy nk : list) {
             String status = trangThai(nk);
             model.addRow(new Object[]{
-                nk.getStt(),
                 nk.getTenCV(),
                 nk.getTenCay(),
                 nk.getTenGian(),
@@ -354,7 +298,6 @@ public class NhatKyJPanel extends javax.swing.JPanel {
         for (NhatKy nk : list) {
             String status = trangThai(nk);
             model.addRow(new Object[]{
-                nk.getStt(),
                 nk.getTenCV(),
                 nk.getTenCay(),
                 nk.getTenGian(),
@@ -376,7 +319,6 @@ public class NhatKyJPanel extends javax.swing.JPanel {
         for (NhatKy nk : list) {
             String status = trangThai(nk);
             model.addRow(new Object[]{
-                nk.getStt(),
                 nk.getTenCV(),
                 nk.getTenCay(),
                 nk.getTenGian(),
@@ -398,7 +340,6 @@ public class NhatKyJPanel extends javax.swing.JPanel {
         for (NhatKy nk : list) {
             String status = trangThai(nk);
             model.addRow(new Object[]{
-                nk.getStt(),
                 nk.getTenCV(),
                 nk.getTenCay(),
                 nk.getTenGian(),
@@ -447,13 +388,19 @@ public class NhatKyJPanel extends javax.swing.JPanel {
     JFileChooser fileChooser = new JFileChooser();
 
     private void edit() {
-        String manv = (String) tblNhatKy.getValueAt(this.row, 6);
-        String name = txtTenNV.getText();
-        NhanVien nv = nvdao.selectById(manv);
+        String manv = (String) tblNhatKy.getValueAt(this.row, 5);     
+        NhanVien nv = nvdao.selectById(manv);      
         this.setForm(nv);
+        
 
     }
 
+    void editimage() {
+        String name = txtTenNV.getText();
+        NhanVien nv = nvdao.selectHinh(name);
+        this.setAvatar(nv);
+    }
+    
     private void setForm(NhanVien nv) {
         txtTenNV.setText(nv.getHoTen());
         txtEmail.setText(nv.getEmail());
@@ -467,6 +414,9 @@ public class NhatKyJPanel extends javax.swing.JPanel {
         } else {
             rdoNu.setSelected(true);
         }
+    }
+
+    void setAvatar(NhanVien nv) {
         if (nv.getHinh() != null) {
             imageAvatar.setToolTipText(nv.getHinh());
             ImageIcon icon = XImage.read(nv.getHinh()); // Lấy địa chỉ của file Icon
@@ -474,6 +424,5 @@ public class NhatKyJPanel extends javax.swing.JPanel {
             Image scaleIcon = icon.getImage().getScaledInstance(imageAvatar.getWidth(), imageAvatar.getHeight(), Image.SCALE_DEFAULT);
             imageAvatar.setImage(new javax.swing.ImageIcon(scaleIcon));
         }
-
     }
 }

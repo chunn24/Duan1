@@ -88,17 +88,17 @@ public class HoanThanhcvJPanel extends javax.swing.JPanel {
         tblcv.setAutoCreateRowSorter(true);
         tblcv.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Stt", "Tên Công Việc", "Tên Giàn", "Tên Cây", "Mô Tả", "Ngày Kết Thúc", "Trạng Thái"
+                "Tên Công Việc", "Tên Giàn", "Tên Cây", "Mô Tả", "Ngày Kết Thúc", "Trạng Thái"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -150,8 +150,6 @@ public class HoanThanhcvJPanel extends javax.swing.JPanel {
         tong.add(txtngaykt, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 490, 260, 29));
 
         lblhinh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/hoanthanh.gif"))); // NOI18N
-        lblhinh.setText("jLabel1");
-        lblhinh.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         tong.add(lblhinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 340, 670, 340));
 
         paneldanhsach.add(tong, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 1050, 690));
@@ -233,7 +231,7 @@ public class HoanThanhcvJPanel extends javax.swing.JPanel {
         for (NhatKy nv : list) {
             String status = trangThai(nv);
             model.addRow(new Object[]{
-                nv.getStt(), nv.getTenCV(), nv.getTenGian(), nv.getTenCay(), nv.getChiTiet(), nv.getNgayKetThuc(), status
+                nv.getTenCV(), nv.getTenGian(), nv.getTenCay(), nv.getChiTiet(), nv.getNgayKetThuc(), status
             });
         }
     }
@@ -297,7 +295,7 @@ public class HoanThanhcvJPanel extends javax.swing.JPanel {
     }
 
     void edit() {
-        String manv = (String) tblcv.getValueAt(this.row, 1);
+        String manv = (String) tblcv.getValueAt(this.row, 0);
         NhatKy nv = nkDAO.selectById(manv);
         this.setForm(nv);
 

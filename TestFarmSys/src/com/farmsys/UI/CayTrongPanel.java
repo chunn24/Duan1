@@ -9,8 +9,6 @@ import com.farmsys.Entity.CayTrong;
 import com.farmsys.Helper.MsgBox;
 import com.farmsys.Helper.XImage;
 import com.farmsys.dao.CayTrongDAO;
-import static java.awt.Color.red;
-import static java.awt.Color.white;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.io.File;
@@ -83,17 +81,17 @@ public class CayTrongPanel extends javax.swing.JPanel {
         tblCayTrong.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tblCayTrong.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Mã cây trồng", "Tên cây trồng", "Thời gian thu hoạch", "Độ TDS", "Độ PH", "Nhiệt độ", "Độ ẩm"
+                "Tên cây trồng", "Thời gian thu hoạch", "Độ TDS", "Độ PH", "Nhiệt độ", "Độ ẩm"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -125,7 +123,10 @@ public class CayTrongPanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Mã cây trồng");
 
+        txtMaCay.setEditable(false);
+        txtMaCay.setBackground(new java.awt.Color(204, 204, 204));
         txtMaCay.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        txtMaCay.setEnabled(false);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("Tên cây trồng");
@@ -138,55 +139,55 @@ public class CayTrongPanel extends javax.swing.JPanel {
         txtThoiGianThuHoach.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel4.setText("Nồng độ TDS (ppm)");
+        jLabel4.setText("Độ TDS giới hạn (ppm)");
 
         txtDoTDS.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel5.setText("Nồng độ pH");
+        jLabel5.setText("Nồng độ (pH)");
 
         txtDoPH.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel6.setText("Nhiệt độ");
+        jLabel6.setText("Nhiệt độ (°C)");
 
         txtNhietDo.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel7.setText("Độ ẩm");
+        jLabel7.setText("Độ ẩm (%)");
 
         txtDoAm.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
 
+        btnAdd.setBackground(new java.awt.Color(255, 255, 255));
         btnAdd.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Add.png"))); // NOI18N
-        btnAdd.setText("Thêm");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddActionPerformed(evt);
             }
         });
 
+        btnUpdate.setBackground(new java.awt.Color(255, 255, 255));
         btnUpdate.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Refresh.png"))); // NOI18N
-        btnUpdate.setText("Sửa");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUpdateActionPerformed(evt);
             }
         });
 
+        btnDelete.setBackground(new java.awt.Color(255, 255, 255));
         btnDelete.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Delete.png"))); // NOI18N
-        btnDelete.setText("Xóa");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteActionPerformed(evt);
             }
         });
 
+        btnNew.setBackground(new java.awt.Color(255, 255, 255));
         btnNew.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/new.png"))); // NOI18N
-        btnNew.setText("Mới");
         btnNew.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNewActionPerformed(evt);
@@ -195,6 +196,7 @@ public class CayTrongPanel extends javax.swing.JPanel {
 
         lblHinh.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHinh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/FarmSys.png"))); // NOI18N
+        lblHinh.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblHinh.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblHinhMouseClicked(evt);
@@ -205,84 +207,98 @@ public class CayTrongPanel extends javax.swing.JPanel {
         pnlEdit.setLayout(pnlEditLayout);
         pnlEditLayout.setHorizontalGroup(
             pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlEditLayout.createSequentialGroup()
-                .addContainerGap(47, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlEditLayout.createSequentialGroup()
+                .addGap(161, 161, 161)
+                .addComponent(lblHinh, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addGap(124, 124, 124))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlEditLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
                 .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlEditLayout.createSequentialGroup()
-                        .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtMaCay)
+                    .addComponent(txtTenCay)
+                    .addGroup(pnlEditLayout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(302, 302, 302))
+                    .addGroup(pnlEditLayout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(309, 309, 309))
+                    .addGroup(pnlEditLayout.createSequentialGroup()
+                        .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(pnlEditLayout.createSequentialGroup()
-                                .addComponent(btnAdd)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnUpdate)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnDelete)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnNew))
-                            .addComponent(txtMaCay)
-                            .addComponent(txtTenCay)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel3)
+                                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(80, 80, 80))
                             .addGroup(pnlEditLayout.createSequentialGroup()
-                                .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel6)
-                                    .addComponent(txtNhietDo, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtDoTDS, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(98, 98, 98)
-                                .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel7)
-                                    .addComponent(txtDoPH)
-                                    .addComponent(txtDoAm, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(txtThoiGianThuHoach, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(34, 34, 34))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlEditLayout.createSequentialGroup()
-                        .addComponent(lblHinh, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(124, 124, 124))))
+                                .addComponent(txtNhietDo)
+                                .addGap(55, 55, 55))
+                            .addGroup(pnlEditLayout.createSequentialGroup()
+                                .addComponent(txtDoTDS)
+                                .addGap(55, 55, 55)))
+                        .addGap(98, 98, 98)
+                        .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlEditLayout.createSequentialGroup()
+                                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(18, 18, 18))
+                            .addGroup(pnlEditLayout.createSequentialGroup()
+                                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(37, 37, 37))
+                            .addComponent(txtDoPH)
+                            .addComponent(txtDoAm)))
+                    .addGroup(pnlEditLayout.createSequentialGroup()
+                        .addComponent(btnAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnDelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnNew, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(166, 166, 166))
+                    .addGroup(pnlEditLayout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(134, 134, 134))
+                    .addComponent(txtThoiGianThuHoach))
+                .addGap(34, 34, 34))
         );
         pnlEditLayout.setVerticalGroup(
             pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlEditLayout.createSequentialGroup()
-                .addComponent(lblHinh, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addComponent(lblHinh, javax.swing.GroupLayout.PREFERRED_SIZE, 167, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtMaCay, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 19, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtMaCay, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel2)
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtTenCay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtTenCay, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
                 .addGap(31, 31, 31)
-                .addComponent(jLabel3)
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtThoiGianThuHoach, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtThoiGianThuHoach, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
                 .addGap(38, 38, 38)
                 .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5))
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtDoTDS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDoPH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDoTDS, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                    .addComponent(txtDoPH, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE))
                 .addGap(28, 28, 28)
                 .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel6))
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtDoAm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNhietDo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDoAm, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                    .addComponent(txtNhietDo, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAdd)
-                    .addComponent(btnUpdate)
-                    .addComponent(btnDelete)
-                    .addComponent(btnNew))
-                .addGap(21, 21, 21))
+                    .addComponent(btnAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnDelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnNew, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(44, 44, 44))
         );
-
-        pnlEditLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtDoAm, txtDoPH, txtDoTDS, txtMaCay, txtNhietDo, txtTenCay, txtThoiGianThuHoach});
 
         pnltong.add(pnlEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(598, 34, 470, 690));
 
@@ -329,7 +345,7 @@ public class CayTrongPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
-        // TODO add your handling code here:
+
         this.clear();
     }//GEN-LAST:event_btnNewActionPerformed
 
@@ -370,7 +386,7 @@ public class CayTrongPanel extends javax.swing.JPanel {
         load();
         txtMaCay.setEnabled(true);
         tblCayTrong.setDefaultEditor(Object.class, null);
-        new Timer(10000, (ActionEvent e) -> {
+        new Timer(60000, (ActionEvent e) -> {
             this.load();
         }).start();
     }
@@ -381,8 +397,7 @@ public class CayTrongPanel extends javax.swing.JPanel {
         try {
             List<CayTrong> list = ctdao.selectAll();
             for (CayTrong ct : list) {
-                Object[] row = {
-                    ct.getMaCay(),
+                Object[] row = {                 
                     ct.getTenCay(),
                     ct.getThoiGianThuHoach(),
                     ct.getDoTDS(),
@@ -444,14 +459,21 @@ public class CayTrongPanel extends javax.swing.JPanel {
     }
 
     void clear() {
-        this.setModel(new CayTrong());
-        this.getstatus(true);
+        CayTrong model = new CayTrong();
+        txtMaCay.setText(ctdao.selectAll().size() + 1 + "");
+        txtTenCay.setText("");
+        txtThoiGianThuHoach.setText("");
+        txtDoAm.setText("60");
+        txtDoPH.setText("");
+        txtDoTDS.setText("");
+        txtNhietDo.setText("");
+        lblHinh.setIcon(new ImageIcon("src\\com\\farmsys\\icons\\FarmSys.png"));     
     }
 
     void edit() {
         try {
-            Integer mact = (Integer) tblCayTrong.getValueAt(this.index, 0);
-            CayTrong model = ctdao.selectByIdInt(mact);
+            String mact = (String) tblCayTrong.getValueAt(this.index, 0);
+            CayTrong model = ctdao.selectByTenCay(mact);
 
             if (model != null) {
                 this.setModel(model);
@@ -484,7 +506,6 @@ public class CayTrongPanel extends javax.swing.JPanel {
     CayTrong getModel() {
         if (Validation()) {
             CayTrong model = new CayTrong();
-            //        model.setMaCay(Integer.valueOf(txtMaCay.getText()));
             model.setTenCay(txtTenCay.getText());
             model.setThoiGianThuHoach(Integer.valueOf(txtThoiGianThuHoach.getText()));
             model.setDoTDS(Float.valueOf(txtDoTDS.getText()));
@@ -540,7 +561,7 @@ public class CayTrongPanel extends javax.swing.JPanel {
             return false;
         }
     }
-    
+
     public boolean checkTrungTen(JTextField txt) {
         if (ctdao.selectByTenCay(txt.getText()) == null) {
             return true;
@@ -552,6 +573,7 @@ public class CayTrongPanel extends javax.swing.JPanel {
     }
 
     boolean Validation() {
+
         if (txtTenCay.getText().isEmpty()) {
             MsgBox.alert(this, "Tên cây không được để trống ");
             txtTenCay.requestFocus();
@@ -582,37 +604,42 @@ public class CayTrongPanel extends javax.swing.JPanel {
             txtDoAm.requestFocus();
             return false;
         }
-        if (!(txtThoiGianThuHoach.getText().matches("\"^\\\\d+$\""))){
-            MsgBox.alert(this, "Thời gian thu hoạch phải là số nguyên dương");
+
+        int ngayTH = Integer.parseInt(txtThoiGianThuHoach.getText());
+        if (ngayTH < 0) {
+            MsgBox.alert(this, "Thời gian thu hoạch không được để số âm");
             txtThoiGianThuHoach.requestFocus();
             return false;
         }
-        
+
         float doph = Float.parseFloat(txtDoPH.getText());
-        if (doph <= 0 && doph > 12){
-            MsgBox.alert(this, "Độ PH của cây từ 1 -> 12");
+        if (doph <= 0 && doph > 14) {
+            MsgBox.alert(this, "Độ PH của cây từ 1 -> 14");
             txtDoPH.requestFocus();
             return false;
         }
         
-        if (!(txtDoTDS.getText().matches("[+]?[0-9]"))){
+        float tds = Float.parseFloat(txtDoTDS.getText());
+        if (tds<0) {
             MsgBox.alert(this, "Độ TDS phải là số dương");
             txtDoTDS.requestFocus();
             return false;
         }
-        
-        if (!(txtNhietDo.getText().matches("[+]?[0-9]"))){
-            MsgBox.alert(this, "Nhiệt độ phải là số dương");
+
+        float nhietdo = Float.parseFloat(txtNhietDo.getText());
+        if (nhietdo>=24 && nhietdo<=27) {
+            MsgBox.alert(this, "Nhiệt độ tốt cho cây phải từ 24°C -> 27°C");
             txtNhietDo.requestFocus();
             return false;
         }
-        
-        if (!(txtDoAm.getText().matches("[+]?[0-9]"))){
-            MsgBox.alert(this, "Độ ẩm phải là số dương");
+
+        float doAM = Float.parseFloat(txtDoAm.getText());
+        if (doAM>=60 && doAM<=65) {
+            MsgBox.alert(this, "Độ ẩm tốt cho cây phải từ 60% -> 65%");
             txtDoAm.requestFocus();
             return false;
         }
-        
+
         return true;
     }
 }

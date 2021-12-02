@@ -23,7 +23,7 @@ public class CayTrongDAO extends FarmSysDAO<CayTrong, String> {
     String INSERT_SQL = "INSERT INTO LoaiCay(TenCay,ThoiGianThuHoach,DoTDS,DoPH,NhietDo,DoAm,Hinh) VALUES(?,?,?,?,?,?,?)";
     String UPDATE_SQL = "UPDATE LoaiCay SET TenCay=?, ThoiGianThuHoach=?, DoTDS=?, DoPH=?, NhietDo=?, DoAm=?, Hinh=? WHERE MaCay=?";
     String DELETE_SQL = "DELETE FROM LoaiCay WHERE MaCay=?";
-    String SELECT_ALL_SQL = "SELECT *FROM LoaiCay";
+    String SELECT_ALL_SQL = "SELECT * FROM LoaiCay";
     String SELECT_BY_ID_SQL = "SELECT * FROM LoaiCay WHERE MaCay=?";
     String SELECT_BY_ID_TenCay = "SELECT * FROM LoaiCay WHERE TenCay =?";
 

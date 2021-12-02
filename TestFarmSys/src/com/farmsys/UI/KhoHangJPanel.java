@@ -71,7 +71,7 @@ public class KhoHangJPanel extends javax.swing.JPanel {
         PnlTong.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbltitle.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
-        lbltitle.setForeground(new java.awt.Color(255, 0, 0));
+        lbltitle.setForeground(new java.awt.Color(102, 255, 102));
         lbltitle.setText("Quản Lý Kho Hàng");
         PnlTong.add(lbltitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 7, 186, -1));
 
@@ -130,17 +130,17 @@ public class KhoHangJPanel extends javax.swing.JPanel {
         tblKhoHang.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         tblKhoHang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "MaTH", "Tên Giàn", "Tên Cây", "Trọng Lượng", "Ngày TH", "Thành Tiền"
+                "Tên Giàn", "Tên Cây", "Trọng Lượng", "Ngày TH", "Thành Tiền"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -436,7 +436,7 @@ public class KhoHangJPanel extends javax.swing.JPanel {
             List<KhoHang> list = khdao.selectByKeyword(keywords);
             for (KhoHang kh : list) {
                 Object[] row = {
-                    kh.getMaTH(), kh.getTenGian(), kh.getTenCay(), kh.getTrongLuong(),
+                    kh.getTenGian(), kh.getTenCay(), kh.getTrongLuong(),
                     kh.getNgayTH(), kh.getGiaThanh()
                 };
                 model.addRow(row);
@@ -448,7 +448,7 @@ public class KhoHangJPanel extends javax.swing.JPanel {
 
     void edit() {
         try {
-            String TenDan = (String) tblKhoHang.getValueAt(this.index, 1);
+            String TenDan = (String) tblKhoHang.getValueAt(this.index, 0);
             KhoHang kh = khdao.selectById(TenDan);
             this.setForm(kh);
 
