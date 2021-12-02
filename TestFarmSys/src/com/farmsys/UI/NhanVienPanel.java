@@ -57,10 +57,9 @@ public class NhanVienPanel extends javax.swing.JPanel {
     
     void init() {
         if (!Auth.isLogin()) {
-            MsgBox.alert(this, "Chưa đăng nhập");
+            MsgBox.alert(this, "Chưa đăng nhập, vô cái loz");
             System.exit(0);
         }
-      
         this.updateStatus();
         new Timer(60000, (ActionEvent e) -> {
             this.fillTable();
@@ -72,14 +71,14 @@ public class NhanVienPanel extends javax.swing.JPanel {
         if (!Auth.isManager()) {
             MsgBox.alert(this, "Không có quyền xóa nhân viên!");
         } else {
-            if (timKiemNhanVien() != 1) {
+            if (timKiemNhanVien() == -1) {
                 NhanVien nv = getForm();
-                String mk2 = new String(txtMatKhau2.getPassword());
-                if (!mk2.equals(nv.getMatKhau())) {
+                String mk1 = txtMatKhau.getText();
+                String mk2 = txtMatKhau2.getText();
+                if (!mk2.equals(mk1)) {
                     MsgBox.alert(this, "Xác nhận mật khẩu không đúng");
                 } else {
-                    try {
-                        
+                    try {                      
                         this.createQRcode();
                         dao.insert(nv);
                         this.fillTable();
@@ -96,8 +95,10 @@ public class NhanVienPanel extends javax.swing.JPanel {
     
     void update() {
         NhanVien nv = getForm();
+        String mk1 = new String(txtMatKhau.getPassword());
         String mk2 = new String(txtMatKhau2.getPassword());
-        if (!mk2.equals(nv.getMatKhau())) {
+        
+        if (!mk2.equals(mk1)) {
             MsgBox.alert(this, "Xác nhận mật khẩu không đúng!");
         } else {
             try {
@@ -140,6 +141,7 @@ public class NhanVienPanel extends javax.swing.JPanel {
         NhanVien nv = new NhanVien();
         this.setForm(nv);
         this.row = -1;
+        lblHinh1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/avatar.png")));
         this.updateStatus();
     }
     
@@ -214,6 +216,8 @@ public class NhanVienPanel extends javax.swing.JPanel {
             //Chuyển Icon sang image và điều chỉnh kích thước
             Image scaleIcon = icon.getImage().getScaledInstance(lblHinh1.getWidth(), lblHinh1.getHeight(), Image.SCALE_DEFAULT);
             lblHinh1.setIcon(new javax.swing.ImageIcon(scaleIcon));
+        }else{
+            lblHinh1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/avatar.png")));
         }
     }
     
@@ -337,9 +341,21 @@ public class NhanVienPanel extends javax.swing.JPanel {
         }
         
         if (!txtMatKhau2.getText().equals(txtMatKhau.getText())) {
-            MsgBox.alert(this, txtMatKhau.getText());
-            MsgBox.alert(this, "Xác nhận mật khẩu không chính xác!");
             txtMatKhau2.requestFocus();
+            return false;
+        }
+        
+        try {
+            Integer.parseInt(txtLuong.getText());
+        } catch (Exception e) {
+            MsgBox.alert(this, "Lương phải là số!");
+            txtLuong.requestFocus();
+            return false;
+        }
+        
+        if(Integer.parseInt(txtLuong.getText()) < 0){
+            MsgBox.alert(this, "Lương không được âm!");
+            txtLuong.requestFocus();
             return false;
         }
 
@@ -360,7 +376,8 @@ public class NhanVienPanel extends javax.swing.JPanel {
                 MsgBox.alert(this, "Mã nhân viên đã tồn tại!");
                 txtMaNV.requestFocus();
                 return i;
-            } else if (txtEmail.getText().equals(dao.selectAll().get(i).getEmail())) {
+            }
+            if (txtEmail.getText().equals(dao.selectAll().get(i).getEmail())) {
                 MsgBox.alert(this, "Email đã tồn tại!");
                 txtEmail.requestFocus();
                 return i;
