@@ -335,6 +335,17 @@ public class TongQuan extends javax.swing.JFrame {
 
         pnlBonus.setBackground(new java.awt.Color(153, 153, 255));
         pnlBonus.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        pnlBonus.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlBonusMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlBonusMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlBonusMouseExited(evt);
+            }
+        });
 
         lblDemDoneByMonth.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         lblDemDoneByMonth.setText("0");
@@ -1274,6 +1285,25 @@ public class TongQuan extends javax.swing.JFrame {
         this.OpenNhatky();
     }//GEN-LAST:event_tblNhatKyMouseClicked
 
+    private void pnlBonusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlBonusMouseClicked
+        MsgBox.alert(this, "Tổng công việc: " + nkdao.selectDoneByMonth(Auth.user.getMaNV()).size()
+                + "\n--------------------"
+                + "\nTrồng cây: " + nkdao.selectDoneTrongCayByMonth(Auth.user.getMaNV()).size()
+                + "\nChăm sóc: " + nkdao.selectDoneChamSocByMonth(Auth.user.getMaNV()).size()
+                + "\nThu hoạch: " + nkdao.selectDoneThuHoachByMonth(Auth.user.getMaNV()).size()
+                + "\n--------------------"
+                + "\nHủy bỏ" + nkdao.selectCancelByMonth(Auth.user.getMaNV()).size()
+        );
+    }//GEN-LAST:event_pnlBonusMouseClicked
+
+    private void pnlBonusMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlBonusMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pnlBonusMouseEntered
+
+    private void pnlBonusMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlBonusMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pnlBonusMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -1441,13 +1471,65 @@ public class TongQuan extends javax.swing.JFrame {
         }
     }
 
+    float getBonusMonth() {
+        int tongTrongCay = nkdao.selectDoneTrongCayByMonth(Auth.user.getMaNV()).size();
+        int tongChamSoc = nkdao.selectDoneChamSocByMonth(Auth.user.getMaNV()).size();
+        int tongThuHoach = nkdao.selectDoneThuHoachByMonth(Auth.user.getMaNV()).size();
+        int tongCancel = nkdao.selectCancelByMonth(Auth.user.getMaNV()).size();
+        float bonusTrongCay, bonusChamSoc, bonusThuHoach, bonusCancel, bonus;
+
+        // sét KPI trồng cây và trả về tiền thưởng trồng cây
+        if (tongTrongCay > 50) {
+            bonusTrongCay = (float) (tongTrongCay * 1.5);
+        } else if (tongTrongCay > 30) {
+            bonusTrongCay = (float) (tongTrongCay * 1.25);
+        } else {
+            bonusTrongCay = tongTrongCay * 1;
+        }
+
+        // sét KPI chăm sóc và trả về tiền thưởng thu hoạch
+        if (tongChamSoc > 150) {
+            bonusChamSoc = (float) (tongChamSoc * 1.75);
+        } else if (tongChamSoc > 100) {
+            bonusChamSoc = (float) (tongChamSoc * 1.5);
+        } else if (tongChamSoc > 50) {
+            bonusChamSoc = (float) (tongChamSoc * 1.25);
+        } else {
+            bonusChamSoc = tongChamSoc * 1;
+        }
+
+        // sét KPI thu hoạch và trả về tiền thưởng thu hoạch
+        if (tongThuHoach > 50) {
+            bonusThuHoach = (float) (tongThuHoach * 1.5);
+        } else if (tongThuHoach > 25) {
+            bonusThuHoach = (float) (tongThuHoach * 1.25);
+        } else {
+            bonusThuHoach = (float) (tongThuHoach * 1);
+        }
+
+        //sét KPI cancel và trả về tiền phạt
+        if (tongCancel > 10) {
+            bonusCancel = tongCancel * -2;
+        } else if (tongCancel > 5) {
+            bonusCancel = (float) (tongCancel * -1.5);
+        } else if (tongCancel > 3) {
+            bonusCancel = (float) (tongCancel * -1.25);
+        } else {
+            bonusCancel = tongCancel * 0;
+        }
+
+        return bonus = bonusTrongCay + bonusChamSoc + bonusThuHoach + bonusCancel;
+    }
+
     void count() {
         lblDemNhanViec.setText(nkdao.selectByTrangThaivaTennv(0, Auth.user.getMaNV()).size() + "");
         lblDemDangLam.setText(nkdao.selectByTrangThaivaTennv(1, Auth.user.getMaNV()).size() + "");
         lblDemKhoHang.setText(khdao.selectAll().size() + "");
-        lblDemDoneByMonth.setText(5 * (nkdao.selectDoneByMonth(Auth.user.getMaNV()).size()) + "");
+        lblDemDoneByMonth.setText(this.getBonusMonth() + "");
+
         lblDemSoCayTH.setText(thdao.selectAll().size() + "");
         lbldemNV.setText(nvdao.selectAll().size() + "");
+
     }
 
 // line chart
@@ -1473,14 +1555,14 @@ public class TongQuan extends javax.swing.JFrame {
     private void openDangXuat() {
         int ask = JOptionPane.showConfirmDialog(this, "Bạn có chắc là mình muốn đăng xuất ?", "Xác nhận", JOptionPane.YES_NO_OPTION);
         if (ask == 0) {
-            this.dispose();
+           
             new TongQuan().setVisible(true);
         }
     }
 
     private void OpenNhanVien() {
         if (Auth.isManager()) {
-            this.pause();
+           
             tabs.setSelectedIndex(6);
         } else {
             MsgBox.alert(this, "Bạn không có quyền truy cập!");
@@ -1489,7 +1571,7 @@ public class TongQuan extends javax.swing.JFrame {
 
     private void OpenGianTrong() {
         if (Auth.isManager()) {
-            this.pause();
+           
             tabs.setSelectedIndex(8);
         } else {
             MsgBox.alert(this, "Bạn không có quyền truy cập!");
@@ -1498,7 +1580,7 @@ public class TongQuan extends javax.swing.JFrame {
 
     private void OpenCayTrong() {
         if (Auth.isManager()) {
-            this.pause();
+            
             tabs.setSelectedIndex(4);
         } else {
             MsgBox.alert(this, "Bạn không có quyền truy cập!");
@@ -1507,7 +1589,7 @@ public class TongQuan extends javax.swing.JFrame {
 
     private void OpenNhatky() {
         if (Auth.isLogin()) {
-            this.pause();
+          
             tabs.setSelectedIndex(2);
         } else {
             MsgBox.alert(this, "Vui lòng đăng nhập!");
@@ -1516,7 +1598,7 @@ public class TongQuan extends javax.swing.JFrame {
 
     private void OpenGiaoViec() {
         if (Auth.isManager()) {
-            this.pause();
+            
             tabs.setSelectedIndex(5);
         } else {
             MsgBox.alert(this, "Bạn không có quyền truy cập!");
@@ -1525,7 +1607,7 @@ public class TongQuan extends javax.swing.JFrame {
 
     private void OpenTodo() {
         if (Auth.isLogin()) {
-            this.pause();
+            
             tabs.setSelectedIndex(3);
         } else {
             MsgBox.alert(this, "Vui lòng đăng nhập!");
@@ -1534,7 +1616,7 @@ public class TongQuan extends javax.swing.JFrame {
 
     private void Opendoing() {
         if (Auth.isLogin()) {
-            this.pause();
+           
             tabs.setSelectedIndex(7);
         } else {
             MsgBox.alert(this, "Vui lòng đăng nhập!");
@@ -1543,7 +1625,7 @@ public class TongQuan extends javax.swing.JFrame {
 
     private void Openchart() {
         if (Auth.isLogin()) {
-            this.pause();
+            
             tabs.setSelectedIndex(9);
         } else {
             MsgBox.alert(this, "Vui lòng đăng nhập!");
@@ -1561,7 +1643,7 @@ public class TongQuan extends javax.swing.JFrame {
 
     private void OpenKhohang() {
         if (Auth.isManager()) {
-            this.pause();
+           
             tabs.setSelectedIndex(10);
         } else {
             MsgBox.alert(this, "Bạn không có quyền truy cập!");
@@ -1750,4 +1832,5 @@ public class TongQuan extends javax.swing.JFrame {
         myThread.runnable = false;            // stop thread       
         webSource.release();  // stop caturing fron cam
     }
+
 }

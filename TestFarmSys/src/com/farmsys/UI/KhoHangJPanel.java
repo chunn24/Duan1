@@ -498,8 +498,37 @@ public class KhoHangJPanel extends javax.swing.JPanel {
         } else {
             try {
                 int thoiluong = Integer.parseInt(txtTrongLuong.getText());
-            } catch (Exception e) {
+            } catch (NumberFormatException e) {
                 MsgBox.alert(this, "Sai kiểu dữ liệu thời lượng!");
+                txtTrongLuong.setFocusable(true);
+                return false;
+            }
+        }
+        //Kiểm tra trọng lượng
+        if (txtTrongLuong.getText().length() == 0) {
+            MsgBox.alert(this, "Trọng lượng không được để trống!");
+            txtTrongLuong.setFocusable(true);
+            return false;
+        } else {
+            try {
+                Float thoiluong = Float.parseFloat(txtTrongLuong.getText());
+            } catch (NumberFormatException e) {
+                MsgBox.alert(this, "Chỉ Được Phép Nhập Số!");
+                txtTrongLuong.setFocusable(true);
+                return false;
+            }
+        }
+
+        //Kiểm tra giá thành
+        if (txtGiaBan.getText().length() == 0) {
+            MsgBox.alert(this, "Giá bán không được để trống!");
+            txtTrongLuong.setFocusable(true);
+            return false;
+        } else {
+            try {
+                Double thoiluong = Double.parseDouble(txtGiaBan.getText());
+            } catch (NumberFormatException e) {
+                MsgBox.alert(this, "Chỉ Được Phép Nhập Số!");
                 txtTrongLuong.setFocusable(true);
                 return false;
             }
