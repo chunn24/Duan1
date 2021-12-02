@@ -28,9 +28,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.RenderingHints;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -525,7 +523,7 @@ public class TongQuan extends javax.swing.JFrame {
 
         tabs.addTab("tab1", pnltongquat);
 
-        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setMinimumSize(new java.awt.Dimension(1090, 750));
         jPanel1.setPreferredSize(new java.awt.Dimension(1090, 750));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
