@@ -21,8 +21,8 @@ import java.util.logging.Logger;
 public class CayTrongDAO extends FarmSysDAO<CayTrong, String> {
 
     String INSERT_SQL = "INSERT INTO LoaiCay(TenCay,ThoiGianThuHoach,DoTDS,DoPH,NhietDo,DoAm,Hinh) VALUES(?,?,?,?,?,?,?)";
-    String UPDATE_SQL = "UPDATE LoaiCay SET TenCay=?, ThoiGianThuHoach=?, DoTDS=?, DoPH=?, NhietDo=?, DoAm=?, Hinh=? WHERE MaCay=?";
-    String DELETE_SQL = "DELETE FROM LoaiCay WHERE MaCay=?";
+    String UPDATE_SQL = "UPDATE LoaiCay SET TenCay=?, ThoiGianThuHoach=?, DoTDS=?, DoPH=?, NhietDo=?, DoAm=?, Hinh=? WHERE TenCay=?";
+    String DELETE_SQL = "DELETE FROM LoaiCay WHERE TenCay=?";
     String SELECT_ALL_SQL = "SELECT * FROM LoaiCay";
     String SELECT_BY_ID_SQL = "SELECT * FROM LoaiCay WHERE MaCay=?";
     String SELECT_BY_ID_TenCay = "SELECT * FROM LoaiCay WHERE TenCay =?";
@@ -39,7 +39,7 @@ public class CayTrongDAO extends FarmSysDAO<CayTrong, String> {
     @Override
     public void update(CayTrong entity) {
         try {
-            JdbcHelper.update(UPDATE_SQL, entity.getTenCay(), entity.getThoiGianThuHoach(), entity.getDoTDS(), entity.getDoPH(), entity.getNhietDo(), entity.getDoAm(), entity.getHinh(), entity.getMaCay());
+            JdbcHelper.update(UPDATE_SQL, entity.getTenCay(), entity.getThoiGianThuHoach(), entity.getDoTDS(), entity.getDoPH(), entity.getNhietDo(), entity.getDoAm(), entity.getHinh(), entity.getTenCay());
         } catch (SQLException ex) {
             Logger.getLogger(CayTrongDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -67,6 +67,7 @@ public class CayTrongDAO extends FarmSysDAO<CayTrong, String> {
         }
         return list.get(0);
     }
+
     public CayTrong selectByTenCay(String key) {
         List<CayTrong> list = this.selectBySql(SELECT_BY_ID_TenCay, key);
         if (list.isEmpty()) {
@@ -88,7 +89,7 @@ public class CayTrongDAO extends FarmSysDAO<CayTrong, String> {
                 entity.setDoTDS(rs.getFloat("DoTDS"));
                 entity.setDoPH(rs.getFloat("DoPH"));
                 entity.setNhietDo(rs.getInt("NhietDo"));
-                entity.setDoAm(rs.getFloat("DoAm"));
+                entity.setDoAm(rs.getInt("DoAm"));
                 entity.setHinh(rs.getString("Hinh"));
                 list.add(entity);
             }

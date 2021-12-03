@@ -51,8 +51,6 @@ public class CayTrongPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblCayTrong = new javax.swing.JTable();
         pnlEdit = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        txtMaCay = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         txtTenCay = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -122,14 +120,6 @@ public class CayTrongPanel extends javax.swing.JPanel {
         pnltong.add(pnlList, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 44, 590, 670));
 
         pnlEdit.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setText("Mã cây trồng");
-
-        txtMaCay.setEditable(false);
-        txtMaCay.setBackground(new java.awt.Color(204, 204, 204));
-        txtMaCay.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
-        txtMaCay.setEnabled(false);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("Tên cây trồng");
@@ -212,19 +202,15 @@ public class CayTrongPanel extends javax.swing.JPanel {
             pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlEditLayout.createSequentialGroup()
                 .addGap(161, 161, 161)
-                .addComponent(lblHinh, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addComponent(lblHinh, javax.swing.GroupLayout.PREFERRED_SIZE, 185, Short.MAX_VALUE)
                 .addGap(124, 124, 124))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlEditLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
+            .addGroup(pnlEditLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
                 .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtMaCay)
                     .addComponent(txtTenCay)
                     .addGroup(pnlEditLayout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(302, 302, 302))
-                    .addGroup(pnlEditLayout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(309, 309, 309))
                     .addGroup(pnlEditLayout.createSequentialGroup()
                         .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -260,24 +246,20 @@ public class CayTrongPanel extends javax.swing.JPanel {
                         .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(134, 134, 134))
                     .addComponent(txtThoiGianThuHoach))
-                .addGap(34, 34, 34))
+                .addContainerGap())
         );
         pnlEditLayout.setVerticalGroup(
             pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlEditLayout.createSequentialGroup()
-                .addComponent(lblHinh, javax.swing.GroupLayout.PREFERRED_SIZE, 167, Short.MAX_VALUE)
+                .addComponent(lblHinh, javax.swing.GroupLayout.PREFERRED_SIZE, 169, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 19, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtMaCay, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtTenCay, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+                .addComponent(txtTenCay, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
                 .addGap(31, 31, 31)
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtThoiGianThuHoach, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+                .addComponent(txtThoiGianThuHoach, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
                 .addGap(38, 38, 38)
                 .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -296,11 +278,11 @@ public class CayTrongPanel extends javax.swing.JPanel {
                     .addComponent(txtNhietDo, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnAdd, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
                     .addComponent(btnUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnDelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnNew, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(44, 44, 44))
+                .addGap(117, 117, 117))
         );
 
         pnltong.add(pnlEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(598, 34, 470, 690));
@@ -347,7 +329,7 @@ public class CayTrongPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
-        
+
         this.clear();
     }//GEN-LAST:event_btnNewActionPerformed
 
@@ -362,7 +344,6 @@ public class CayTrongPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnNew;
     private javax.swing.JButton btnUpdate;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -378,7 +359,6 @@ public class CayTrongPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtDoAm;
     private javax.swing.JTextField txtDoPH;
     private javax.swing.JTextField txtDoTDS;
-    private javax.swing.JTextField txtMaCay;
     private javax.swing.JTextField txtNhietDo;
     private javax.swing.JTextField txtTenCay;
     private javax.swing.JTextField txtThoiGianThuHoach;
@@ -386,11 +366,11 @@ public class CayTrongPanel extends javax.swing.JPanel {
 
     public void init() {
         load();
-        txtMaCay.setEnabled(true);
         tblCayTrong.setDefaultEditor(Object.class, null);
         new Timer(60000, (ActionEvent e) -> {
             this.load();
         }).start();
+        clear();
     }
 
     void load() {
@@ -399,7 +379,7 @@ public class CayTrongPanel extends javax.swing.JPanel {
         try {
             List<CayTrong> list = ctdao.selectAll();
             for (CayTrong ct : list) {
-                Object[] row = {                 
+                Object[] row = {
                     ct.getTenCay(),
                     ct.getThoiGianThuHoach(),
                     ct.getDoTDS(),
@@ -442,13 +422,13 @@ public class CayTrongPanel extends javax.swing.JPanel {
     }
 
     void delete() {
-        if (txtMaCay.getText().isEmpty()) {
+        if (txtTenCay.getText().isEmpty()) {
             MsgBox.alert(this, "Bạn chưa chọn cây cần xóa");
         } else {
             if (MsgBox.confirm(this, "Bạn có muốn xóa hay không?")) {
-                String mact = txtMaCay.getText();
+                String Tencay = txtTenCay.getText();
                 try {
-                    ctdao.delete(mact);
+                    ctdao.delete(Tencay);
                     this.load();
                     this.clear();
                     MsgBox.alert(this, "Xóa thành công!");
@@ -462,21 +442,20 @@ public class CayTrongPanel extends javax.swing.JPanel {
 
     void clear() {
         CayTrong model = new CayTrong();
-        txtMaCay.setText(ctdao.selectAll().size() + 1 + "");
         txtTenCay.setText("");
         txtThoiGianThuHoach.setText("");
         txtDoAm.setText("60");
         txtDoPH.setText("");
         txtDoTDS.setText("");
         txtNhietDo.setText("");
-        lblHinh.setIcon(new ImageIcon("src\\com\\farmsys\\icons\\FarmSys.png"));  
+        lblHinh.setIcon(new ImageIcon("src\\com\\farmsys\\icons\\FarmSys.png"));
         this.getstatus(true);
     }
 
     void edit() {
         try {
-            String mact = (String) tblCayTrong.getValueAt(this.index, 0);
-            CayTrong model = ctdao.selectByTenCay(mact);
+            String tencay = (String) tblCayTrong.getValueAt(this.index, 0);
+            CayTrong model = ctdao.selectByTenCay(tencay);
 
             if (model != null) {
                 this.setModel(model);
@@ -488,7 +467,6 @@ public class CayTrongPanel extends javax.swing.JPanel {
     }
 
     void setModel(CayTrong model) {
-        txtMaCay.setText(String.valueOf(model.getMaCay()));
         txtTenCay.setText(model.getTenCay());
         txtThoiGianThuHoach.setText(String.valueOf(model.getThoiGianThuHoach()));
         txtDoTDS.setText(String.valueOf(model.getDoTDS()));
@@ -513,8 +491,8 @@ public class CayTrongPanel extends javax.swing.JPanel {
             model.setThoiGianThuHoach(Integer.valueOf(txtThoiGianThuHoach.getText()));
             model.setDoTDS(Float.valueOf(txtDoTDS.getText()));
             model.setDoPH(Float.valueOf(txtDoPH.getText()));
-            model.setNhietDo(Float.valueOf(txtNhietDo.getText()));
-            model.setDoAm(Float.valueOf(txtDoAm.getText()));
+            model.setNhietDo(Integer.valueOf(txtNhietDo.getText()));
+            model.setDoAm(Integer.valueOf(txtDoAm.getText()));
             model.setHinh(lblHinh.getToolTipText());
             return model;
         }
@@ -522,7 +500,6 @@ public class CayTrongPanel extends javax.swing.JPanel {
     }
 
     void getstatus(boolean insertable) {
-        txtMaCay.setEditable(insertable);
         btnAdd.setEnabled(insertable);
         btnUpdate.setEnabled(!insertable);
         btnDelete.setEnabled(!insertable);
@@ -576,26 +553,27 @@ public class CayTrongPanel extends javax.swing.JPanel {
     }
 
     boolean Validation() {
-        String rgx = "[0-9]";
+
         if (txtTenCay.getText().isEmpty()) {
             MsgBox.alert(this, "Tên cây không được để trống ");
             txtTenCay.requestFocus();
             return false;
         }
-        
-        if (txtTenCay.getText().matches(rgx)){
+
+        String rgx = "[0-9]";
+        if (txtTenCay.getText().matches(rgx)) {
             MsgBox.alert(this, "Tên cây không được chứa số ");
             txtTenCay.requestFocus();
             return false;
         }
-        
-        if(txtTenCay.getText().length() <= 30){
+
+        if (txtTenCay.getText().length() >= 30) {
             MsgBox.alert(this, "Tên cây không được quá 30 kí tự ");
             txtTenCay.requestFocus();
             return false;
-            
+
         }
-                
+
         if (txtThoiGianThuHoach.getText().isEmpty()) {
             MsgBox.alert(this, "Thời gian thu hoạch cây không được để trống ");
             txtThoiGianThuHoach.requestFocus();
@@ -630,34 +608,32 @@ public class CayTrongPanel extends javax.swing.JPanel {
         }
 
         float doph = Float.parseFloat(txtDoPH.getText());
-        if (doph <= 0 && doph > 14) {
+        if (doph < 0 && doph > 14) {
             MsgBox.alert(this, "Độ PH của cây từ 1 -> 14");
             txtDoPH.requestFocus();
             return false;
         }
-        
+
         float tds = Float.parseFloat(txtDoTDS.getText());
-        if (tds<0) {
+        if (tds < 0) {
             MsgBox.alert(this, "Độ TDS phải là số dương");
             txtDoTDS.requestFocus();
             return false;
         }
 
-        float nhietdo = Float.parseFloat(txtNhietDo.getText());
-        
-        if (nhietdo >= 24 && nhietdo <= 27) {
+        int nhietdo = Integer.parseInt(txtNhietDo.getText());
+        if (nhietdo < 24 && nhietdo > 27) {
             MsgBox.alert(this, "Nhiệt độ tốt cho cây phải từ 24°C -> 27°C");
             txtNhietDo.requestFocus();
             return false;
         }
 
-        float doAM = Float.parseFloat(txtDoAm.getText());
-        if (doAM >= 60 && doAM <= 65) {
+        int doAM = Integer.parseInt(txtDoAm.getText());
+        if (doAM < 60 && doAM > 65) {
             MsgBox.alert(this, "Độ ẩm tốt cho cây phải từ 60% -> 65%");
             txtDoAm.requestFocus();
             return false;
         }
-
         return true;
     }
 }

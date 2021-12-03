@@ -1564,15 +1564,15 @@ public class TongQuan extends javax.swing.JFrame {
 
     private void openDangXuat() {
         int ask = JOptionPane.showConfirmDialog(this, "Bạn có chắc là mình muốn đăng xuất ?", "Xác nhận", JOptionPane.YES_NO_OPTION);
-        if (ask == 0) {       
+        if (ask == 0) {
             this.dispose();
-            new TongQuan().setVisible(true);          
+            new TongQuan().setVisible(true);
         }
     }
 
     private void OpenNhanVien() {
         if (Auth.isManager()) {
-            
+
             tabs.setSelectedIndex(6);
         } else {
             MsgBox.alert(this, "Bạn không có quyền truy cập!");
@@ -1581,7 +1581,7 @@ public class TongQuan extends javax.swing.JFrame {
 
     private void OpenGianTrong() {
         if (Auth.isManager()) {
-           
+
             tabs.setSelectedIndex(8);
         } else {
             MsgBox.alert(this, "Bạn không có quyền truy cập!");
@@ -1590,7 +1590,7 @@ public class TongQuan extends javax.swing.JFrame {
 
     private void OpenCayTrong() {
         if (Auth.isManager()) {
-            
+
             tabs.setSelectedIndex(4);
         } else {
             MsgBox.alert(this, "Bạn không có quyền truy cập!");
@@ -1599,7 +1599,7 @@ public class TongQuan extends javax.swing.JFrame {
 
     private void OpenNhatky() {
         if (Auth.isLogin()) {
-          
+
             tabs.setSelectedIndex(2);
         } else {
             MsgBox.alert(this, "Vui lòng đăng nhập!");
@@ -1608,7 +1608,7 @@ public class TongQuan extends javax.swing.JFrame {
 
     private void OpenGiaoViec() {
         if (Auth.isManager()) {
-            
+
             tabs.setSelectedIndex(5);
         } else {
             MsgBox.alert(this, "Bạn không có quyền truy cập!");
@@ -1617,7 +1617,7 @@ public class TongQuan extends javax.swing.JFrame {
 
     private void OpenTodo() {
         if (Auth.isLogin()) {
-            
+
             tabs.setSelectedIndex(3);
         } else {
             MsgBox.alert(this, "Vui lòng đăng nhập!");
@@ -1626,7 +1626,7 @@ public class TongQuan extends javax.swing.JFrame {
 
     private void Opendoing() {
         if (Auth.isLogin()) {
-           
+
             tabs.setSelectedIndex(7);
         } else {
             MsgBox.alert(this, "Vui lòng đăng nhập!");
@@ -1635,7 +1635,7 @@ public class TongQuan extends javax.swing.JFrame {
 
     private void Openchart() {
         if (Auth.isLogin()) {
-            
+
             tabs.setSelectedIndex(9);
         } else {
             MsgBox.alert(this, "Vui lòng đăng nhập!");
@@ -1653,7 +1653,7 @@ public class TongQuan extends javax.swing.JFrame {
 
     private void OpenKhohang() {
         if (Auth.isManager()) {
-           
+
             tabs.setSelectedIndex(10);
         } else {
             MsgBox.alert(this, "Bạn không có quyền truy cập!");
@@ -1789,9 +1789,7 @@ public class TongQuan extends javax.swing.JFrame {
     }
 
     class DaemonThread implements Runnable {
-
         protected volatile boolean runnable = false;
-
         @Override
         public void run() {
             synchronized (this) {

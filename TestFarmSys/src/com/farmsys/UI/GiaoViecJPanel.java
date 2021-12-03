@@ -46,17 +46,17 @@ public class GiaoViecJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         PanelTong = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        lblNguoiNhanViec = new javax.swing.JLabel();
+        lblghiChu = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtGhiChu = new javax.swing.JTextArea();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        btnGiaoViet = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        lblNgayBD = new javax.swing.JLabel();
+        lblKiemTra = new javax.swing.JLabel();
+        lblTenCV = new javax.swing.JLabel();
+        lblGianCay = new javax.swing.JLabel();
+        btnGiaoViec = new javax.swing.JButton();
+        lblCaytrong = new javax.swing.JLabel();
+        lblNguoiTao = new javax.swing.JLabel();
         txtnguoitao = new javax.swing.JTextField();
         cboCongViec = new javax.swing.JComboBox<>();
         cboGianTrong = new javax.swing.JComboBox<>();
@@ -71,45 +71,45 @@ public class GiaoViecJPanel extends javax.swing.JPanel {
         PanelTong.setBackground(new java.awt.Color(255, 255, 255));
         PanelTong.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Giao Việc", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 36), new java.awt.Color(0, 0, 204))); // NOI18N
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel7.setText("Người nhận việc:");
+        lblNguoiNhanViec.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblNguoiNhanViec.setText("Người nhận việc:");
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel8.setText("Ghi chú:");
+        lblghiChu.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblghiChu.setText("Ghi chú:");
 
         txtGhiChu.setColumns(20);
         txtGhiChu.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtGhiChu.setRows(5);
         jScrollPane2.setViewportView(txtGhiChu);
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel3.setText("Ngày bắt đầu:");
+        lblNgayBD.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblNgayBD.setText("Ngày bắt đầu:");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel4.setText("Ngày kiểm tra:");
+        lblKiemTra.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblKiemTra.setText("Ngày kiểm tra:");
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setText("Tên công việc:");
+        lblTenCV.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblTenCV.setText("Tên công việc:");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel2.setText("Giàn cây:");
+        lblGianCay.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblGianCay.setText("Giàn cây:");
 
-        btnGiaoViet.setBackground(new java.awt.Color(19, 148, 147));
-        btnGiaoViet.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        btnGiaoViet.setForeground(new java.awt.Color(248, 241, 241));
-        btnGiaoViet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/icons8_checkmark_35px.png"))); // NOI18N
-        btnGiaoViet.setText("GIAO VIỆC");
-        btnGiaoViet.addActionListener(new java.awt.event.ActionListener() {
+        btnGiaoViec.setBackground(new java.awt.Color(19, 148, 147));
+        btnGiaoViec.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        btnGiaoViec.setForeground(new java.awt.Color(248, 241, 241));
+        btnGiaoViec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/icons8_checkmark_35px.png"))); // NOI18N
+        btnGiaoViec.setText("GIAO VIỆC");
+        btnGiaoViec.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGiaoVietActionPerformed(evt);
+                btnGiaoViecActionPerformed(evt);
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel6.setText("Cây trồng:");
+        lblCaytrong.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblCaytrong.setText("Cây trồng:");
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel10.setText("Người tạo:");
+        lblNguoiTao.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblNguoiTao.setText("Người tạo:");
 
         txtnguoitao.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
@@ -126,22 +126,22 @@ public class GiaoViecJPanel extends javax.swing.JPanel {
             .addGroup(PanelTongLayout.createSequentialGroup()
                 .addGap(284, 284, 284)
                 .addGroup(PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel6)
+                    .addComponent(lblGianCay)
+                    .addComponent(lblCaytrong)
                     .addGroup(PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btnGiaoViet, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnGiaoViec, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(PanelTongLayout.createSequentialGroup()
                             .addGroup(PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(PanelTongLayout.createSequentialGroup()
                                     .addGroup(PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel4)
-                                        .addComponent(jLabel10)
-                                        .addComponent(jLabel8)
-                                        .addComponent(jLabel1)
-                                        .addComponent(jLabel3))
+                                        .addComponent(lblKiemTra)
+                                        .addComponent(lblNguoiTao)
+                                        .addComponent(lblghiChu)
+                                        .addComponent(lblTenCV)
+                                        .addComponent(lblNgayBD))
                                     .addGap(35, 35, 35))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelTongLayout.createSequentialGroup()
-                                    .addComponent(jLabel7)
+                                    .addComponent(lblNguoiNhanViec)
                                     .addGap(18, 18, 18)))
                             .addGroup(PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(txtNgayKetThuc, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -160,38 +160,38 @@ public class GiaoViecJPanel extends javax.swing.JPanel {
             .addGroup(PanelTongLayout.createSequentialGroup()
                 .addGap(59, 59, 59)
                 .addGroup(PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                    .addComponent(lblTenCV)
                     .addComponent(cboCongViec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
+                    .addComponent(lblCaytrong)
                     .addComponent(cboCayTrong, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
+                    .addComponent(lblGianCay)
                     .addComponent(cboGianTrong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addGroup(PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8)
+                    .addComponent(lblghiChu)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtnguoitao, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10))
+                    .addComponent(lblNguoiTao))
                 .addGap(18, 18, 18)
                 .addGroup(PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtNgayBatDau, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(lblNgayBD))
                 .addGap(18, 18, 18)
                 .addGroup(PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtNgayKetThuc, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                    .addComponent(lblKiemTra))
                 .addGap(18, 18, 18)
                 .addGroup(PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cboNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
+                    .addComponent(lblNguoiNhanViec))
                 .addGap(37, 37, 37)
-                .addComponent(btnGiaoViet, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnGiaoViec, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(32, Short.MAX_VALUE))
         );
 
@@ -211,10 +211,10 @@ public class GiaoViecJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnGiaoVietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGiaoVietActionPerformed
+    private void btnGiaoViecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGiaoViecActionPerformed
         this.insert();
 
-    }//GEN-LAST:event_btnGiaoVietActionPerformed
+    }//GEN-LAST:event_btnGiaoViecActionPerformed
 
     private void cboCongViecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboCongViecActionPerformed
 
@@ -235,20 +235,20 @@ public class GiaoViecJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelTong;
-    private javax.swing.JButton btnGiaoViet;
+    private javax.swing.JButton btnGiaoViec;
     private javax.swing.JComboBox<String> cboCayTrong;
     private javax.swing.JComboBox<String> cboCongViec;
     private javax.swing.JComboBox<String> cboGianTrong;
     private javax.swing.JComboBox<String> cboNhanVien;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblCaytrong;
+    private javax.swing.JLabel lblGianCay;
+    private javax.swing.JLabel lblKiemTra;
+    private javax.swing.JLabel lblNgayBD;
+    private javax.swing.JLabel lblNguoiNhanViec;
+    private javax.swing.JLabel lblNguoiTao;
+    private javax.swing.JLabel lblTenCV;
+    private javax.swing.JLabel lblghiChu;
     private javax.swing.JTextArea txtGhiChu;
     private com.toedter.calendar.JDateChooser txtNgayBatDau;
     private com.toedter.calendar.JDateChooser txtNgayKetThuc;
@@ -342,7 +342,7 @@ public class GiaoViecJPanel extends javax.swing.JPanel {
         } else {
             try {
                 nkdao.insert(kh);
-                //dtdao.updateTrangThai(String.valueOf(cboGianTrong.getSelectedItem()));
+                dtdao.updateTrangThai(String.valueOf(cboGianTrong.getSelectedItem()));
                 this.clearForm();
                 MsgBox.alert(this, "Đã thêm thành công!");
             } catch (Exception e) {
@@ -377,9 +377,30 @@ public class GiaoViecJPanel extends javax.swing.JPanel {
         return null;
     }
 
-    boolean Validation() {
-        //Kiểm tra mã nhân viên //      
-        return txtnguoitao.getText().length() != 0;
-        //Kiểm tra ngày bắt đầu //
+
+        
+
+    private boolean Validation() {
+
+        //kiểm lỗi ngày bắt đầu
+        try {
+            txtNgayBatDau.getCalendar().getTime();
+        } catch (Exception e) {
+            MsgBox.alert(this, "Bạn chưa chọn ngày bắt đầu");
+            txtNgayBatDau.requestFocus();
+            return false;
+        }
+
+        //kiểm lỗi ngày kết thúc
+        try {
+            txtNgayKetThuc.getCalendar().getTime();
+        } catch (Exception e) {
+            MsgBox.alert(this, "Bạn chưa chọn ngày kết thúc");
+            txtNgayKetThuc.requestFocus();
+            return false;
+        }
+        return true;
+
     }
 }
+

@@ -41,8 +41,8 @@ Create table LoaiCay (
 	ThoiGianThuHoach int not null,
 	DoTDS float,
 	DoPH float,
-	NhietDo float,
-	DoAm float,
+	NhietDo int,
+	DoAm int,
 	Hinh varchar(30) not null
 );
 go

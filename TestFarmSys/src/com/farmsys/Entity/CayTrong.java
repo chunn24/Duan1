@@ -16,11 +16,14 @@ public class CayTrong {
     private int thoiGianThuHoach;
     private float doTDS;
     private float doPH;
-    private float nhietDo;
-    private float doAm;
+    private int nhietDo;
+    private int doAm;
     private String hinh;
 
-    public CayTrong(int maCay, String tenCay, int thoiGianThuHoach, float doTDS, float doPH, float nhietDo, float doAm, String hinh) {
+    public CayTrong() {
+    }
+
+    public CayTrong(int maCay, String tenCay, int thoiGianThuHoach, float doTDS, float doPH, int nhietDo, int doAm, String hinh) {
         this.maCay = maCay;
         this.tenCay = tenCay;
         this.thoiGianThuHoach = thoiGianThuHoach;
@@ -29,9 +32,6 @@ public class CayTrong {
         this.nhietDo = nhietDo;
         this.doAm = doAm;
         this.hinh = hinh;
-    }
-
-    public CayTrong() {
     }
 
     public int getMaCay() {
@@ -74,19 +74,19 @@ public class CayTrong {
         this.doPH = doPH;
     }
 
-    public float getNhietDo() {
+    public int getNhietDo() {
         return nhietDo;
     }
 
-    public void setNhietDo(float nhietDo) {
+    public void setNhietDo(int nhietDo) {
         this.nhietDo = nhietDo;
     }
 
-    public float getDoAm() {
+    public int getDoAm() {
         return doAm;
     }
 
-    public void setDoAm(float doAm) {
+    public void setDoAm(int doAm) {
         this.doAm = doAm;
     }
 
@@ -97,10 +97,4 @@ public class CayTrong {
     public void setHinh(String hinh) {
         this.hinh = hinh;
     }
-
-    @Override
-    public String toString() {
-        return tenCay;
-    }
-
 }

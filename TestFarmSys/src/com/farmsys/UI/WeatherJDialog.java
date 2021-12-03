@@ -94,6 +94,14 @@ public class WeatherJDialog extends javax.swing.JDialog {
         pnlweather.setLayout(null);
 
         lblload.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/weather.gif"))); // NOI18N
+        lblload.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblloadMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblloadMouseExited(evt);
+            }
+        });
         pnlweather.add(lblload);
         lblload.setBounds(0, 0, 800, 600);
 
@@ -222,6 +230,14 @@ public class WeatherJDialog extends javax.swing.JDialog {
         this.dispose();
         music.stop();
     }//GEN-LAST:event_lblexitMouseClicked
+
+    private void lblloadMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblloadMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblloadMouseEntered
+
+    private void lblloadMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblloadMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblloadMouseExited
 
     /**
      * @param args the command line arguments
