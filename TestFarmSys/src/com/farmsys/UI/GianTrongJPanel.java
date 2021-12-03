@@ -41,7 +41,7 @@ public class GianTrongJPanel extends javax.swing.JPanel {
 
         panelTong = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblDanTrong = new javax.swing.JTable();
+        tblGianTrong = new javax.swing.JTable();
         txtMaDanTrong = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -68,8 +68,8 @@ public class GianTrongJPanel extends javax.swing.JPanel {
         panelTong.setPreferredSize(new java.awt.Dimension(1083, 750));
         panelTong.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tblDanTrong.setAutoCreateRowSorter(true);
-        tblDanTrong.setModel(new javax.swing.table.DefaultTableModel(
+        tblGianTrong.setAutoCreateRowSorter(true);
+        tblGianTrong.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -95,15 +95,15 @@ public class GianTrongJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        tblDanTrong.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        tblDanTrong.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        tblDanTrong.setShowGrid(false);
-        tblDanTrong.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblGianTrong.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tblGianTrong.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tblGianTrong.setShowGrid(false);
+        tblGianTrong.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblDanTrongMouseClicked(evt);
+                tblGianTrongMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tblDanTrong);
+        jScrollPane1.setViewportView(tblGianTrong);
 
         panelTong.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 1040, 360));
 
@@ -276,21 +276,25 @@ public class GianTrongJPanel extends javax.swing.JPanel {
     private void btnMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoiActionPerformed
         // TODO add your handling code here:
         this.clear();
+     
     }//GEN-LAST:event_btnMoiActionPerformed
 
     private void btnFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstActionPerformed
         // TODO add your handling code here:
         this.first();
+  
     }//GEN-LAST:event_btnFirstActionPerformed
 
     private void btnPrevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrevActionPerformed
         // TODO add your handling code here:
         this.prev();
+
     }//GEN-LAST:event_btnPrevActionPerformed
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
         // TODO add your handling code here:
         this.next();
+
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void btnLastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastActionPerformed
@@ -298,13 +302,13 @@ public class GianTrongJPanel extends javax.swing.JPanel {
         this.last();
     }//GEN-LAST:event_btnLastActionPerformed
 
-    private void tblDanTrongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDanTrongMouseClicked
+    private void tblGianTrongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblGianTrongMouseClicked
         // TODO add your handling code here:
         if (evt.getClickCount() == 1) {
-            this.index = tblDanTrong.getSelectedRow();
+            this.index = tblGianTrong.getSelectedRow();
             this.edit();
         }
-    }//GEN-LAST:event_tblDanTrongMouseClicked
+    }//GEN-LAST:event_tblGianTrongMouseClicked
 
     private void cboLocMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cboLocMouseClicked
         // TODO add your handling code here:
@@ -336,7 +340,7 @@ public class GianTrongJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel panelTong;
-    private javax.swing.JTable tblDanTrong;
+    private javax.swing.JTable tblGianTrong;
     private javax.swing.JTextField txtMaDanTrong;
     private javax.swing.JTextField txtTenDanTrong;
     private javax.swing.JTextField txtTrangThai;
@@ -347,12 +351,12 @@ public class GianTrongJPanel extends javax.swing.JPanel {
 
     private void init() {
         this.load();
-        this.updateStatus();
+        this.setStatus(true);
         
     }
 
     void load() {
-        DefaultTableModel model = (DefaultTableModel) tblDanTrong.getModel();
+        DefaultTableModel model = (DefaultTableModel) tblGianTrong.getModel();
         model.setRowCount(0);
         try {
             List<GianTrong> list = dtdao.selectAll();
@@ -370,7 +374,7 @@ public class GianTrongJPanel extends javax.swing.JPanel {
     }
 
     void fillTableToComboBoxLoc() {
-        DefaultTableModel model = (DefaultTableModel) tblDanTrong.getModel();
+        DefaultTableModel model = (DefaultTableModel) tblGianTrong.getModel();
         model.setRowCount(0);
         try {
             List<GianTrong> list = dtdao.selectByTT(cboLoc.getSelectedIndex() - 1);
@@ -426,10 +430,10 @@ public class GianTrongJPanel extends javax.swing.JPanel {
 
     void edit() {
         try {
-            Integer magt = (Integer) tblDanTrong.getValueAt(this.index, 0);
+            Integer magt = (Integer) tblGianTrong.getValueAt(this.index, 0);
             GianTrong model = dtdao.selectById(magt);
             this.setModel(model);
-            this.updateStatus();
+            this.setStatus(false);
         } catch (Exception e) {
             MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
         }
@@ -439,7 +443,7 @@ public class GianTrongJPanel extends javax.swing.JPanel {
         GianTrong nv = new GianTrong();
         this.setModel(nv);
         this.index = -1;
-        this.updateStatus();
+        this.setStatus(true);
         txtMaDanTrong.setText("");
         txtTrangThai.setText("Chưa hoạt động");
     }
@@ -464,18 +468,31 @@ public class GianTrongJPanel extends javax.swing.JPanel {
         return model;
     }
 
-    void updateStatus() {
-        boolean edit = (this.index > -1);
-        boolean first = (this.index == -1);
-        boolean last = (this.index == tblDanTrong.getRowCount() - 1);
-        txtMaDanTrong.setEditable(!edit);
-        btnThem.setEnabled(!edit);
-        btnSua.setEnabled(edit);
-        btnXoa.setEnabled(edit);
-        btnFirst.setEnabled(edit && !first);
-        btnPrev.setEnabled(edit && !first);
-        btnNext.setEnabled(edit && !last);
-        btnLast.setEnabled(edit && !last);
+//    void updateStatus() {
+//        
+//        boolean edit = (this.index > -1);
+//        boolean first = (this.index == 0);
+//        boolean last = (this.index == tblGianTrong.getRowCount() - 1);
+//        txtMaDanTrong.setEditable(!edit);
+//        btnThem.setEnabled(!edit);
+//        btnSua.setEnabled(edit);
+//        btnXoa.setEnabled(edit);
+//        btnFirst.setEnabled(edit && !first);
+//        btnPrev.setEnabled(edit && !first);
+//        btnNext.setEnabled(edit && !last);
+//        btnLast.setEnabled(edit && !last);
+//    }
+    void setStatus(boolean insertable) {
+        txtMaDanTrong.setEditable(insertable);
+        btnThem.setEnabled(insertable);
+        btnSua.setEnabled(!insertable);
+        btnXoa.setEnabled(!insertable);
+        boolean first = this.index > 0;
+        boolean last = this.index < tblGianTrong.getRowCount() - 1;
+        btnFirst.setEnabled(!insertable && first);
+        btnPrev.setEnabled(!insertable && first);
+        btnLast.setEnabled(!insertable && last);
+        btnNext.setEnabled(!insertable && last);
     }
 
     public boolean checkTrungMa(JTextField txt) {
@@ -540,14 +557,14 @@ public class GianTrongJPanel extends javax.swing.JPanel {
     }
 
     void next() {
-        if (this.index < tblDanTrong.getRowCount() - 1) {
+        if (this.index < tblGianTrong.getRowCount() - 1) {
             this.index++;
             this.edit();
         }
     }
 
     void last() {
-        this.index = tblDanTrong.getRowCount() - 1;
+        this.index = tblGianTrong.getRowCount() - 1;
         this.edit();
     }
 
