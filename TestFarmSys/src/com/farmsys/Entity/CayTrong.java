@@ -97,4 +97,10 @@ public class CayTrong {
     public void setHinh(String hinh) {
         this.hinh = hinh;
     }
+
+    @Override
+    public String toString() {
+        return tenCay;
+    }
+
 }

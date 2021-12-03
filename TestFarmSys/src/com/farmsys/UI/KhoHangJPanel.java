@@ -404,29 +404,31 @@ public class KhoHangJPanel extends javax.swing.JPanel {
     }
 
     void Buy() {
-        int kh = Integer.parseInt(txtMaTH.getText());
-        Float TrongLuong = Float.parseFloat(txtTrongLuong.getText());
-        Double Coin = Double.parseDouble(txtThanhTien.getText());
-        Float gb = Float.parseFloat(txtGiaBan.getText());
-        Float slb = Float.parseFloat(txtSLBan.getText());
-        Double Coin2 = Coin + (gb * slb);
-        Float TrongLuong2 = TrongLuong - slb;
+        if (Validation()) {
+            int kh = Integer.parseInt(txtMaTH.getText());
+            Float TrongLuong = Float.parseFloat(txtTrongLuong.getText());
+            Double Coin = Double.parseDouble(txtThanhTien.getText());
+            Float gb = Float.parseFloat(txtGiaBan.getText());
+            Float slb = Float.parseFloat(txtSLBan.getText());
+            Double Coin2 = Coin + (gb * slb);
+            Float TrongLuong2 = TrongLuong - slb;
 
-        try {
-            khdao.update(TrongLuong2, Coin2, kh);
-            if (slb > TrongLuong) {
-                this.Validation();
+            try {
+                khdao.update(TrongLuong2, Coin2, kh);
+                if (slb > TrongLuong) {
+                    MsgBox.alert(this, "Giao Dịch Thất Bại !");
+                } else {
+                    this.fillTable();
+                    MsgBox.alert(this, "Giao Dịch Thành Công !");
+                    clear();
+                }
+
+            } catch (Exception e) {
                 MsgBox.alert(this, "Giao Dịch Thất Bại !");
-            } else {
-                this.fillTable();
-                MsgBox.alert(this, "Giao Dịch Thành Công !");
-                clear();
             }
-
-        } catch (Exception e) {
-            MsgBox.alert(this, "Giao Dịch Thất Bại !");
+            this.UpdateStt();
         }
-        this.UpdateStt();
+
     }
 
     void fillTable() {
@@ -492,43 +494,53 @@ public class KhoHangJPanel extends javax.swing.JPanel {
     }
 
     boolean Validation() {
-
-        //Kiểm tra trọng lượng
-        Float trongluong = Float.parseFloat(txtTrongLuong.getText());
-        Float soluong = Float.parseFloat(txtSLBan.getText());
-        if (txtTrongLuong.getText().length() == 0) {
+        if (txtMaTH.getText().isEmpty()) {
+            MsgBox.alert(this, "Chưa chọn sản phẩm !");
+            return false;
+        }
+        if (txtSLBan.getText().isEmpty()) {
             MsgBox.alert(this, "Trọng lượng không được để trống!");
-            txtTrongLuong.setFocusable(true);
+            txtSLBan.setFocusable(true);
             return false;
-        } else {
-            try {
-                if (soluong > trongluong) {
-                    MsgBox.alert(this, "Số lượng trong kho không đủ!");
-                    txtTrongLuong.setFocusable(false);
-                    return true;
-                }
-            } catch (NumberFormatException e) {
-                MsgBox.alert(this, "Chỉ Được Phép Nhập Số!");
-                txtTrongLuong.setFocusable(true);
-                return false;
-            }
         }
 
-        //Kiểm tra giá thành
-        if (txtGiaBan.getText().length() == 0) {
+        if (txtSLBan.getText().isEmpty()) {
             MsgBox.alert(this, "Giá bán không được để trống!");
-            txtTrongLuong.setFocusable(true);
+            txtSLBan.setFocusable(true);
             return false;
-        } else {
-            try {
-                Double thoiluong = Double.parseDouble(txtGiaBan.getText());
-            } catch (NumberFormatException e) {
-                MsgBox.alert(this, "Chỉ Được Phép Nhập Số!");
-                txtTrongLuong.setFocusable(true);
-                return false;
-            }
+        }
+        try {
+            Float.parseFloat(txtSLBan.getText());
+        } catch (Exception e) {
+            MsgBox.alert(this, "Số lượng bán không được nhập chữ !");
+            txtSLBan.requestFocus();
+            return false;
         }
 
+        try {
+            Float.parseFloat(txtGiaBan.getText());
+        } catch (Exception e) {
+            MsgBox.alert(this, "Giá bán không được nhập chữ !");
+            txtGiaBan.requestFocus();
+            return false;
+        }
+
+        if ((Float.parseFloat(txtGiaBan.getText()) < 0)) {
+            MsgBox.alert(this, "Bạn phải nhập số dương cho giá bán!");
+            txtGiaBan.requestFocus();
+            return false;
+
+        }
+        if ((Float.parseFloat(txtSLBan.getText()) < 0)) {
+            MsgBox.alert(this, "Bạn phải nhập số dương cho số lượng bán!");
+            txtSLBan.requestFocus();
+            return false;
+        }
+        if (txtGiaBan.getText().length() > 7) {
+            MsgBox.alert(this, "Giá cao hơn so với thị trường !");
+            txtGiaBan.requestFocus();
+            return false;
+        }
         return true;
     }
 

@@ -121,49 +121,36 @@ public class CayTrongPanel extends javax.swing.JPanel {
         pnltong.add(pnlList, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 44, 590, 670));
 
         pnlEdit.setBackground(new java.awt.Color(255, 255, 255));
-        pnlEdit.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("Tên cây trồng");
-        pnlEdit.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 180, 139, 24));
 
         txtTenCay.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
-        pnlEdit.add(txtTenCay, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 210, 441, 27));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Thời gian thu hoạch (đơn vị: ngày)");
-        pnlEdit.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 268, 307, 24));
 
         txtThoiGianThuHoach.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
-        pnlEdit.add(txtThoiGianThuHoach, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 298, 441, 27));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setText("Độ TDS giới hạn (ppm)");
-        pnlEdit.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 363, 200, -1));
 
         txtDoTDS.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
-        pnlEdit.add(txtDoTDS, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 396, 145, 34));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setText("Nồng độ (pH)");
-        pnlEdit.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(317, 363, 125, -1));
 
         txtDoPH.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
-        pnlEdit.add(txtDoPH, new org.netbeans.lib.awtextra.AbsoluteConstraints(317, 396, 143, 34));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel6.setText("Nhiệt độ (°C)");
-        pnlEdit.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 458, 120, -1));
 
         txtNhietDo.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
-        pnlEdit.add(txtNhietDo, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 486, 145, 34));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel7.setText("Độ ẩm (%)");
-        pnlEdit.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(317, 458, 106, -1));
 
         txtDoAm.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
-        pnlEdit.add(txtDoAm, new org.netbeans.lib.awtextra.AbsoluteConstraints(317, 486, 143, 34));
 
         btnAdd.setBackground(new java.awt.Color(255, 255, 255));
         btnAdd.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -173,7 +160,6 @@ public class CayTrongPanel extends javax.swing.JPanel {
                 btnAddActionPerformed(evt);
             }
         });
-        pnlEdit.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 538, 64, 35));
 
         btnUpdate.setBackground(new java.awt.Color(255, 255, 255));
         btnUpdate.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -183,7 +169,6 @@ public class CayTrongPanel extends javax.swing.JPanel {
                 btnUpdateActionPerformed(evt);
             }
         });
-        pnlEdit.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(89, 538, 64, 35));
 
         btnDelete.setBackground(new java.awt.Color(255, 255, 255));
         btnDelete.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -193,7 +178,6 @@ public class CayTrongPanel extends javax.swing.JPanel {
                 btnDeleteActionPerformed(evt);
             }
         });
-        pnlEdit.add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 538, 64, 35));
 
         btnNew.setBackground(new java.awt.Color(255, 255, 255));
         btnNew.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -203,17 +187,112 @@ public class CayTrongPanel extends javax.swing.JPanel {
                 btnNewActionPerformed(evt);
             }
         });
-        pnlEdit.add(btnNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(229, 538, 65, 35));
 
         lblHinh.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHinh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/FarmSys.png"))); // NOI18N
+        lblHinh.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51)));
         lblHinh.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblHinh.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblHinhMouseClicked(evt);
             }
         });
-        pnlEdit.add(lblHinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(161, 0, 185, 169));
+
+        javax.swing.GroupLayout pnlEditLayout = new javax.swing.GroupLayout(pnlEdit);
+        pnlEdit.setLayout(pnlEditLayout);
+        pnlEditLayout.setHorizontalGroup(
+            pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlEditLayout.createSequentialGroup()
+                .addGap(161, 161, 161)
+                .addComponent(lblHinh, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addGap(124, 124, 124))
+            .addGroup(pnlEditLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
+                .addGap(312, 312, 312))
+            .addGroup(pnlEditLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(txtTenCay)
+                .addGap(10, 10, 10))
+            .addGroup(pnlEditLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(144, 144, 144))
+            .addGroup(pnlEditLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(txtThoiGianThuHoach)
+                .addGap(10, 10, 10))
+            .addGroup(pnlEditLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(98, 98, 98)
+                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(28, 28, 28))
+            .addGroup(pnlEditLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(txtDoTDS)
+                .addGap(153, 153, 153)
+                .addComponent(txtDoPH)
+                .addGap(10, 10, 10))
+            .addGroup(pnlEditLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(178, 178, 178)
+                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(47, 47, 47))
+            .addGroup(pnlEditLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(txtNhietDo)
+                .addGap(153, 153, 153)
+                .addComponent(txtDoAm)
+                .addGap(10, 10, 10))
+            .addGroup(pnlEditLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(btnAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(6, 6, 6)
+                .addComponent(btnUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(6, 6, 6)
+                .addComponent(btnDelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(6, 6, 6)
+                .addComponent(btnNew, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(176, 176, 176))
+        );
+        pnlEditLayout.setVerticalGroup(
+            pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlEditLayout.createSequentialGroup()
+                .addComponent(lblHinh, javax.swing.GroupLayout.PREFERRED_SIZE, 169, Short.MAX_VALUE)
+                .addGap(11, 11, 11)
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
+                .addGap(6, 6, 6)
+                .addComponent(txtTenCay, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                .addGap(28, 28, 28)
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
+                .addGap(6, 6, 6)
+                .addComponent(txtThoiGianThuHoach, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                .addGap(35, 35, 35)
+                .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(11, 11, 11)
+                .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtDoTDS, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                    .addComponent(txtDoPH))
+                .addGap(28, 28, 28)
+                .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(6, 6, 6)
+                .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtNhietDo, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                    .addComponent(txtDoAm))
+                .addGap(18, 18, 18)
+                .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnAdd, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                    .addComponent(btnUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnDelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnNew, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(109, 109, 109))
+        );
 
         pnltong.add(pnlEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(598, 34, 470, 690));
         pnltong.add(txtMaCay, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 630, -1, -1));
@@ -327,7 +406,7 @@ public class CayTrongPanel extends javax.swing.JPanel {
     }
 
     void insert() {
-        CayTrong model = getModel();
+        CayTrong model = getModelInsert();
         try {
             ctdao.insert(model);
             this.load();
@@ -413,6 +492,8 @@ public class CayTrongPanel extends javax.swing.JPanel {
             //Chuyển Icon sang image và điều chỉnh kích thước
             Image scaleIcon = icon.getImage().getScaledInstance(lblHinh.getWidth(), lblHinh.getHeight(), Image.SCALE_DEFAULT);
             lblHinh.setIcon(new javax.swing.ImageIcon(scaleIcon));
+        } else {
+            lblHinh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/avatar.png")));
         }
     }
 
@@ -427,6 +508,25 @@ public class CayTrongPanel extends javax.swing.JPanel {
             model.setNhietDo(Integer.valueOf(txtNhietDo.getText()));
             model.setDoAm(Integer.valueOf(txtDoAm.getText()));
             model.setHinh(lblHinh.getToolTipText());
+            return model;
+        }
+        return null;
+    }
+
+    CayTrong getModelInsert() {
+        if (Validation()) {
+            CayTrong model = new CayTrong();
+            model.setTenCay(txtTenCay.getText());
+            model.setThoiGianThuHoach(Integer.valueOf(txtThoiGianThuHoach.getText()));
+            model.setDoTDS(Float.valueOf(txtDoTDS.getText()));
+            model.setDoPH(Float.valueOf(txtDoPH.getText()));
+            model.setNhietDo(Integer.valueOf(txtNhietDo.getText()));
+            model.setDoAm(Integer.valueOf(txtDoAm.getText()));
+            if (lblHinh.getToolTipText() == null) {
+                model.setHinh("noimage.jpg");
+            } else {
+                model.setHinh(lblHinh.getToolTipText());
+            }
             return model;
         }
         return null;
@@ -493,13 +593,6 @@ public class CayTrongPanel extends javax.swing.JPanel {
             return false;
         }
 
-        String tencay = txtTenCay.getText();
-        if (tencay.length() > 30) {
-            MsgBox.alert(this, "Tên cây không được quá 30 kí tự ");
-            txtTenCay.requestFocus();
-            return false;
-        }
-
         if (txtThoiGianThuHoach.getText().isEmpty()) {
             MsgBox.alert(this, "Thời gian thu hoạch cây không được để trống ");
             txtThoiGianThuHoach.requestFocus();
@@ -526,47 +619,88 @@ public class CayTrongPanel extends javax.swing.JPanel {
             return false;
         }
 
+        String tencay = txtTenCay.getText();
+        if (tencay.length() > 30) {
+            MsgBox.alert(this, "Tên cây không được quá 30 kí tự ");
+            txtTenCay.requestFocus();
+            return false;
+        }
+//bắt không nhập chữ
         try {
-
             int ngayTH = Integer.parseInt(txtThoiGianThuHoach.getText());
-            if (ngayTH < 0) {
-                MsgBox.alert(this, "Thời gian thu hoạch không được để số âm");
-                txtThoiGianThuHoach.requestFocus();
-                return false;
-            }
-
-            float doph = Float.parseFloat(txtDoPH.getText());
-            if (doph < 0 || doph > 14) {
-                MsgBox.alert(this, "Độ PH của cây từ 1 -> 14");
-                txtDoPH.requestFocus();
-                return false;
-            }
-
-            float tds = Float.parseFloat(txtDoTDS.getText());
-            if (tds < 0) {
-                MsgBox.alert(this, "Độ TDS phải là số dương");
-                txtDoTDS.requestFocus();
-                return false;
-            }
-
-            int nhietdo = Integer.parseInt(txtNhietDo.getText());
-            if (nhietdo < 24 || nhietdo > 27) {
-                MsgBox.alert(this, "Nhiệt độ tốt cho cây phải từ 24°C -> 27°C");
-                txtNhietDo.requestFocus();
-                return false;
-            }
-
-            int doAM = Integer.parseInt(txtDoAm.getText());
-            if (doAM < 60 || doAM > 65) {
-                MsgBox.alert(this, "Độ ẩm tốt cho cây phải từ 60% -> 65%");
-                txtDoAm.requestFocus();
-                return false;
-            }
         } catch (NumberFormatException e) {
-            MsgBox.alert(this, "Không được nhập chữ!");
+            MsgBox.alert(this, "Thời gian thu hoạch không được nhập chữ!");
+            txtThoiGianThuHoach.requestFocus();
+            return false;
+        }
+        //
+        try {
+            Float.parseFloat(txtDoPH.getText());
+        } catch (Exception e) {
+            MsgBox.alert(this, "Độ PH không được nhập chữ!");
+            txtDoPH.requestFocus();
+            return false;
+        }
+        //
+        try {
+            Integer.parseInt(txtNhietDo.getText());
+        } catch (Exception e) {
+            MsgBox.alert(this, "Nhiệt độ không được nhập chữ!");
+            txtNhietDo.requestFocus();
+            return false;
+        }
+        //
+        try {
+            Integer.parseInt(txtDoAm.getText());
+        } catch (Exception e) {
+            MsgBox.alert(this, "Độ PH không được nhập chữ!");
+            txtDoAm.requestFocus();
+            return false;
+        }
+        //
+        try {
+            Float.parseFloat(txtDoTDS.getText());
+        } catch (Exception e) {
+            MsgBox.alert(this, "Độ TDS không được nhập chữ!");
+            txtDoTDS.requestFocus();
+            return false;
+        }
+
+//        
+        float tds = Float.parseFloat(txtDoTDS.getText());
+        if (tds < 0) {
+            MsgBox.alert(this, "Độ TDS phải là số dương");
+            txtDoTDS.requestFocus();
+            return false;
+        }
+
+        int nhietdo = Integer.parseInt(txtNhietDo.getText());
+        if (nhietdo < 24 || nhietdo > 27) {
+            MsgBox.alert(this, "Nhiệt độ tốt cho cây phải từ 24°C -> 27°C");
+            txtNhietDo.requestFocus();
+            return false;
+        }
+
+        int doAM = Integer.parseInt(txtDoAm.getText());
+        if (doAM < 60 || doAM > 65) {
+            MsgBox.alert(this, "Độ ẩm tốt cho cây phải từ 60% -> 65%");
+            txtDoAm.requestFocus();
+            return false;
+        }
+
+        //doph
+        if ((Float.parseFloat(txtDoPH.getText())) < 0 || (Float.parseFloat(txtDoPH.getText())) > 14) {
+            MsgBox.alert(this, "Độ PH của cây từ 1 -> 14");
+            txtDoPH.requestFocus();
+            return false;
+        }
+
+        //ngayth
+        if ((Integer.parseInt(txtThoiGianThuHoach.getText())) < 3 || (Integer.parseInt(txtThoiGianThuHoach.getText())) > 60) {
+            MsgBox.alert(this, "Thời gian thu hoạch phải từ 3 -> 60 ngày");
+            txtThoiGianThuHoach.requestFocus();
+            return false;
         }
         return true;
     }
 }
-
-

@@ -20,21 +20,20 @@ import java.util.logging.Logger;
  */
 public class GianTrongDAO extends FarmSysDAO<GianTrong, String> {
 
-    String INSERT_SQL = "INSERT INTO GianTrong (TenGian, TrangThai) VALUES(?,?)";
+    String INSERT_SQL = "INSERT INTO GianTrong (TenGian, TrangThai) VALUES(?,0)";
     String UPDATE_SQL = "UPDATE GianTrong SET TenGian =?, TrangThai =? WHERE MaGian =?";
     String DELETE_SQL = "DELETE FROM GianTrong WHERE MaGian =?";
-    String SELECT_ALL_SQL = "SELECT * FROM GianTrong";
+    String SELECT_ALL_SQL = "SELECT * FROM GianTrong order by MaGian";
     String SELECT_BY_ID_SQL = "SELECT * FROM GianTrong WHERE MaGian =?";
     String SELECT_BY_ID_TT = "SELECT * FROM GianTrong WHERE TrangThai = ?";
     String SELECT_BY_ID_TenGian = "SELECT * FROM GianTrong WHERE TenGian =?";
     String UPDATE_TrangThai_SQL = "UPDATE GianTrong SET  TrangThai = 1 WHERE TenGian = ?";
     String UPDATE_TraVeCbo_SQL = "UPDATE GianTrong SET  TrangThai = 0 WHERE TenGian = ?";
-  
 
     @Override
     public void insert(GianTrong entity) {
         try {
-            JdbcHelper.update(INSERT_SQL, entity.getTenDan(), entity.isTrangThai());
+            JdbcHelper.update(INSERT_SQL, entity.getTenDan());
         } catch (SQLException ex) {
             Logger.getLogger(GianTrongDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -90,6 +89,7 @@ public class GianTrongDAO extends FarmSysDAO<GianTrong, String> {
         }
         return list.get(0);
     }
+
     public GianTrong selectByTenGian(String key) {
         List<GianTrong> list = this.selectBySql(SELECT_BY_ID_TenGian, key);
         if (list.isEmpty()) {
@@ -121,7 +121,5 @@ public class GianTrongDAO extends FarmSysDAO<GianTrong, String> {
     public GianTrong selectById(String key) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-
 
 }

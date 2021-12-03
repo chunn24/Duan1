@@ -69,6 +69,7 @@ public class GianTrongJPanel extends javax.swing.JPanel {
         panelTong.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblGianTrong.setAutoCreateRowSorter(true);
+        tblGianTrong.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tblGianTrong.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -77,11 +78,11 @@ public class GianTrongJPanel extends javax.swing.JPanel {
                 {null, null, null}
             },
             new String [] {
-                "Mã dàn trồng", "Tên dàn trồng", "Trạng thái"
+                "Mã", "Tên dàn trồng", "Trạng thái"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false
@@ -97,18 +98,29 @@ public class GianTrongJPanel extends javax.swing.JPanel {
         });
         tblGianTrong.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblGianTrong.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        tblGianTrong.setShowGrid(false);
+        tblGianTrong.setShowGrid(true);
         tblGianTrong.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblGianTrongMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(tblGianTrong);
+        if (tblGianTrong.getColumnModel().getColumnCount() > 0) {
+            tblGianTrong.getColumnModel().getColumn(0).setMinWidth(50);
+            tblGianTrong.getColumnModel().getColumn(0).setPreferredWidth(60);
+            tblGianTrong.getColumnModel().getColumn(0).setMaxWidth(60);
+        }
 
         panelTong.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 1040, 360));
 
         txtMaDanTrong.setEditable(false);
         txtMaDanTrong.setBackground(new java.awt.Color(204, 204, 204));
+        txtMaDanTrong.setEnabled(false);
+        txtMaDanTrong.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMaDanTrongActionPerformed(evt);
+            }
+        });
         panelTong.add(txtMaDanTrong, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 430, 480, 30));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -133,6 +145,7 @@ public class GianTrongJPanel extends javax.swing.JPanel {
 
         txtTrangThai.setEditable(false);
         txtTrangThai.setBackground(new java.awt.Color(204, 204, 204));
+        txtTrangThai.setEnabled(false);
         panelTong.add(txtTrangThai, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 550, 480, 30));
 
         btnThem.setBackground(new java.awt.Color(255, 255, 255));
@@ -274,15 +287,15 @@ public class GianTrongJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void btnMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoiActionPerformed
-        // TODO add your handling code here:
+
         this.clear();
-     
+
     }//GEN-LAST:event_btnMoiActionPerformed
 
     private void btnFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstActionPerformed
         // TODO add your handling code here:
         this.first();
-  
+
     }//GEN-LAST:event_btnFirstActionPerformed
 
     private void btnPrevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrevActionPerformed
@@ -323,6 +336,10 @@ public class GianTrongJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_cboLocActionPerformed
 
+    private void txtMaDanTrongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaDanTrongActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMaDanTrongActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFirst;
@@ -346,20 +363,20 @@ public class GianTrongJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtTrangThai;
     // End of variables declaration//GEN-END:variables
 
-    GianTrongDAO dtdao = new GianTrongDAO();
+    GianTrongDAO gtdao = new GianTrongDAO();
     int index = -1;
 
     private void init() {
         this.load();
         this.setStatus(true);
-        
+
     }
 
     void load() {
         DefaultTableModel model = (DefaultTableModel) tblGianTrong.getModel();
         model.setRowCount(0);
         try {
-            List<GianTrong> list = dtdao.selectAll();
+            List<GianTrong> list = gtdao.selectAll();
             for (GianTrong gt : list) {
                 Object[] row = {
                     gt.getMaDan(),
@@ -377,7 +394,7 @@ public class GianTrongJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblGianTrong.getModel();
         model.setRowCount(0);
         try {
-            List<GianTrong> list = dtdao.selectByTT(cboLoc.getSelectedIndex() - 1);
+            List<GianTrong> list = gtdao.selectByTT(cboLoc.getSelectedIndex() - 1);
             for (GianTrong gt : list) {
                 Object[] row = {
                     gt.getMaDan(),
@@ -392,9 +409,9 @@ public class GianTrongJPanel extends javax.swing.JPanel {
     }
 
     void insert() {
-        GianTrong model = getModel();
+        GianTrong model = getModelInsert();
         try {
-            dtdao.insert(model);
+            gtdao.insert(model);
             this.load();
             this.clear();
             MsgBox.alert(this, "Thêm mới thành công !");
@@ -406,11 +423,12 @@ public class GianTrongJPanel extends javax.swing.JPanel {
     void update() {
         GianTrong model = getModel();
         try {
-            dtdao.update(model);
+            gtdao.update(model);
             this.load();
             MsgBox.alert(this, "Cập nhật thành công!");
         } catch (Exception e) {
             MsgBox.alert(this, "Cập nhật thất bại!");
+            System.out.println(e);
         }
     }
 
@@ -418,7 +436,7 @@ public class GianTrongJPanel extends javax.swing.JPanel {
         if (MsgBox.confirm(this, "Bạn thực sự muốn xóa dàn trồng này?")) {
             String manv = txtMaDanTrong.getText();
             try {
-                dtdao.delete(manv);
+                gtdao.delete(manv);
                 this.load();
                 this.clear();
                 MsgBox.alert(this, "Xóa thành công!");
@@ -431,7 +449,7 @@ public class GianTrongJPanel extends javax.swing.JPanel {
     void edit() {
         try {
             Integer magt = (Integer) tblGianTrong.getValueAt(this.index, 0);
-            GianTrong model = dtdao.selectById(magt);
+            GianTrong model = gtdao.selectById(magt);
             this.setModel(model);
             this.setStatus(false);
         } catch (Exception e) {
@@ -440,12 +458,13 @@ public class GianTrongJPanel extends javax.swing.JPanel {
     }
 
     void clear() {
-        GianTrong nv = new GianTrong();
-        this.setModel(nv);
+        GianTrong gt = new GianTrong();
+        this.setModel(gt);
         this.index = -1;
         this.setStatus(true);
         txtMaDanTrong.setText("");
         txtTrangThai.setText("Chưa hoạt động");
+
     }
 
     void setModel(GianTrong model) {
@@ -462,9 +481,15 @@ public class GianTrongJPanel extends javax.swing.JPanel {
 
     GianTrong getModel() {
         GianTrong model = new GianTrong();
-        // model.setMaDan(Integer.valueOf(txtMaDanTrong.getText()));
+        model.setMaDan(Integer.valueOf(txtMaDanTrong.getText()));
         model.setTenDan(txtTenDanTrong.getText());
-        //model.setTrangThai(Boolean.valueOf(txtTrangThai.getText()));
+        model.setTrangThai(Boolean.valueOf(txtTrangThai.getText()));
+        return model;
+    }
+
+    GianTrong getModelInsert() {
+        GianTrong model = new GianTrong();
+        model.setTenDan(txtTenDanTrong.getText());
         return model;
     }
 
@@ -497,7 +522,7 @@ public class GianTrongJPanel extends javax.swing.JPanel {
 
     public boolean checkTrungMa(JTextField txt) {
         txt.setBackground(white);
-        if (dtdao.selectById(txt.getText()) == null) {
+        if (gtdao.selectById(txt.getText()) == null) {
             return true;
         } else {
             txt.setBackground(pink);
@@ -508,7 +533,7 @@ public class GianTrongJPanel extends javax.swing.JPanel {
 
     public boolean checkTrungTen(JTextField txt) {
         txt.setBackground(white);
-        if (dtdao.selectByTenGian(txt.getText()) == null) {
+        if (gtdao.selectByTenGian(txt.getText()) == null) {
             return true;
         } else {
             txt.setBackground(pink);
@@ -516,7 +541,7 @@ public class GianTrongJPanel extends javax.swing.JPanel {
             return false;
         }
     }
-    
+
     private boolean validation() {
         if (txtTenDanTrong.getText().isEmpty()) {
             MsgBox.alert(this, "Bạn chưa nhập tên dàn trồng !");
