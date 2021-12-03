@@ -351,7 +351,7 @@ public class GianTrongJPanel extends javax.swing.JPanel {
 
     private void init() {
         this.load();
-        this.updateStatus();
+        this.setStatus(true);
         
     }
 
@@ -433,7 +433,7 @@ public class GianTrongJPanel extends javax.swing.JPanel {
             Integer magt = (Integer) tblGianTrong.getValueAt(this.index, 0);
             GianTrong model = dtdao.selectById(magt);
             this.setModel(model);
-            this.updateStatus();
+            this.setStatus(false);
         } catch (Exception e) {
             MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
         }
@@ -443,7 +443,7 @@ public class GianTrongJPanel extends javax.swing.JPanel {
         GianTrong nv = new GianTrong();
         this.setModel(nv);
         this.index = -1;
-        this.updateStatus();
+        this.setStatus(true);
         txtMaDanTrong.setText("");
         txtTrangThai.setText("Chưa hoạt động");
     }
@@ -468,19 +468,31 @@ public class GianTrongJPanel extends javax.swing.JPanel {
         return model;
     }
 
-    void updateStatus() {
-        
-        boolean edit = (this.index > -1);
-        boolean first = (this.index == 0);
-        boolean last = (this.index == tblGianTrong.getRowCount() - 1);
-        txtMaDanTrong.setEditable(!edit);
-        btnThem.setEnabled(!edit);
-        btnSua.setEnabled(edit);
-        btnXoa.setEnabled(edit);
-        btnFirst.setEnabled(edit && !first);
-        btnPrev.setEnabled(edit && !first);
-        btnNext.setEnabled(edit && !last);
-        btnLast.setEnabled(edit && !last);
+//    void updateStatus() {
+//        
+//        boolean edit = (this.index > -1);
+//        boolean first = (this.index == 0);
+//        boolean last = (this.index == tblGianTrong.getRowCount() - 1);
+//        txtMaDanTrong.setEditable(!edit);
+//        btnThem.setEnabled(!edit);
+//        btnSua.setEnabled(edit);
+//        btnXoa.setEnabled(edit);
+//        btnFirst.setEnabled(edit && !first);
+//        btnPrev.setEnabled(edit && !first);
+//        btnNext.setEnabled(edit && !last);
+//        btnLast.setEnabled(edit && !last);
+//    }
+    void setStatus(boolean insertable) {
+        txtMaDanTrong.setEditable(insertable);
+        btnThem.setEnabled(insertable);
+        btnSua.setEnabled(!insertable);
+        btnXoa.setEnabled(!insertable);
+        boolean first = this.index > 0;
+        boolean last = this.index < tblGianTrong.getRowCount() - 1;
+        btnFirst.setEnabled(!insertable && first);
+        btnPrev.setEnabled(!insertable && first);
+        btnLast.setEnabled(!insertable && last);
+        btnNext.setEnabled(!insertable && last);
     }
 
     public boolean checkTrungMa(JTextField txt) {
