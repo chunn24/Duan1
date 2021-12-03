@@ -82,19 +82,9 @@
                                       <Component id="jScrollPane2" alignment="0" max="32767" attributes="0"/>
                                       <Component id="txtnguoitao" alignment="0" max="32767" attributes="0"/>
                                       <Component id="txtNgayBatDau" alignment="0" min="-2" pref="316" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="cboCongViec" pref="222" max="32767" attributes="0"/>
-                                              <Component id="cboCayTrong" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="cboGianTrong" alignment="0" max="32767" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="btnChonCT" max="32767" attributes="0"/>
-                                              <Component id="btnChonCV" max="32767" attributes="0"/>
-                                              <Component id="btnChonGC" alignment="0" max="32767" attributes="0"/>
-                                          </Group>
-                                      </Group>
+                                      <Component id="cboCongViec" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="cboCayTrong" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="cboGianTrong" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                                   <Component id="cboNhanVien" alignment="0" min="-2" pref="316" max="-2" attributes="0"/>
                               </Group>
@@ -112,23 +102,16 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="cboCongViec" linkSize="1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnChonCV" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                          <Component id="cboCayTrong" linkSize="1" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
-                          <Component id="btnChonCT" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="cboCayTrong" linkSize="1" alignment="0" min="-2" pref="37" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                          <Component id="cboGianTrong" linkSize="1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnChonGC" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="cboGianTrong" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -318,21 +301,6 @@
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
-        </Component>
-        <Component class="javax.swing.JButton" name="btnChonCT">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Ch&#x1ecd;n"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="btnChonCV">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Ch&#x1ecd;n"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="btnChonGC">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Ch&#x1ecd;n"/>
-          </Properties>
         </Component>
       </SubComponents>
     </Container>
