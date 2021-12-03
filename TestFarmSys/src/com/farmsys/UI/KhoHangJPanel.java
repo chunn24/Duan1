@@ -414,11 +414,17 @@ public class KhoHangJPanel extends javax.swing.JPanel {
 
         try {
             khdao.update(TrongLuong2, Coin2, kh);
-            this.fillTable();
-            MsgBox.alert(this, "Bán Thành Công !");
-            clear();
+            if (slb > TrongLuong) {
+                this.Validation();
+                MsgBox.alert(this, "Giao Dịch Thất Bại !");
+            } else {
+                this.fillTable();
+                MsgBox.alert(this, "Giao Dịch Thành Công !");
+                clear();
+            }
+
         } catch (Exception e) {
-            MsgBox.alert(this, "Bán Thất Bại !");
+            MsgBox.alert(this, "Giao Dịch Thất Bại !");
         }
         this.UpdateStt();
     }
@@ -483,32 +489,24 @@ public class KhoHangJPanel extends javax.swing.JPanel {
         boolean last = (this.index == tblKhoHang.getRowCount() - 1);
         btnBuy.setEnabled(edit);
 
-    }   
+    }
 
     boolean Validation() {
 
-        //Kiểm tra thời lượng
-        if (txtTrongLuong.getText().length() == 0) {
-            MsgBox.alert(this, "Thời lượng không được để trống!");
-            txtTrongLuong.setFocusable(true);
-            return false;
-        } else {
-            try {
-                int thoiluong = Integer.parseInt(txtTrongLuong.getText());
-            } catch (NumberFormatException e) {
-                MsgBox.alert(this, "Sai kiểu dữ liệu thời lượng!");
-                txtTrongLuong.setFocusable(true);
-                return false;
-            }
-        }
         //Kiểm tra trọng lượng
+        Float trongluong = Float.parseFloat(txtTrongLuong.getText());
+        Float soluong = Float.parseFloat(txtSLBan.getText());
         if (txtTrongLuong.getText().length() == 0) {
             MsgBox.alert(this, "Trọng lượng không được để trống!");
             txtTrongLuong.setFocusable(true);
             return false;
         } else {
             try {
-                Float thoiluong = Float.parseFloat(txtTrongLuong.getText());
+                if (soluong > trongluong) {
+                    MsgBox.alert(this, "Số lượng trong kho không đủ!");
+                    txtTrongLuong.setFocusable(false);
+                    return true;
+                }
             } catch (NumberFormatException e) {
                 MsgBox.alert(this, "Chỉ Được Phép Nhập Số!");
                 txtTrongLuong.setFocusable(true);
