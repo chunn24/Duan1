@@ -21,7 +21,7 @@ import java.util.logging.Logger;
 public class CayTrongDAO extends FarmSysDAO<CayTrong, String> {
 
     String INSERT_SQL = "INSERT INTO LoaiCay(TenCay,ThoiGianThuHoach,DoTDS,DoPH,NhietDo,DoAm,Hinh) VALUES(?,?,?,?,?,?,?)";
-    String UPDATE_SQL = "UPDATE LoaiCay SET TenCay=?, ThoiGianThuHoach=?, DoTDS=?, DoPH=?, NhietDo=?, DoAm=?, Hinh=? WHERE TenCay=?";
+    String UPDATE_SQL = "UPDATE LoaiCay SET TenCay=?, ThoiGianThuHoach=?, DoTDS=?, DoPH=?, NhietDo=?, DoAm=?, Hinh=? WHERE MaCay=?";
     String DELETE_SQL = "DELETE FROM LoaiCay WHERE TenCay=?";
     String SELECT_ALL_SQL = "SELECT * FROM LoaiCay";
     String SELECT_BY_ID_SQL = "SELECT * FROM LoaiCay WHERE MaCay=?";
@@ -39,7 +39,7 @@ public class CayTrongDAO extends FarmSysDAO<CayTrong, String> {
     @Override
     public void update(CayTrong entity) {
         try {
-            JdbcHelper.update(UPDATE_SQL, entity.getTenCay(), entity.getThoiGianThuHoach(), entity.getDoTDS(), entity.getDoPH(), entity.getNhietDo(), entity.getDoAm(), entity.getHinh(), entity.getTenCay());
+            JdbcHelper.update(UPDATE_SQL, entity.getTenCay(), entity.getThoiGianThuHoach(), entity.getDoTDS(), entity.getDoPH(), entity.getNhietDo(), entity.getDoAm(), entity.getHinh(), entity.getMaCay());
         } catch (SQLException ex) {
             Logger.getLogger(CayTrongDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
