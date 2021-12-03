@@ -60,12 +60,12 @@
         <Container class="javax.swing.JPanel" name="pnlchart">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+              <Color blue="ff" green="cc" red="cc" type="rgb"/>
             </Property>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="30" y="350" width="1020" height="370"/>
+              <AbsoluteConstraints x="30" y="380" width="1020" height="350"/>
             </Constraint>
           </Constraints>
 
@@ -74,12 +74,12 @@
         <Container class="javax.swing.JPanel" name="pnlcharttron">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+              <Color blue="ff" green="cc" red="cc" type="rgb"/>
             </Property>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="610" y="20" width="440" height="280"/>
+              <AbsoluteConstraints x="560" y="20" width="480" height="280"/>
             </Constraint>
           </Constraints>
 
@@ -88,17 +88,42 @@
         <Container class="javax.swing.JPanel" name="pnlchartcot">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+              <Color blue="ff" green="cc" red="cc" type="rgb"/>
             </Property>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="30" y="10" width="515" height="313"/>
+              <AbsoluteConstraints x="30" y="20" width="520" height="310"/>
             </Constraint>
           </Constraints>
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
         </Container>
+        <Component class="com.toedter.calendar.JDateChooser" name="Datengaybatdau">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="560" y="310" width="140" height="-1"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="com.toedter.calendar.JDateChooser" name="Datengayketthuc">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="780" y="310" width="170" height="-1"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel1">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="&#x110;&#xea;&#x301;n"/>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="700" y="310" width="80" height="20"/>
+            </Constraint>
+          </Constraints>
+        </Component>
         <Component class="javax.swing.JComboBox" name="cb_city">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -122,7 +147,20 @@
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="30" y="370" width="30" height="20"/>
+              <AbsoluteConstraints x="40" y="380" width="50" height="-1"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButton1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Lo&#x323;c"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+          </Events>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="980" y="310" width="60" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>

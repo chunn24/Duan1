@@ -64,6 +64,7 @@ public class KhoHangJPanel extends javax.swing.JPanel {
         txtNgayTH = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         txtThanhTien = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -312,7 +313,10 @@ public class KhoHangJPanel extends javax.swing.JPanel {
 
         pnleditLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtGiaBan, txtSLBan});
 
-        PnlTong.add(pnledit, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 40, 460, 570));
+        PnlTong.add(pnledit, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 50, 460, 570));
+
+        jButton1.setText("Bảng thống kê doanh thu");
+        PnlTong.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 580, 160, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -367,6 +371,7 @@ public class KhoHangJPanel extends javax.swing.JPanel {
     private javax.swing.JPanel PnlTong;
     private javax.swing.JButton btnBuy;
     private javax.swing.JButton btnTim;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

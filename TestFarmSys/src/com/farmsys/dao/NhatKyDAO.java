@@ -12,6 +12,7 @@ import java.util.List;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -36,6 +37,9 @@ public class NhatKyDAO extends FarmSysDAO<NhatKy, String> {
     String select_by_Done_TrongCay_Month_SQL = "select *from NhatKy where TrangThai = 3 and TenCV = N'Trồng cây' and TenCV = N'Thu hoạch' and NhanVien like ? and  NgayKetThuc between (select CONVERT(varchar,dateadd(d,-(day(getdate()-1)),getdate()),106)) and (select CONVERT(varchar,dateadd(d,-(day(dateadd(m,1,getdate()))),dateadd(m,1,getdate())),106))";
     String select_by_Cancel_Month_SQL = "select *from NhatKy where TrangThai = 2 and NhanVien like ? and  NgayKetThuc between (select CONVERT(varchar,dateadd(d,-(day(getdate()-1)),getdate()),106)) and (select CONVERT(varchar,dateadd(d,-(day(dateadd(m,1,getdate()))),dateadd(m,1,getdate())),106))";
     String UPDATE_TrangThaiTH_SQL = "UPDATE NhatKy SET TrangThai = 5 where TenGian = ? ";
+    String select_by_all_month_SQL = "select *from NhatKy where NgayKetThuc between (select CONVERT(varchar,dateadd(d,-(day(getdate()-1)),getdate()),106)) and (select CONVERT(varchar,dateadd(d,-(day(dateadd(m,1,getdate()))),dateadd(m,1,getdate())),106))";
+    String select_by_time_sql = "SELECT * FROM NhatKy WHERE NgayBatDau BETWEEN ? AND ? ";
+    String select_by_trangthaibymonth_sql = "select * from NhatKy where TrangThai = ? and NgayBatDau BETWEEN ? AND ? ";
 
     @Override
     public void insert(NhatKy entity) {
@@ -191,4 +195,15 @@ public class NhatKyDAO extends FarmSysDAO<NhatKy, String> {
         return this.selectBySql(SELECT_BY_NAME_SQL, "%" + keyword + "%");
     }
 
+    public List<NhatKy> selectAllMonth() {
+        return selectBySql(select_by_all_month_SQL);
+    }
+
+    public List<NhatKy> selectByTime(Date ngaybatdau, Date ngayketthuc) {
+        return selectBySql(select_by_time_sql, ngaybatdau, ngayketthuc);
+    }
+
+    public List<NhatKy> selectTrangThaiByMonth(int trangthai, Date NBD, Date NKT) {
+        return selectBySql(select_by_trangthaibymonth_sql, trangthai, NBD, NKT);
+    }
 }

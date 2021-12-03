@@ -265,7 +265,7 @@ public class GiaoViecJPanel extends javax.swing.JPanel {
         txtnguoitao.setText(Auth.user.getMaNV());
         fillComboBoxCongViec();
         fillComboBoxCayTrong();
-        fillComboBoxGianTrong();
+//        fillComboBoxGianTrong();
         fillComboBoxNhanVien();
 
     }

@@ -235,7 +235,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="590" y="40" width="460" height="570"/>
+              <AbsoluteConstraints x="590" y="50" width="460" height="570"/>
             </Constraint>
           </Constraints>
 
@@ -478,6 +478,16 @@
             </Component>
           </SubComponents>
         </Container>
+        <Component class="javax.swing.JButton" name="jButton1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Ba&#x309;ng th&#xf4;&#x301;ng k&#xea; doanh thu"/>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="10" y="580" width="160" height="-1"/>
+            </Constraint>
+          </Constraints>
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>

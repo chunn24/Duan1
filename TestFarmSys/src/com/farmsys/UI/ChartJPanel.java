@@ -6,13 +6,16 @@
 package com.farmsys.UI;
 
 import com.farmsys.Entity.Chart;
+import com.farmsys.Entity.NhatKy;
 import com.farmsys.Helper.HandleAPI;
 import com.farmsys.dao.ChartDAO;
 import com.farmsys.dao.NhatKyDAO;
 import com.farmsys.data.JsonResult;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.util.Date;
 import java.util.List;
+import javax.swing.table.DefaultTableModel;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -48,7 +51,11 @@ public class ChartJPanel extends javax.swing.JPanel {
         pnlchart = new javax.swing.JPanel();
         pnlcharttron = new javax.swing.JPanel();
         pnlchartcot = new javax.swing.JPanel();
+        Datengaybatdau = new com.toedter.calendar.JDateChooser();
+        Datengayketthuc = new com.toedter.calendar.JDateChooser();
+        jLabel1 = new javax.swing.JLabel();
         cb_city = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
 
         setMinimumSize(new java.awt.Dimension(1083, 750));
         setPreferredSize(new java.awt.Dimension(1083, 750));
@@ -58,17 +65,23 @@ public class ChartJPanel extends javax.swing.JPanel {
         PanelTong.setPreferredSize(new java.awt.Dimension(1083, 750));
         PanelTong.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        pnlchart.setBackground(new java.awt.Color(255, 255, 255));
+        pnlchart.setBackground(new java.awt.Color(204, 204, 255));
         pnlchart.setLayout(new java.awt.BorderLayout());
-        PanelTong.add(pnlchart, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 1020, 370));
+        PanelTong.add(pnlchart, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 1020, 350));
 
-        pnlcharttron.setBackground(new java.awt.Color(255, 255, 255));
+        pnlcharttron.setBackground(new java.awt.Color(204, 204, 255));
         pnlcharttron.setLayout(new java.awt.BorderLayout());
-        PanelTong.add(pnlcharttron, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 20, 440, 280));
+        PanelTong.add(pnlcharttron, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 20, 480, 280));
 
-        pnlchartcot.setBackground(new java.awt.Color(255, 255, 255));
+        pnlchartcot.setBackground(new java.awt.Color(204, 204, 255));
         pnlchartcot.setLayout(new java.awt.BorderLayout());
-        PanelTong.add(pnlchartcot, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 515, 313));
+        PanelTong.add(pnlchartcot, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 520, 310));
+        PanelTong.add(Datengaybatdau, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 310, 140, -1));
+        PanelTong.add(Datengayketthuc, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 310, 170, -1));
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Đến");
+        PanelTong.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 310, 80, 20));
 
         cb_city.setBackground(new java.awt.Color(255, 153, 153));
         cb_city.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Saigon", "Hanoi", "Danang", " " }));
@@ -78,7 +91,15 @@ public class ChartJPanel extends javax.swing.JPanel {
                 cb_cityActionPerformed(evt);
             }
         });
-        PanelTong.add(cb_city, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 30, 20));
+        PanelTong.add(cb_city, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, 50, -1));
+
+        jButton1.setText("Lọc");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        PanelTong.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 310, 60, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -101,15 +122,24 @@ public class ChartJPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_cb_cityActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.showPieChartByTime();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.toedter.calendar.JDateChooser Datengaybatdau;
+    private com.toedter.calendar.JDateChooser Datengayketthuc;
     private javax.swing.JPanel PanelTong;
     private javax.swing.JComboBox<String> cb_city;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel pnlchart;
     private javax.swing.JPanel pnlchartcot;
     private javax.swing.JPanel pnlcharttron;
     // End of variables declaration//GEN-END:variables
-
+    ChartDAO dao = new ChartDAO();
+    Double Thang1, Thang2, Thang3, Thang4, Thang5, Thang6, Thang7, Thang8, Thang9, Thang10, Thang11, Thang12;
     NhatKyDAO nkDAO = new NhatKyDAO();
     private JsonResult result;
     private int idx = 0;
@@ -121,8 +151,6 @@ public class ChartJPanel extends javax.swing.JPanel {
         this.showPieChart();
         this.showBarChart();
     }
-    ChartDAO dao = new ChartDAO();
-    Double Thang1, Thang2, Thang3, Thang4, Thang5, Thang6, Thang7, Thang8, Thang9, Thang10, Thang11, Thang12;
 
     void showLineChart() {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
@@ -220,6 +248,46 @@ public class ChartJPanel extends javax.swing.JPanel {
         pnlcharttron.validate();
     }
 
+    public void showPieChartByTime() {
+        //create dataset
+        DefaultPieDataset barDataset = new DefaultPieDataset();
+        Date tungay = Datengaybatdau.getDate();
+        Date denngay = Datengayketthuc.getDate();
+        int todo = ((100 / nkDAO.selectByTime(tungay, denngay).size()) * nkDAO.selectTrangThaiByMonth(0, tungay, denngay).size());
+        int doing = ((100 / nkDAO.selectByTime(tungay, denngay).size()) * nkDAO.selectTrangThaiByMonth(1, tungay, denngay).size());
+        int done = ((100 / nkDAO.selectByTime(tungay, denngay).size()) * nkDAO.selectTrangThaiByMonth(3, tungay, denngay).size());
+        int cancel = ((100 / nkDAO.selectByTime(tungay, denngay).size()) * nkDAO.selectTrangThaiByMonth(2, tungay, denngay).size());
+        if (todo > 0) {
+            barDataset.setValue("Nhận việc", todo);
+        }
+        if (doing > 0) {
+            barDataset.setValue("Đang làm", doing);
+        }
+        if (done > 0) {
+            barDataset.setValue("Hoàn thành", done);
+        }
+        if (cancel > 0) {
+            barDataset.setValue("Hủy", cancel);
+        }
+
+        //create chart
+        JFreeChart piechart = ChartFactory.createPieChart("Tiến độ công việc", barDataset, false, true, false);//explain
+
+        PiePlot piePlot = (PiePlot) piechart.getPlot();
+
+        //changing pie chart blocks colors
+        piePlot.setSectionPaint("Nhận việc", new Color(255, 255, 102));
+        piePlot.setSectionPaint("Đang làm", new Color(102, 255, 102));
+        piePlot.setSectionPaint("Hoàn thành", new Color(255, 102, 153));
+        piePlot.setSectionPaint("Hủy", new Color(0, 204, 204));
+        piePlot.setBackgroundPaint(Color.white);
+        //create chartPanel to display chart(graph)
+        ChartPanel barChartPanel = new ChartPanel(piechart);
+        pnlcharttron.removeAll();
+        pnlcharttron.add(barChartPanel, BorderLayout.CENTER);
+        pnlcharttron.validate();
+    }
+
     public void showBarChart() {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         dataset.setValue(Thang1, "Amount", "1");
@@ -250,4 +318,5 @@ public class ChartJPanel extends javax.swing.JPanel {
         pnlchartcot.add(barpChartPanel, BorderLayout.CENTER);
         pnlchartcot.validate();
     }
+
 }

@@ -925,7 +925,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="10" y="190" width="230" height="250"/>
+              <AbsoluteConstraints x="10" y="190" width="230" height="220"/>
             </Constraint>
           </Constraints>
 
@@ -955,7 +955,7 @@
                       <Component id="pnlCamera" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jSeparator2" min="-2" pref="9" max="-2" attributes="0"/>
-                      <EmptySpace pref="35" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1115,7 +1115,7 @@
         <Container class="javax.swing.JTabbedPane" name="TabsMnu">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="10" y="410" width="230" height="350"/>
+              <AbsoluteConstraints x="10" y="380" width="230" height="380"/>
             </Constraint>
           </Constraints>
 
@@ -1139,29 +1139,49 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="pnlGiaoViec" alignment="0" max="32767" attributes="0"/>
-                              <Component id="pnlThoiTiet" alignment="0" max="32767" attributes="0"/>
-                              <Component id="pnlGianTrong" alignment="0" max="32767" attributes="0"/>
-                              <Component id="pnlCayTrong" alignment="0" max="32767" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="pnlCayTrong" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="pnlNhanVien" max="32767" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Component id="pnlNhatKy" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="pnlGiaoViec" alignment="1" max="32767" attributes="0"/>
+                                          <Component id="pnlGianTrong" alignment="1" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Component id="pnlThoiTiet" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
-                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                          <Component id="pnlCayTrong" max="32767" attributes="0"/>
-                          <EmptySpace min="-2" max="-2" attributes="0"/>
-                          <Component id="pnlGianTrong" max="32767" attributes="0"/>
-                          <EmptySpace min="-2" max="-2" attributes="0"/>
-                          <Component id="pnlGiaoViec" max="32767" attributes="0"/>
-                          <EmptySpace min="-2" max="-2" attributes="0"/>
-                          <Component id="pnlThoiTiet" max="32767" attributes="0"/>
-                          <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="pnlNhanVien" linkSize="1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="pnlNhatKy" linkSize="1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="pnlCayTrong" linkSize="1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="pnlGianTrong" linkSize="1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="pnlGiaoViec" linkSize="1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="pnlThoiTiet" linkSize="1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="17" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1187,13 +1207,13 @@
                               <Component id="logoThoitiet" max="32767" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="lblthoitiet" min="-2" pref="118" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="logoThoitiet" alignment="1" pref="59" max="32767" attributes="0"/>
+                          <Component id="logoThoitiet" alignment="1" pref="49" max="32767" attributes="0"/>
                           <Component id="lblthoitiet" alignment="1" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
@@ -1236,13 +1256,13 @@
                               <Component id="logoGiaoviec" max="32767" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="lblGiaoviec" min="-2" pref="118" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="logoGiaoviec" alignment="1" pref="59" max="32767" attributes="0"/>
+                          <Component id="logoGiaoviec" alignment="1" pref="49" max="32767" attributes="0"/>
                           <Component id="lblGiaoviec" alignment="1" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
@@ -1291,7 +1311,7 @@
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="logogiantrong" alignment="1" pref="59" max="32767" attributes="0"/>
+                          <Component id="logogiantrong" alignment="1" pref="49" max="32767" attributes="0"/>
                           <Component id="lblgiantrong" alignment="1" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
@@ -1331,34 +1351,132 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="logocaytrong" max="32767" attributes="0"/>
+                              <Component id="logocaytrong2" max="32767" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="lblcaytrong" min="-2" pref="118" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                              <Component id="lblcaytrong2" min="-2" pref="118" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="logocaytrong" alignment="1" pref="59" max="32767" attributes="0"/>
-                          <Component id="lblcaytrong" alignment="1" max="32767" attributes="0"/>
+                          <Component id="logocaytrong2" alignment="1" pref="49" max="32767" attributes="0"/>
+                          <Component id="lblcaytrong2" alignment="1" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JLabel" name="logocaytrong">
+                    <Component class="javax.swing.JLabel" name="logocaytrong2">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/com/farmsys/icons/plant_25px.png"/>
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="lblcaytrong">
+                    <Component class="javax.swing.JLabel" name="lblcaytrong2">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="12" style="1"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="C&#xe2;y tr&#xf4;&#x300;ng"/>
+                      </Properties>
+                    </Component>
+                  </SubComponents>
+                </Container>
+                <Container class="javax.swing.JPanel" name="pnlNhatKy">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pnlNhatKyMouseClicked"/>
+                    <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pnlNhatKyMouseEntered"/>
+                    <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pnlNhatKyMouseExited"/>
+                  </Events>
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" max="-2" attributes="0"/>
+                              <Component id="logoNhatKy" max="32767" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="lblcaytrong3" min="-2" pref="118" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="logoNhatKy" alignment="1" pref="49" max="32767" attributes="0"/>
+                          <Component id="lblcaytrong3" alignment="1" max="32767" attributes="0"/>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                  <SubComponents>
+                    <Component class="javax.swing.JLabel" name="logoNhatKy">
+                      <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/com/farmsys/icons/Document_25px.png"/>
+                        </Property>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblcaytrong3">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="12" style="1"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Nh&#xe2;&#x323;t ky&#x301;"/>
+                      </Properties>
+                    </Component>
+                  </SubComponents>
+                </Container>
+                <Container class="javax.swing.JPanel" name="pnlNhanVien">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pnlNhanVienMouseClicked"/>
+                    <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pnlNhanVienMouseEntered"/>
+                    <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pnlNhanVienMouseExited"/>
+                  </Events>
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" max="-2" attributes="0"/>
+                              <Component id="logoNhanVien" max="32767" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="lblcaytrong1" min="-2" pref="118" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="logoNhanVien" alignment="1" pref="49" max="32767" attributes="0"/>
+                          <Component id="lblcaytrong1" alignment="1" max="32767" attributes="0"/>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                  <SubComponents>
+                    <Component class="javax.swing.JLabel" name="logoNhanVien">
+                      <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/com/farmsys/icons/user_25px.png"/>
+                        </Property>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblcaytrong1">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="12" style="1"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Nh&#xe2;n vi&#xea;n"/>
                       </Properties>
                     </Component>
                   </SubComponents>
@@ -1434,7 +1552,7 @@
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="logoThoitiet1" alignment="1" pref="59" max="32767" attributes="0"/>
+                          <Component id="logoThoitiet1" alignment="1" pref="69" max="32767" attributes="0"/>
                           <Component id="lblthoitiet1" alignment="1" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
@@ -1483,7 +1601,7 @@
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="logoxnht" alignment="1" pref="59" max="32767" attributes="0"/>
+                          <Component id="logoxnht" alignment="1" pref="69" max="32767" attributes="0"/>
                           <Component id="lblxnht" alignment="1" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
@@ -1532,7 +1650,7 @@
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="logomenunhanviec" alignment="1" pref="59" max="32767" attributes="0"/>
+                          <Component id="logomenunhanviec" alignment="1" pref="69" max="32767" attributes="0"/>
                           <Component id="lblmenunhanviec" alignment="1" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>

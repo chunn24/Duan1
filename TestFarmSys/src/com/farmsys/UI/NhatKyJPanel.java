@@ -15,6 +15,7 @@ import com.farmsys.dao.NhatKyDAO;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.print.PrinterException;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -67,6 +68,11 @@ public class NhatKyJPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblNhatKy = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
+        Datengaybatdau = new com.toedter.calendar.JDateChooser();
+        Datengayketthuc = new com.toedter.calendar.JDateChooser();
+        lbltungay = new javax.swing.JLabel();
+        lblden = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
 
         TheNVJDialog.setTitle("Thẻ nhân viên");
         TheNVJDialog.setMinimumSize(new java.awt.Dimension(472, 223));
@@ -183,7 +189,7 @@ public class NhatKyJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblNhatKy);
 
-        pnlNhatKy.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 1040, 510));
+        pnlNhatKy.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 1040, 510));
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Print");
@@ -192,7 +198,30 @@ public class NhatKyJPanel extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-        pnlNhatKy.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 610, 70, -1));
+        pnlNhatKy.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 670, 70, -1));
+        pnlNhatKy.add(Datengaybatdau, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 170, -1));
+
+        Datengayketthuc.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                DatengayketthucMouseClicked(evt);
+            }
+        });
+        pnlNhatKy.add(Datengayketthuc, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 120, 170, -1));
+
+        lbltungay.setText("Từ ngày");
+        pnlNhatKy.add(lbltungay, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, 20));
+
+        lblden.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblden.setText("Đến");
+        pnlNhatKy.add(lblden, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, 50, 20));
+
+        jButton2.setText("Lọc");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        pnlNhatKy.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 120, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -234,20 +263,33 @@ public class NhatKyJPanel extends javax.swing.JPanel {
         this.print();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void DatengayketthucMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DatengayketthucMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DatengayketthucMouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        this.loadToTableDate();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.toedter.calendar.JDateChooser Datengaybatdau;
+    private com.toedter.calendar.JDateChooser Datengayketthuc;
     private javax.swing.JDialog TheNVJDialog;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
     private com.farmsys.Helper.ImageAvatar imageAvatar;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblGioiTinh;
     private javax.swing.JLabel lblTenNV;
     private javax.swing.JLabel lblVaiTro;
+    private javax.swing.JLabel lblden;
+    private javax.swing.JLabel lbltungay;
     private javax.swing.JPanel pnlNhatKy;
     private javax.swing.JPanel pnlTong;
     private javax.swing.JRadioButton rdoNam;
@@ -274,7 +316,7 @@ public class NhatKyJPanel extends javax.swing.JPanel {
     private void fillTableNhatALL() {
         DefaultTableModel model = (DefaultTableModel) tblNhatKy.getModel();
         model.setRowCount(0);
-        List<NhatKy> list = nkdao.selectAll();
+        List<NhatKy> list = nkdao.selectAllMonth();
         for (NhatKy nk : list) {
             String status = trangThai(nk);
             model.addRow(new Object[]{
@@ -389,10 +431,9 @@ public class NhatKyJPanel extends javax.swing.JPanel {
     JFileChooser fileChooser = new JFileChooser();
 
     private void edit() {
-        String manv = (String) tblNhatKy.getValueAt(this.row, 5);     
-        NhanVien nv = nvdao.selectById(manv);      
+        String manv = (String) tblNhatKy.getValueAt(this.row, 5);
+        NhanVien nv = nvdao.selectById(manv);
         this.setForm(nv);
-        
 
     }
 
@@ -401,7 +442,7 @@ public class NhatKyJPanel extends javax.swing.JPanel {
         NhanVien nv = nvdao.selectHinh(name);
         this.setAvatar(nv);
     }
-    
+
     private void setForm(NhanVien nv) {
         txtTenNV.setText(nv.getHoTen());
         txtEmail.setText(nv.getEmail());
@@ -424,6 +465,28 @@ public class NhatKyJPanel extends javax.swing.JPanel {
             //Chuyển Icon sang image và điều chỉnh kích thước
             Image scaleIcon = icon.getImage().getScaledInstance(imageAvatar.getWidth(), imageAvatar.getHeight(), Image.SCALE_DEFAULT);
             imageAvatar.setImage(new javax.swing.ImageIcon(scaleIcon));
+        }
+    }
+
+    private void loadToTableDate() {
+        DefaultTableModel model = (DefaultTableModel) tblNhatKy.getModel();
+        model.setRowCount(0);
+        Date tungay = Datengaybatdau.getDate();
+        Date denngay = Datengayketthuc.getDate();
+        List<NhatKy> list = nkdao.selectByTime(tungay, denngay);
+        for (NhatKy nk : list) {
+            String status = trangThai(nk);
+            model.addRow(new Object[]{
+                nk.getTenCV(),
+                nk.getTenCay(),
+                nk.getTenGian(),
+                nk.getChiTiet(),
+                nk.getNguoiTao(),
+                nk.getNhanVien(),
+                nk.getNgayBatDau(),
+                nk.getNgayKetThuc(),
+                status
+            });
         }
     }
 }
