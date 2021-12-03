@@ -560,14 +560,14 @@ public class CayTrongPanel extends javax.swing.JPanel {
             return false;
         }
 
-        String rgx = "[0-9]";
+        String rgx = "\\w";
         if (txtTenCay.getText().matches(rgx)) {
             MsgBox.alert(this, "Tên cây không được chứa số ");
             txtTenCay.requestFocus();
             return false;
         }
 
-        if (txtTenCay.getText().length() >= 30) {
+        if (txtTenCay.getText().length() > 30) {
             MsgBox.alert(this, "Tên cây không được quá 30 kí tự ");
             txtTenCay.requestFocus();
             return false;
@@ -608,7 +608,7 @@ public class CayTrongPanel extends javax.swing.JPanel {
         }
 
         float doph = Float.parseFloat(txtDoPH.getText());
-        if (doph < 0 && doph > 14) {
+        if (doph < 0 || doph > 14) {
             MsgBox.alert(this, "Độ PH của cây từ 1 -> 14");
             txtDoPH.requestFocus();
             return false;
@@ -622,14 +622,14 @@ public class CayTrongPanel extends javax.swing.JPanel {
         }
 
         int nhietdo = Integer.parseInt(txtNhietDo.getText());
-        if (nhietdo < 24 && nhietdo > 27) {
+        if (nhietdo < 24 || nhietdo > 27) {
             MsgBox.alert(this, "Nhiệt độ tốt cho cây phải từ 24°C -> 27°C");
             txtNhietDo.requestFocus();
             return false;
         }
 
         int doAM = Integer.parseInt(txtDoAm.getText());
-        if (doAM < 60 && doAM > 65) {
+        if (doAM < 60 || doAM > 65) {
             MsgBox.alert(this, "Độ ẩm tốt cho cây phải từ 60% -> 65%");
             txtDoAm.requestFocus();
             return false;
