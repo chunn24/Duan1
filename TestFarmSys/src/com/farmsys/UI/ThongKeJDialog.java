@@ -5,6 +5,12 @@
  */
 package com.farmsys.UI;
 
+import com.farmsys.Entity.KhoHang;
+import com.farmsys.Entity.NhatKy;
+import com.farmsys.dao.KhoHangDAO;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author NguyenTrung
@@ -17,6 +23,30 @@ public class ThongKeJDialog extends javax.swing.JDialog {
     public ThongKeJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        init();
+        
+    }
+    
+    void init(){
+        this.fillTableKhoHangAll();
+    }
+    
+    KhoHangDAO khDAO = new KhoHangDAO();
+    
+    private void fillTableKhoHangAll() {
+        DefaultTableModel model = (DefaultTableModel) tblKhoHang.getModel();
+        model.setRowCount(0);
+        KhoHang khoHang = new KhoHang();
+        List<KhoHang> list = khDAO.selectAll();
+        for (KhoHang kh : list) {
+            model.addRow(new Object[]{
+                kh.getTenGian(),
+                kh.getTenCay(),
+                kh.getTrongLuong(),
+                kh.getNgayTH(),
+                kh.getGiaThanh()
+            });
+        }
     }
 
     /**
@@ -32,13 +62,13 @@ public class ThongKeJDialog extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblKhoHang = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblKhoHang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -57,7 +87,7 @@ public class ThongKeJDialog extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblKhoHang);
 
         jButton1.setText("xuat PDF");
 
@@ -101,7 +131,7 @@ public class ThongKeJDialog extends javax.swing.JDialog {
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("tab1", jPanel1);
+        jTabbedPane1.addTab("Kho hàng", jPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -166,6 +196,6 @@ public class ThongKeJDialog extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblKhoHang;
     // End of variables declaration//GEN-END:variables
 }
