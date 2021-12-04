@@ -6,11 +6,31 @@
 package com.farmsys.UI;
 
 import com.farmsys.Entity.KhoHang;
+import com.farmsys.Helper.DateHelper;
 import com.farmsys.Helper.MsgBox;
 import com.farmsys.dao.KhoHangDAO;
 import com.farmsys.dao.NhatKyDAO;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.EncodeHintType;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.WriterException;
+import com.google.zxing.client.j2se.MatrixToImageWriter;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.print.PageFormat;
+import java.awt.print.Printable;
+import java.awt.print.PrinterException;
+import java.awt.print.PrinterJob;
+import java.io.File;
+import java.io.IOException;
+import java.util.EnumMap;
 import java.util.List;
+import java.util.Map;
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -36,6 +56,33 @@ public class KhoHangJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        HoaDonJDialog = new javax.swing.JDialog();
+        pnlhoadon = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        lblNgayGD = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        lblNguoiBan = new javax.swing.JLabel();
+        jSeparator4 = new javax.swing.JSeparator();
+        jLabel17 = new javax.swing.JLabel();
+        lblTongTien = new javax.swing.JLabel();
+        jSeparator5 = new javax.swing.JSeparator();
+        jLabel19 = new javax.swing.JLabel();
+        jSeparator6 = new javax.swing.JSeparator();
+        lblQR = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        lblGiaban = new javax.swing.JLabel();
+        lblSanPham = new javax.swing.JLabel();
+        lblSoLuong = new javax.swing.JLabel();
+        btnkhongin = new javax.swing.JButton();
+        btnInHD = new javax.swing.JButton();
         PnlTong = new javax.swing.JPanel();
         lbltitle = new javax.swing.JLabel();
         pnltimkiem = new javax.swing.JPanel();
@@ -65,6 +112,116 @@ public class KhoHangJPanel extends javax.swing.JPanel {
         jLabel11 = new javax.swing.JLabel();
         txtThanhTien = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+
+        HoaDonJDialog.setTitle("Hóa Đơn FarmSys");
+        HoaDonJDialog.setAlwaysOnTop(true);
+        HoaDonJDialog.setBackground(new java.awt.Color(255, 255, 255));
+        HoaDonJDialog.setMinimumSize(new java.awt.Dimension(507, 700));
+        HoaDonJDialog.setModalityType(java.awt.Dialog.ModalityType.MODELESS);
+        HoaDonJDialog.setPreferredSize(new java.awt.Dimension(507, 700));
+        HoaDonJDialog.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        pnlhoadon.setBackground(new java.awt.Color(255, 255, 255));
+        pnlhoadon.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        pnlhoadon.setMinimumSize(new java.awt.Dimension(470, 630));
+        pnlhoadon.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setText("PHIẾU THANH THANH TOÁN");
+        pnlhoadon.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 99, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel4.setText("www.farmsys.com");
+        pnlhoadon.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 41, -1, -1));
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jLabel8.setText("35-37 Phạm Hữu Lầu, Khu phố 2, Phường Phú Mỹ, Quận 7, Thành phố Hồ Chí Minh, Việt Nam");
+        pnlhoadon.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 64, 440, -1));
+
+        jSeparator2.setBackground(new java.awt.Color(0, 0, 0));
+        pnlhoadon.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 83, 446, 10));
+
+        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel14.setText("NÔNG TRẠI THỦY CANH 4.0");
+        pnlhoadon.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(121, 13, -1, -1));
+
+        jLabel15.setText("Ngày giao dịch:");
+        pnlhoadon.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 139, -1, -1));
+
+        lblNgayGD.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblNgayGD.setText("20/07/2021 20:20");
+        pnlhoadon.add(lblNgayGD, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 139, 190, -1));
+
+        jLabel16.setText("Người bán:");
+        pnlhoadon.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 164, 74, -1));
+
+        lblNguoiBan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblNguoiBan.setText("Vương Nguyên Trung");
+        pnlhoadon.add(lblNguoiBan, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 164, 140, -1));
+
+        jSeparator4.setBackground(new java.awt.Color(0, 0, 0));
+        pnlhoadon.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 280, 446, 10));
+
+        jLabel17.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel17.setText("Tổng tiền");
+        pnlhoadon.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 290, 60, 20));
+
+        lblTongTien.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblTongTien.setText("0 ");
+        pnlhoadon.add(lblTongTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 290, 120, 20));
+
+        jSeparator5.setBackground(new java.awt.Color(0, 0, 0));
+        pnlhoadon.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 324, 446, 10));
+
+        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel19.setText("(Giá trên đã bao gồm thuế GTGT)");
+        pnlhoadon.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(96, 340, 275, -1));
+
+        jSeparator6.setBackground(new java.awt.Color(0, 0, 0));
+        pnlhoadon.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 365, 446, 10));
+        pnlhoadon.add(lblQR, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, 200, 200));
+
+        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/FarmSys.png"))); // NOI18N
+        pnlhoadon.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 380, 230, 200));
+
+        jLabel21.setText("Tên sản phẩm:");
+        pnlhoadon.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 189, -1, -1));
+
+        jLabel22.setText("Giá bán:");
+        pnlhoadon.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 239, -1, -1));
+
+        jLabel23.setText("Số lượng:");
+        pnlhoadon.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 214, -1, -1));
+
+        lblGiaban.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblGiaban.setText("jLabel13");
+        pnlhoadon.add(lblGiaban, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 239, 120, -1));
+
+        lblSanPham.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblSanPham.setText("jLabel13");
+        pnlhoadon.add(lblSanPham, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 189, 130, -1));
+
+        lblSoLuong.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblSoLuong.setText("jLabel13");
+        pnlhoadon.add(lblSoLuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 214, 80, -1));
+
+        HoaDonJDialog.getContentPane().add(pnlhoadon, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 470, 590));
+
+        btnkhongin.setText("Không in hóa đơn");
+        btnkhongin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnkhonginActionPerformed(evt);
+            }
+        });
+        HoaDonJDialog.getContentPane().add(btnkhongin, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 620, -1, -1));
+
+        btnInHD.setText("In hóa đơn");
+        btnInHD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInHDActionPerformed(evt);
+            }
+        });
+        HoaDonJDialog.getContentPane().add(btnInHD, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 620, -1, -1));
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -316,7 +473,12 @@ public class KhoHangJPanel extends javax.swing.JPanel {
         PnlTong.add(pnledit, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 50, 460, 570));
 
         jButton1.setText("Bảng thống kê doanh thu");
-        PnlTong.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 580, 160, -1));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        PnlTong.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 580, 190, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -340,8 +502,9 @@ public class KhoHangJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_tblKhoHangMouseClicked
 
     private void btnBuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuyActionPerformed
-        // TODO add your handling code here:
         this.Buy();
+        this.createQRcode();
+        lblQR.setIcon(new ImageIcon("src\\QRcode\\QRHoaDon.png"));
     }//GEN-LAST:event_btnBuyActionPerformed
 
     private void txtGiaBanFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtGiaBanFocusGained
@@ -366,26 +529,67 @@ public class KhoHangJPanel extends javax.swing.JPanel {
         this.fillTable();
     }//GEN-LAST:event_jLabel3MouseClicked
 
+    private void btnkhonginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnkhonginActionPerformed
+        HoaDonJDialog.setVisible(false);
+    }//GEN-LAST:event_btnkhonginActionPerformed
+
+    private void btnInHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInHDActionPerformed
+        printPanel(pnlhoadon);
+        HoaDonJDialog.setVisible(false);
+        clear();
+    }//GEN-LAST:event_btnInHDActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+//        new ThongKeJDialog(ThongKeJDialog, true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDialog HoaDonJDialog;
     private javax.swing.JPanel PnlTong;
     private javax.swing.JButton btnBuy;
+    private javax.swing.JButton btnInHD;
     private javax.swing.JButton btnTim;
+    private javax.swing.JButton btnkhongin;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JLabel lblGiaban;
+    private javax.swing.JLabel lblNgayGD;
+    private javax.swing.JLabel lblNguoiBan;
+    private javax.swing.JLabel lblQR;
+    private javax.swing.JLabel lblSanPham;
+    private javax.swing.JLabel lblSoLuong;
+    private javax.swing.JLabel lblTongTien;
     private javax.swing.JLabel lbltitle;
     private javax.swing.JPanel pnledit;
+    private javax.swing.JPanel pnlhoadon;
     private javax.swing.JPanel pnltimkiem;
     private javax.swing.JTable tblKhoHang;
     private javax.swing.JTextField txtGiaBan;
@@ -405,6 +609,7 @@ public class KhoHangJPanel extends javax.swing.JPanel {
     void init() {
         txtTimKiem.grabFocus();
         fillTable();
+        HoaDonJDialog.setLocationRelativeTo(this);
 
     }
 
@@ -415,7 +620,9 @@ public class KhoHangJPanel extends javax.swing.JPanel {
             Double Coin = Double.parseDouble(txtThanhTien.getText());
             Float gb = Float.parseFloat(txtGiaBan.getText());
             Float slb = Float.parseFloat(txtSLBan.getText());
+            Double tongtien = Double.parseDouble(lblTongTien.getText());
             Double Coin2 = Coin + (gb * slb);
+            Double hoadontongtien = tongtien + (gb * slb);
             Float TrongLuong2 = TrongLuong - slb;
 
             try {
@@ -425,13 +632,20 @@ public class KhoHangJPanel extends javax.swing.JPanel {
                 } else {
                     this.fillTable();
                     MsgBox.alert(this, "Giao Dịch Thành Công !");
-                    clear();
+
                 }
 
             } catch (Exception e) {
                 MsgBox.alert(this, "Giao Dịch Thất Bại !");
             }
             this.UpdateStt();
+            HoaDonJDialog.setVisible(true);
+            lblNgayGD.setText(DateHelper.now() + "");
+            lblSanPham.setText(txtTenCay.getText());
+            lblGiaban.setText(txtGiaBan.getText() + " /kg");
+            lblSoLuong.setText(txtSLBan.getText() + " kg");
+            lblTongTien.setText((hoadontongtien) + " $");
+
         }
 
     }
@@ -564,4 +778,53 @@ public class KhoHangJPanel extends javax.swing.JPanel {
         this.index = 0;
     }
 
+    private void printPanel(JPanel panel) {
+        PrinterJob printerJob = PrinterJob.getPrinterJob();
+        printerJob.setJobName("In hóa đơn");
+        printerJob.setPrintable(new Printable() {
+            @Override
+            public int print(Graphics graphics, PageFormat pageFormat, int pageIndex) throws PrinterException {
+                if (pageIndex > 0) {
+                    return Printable.NO_SUCH_PAGE;
+                }
+                Graphics2D graphics2D = (Graphics2D) graphics;
+                graphics2D.translate(pageFormat.getImageableX() * 10, pageFormat.getImageableY() * 10);
+                graphics2D.scale(0.5, 0.5);
+                panel.paint(graphics2D);
+                return Printable.PAGE_EXISTS;
+            }
+        });
+        boolean returnResult = printerJob.printDialog();
+        if (returnResult) {
+            try {
+                printerJob.print();
+            } catch (Exception e) {
+            }
+        }
+    }
+
+    private void createQRcode() {
+        String thongtin = txtTenCay.getText() + ", "
+                + " | " + txtTenGian.getText() + ", "
+                + " | " + txtNgayTH.getText() + ", "
+                + " | " + lblNgayGD.getText() + ", "
+                + " | " + lblSoLuong.getText() + ", "
+                + " | " + lblGiaban.getText() + ", "
+                + " | " + lblTongTien.getText() + ", ";
+        try {
+            String qrCodeData = thongtin;
+            String filePath = "src\\QRcode\\QRHoaDon.png";
+            String charset = "UTF-8"; // or "ISO-8859-1"
+            Map< EncodeHintType, ErrorCorrectionLevel> hintMap = new EnumMap<>(EncodeHintType.class);
+            hintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
+            BitMatrix matrix = new MultiFormatWriter().encode(
+                    new String(qrCodeData.getBytes(charset), charset),
+                    BarcodeFormat.QR_CODE, 200, 200, hintMap);
+            MatrixToImageWriter.writeToFile(matrix, filePath.substring(filePath
+                    .lastIndexOf('.') + 1), new File(filePath));
+            System.out.println("QR Code image created successfully!");
+        } catch (WriterException | IOException e) {
+            System.err.println(e);
+        }
+    }
 }
