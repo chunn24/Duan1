@@ -6,10 +6,25 @@
 package com.farmsys.UI;
 
 import com.farmsys.Entity.KhoHang;
-import com.farmsys.Entity.NhatKy;
+import com.farmsys.Helper.MsgBox;
 import com.farmsys.dao.KhoHangDAO;
+import jaco.mp3.a.f;
+import java.awt.print.PrinterException;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
+import org.apache.poi.ss.usermodel.Cell;
+
+import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 /**
  *
@@ -24,20 +39,21 @@ public class ThongKeJDialog extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         init();
-        
+
     }
-    
-    void init(){
+
+    void init() {
         this.fillTableKhoHangAll();
     }
-    
+
     KhoHangDAO khDAO = new KhoHangDAO();
-    
+    ArrayList<KhoHang> list = new ArrayList<>();
+
     private void fillTableKhoHangAll() {
         DefaultTableModel model = (DefaultTableModel) tblKhoHang.getModel();
         model.setRowCount(0);
         KhoHang khoHang = new KhoHang();
-        List<KhoHang> list = khDAO.selectAll();
+        list = (ArrayList<KhoHang>) khDAO.selectAll();
         for (KhoHang kh : list) {
             model.addRow(new Object[]{
                 kh.getTenGian(),
@@ -47,6 +63,64 @@ public class ThongKeJDialog extends javax.swing.JDialog {
                 kh.getGiaThanh()
             });
         }
+    }
+
+    private void xuatExcel() {
+        try {
+            XSSFWorkbook workbook = new XSSFWorkbook();
+            XSSFSheet sheet = workbook.createSheet("Thongke");
+            XSSFRow row = null;
+            Cell cell = null;
+            row = sheet.createRow(3);
+            cell = row.createCell(0, CellType.STRING);
+            cell.setCellValue("Tên giàn");
+
+            cell = row.createCell(1, CellType.STRING);
+            cell.setCellValue("Tên cây");
+
+            cell = row.createCell(2, CellType.STRING);
+            cell.setCellValue("Trọng lượng");
+
+            cell = row.createCell(3, CellType.STRING);
+            cell.setCellValue("Ngày thu hoạch");
+
+            cell = row.createCell(4, CellType.STRING);
+            cell.setCellValue("Thành tiền");
+
+            for (int i = 0; i < list.size(); i++) {
+                // Modelbook book = arr.get(i);
+                row = sheet.createRow(4 + i);
+
+                cell = row.createCell(0, CellType.STRING);
+                cell.setCellValue(list.get(i).getTenGian());
+
+                cell = row.createCell(1, CellType.STRING);
+                cell.setCellValue(list.get(i).getTenCay());
+
+                cell = row.createCell(2, CellType.STRING);
+                cell.setCellValue(list.get(i).getTrongLuong());
+
+                cell = row.createCell(3, CellType.STRING);
+                cell.setCellValue(list.get(i).getNgayTH() + "");
+
+                cell = row.createCell(4, CellType.STRING);
+                cell.setCellValue(list.get(i).getGiaThanh());
+            }
+            File file = new File("src\\Excel\\ThongKeDT.xlsx");
+            try {
+                FileOutputStream fos = new FileOutputStream(file);
+                workbook.write(fos);
+                fos.close();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+                MsgBox.alert(this, "loimofile");
+            }
+            MsgBox.alert(this, "Đã xuất ra file Excel");
+
+        } catch (Exception e) {
+            MsgBox.alert(this, "loimofile");
+        }
+
     }
 
     /**
@@ -90,8 +164,18 @@ public class ThongKeJDialog extends javax.swing.JDialog {
         jScrollPane1.setViewportView(tblKhoHang);
 
         jButton1.setText("xuat PDF");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Xuat excel");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -117,7 +201,7 @@ public class ThongKeJDialog extends javax.swing.JDialog {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -141,11 +225,30 @@ public class ThongKeJDialog extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        this.xuatExcel();
+        Runtime run = Runtime.getRuntime();
+        String url = "src\\Excel\\ThongKeDT.xlsx";
+        try {
+            run.exec("rundll32 url.dll, FileProtocolHandler " + url);
+        } catch (IOException ex) {
+            Logger.getLogger(ThongKeJDialog.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            tblKhoHang.print();
+        } catch (PrinterException ex) {
+            Logger.getLogger(ThongKeJDialog.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -175,17 +278,15 @@ public class ThongKeJDialog extends javax.swing.JDialog {
         //</editor-fold>
 
         /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                ThongKeJDialog dialog = new ThongKeJDialog(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            ThongKeJDialog dialog = new ThongKeJDialog(new javax.swing.JFrame(), true);
+            dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                @Override
+                public void windowClosing(java.awt.event.WindowEvent e) {
+                    System.exit(0);
+                }
+            });
+            dialog.setVisible(true);
         });
     }
 
@@ -198,4 +299,5 @@ public class ThongKeJDialog extends javax.swing.JDialog {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable tblKhoHang;
     // End of variables declaration//GEN-END:variables
+
 }

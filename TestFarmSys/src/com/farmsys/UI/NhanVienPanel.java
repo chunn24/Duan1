@@ -36,25 +36,25 @@ import javax.swing.JFileChooser;
  * @author NguyenTrung
  */
 public class NhanVienPanel extends javax.swing.JPanel {
-    
+
     private String manv;
     private String emailNV;
     private String tempOTP;
     String QRcoderandomString;
-    
+
     public NhanVienPanel() {
         initComponents();
         init();
         this.fillTable();
         this.row = -1;
         this.updateStatus();
-        
+
     }
     JFileChooser fileChooser = new JFileChooser();
-    
+
     NhanVienDAO dao = new NhanVienDAO();
     int row = -1;
-    
+
     void init() {
         if (!Auth.isLogin()) {
             MsgBox.alert(this, "Chưa đăng nhập, vô cái loz");
@@ -64,9 +64,9 @@ public class NhanVienPanel extends javax.swing.JPanel {
         new Timer(60000, (ActionEvent e) -> {
             this.fillTable();
         }).start();
-        
+
     }
-    
+
     void insert() {
         if (!Auth.isManager()) {
             MsgBox.alert(this, "Không có quyền xóa nhân viên!");
@@ -78,7 +78,7 @@ public class NhanVienPanel extends javax.swing.JPanel {
                 if (!mk2.equals(mk1)) {
                     MsgBox.alert(this, "Xác nhận mật khẩu không đúng");
                 } else {
-                    try {                      
+                    try {
                         this.createQRcode();
                         dao.insert(nv);
                         this.fillTable();
@@ -92,12 +92,12 @@ public class NhanVienPanel extends javax.swing.JPanel {
             }
         }
     }
-    
+
     void update() {
         NhanVien nv = getForm();
         String mk1 = new String(txtMatKhau.getPassword());
         String mk2 = new String(txtMatKhau2.getPassword());
-        
+
         if (!mk2.equals(mk1)) {
             MsgBox.alert(this, "Xác nhận mật khẩu không đúng!");
         } else {
@@ -113,7 +113,7 @@ public class NhanVienPanel extends javax.swing.JPanel {
             }
         }
     }
-    
+
     void delete() {
         if (!Auth.isManager()) {
             MsgBox.alert(this, "Không có quyền xóa nhân viên!");
@@ -136,7 +136,7 @@ public class NhanVienPanel extends javax.swing.JPanel {
             }
         }
     }
-    
+
     void clearForm() {
         NhanVien nv = new NhanVien();
         this.setForm(nv);
@@ -144,46 +144,46 @@ public class NhanVienPanel extends javax.swing.JPanel {
         lblHinh1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/avatar.png")));
         this.updateStatus();
     }
-    
+
     void edit() {
         String manv = (String) tblNhanVien.getValueAt(this.row, 0);
         NhanVien nv = dao.selectById(manv);
         this.setForm(nv);
         this.updateStatus();
-        
+
     }
-    
+
     void first() {
         this.row = 0;
         this.edit();
     }
-    
+
     void prev() {
         if (this.row > 0) {
             this.row--;
             this.edit();
         }
     }
-    
+
     void next() {
         if (this.row < tblNhanVien.getRowCount() - 1) {
             this.row++;
             this.edit();
         }
     }
-    
+
     void last() {
         this.row = tblNhanVien.getColumnCount() - 1;
         this.edit();
     }
-    
+
     void fillTable() {
         DefaultTableModel model = (DefaultTableModel) tblNhanVien.getModel();
         model.setRowCount(0);
         try {
             List<NhanVien> list = dao.selectAll();
             for (NhanVien nv : list) {
-                
+
                 Object[] row = {
                     nv.getMaNV(), "***********", nv.getHoTen(),
                     nv.isVaiTro() ? "Trưởng phòng" : "Nhân viên",
@@ -195,7 +195,7 @@ public class NhanVienPanel extends javax.swing.JPanel {
             MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
         }
     }
-    
+
     void setForm(NhanVien nv) {
         txtMaNV.setText(nv.getMaNV());
         txtHoTen.setText(nv.getHoTen());
@@ -203,7 +203,7 @@ public class NhanVienPanel extends javax.swing.JPanel {
         txtMatKhau2.setText(nv.getMatKhau());
         rdoTruongPhong.setSelected(nv.isVaiTro());
         rdoNhanVien.setSelected(!nv.isVaiTro());
-        
+
         rdoNam.setSelected(nv.isGioiTinh());
         rdoNu.setSelected(!nv.isGioiTinh());
         txtEmail.setText(nv.getEmail());
@@ -216,11 +216,11 @@ public class NhanVienPanel extends javax.swing.JPanel {
             //Chuyển Icon sang image và điều chỉnh kích thước
             Image scaleIcon = icon.getImage().getScaledInstance(lblHinh1.getWidth(), lblHinh1.getHeight(), Image.SCALE_DEFAULT);
             lblHinh1.setIcon(new javax.swing.ImageIcon(scaleIcon));
-        }else{
+        } else {
             lblHinh1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/avatar.png")));
         }
     }
-    
+
     NhanVien getForm() {
         if (validation()) {
             NhanVien nv = new NhanVien();
@@ -239,7 +239,7 @@ public class NhanVienPanel extends javax.swing.JPanel {
         }
         return null;
     }
-    
+
     void updateStatus() {
         boolean edit = (this.row >= 0);
         boolean first = (this.row == 0);
@@ -249,20 +249,20 @@ public class NhanVienPanel extends javax.swing.JPanel {
         btnThem.setEnabled(!edit);
         btnSua.setEnabled(edit);
         btnXoa.setEnabled(edit);
-        
+
     }
-    
+
     private void randomString() {
         QRcoderandomString = UUID.randomUUID().toString();
         txtqrcode.setText(QRcoderandomString);
     }
-    
+
     private void createQRcode() {
         try {
             String qrCodeData = QRcoderandomString;
             String filePath = "src\\QRcode\\a.png";
             String charset = "UTF-8"; // or "ISO-8859-1"
-            Map< EncodeHintType, ErrorCorrectionLevel> hintMap = new EnumMap< >(EncodeHintType.class);
+            Map< EncodeHintType, ErrorCorrectionLevel> hintMap = new EnumMap<>(EncodeHintType.class);
             hintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
             BitMatrix matrix = new MultiFormatWriter().encode(
                     new String(qrCodeData.getBytes(charset), charset),
@@ -274,7 +274,7 @@ public class NhanVienPanel extends javax.swing.JPanel {
             System.err.println(e);
         }
     }
-    
+
     void Sendmail() {
         MsgBox.alert(this, "Đang gửi mail...");
         String body = "Đây là mã QR code cá nhân. Vui lòng không để cho người khác có được mã này !";
@@ -288,7 +288,7 @@ public class NhanVienPanel extends javax.swing.JPanel {
                 } else {//tài khoản có mail --> gửi mail -->check otp
                     MailHelper.sendFile(emailNV, "QRCode to FarmSys", body, "src\\QRCODE\\a.png");
                     MsgBox.alert(this, "Gửi mail thành công !");
-                    
+
                 }
             } else {
                 MsgBox.alert(this, "Tài khoản không tồn tại");
@@ -296,7 +296,7 @@ public class NhanVienPanel extends javax.swing.JPanel {
         } catch (Exception e) {
         }
     }
-    
+
     void chonAnh() {
         if (fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
             File file = fileChooser.getSelectedFile();
@@ -307,7 +307,7 @@ public class NhanVienPanel extends javax.swing.JPanel {
             lblHinh1.setToolTipText(file.getName()); //Giữ tên hình trong toolTip
         }
     }
-    
+
     private boolean validation() {
         if (txtMaNV.getText().isEmpty()) {
             MsgBox.alert(this, "Bạn chưa nhập mã nhân viên!");
@@ -339,12 +339,12 @@ public class NhanVienPanel extends javax.swing.JPanel {
             txtLuong.requestFocus();
             return false;
         }
-        
+
         if (!txtMatKhau2.getText().equals(txtMatKhau.getText())) {
             txtMatKhau2.requestFocus();
             return false;
         }
-        
+
         try {
             Integer.parseInt(txtLuong.getText());
         } catch (Exception e) {
@@ -352,8 +352,8 @@ public class NhanVienPanel extends javax.swing.JPanel {
             txtLuong.requestFocus();
             return false;
         }
-        
-        if(Integer.parseInt(txtLuong.getText()) < 0){
+
+        if (Integer.parseInt(txtLuong.getText()) < 0) {
             MsgBox.alert(this, "Lương không được âm!");
             txtLuong.requestFocus();
             return false;
@@ -365,7 +365,7 @@ public class NhanVienPanel extends javax.swing.JPanel {
             txtEmail.requestFocus();
             return false;
         }
-        
+
         return true;
     }
 
@@ -385,7 +385,7 @@ public class NhanVienPanel extends javax.swing.JPanel {
         }
         return -1;
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -412,16 +412,17 @@ public class NhanVienPanel extends javax.swing.JPanel {
         btnMoi = new javax.swing.JButton();
         rdoTruongPhong = new javax.swing.JRadioButton();
         rdoNhanVien = new javax.swing.JRadioButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lblGioiTinh = new javax.swing.JLabel();
+        lblEmail = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        lblLuongCoban = new javax.swing.JLabel();
         txtLuong = new javax.swing.JTextField();
         rdoNam = new javax.swing.JRadioButton();
         rdoNu = new javax.swing.JRadioButton();
-        jLabel4 = new javax.swing.JLabel();
         lblHinh1 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        lblloadagain = new javax.swing.JLabel();
+        lblQR = new javax.swing.JLabel();
+        lblIconQR = new javax.swing.JLabel();
         txtqrcode = new javax.swing.JPasswordField();
 
         setMinimumSize(new java.awt.Dimension(1083, 750));
@@ -437,7 +438,6 @@ public class NhanVienPanel extends javax.swing.JPanel {
         pnlList.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblNhanVien.setAutoCreateRowSorter(true);
-        tblNhanVien.setBackground(new java.awt.Color(204, 255, 204));
         tblNhanVien.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -470,84 +470,108 @@ public class NhanVienPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblNhanVien);
 
-        pnlList.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 250));
+        pnlList.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 230));
 
-        pnlTong.add(pnlList, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 1030, 250));
+        pnlTong.add(pnlList, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 1050, 230));
 
         pnlEdit.setBackground(new java.awt.Color(255, 255, 255));
+        pnlEdit.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblMaNV.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblMaNV.setText("Tài khoản");
+        pnlEdit.add(lblMaNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, -1, -1));
 
         lblMatKhau.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblMatKhau.setText("Mật khẩu");
+        pnlEdit.add(lblMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, -1, -1));
 
         lblMatKhau2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblMatKhau2.setText("Xác nhận mật khẩu");
+        pnlEdit.add(lblMatKhau2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 70, -1, -1));
 
         lblHoTen.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblHoTen.setText("Họ và tên");
+        pnlEdit.add(lblHoTen, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 10, -1, -1));
 
         lblVaiTro.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblVaiTro.setText("Vai trò");
+        pnlEdit.add(lblVaiTro, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 130, -1, -1));
+        pnlEdit.add(txtMaNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, 231, 29));
+        pnlEdit.add(txtMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, 231, 29));
+        pnlEdit.add(txtMatKhau2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 90, 231, 29));
+        pnlEdit.add(txtHoTen, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 30, 231, 29));
 
+        btnThem.setBackground(new java.awt.Color(255, 255, 255));
         btnThem.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnThem.setText("Thêm");
+        btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Add.png"))); // NOI18N
         btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnThemActionPerformed(evt);
             }
         });
+        pnlEdit.add(btnThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 300, -1, -1));
 
+        btnSua.setBackground(new java.awt.Color(255, 255, 255));
         btnSua.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnSua.setText("Sửa");
+        btnSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Refresh.png"))); // NOI18N
         btnSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSuaActionPerformed(evt);
             }
         });
+        pnlEdit.add(btnSua, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 300, -1, -1));
 
+        btnXoa.setBackground(new java.awt.Color(255, 255, 255));
         btnXoa.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnXoa.setText("Xóa");
+        btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Delete.png"))); // NOI18N
         btnXoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnXoaActionPerformed(evt);
             }
         });
+        pnlEdit.add(btnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 300, -1, -1));
 
+        btnMoi.setBackground(new java.awt.Color(255, 255, 255));
         btnMoi.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnMoi.setText("Mới");
+        btnMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/new.png"))); // NOI18N
         btnMoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMoiActionPerformed(evt);
             }
         });
+        pnlEdit.add(btnMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 300, -1, -1));
 
         buttonGroup2.add(rdoTruongPhong);
         rdoTruongPhong.setSelected(true);
         rdoTruongPhong.setText("Trưởng phòng");
+        pnlEdit.add(rdoTruongPhong, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 150, -1, -1));
 
         buttonGroup2.add(rdoNhanVien);
         rdoNhanVien.setText("Nhân viên");
+        pnlEdit.add(rdoNhanVien, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 150, -1, -1));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setText("Gioi Tinh");
+        lblGioiTinh.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblGioiTinh.setText("Giới tính");
+        pnlEdit.add(lblGioiTinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, -1, 12));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setText("Email");
+        lblEmail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblEmail.setText("Email");
+        pnlEdit.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, -1, 29));
+        pnlEdit.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, 231, 29));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel3.setText("Lương cơ bản");
+        lblLuongCoban.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblLuongCoban.setText("Lương cơ bản");
+        pnlEdit.add(lblLuongCoban, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 180, -1, 29));
+        pnlEdit.add(txtLuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 210, 231, 29));
 
         buttonGroup1.add(rdoNam);
         rdoNam.setSelected(true);
         rdoNam.setText("Nam");
+        pnlEdit.add(rdoNam, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, -1, -1));
 
         buttonGroup1.add(rdoNu);
         rdoNu.setText("Nữ");
-
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel4.setText("QR code");
+        pnlEdit.add(rdoNu, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, -1, -1));
 
         lblHinh1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHinh1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/avatar.png"))); // NOI18N
@@ -558,120 +582,27 @@ public class NhanVienPanel extends javax.swing.JPanel {
                 lblHinh1MouseClicked(evt);
             }
         });
+        pnlEdit.add(lblHinh1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 10, 304, 279));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/icons8_synchronize_25px.png"))); // NOI18N
-        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblloadagain.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/icons8_synchronize_25px.png"))); // NOI18N
+        lblloadagain.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel5MouseClicked(evt);
+                lblloadagainMouseClicked(evt);
             }
         });
+        pnlEdit.add(lblloadagain, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 0, 30, -1));
+
+        lblQR.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblQR.setText("QR code");
+        pnlEdit.add(lblQR, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 242, -1, 20));
+
+        lblIconQR.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        pnlEdit.add(lblIconQR, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 200, 180));
+
+        pnlTong.add(pnlEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 1050, 460));
 
         txtqrcode.setText("jPasswordField1");
-
-        javax.swing.GroupLayout pnlEditLayout = new javax.swing.GroupLayout(pnlEdit);
-        pnlEdit.setLayout(pnlEditLayout);
-        pnlEditLayout.setHorizontalGroup(
-            pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlEditLayout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlEditLayout.createSequentialGroup()
-                        .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblMaNV)
-                            .addComponent(txtMaNV, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblMatKhau)
-                            .addComponent(txtMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1)
-                            .addGroup(pnlEditLayout.createSequentialGroup()
-                                .addComponent(rdoNam)
-                                .addGap(18, 18, 18)
-                                .addComponent(rdoNu))
-                            .addComponent(jLabel2)
-                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(77, 77, 77)
-                        .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblHoTen)
-                            .addComponent(txtHoTen, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblMatKhau2)
-                            .addComponent(txtMatKhau2, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblVaiTro)
-                            .addGroup(pnlEditLayout.createSequentialGroup()
-                                .addComponent(rdoTruongPhong)
-                                .addGap(2, 2, 2)
-                                .addComponent(rdoNhanVien))
-                            .addComponent(jLabel3)
-                            .addComponent(txtLuong, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(33, 33, 33)
-                        .addComponent(lblHinh1, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(67, 67, 67)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlEditLayout.createSequentialGroup()
-                        .addComponent(btnThem)
-                        .addGap(10, 10, 10)
-                        .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(btnMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtqrcode, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)))
-        );
-        pnlEditLayout.setVerticalGroup(
-            pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlEditLayout.createSequentialGroup()
-                .addGap(11, 11, 11)
-                .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlEditLayout.createSequentialGroup()
-                        .addComponent(lblMaNV)
-                        .addGap(6, 6, 6)
-                        .addComponent(txtMaNV, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblMatKhau)
-                        .addGap(6, 6, 6)
-                        .addComponent(txtMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(7, 7, 7)
-                        .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(rdoNam)
-                            .addComponent(rdoNu))
-                        .addGap(23, 23, 23)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)
-                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlEditLayout.createSequentialGroup()
-                        .addComponent(lblHoTen)
-                        .addGap(6, 6, 6)
-                        .addComponent(txtHoTen, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblMatKhau2)
-                        .addGap(6, 6, 6)
-                        .addComponent(txtMatKhau2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblVaiTro)
-                        .addGap(7, 7, 7)
-                        .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(rdoTruongPhong)
-                            .addComponent(rdoNhanVien))
-                        .addGap(13, 13, 13)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(11, 11, 11)
-                        .addComponent(txtLuong, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lblHinh1, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addGap(1, 1, 1)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtqrcode, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25)
-                .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnThem)
-                    .addComponent(btnSua)
-                    .addComponent(btnXoa)
-                    .addComponent(btnMoi)))
-        );
-
-        pnlTong.add(pnlEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 1020, 440));
+        pnlTong.add(txtqrcode, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 690, -1, -1));
 
         add(pnlTong, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1090, 750));
     }// </editor-fold>//GEN-END:initComponents
@@ -679,11 +610,13 @@ public class NhanVienPanel extends javax.swing.JPanel {
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         this.randomString();
         this.insert();
+        lblIconQR.setIcon(new ImageIcon("src\\QRcode\\a.png"));
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         this.randomString();
         this.update();
+        lblIconQR.setIcon(new ImageIcon("src\\QRcode\\a.png"));
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
@@ -701,7 +634,7 @@ public class NhanVienPanel extends javax.swing.JPanel {
         if (evt.getClickCount() == 1) {
             this.row = tblNhanVien.getSelectedRow();
             this.edit();
-            
+
         }
     }//GEN-LAST:event_tblNhanVienMouseClicked
 
@@ -710,9 +643,9 @@ public class NhanVienPanel extends javax.swing.JPanel {
         this.chonAnh();
     }//GEN-LAST:event_lblHinh1MouseClicked
 
-    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+    private void lblloadagainMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblloadagainMouseClicked
         this.fillTable();
-    }//GEN-LAST:event_jLabel5MouseClicked
+    }//GEN-LAST:event_lblloadagainMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -722,18 +655,19 @@ public class NhanVienPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnXoa;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblEmail;
+    private javax.swing.JLabel lblGioiTinh;
     private javax.swing.JLabel lblHinh1;
     private javax.swing.JLabel lblHoTen;
+    private javax.swing.JLabel lblIconQR;
+    private javax.swing.JLabel lblLuongCoban;
     private javax.swing.JLabel lblMaNV;
     private javax.swing.JLabel lblMatKhau;
     private javax.swing.JLabel lblMatKhau2;
+    private javax.swing.JLabel lblQR;
     private javax.swing.JLabel lblVaiTro;
+    private javax.swing.JLabel lblloadagain;
     private javax.swing.JPanel pnlEdit;
     private javax.swing.JPanel pnlList;
     private javax.swing.JPanel pnlTong;
