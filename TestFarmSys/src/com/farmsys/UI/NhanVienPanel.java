@@ -41,6 +41,7 @@ public class NhanVienPanel extends javax.swing.JPanel {
     private String emailNV;
     private String tempOTP;
     String QRcoderandomString;
+    String QRnow;
 
     public NhanVienPanel() {
         initComponents();
@@ -209,6 +210,7 @@ public class NhanVienPanel extends javax.swing.JPanel {
         txtEmail.setText(nv.getEmail());
         txtLuong.setText(nv.getLuong() + "");
         txtqrcode.setText(nv.getQRcodeString() + "");
+        QRnow = nv.getQRcodeString();
         if (nv.getHinh() != null) {
             lblHinh1.setToolTipText(nv.getHinh());
             ImageIcon icon = XImage.read(nv.getHinh()); // Lấy địa chỉ của file Icon
@@ -219,6 +221,8 @@ public class NhanVienPanel extends javax.swing.JPanel {
         } else {
             lblHinh1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/avatar.png")));
         }
+        this.createQRcode1();
+        
     }
 
     NhanVien getForm() {
@@ -270,6 +274,25 @@ public class NhanVienPanel extends javax.swing.JPanel {
             MatrixToImageWriter.writeToFile(matrix, filePath.substring(filePath
                     .lastIndexOf('.') + 1), new File(filePath));
             System.out.println("QR Code image created successfully!");
+        } catch (WriterException | IOException e) {
+            System.err.println(e);
+        }
+    }
+
+    private void createQRcode1() {
+        try {
+            String qrCodeData = QRnow;
+            String filePath = "src\\QRcode\\b.png";
+            String charset = "UTF-8"; // or "ISO-8859-1"
+            Map< EncodeHintType, ErrorCorrectionLevel> hintMap = new EnumMap<>(EncodeHintType.class);
+            hintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
+            BitMatrix matrix = new MultiFormatWriter().encode(
+                    new String(qrCodeData.getBytes(charset), charset),
+                    BarcodeFormat.QR_CODE, 200, 200, hintMap);
+            MatrixToImageWriter.writeToFile(matrix, filePath.substring(filePath
+                    .lastIndexOf('.') + 1), new File(filePath));
+            System.out.println("QR Code đã tạo thành công !");
+
         } catch (WriterException | IOException e) {
             System.err.println(e);
         }

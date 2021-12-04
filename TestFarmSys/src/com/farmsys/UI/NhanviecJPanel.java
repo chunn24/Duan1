@@ -6,9 +6,12 @@
 package com.farmsys.UI;
 
 import com.farmsys.Entity.GianTrong;
+import com.farmsys.Entity.NhanVien;
 import com.farmsys.Entity.NhatKy;
+import com.farmsys.Helper.MailHelper;
 import com.farmsys.Helper.MsgBox;
 import com.farmsys.dao.GianTrongDAO;
+import com.farmsys.dao.NhanVienDAO;
 import com.farmsys.dao.NhatKyDAO;
 import java.awt.event.ActionEvent;
 import java.sql.Date;
@@ -39,6 +42,12 @@ public class NhanViecJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        LydoJDialog = new javax.swing.JDialog();
+        pnllydo = new javax.swing.JPanel();
+        lbllydo = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        txtlydo = new javax.swing.JTextArea();
+        btnXacnhantuchoi = new javax.swing.JButton();
         pnltong = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         pnltbl = new javax.swing.JPanel();
@@ -59,6 +68,65 @@ public class NhanViecJPanel extends javax.swing.JPanel {
         btnhuy = new javax.swing.JButton();
         btnnhanviec = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
+
+        LydoJDialog.setTitle("Lý do từ chối nhận việc");
+        LydoJDialog.setMinimumSize(new java.awt.Dimension(400, 200));
+        LydoJDialog.setPreferredSize(new java.awt.Dimension(400, 200));
+
+        pnllydo.setBackground(new java.awt.Color(255, 255, 255));
+
+        lbllydo.setText("Lý do:");
+
+        txtlydo.setColumns(20);
+        txtlydo.setLineWrap(true);
+        txtlydo.setRows(5);
+        jScrollPane3.setViewportView(txtlydo);
+
+        btnXacnhantuchoi.setText("Xác nhận");
+        btnXacnhantuchoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXacnhantuchoiActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnllydoLayout = new javax.swing.GroupLayout(pnllydo);
+        pnllydo.setLayout(pnllydoLayout);
+        pnllydoLayout.setHorizontalGroup(
+            pnllydoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnllydoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnllydoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                    .addGroup(pnllydoLayout.createSequentialGroup()
+                        .addComponent(lbllydo)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnllydoLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnXacnhantuchoi)))
+                .addContainerGap())
+        );
+        pnllydoLayout.setVerticalGroup(
+            pnllydoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnllydoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbllydo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnXacnhantuchoi)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout LydoJDialogLayout = new javax.swing.GroupLayout(LydoJDialog.getContentPane());
+        LydoJDialog.getContentPane().setLayout(LydoJDialogLayout);
+        LydoJDialogLayout.setHorizontalGroup(
+            LydoJDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnllydo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        LydoJDialogLayout.setVerticalGroup(
+            LydoJDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnllydo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         setMinimumSize(new java.awt.Dimension(1090, 750));
         setPreferredSize(new java.awt.Dimension(1090, 750));
@@ -277,16 +345,24 @@ public class NhanViecJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnnhanviecActionPerformed
 
     private void btnhuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhuyActionPerformed
-        this.updateAgain();
-        this.clear();
+        LydoJDialog.setVisible(true);
+
     }//GEN-LAST:event_btnhuyActionPerformed
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
         this.fillTableNguoinhanviec();
     }//GEN-LAST:event_jLabel7MouseClicked
 
+    private void btnXacnhantuchoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXacnhantuchoiActionPerformed
+        this.updateAgain();
+        this.clear();
+
+    }//GEN-LAST:event_btnXacnhantuchoiActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDialog LydoJDialog;
+    private javax.swing.JButton btnXacnhantuchoi;
     private javax.swing.JButton btnhuy;
     private javax.swing.JButton btnnhanviec;
     private javax.swing.JLabel jLabel1;
@@ -298,27 +374,33 @@ public class NhanViecJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JLabel lbllydo;
     private javax.swing.JLabel lblnhanvien;
     private javax.swing.JPanel pnlThaotac;
+    private javax.swing.JPanel pnllydo;
     private javax.swing.JPanel pnltbl;
     private javax.swing.JPanel pnltong;
     private javax.swing.JTable tblcv;
     private javax.swing.JTextField txtgiaoviec;
+    private javax.swing.JTextArea txtlydo;
     private javax.swing.JTextArea txtmota;
     private javax.swing.JTextField txtngaykt;
     private javax.swing.JTextField txttencv;
     // End of variables declaration//GEN-END:variables
     NhatKyDAO nkDAO = new NhatKyDAO();
     GianTrongDAO gtDAO = new GianTrongDAO();
+    NhanVienDAO nvDAO = new NhanVienDAO();
     int row = -1;
+    String lydotuchoi;
+    private String emailNV;
 
     private void init() {
         this.row = -1;
         loadLbl();
+        LydoJDialog.setLocationRelativeTo(this);
         fillTableNguoinhanviec();
-        new Timer(10000, (ActionEvent e) -> {
-            fillTableNguoinhanviec();
-        }).start();
+
     }
 
     private void loadLbl() {
@@ -330,10 +412,9 @@ public class NhanViecJPanel extends javax.swing.JPanel {
         model.setRowCount(0);
         String tennv = lblnhanvien.getText();
         List<NhatKy> list = nkDAO.selectByTrangThaivaTennv(0, tennv);
-        for (NhatKy nv : list) {
-            String status = trangThai(nv);
+        for (NhatKy nk : list) {
             model.addRow(new Object[]{
-                nv.getStt(), nv.getTenCV(), nv.getChiTiet(), nv.getTenGian(), nv.getNguoiTao(), nv.getNgayKetThuc(), status
+                nk.getStt(), nk.getTenCV(), nk.getChiTiet(), nk.getTenGian(), nk.getNguoiTao(), nk.getNgayKetThuc(), nk.toString()
             });
         }
 
@@ -356,6 +437,7 @@ public class NhanViecJPanel extends javax.swing.JPanel {
     }
 
     void updateAgain() {
+        lydotuchoi = txtlydo.getText();
         NhatKy nv = getForm();
         GianTrong gt = new GianTrong();
         if (nv == null) {
@@ -364,6 +446,7 @@ public class NhanViecJPanel extends javax.swing.JPanel {
                 nkDAO.updateTuChoi((int) tblcv.getValueAt(this.row, 0));
                 gtDAO.updateAgain((String) tblcv.getValueAt(this.row, 3));
                 this.fillTableNguoinhanviec();
+                SendMail();
                 MsgBox.alert(this, "Đã từ chối!");
             } catch (Exception e) {
                 MsgBox.alert(this, "Từ chối thất bại!");
@@ -399,23 +482,6 @@ public class NhanViecJPanel extends javax.swing.JPanel {
 
     }
 
-    private String trangThai(NhatKy nk) {
-        String status = null;
-        status = switch (nk.getTrangThai()) {
-            case 0 ->
-                "Chưa nhận";
-            case 1 ->
-                "Đang làm";
-            case 2 ->
-                "Từ chối";
-            case 3 ->
-                "Hoàn thành";
-            default ->
-                "Hoàn thành muộn";
-        };
-        return status;
-    }
-
     boolean Validation() {
         //Kiểm tra mã nhân viên
         if (txttencv.getText().length() == 0) {
@@ -429,5 +495,26 @@ public class NhanViecJPanel extends javax.swing.JPanel {
         txtngaykt.setText("");
         txtmota.setText("");
         txtgiaoviec.setText("");
+    }
+
+    void SendMail() {
+        try {
+            String nhanvien = lblnhanvien.getText();
+            NhanVien nhanVien = nvDAO.selectById(nhanvien);
+            if (nhanVien != null) {//check tk có tồn tại không
+                emailNV = nvDAO.selectById(nhanvien).getEmail();//check mail nv
+                if (emailNV == null) {
+                    MsgBox.alert(this, "Tài khoản này chưa có email");
+                } else {//tài khoản có mail --> gửi mail -->check otp
+                    MsgBox.alert(this, "Đang gửi mail...");
+                    LydoJDialog.setVisible(false);
+                    MailHelper.sendText(emailNV, "Xác nhận lý do từ chối nhận việc", "Lý do:" + " " + lydotuchoi + "." + " Đã xác nhận!");
+                    MsgBox.alert(this, "Lý do của bạn đã được xác nhận !");
+                }
+            } else {
+                MsgBox.alert(this, "Tài khoản không tồn tại");
+            }
+        } catch (Exception e) {
+        }
     }
 }

@@ -33,6 +33,7 @@ public class ChartDAO extends FarmSysDAO<Chart, String> {
             + "		(select SUM(coin) from KhoHang where ThoiGianThuHoach between" + "'" + Year.now() + "/12/01' and" + "'" + Year.now() + "/12/31') as 'TongTien12'\n"
             + "		from KhoHang";
 
+
     @Override
     public void insert(Chart entity) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -81,7 +82,7 @@ public class ChartDAO extends FarmSysDAO<Chart, String> {
                 list.add(entity);
             }
             rs.getStatement().getConnection().close();
-            
+
             return list;
         } catch (SQLException e) {
             throw new RuntimeException(e);

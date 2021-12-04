@@ -111,7 +111,9 @@ public class GiaoViecJPanel extends javax.swing.JPanel {
         lblNguoiTao.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblNguoiTao.setText("Người tạo:");
 
+        txtnguoitao.setEditable(false);
         txtnguoitao.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtnguoitao.setEnabled(false);
 
         cboCongViec.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,32 +130,31 @@ public class GiaoViecJPanel extends javax.swing.JPanel {
                 .addGroup(PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblGianCay)
                     .addComponent(lblCaytrong)
-                    .addGroup(PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btnGiaoViec, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(PanelTongLayout.createSequentialGroup()
-                            .addGroup(PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(PanelTongLayout.createSequentialGroup()
-                                    .addGroup(PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lblKiemTra)
-                                        .addComponent(lblNguoiTao)
-                                        .addComponent(lblghiChu)
-                                        .addComponent(lblTenCV)
-                                        .addComponent(lblNgayBD))
-                                    .addGap(35, 35, 35))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelTongLayout.createSequentialGroup()
-                                    .addComponent(lblNguoiNhanViec)
-                                    .addGap(18, 18, 18)))
-                            .addGroup(PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtNgayKetThuc, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtnguoitao, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtNgayBatDau, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cboCongViec, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(cboCayTrong, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(cboGianTrong, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addComponent(cboNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(299, Short.MAX_VALUE))
+                    .addGroup(PanelTongLayout.createSequentialGroup()
+                        .addGroup(PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PanelTongLayout.createSequentialGroup()
+                                .addGroup(PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblKiemTra)
+                                    .addComponent(lblNguoiTao)
+                                    .addComponent(lblghiChu)
+                                    .addComponent(lblTenCV)
+                                    .addComponent(lblNgayBD))
+                                .addGap(35, 35, 35))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelTongLayout.createSequentialGroup()
+                                .addComponent(lblNguoiNhanViec)
+                                .addGap(18, 18, 18)))
+                        .addGroup(PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtNgayKetThuc, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtnguoitao, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtNgayBatDau, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cboCongViec, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cboCayTrong, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cboGianTrong, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(cboNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnGiaoViec, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(319, Short.MAX_VALUE))
         );
         PanelTongLayout.setVerticalGroup(
             PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -354,10 +355,6 @@ public class GiaoViecJPanel extends javax.swing.JPanel {
 
     void clearForm() {
         txtGhiChu.setText("");
-        txtNgayBatDau.setDateFormatString("");
-        txtNgayKetThuc.setDateFormatString("");
-        txtGhiChu.setText("");
-        txtnguoitao.setText("");
     }
 
     NhatKy getForm() {

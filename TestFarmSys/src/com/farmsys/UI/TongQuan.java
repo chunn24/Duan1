@@ -334,7 +334,7 @@ public class TongQuan extends javax.swing.JFrame {
                 btnThongkeActionPerformed(evt);
             }
         });
-        pnltongquat.add(btnThongke, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 720, 190, -1));
+        pnltongquat.add(btnThongke, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 690, 190, -1));
 
         lblcongvieccanlam.setText("Công việc đang làm:");
         pnltongquat.add(lblcongvieccanlam, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, -1, -1));
@@ -479,7 +479,7 @@ public class TongQuan extends javax.swing.JFrame {
         }
         tblNhatKy.getAccessibleContext().setAccessibleParent(pnltongquat);
 
-        pnltongquat.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, 1020, 300));
+        pnltongquat.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, 1020, 270));
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/refresh_25px.png"))); // NOI18N
