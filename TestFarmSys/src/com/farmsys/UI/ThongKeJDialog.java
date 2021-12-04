@@ -6,16 +6,18 @@
 package com.farmsys.UI;
 
 import com.farmsys.Entity.KhoHang;
+import com.farmsys.Entity.NhanVien;
+import com.farmsys.Helper.Auth;
 import com.farmsys.Helper.MsgBox;
 import com.farmsys.dao.KhoHangDAO;
-import jaco.mp3.a.f;
+import com.farmsys.dao.NhanVienDAO;
+import com.farmsys.dao.NhatKyDAO;
 import java.awt.print.PrinterException;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
@@ -44,10 +46,14 @@ public class ThongKeJDialog extends javax.swing.JDialog {
 
     void init() {
         this.fillTableKhoHangAll();
+        this.fillTableLuongNhanVien();
     }
 
     KhoHangDAO khDAO = new KhoHangDAO();
+    NhanVienDAO nvDAO = new NhanVienDAO();
+    NhatKyDAO nkDAO = new NhatKyDAO();
     ArrayList<KhoHang> list = new ArrayList<>();
+    ArrayList<NhanVien> listnv = new ArrayList<>();
 
     private void fillTableKhoHangAll() {
         DefaultTableModel model = (DefaultTableModel) tblKhoHang.getModel();
@@ -61,6 +67,23 @@ public class ThongKeJDialog extends javax.swing.JDialog {
                 kh.getTrongLuong(),
                 kh.getNgayTH(),
                 kh.getGiaThanh()
+            });
+        }
+    }
+
+    private void fillTableLuongNhanVien() {
+        DefaultTableModel model = (DefaultTableModel) tblluongnhanvien.getModel();
+        model.setRowCount(0);
+        listnv = (ArrayList<NhanVien>) nvDAO.selectAll();
+        for (NhanVien nv : listnv) {
+            int Luong = nv.getLuong();
+            Float Bonus = getBonusMonth(nv.getMaNV());
+            Float TongLuong = Luong + Bonus;
+            model.addRow(new Object[]{
+                nv.getHoTen(),
+                Luong,
+                Bonus,
+                TongLuong
             });
         }
     }
@@ -120,7 +143,60 @@ public class ThongKeJDialog extends javax.swing.JDialog {
         } catch (Exception e) {
             MsgBox.alert(this, "loimofile");
         }
+    }
 
+    float getBonusMonth(String manv) {
+        int tongTrongCay = nkDAO.selectDoneMonthByTrangThaiAndCongViecAndNhanVien(3, "Trồng cây", manv).size();
+        int tongChamSoc = nkDAO.selectDoneMonthByTrangThaiAndCongViecAndNhanVien(3, "Chăm sóc", manv).size();
+        int tongThuHoach = nkDAO.selectDoneMonthByTrangThaiAndCongViecAndNhanVien(3, "Thu hoạch", manv).size();
+        int tongCancel = nkDAO.selectDoneMonthByTrangThaiAndNhanVien(2, manv).size();
+        int tongHoaHong = nkDAO.selectDoneMonthByTrangThaiAndNhanVien(5, manv).size();
+        float bonusTrongCay, bonusChamSoc, bonusThuHoach, bonusCancel, bonusHoaHong, bonus;
+
+        // sét KPI trồng cây và trả về tiền thưởng trồng cây
+        if (tongTrongCay > 50) {
+            bonusTrongCay = (float) (tongTrongCay * 1.5);
+        } else if (tongTrongCay > 30) {
+            bonusTrongCay = (float) (tongTrongCay * 1.25);
+        } else {
+            bonusTrongCay = tongTrongCay * 1;
+        }
+
+        // sét KPI chăm sóc và trả về tiền thưởng thu hoạch
+        if (tongChamSoc > 150) {
+            bonusChamSoc = (float) (tongChamSoc * 1.75);
+        } else if (tongChamSoc > 100) {
+            bonusChamSoc = (float) (tongChamSoc * 1.5);
+        } else if (tongChamSoc > 50) {
+            bonusChamSoc = (float) (tongChamSoc * 1.25);
+        } else {
+            bonusChamSoc = tongChamSoc * 1;
+        }
+
+        // sét KPI thu hoạch và trả về tiền thưởng thu hoạch
+        if (tongThuHoach > 50) {
+            bonusThuHoach = (float) (tongThuHoach * 1.5);
+        } else if (tongThuHoach > 25) {
+            bonusThuHoach = (float) (tongThuHoach * 1.25);
+        } else {
+            bonusThuHoach = (float) (tongThuHoach * 1);
+        }
+
+        //sét KPI cancel và trả về tiền phạt
+        if (tongCancel > 10) {
+            bonusCancel = tongCancel * -2;
+        } else if (tongCancel > 5) {
+            bonusCancel = (float) (tongCancel * -1.5);
+        } else if (tongCancel > 3) {
+            bonusCancel = (float) (tongCancel * -1.25);
+        } else {
+            bonusCancel = tongCancel * 0;
+        }
+
+        //tìm sản phẩm đã bán và trả về hoa hồng
+        bonusHoaHong = tongHoaHong * 2;
+
+        return bonus = bonusTrongCay + bonusChamSoc + bonusThuHoach + bonusCancel + bonusHoaHong;
     }
 
     /**
@@ -139,6 +215,13 @@ public class ThongKeJDialog extends javax.swing.JDialog {
         tblKhoHang = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblluongnhanvien = new javax.swing.JTable();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -184,12 +267,12 @@ public class ThongKeJDialog extends javax.swing.JDialog {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 866, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton2)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 700, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -217,6 +300,86 @@ public class ThongKeJDialog extends javax.swing.JDialog {
 
         jTabbedPane1.addTab("Kho hàng", jPanel1);
 
+        tblluongnhanvien.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Tên nhân viên", "Lương cố định", "Thưởng", "Tổng lương"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(tblluongnhanvien);
+
+        jButton3.setText("xuat PDF");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setText("Xuat excel");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel1.setText("Bảng lương tháng:");
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel2.setText("10/2021");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 866, Short.MAX_VALUE)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jButton3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton4))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel2)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 18, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton3)
+                    .addComponent(jButton4))
+                .addContainerGap())
+        );
+
+        jTabbedPane1.addTab("Lương nhân viên", jPanel3);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -225,7 +388,7 @@ public class ThongKeJDialog extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
 
         pack();
@@ -249,6 +412,14 @@ public class ThongKeJDialog extends javax.swing.JDialog {
             Logger.getLogger(ThongKeJDialog.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -293,11 +464,18 @@ public class ThongKeJDialog extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable tblKhoHang;
+    private javax.swing.JTable tblluongnhanvien;
     // End of variables declaration//GEN-END:variables
 
 }

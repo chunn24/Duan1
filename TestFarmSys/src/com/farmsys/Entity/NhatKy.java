@@ -120,5 +120,24 @@ public class NhatKy {
         this.trangThai = trangThai;
     }
 
-    
+    @Override
+    public String toString() {
+        String status;
+        status = switch (getTrangThai()) {
+            case 0 ->
+                "Chưa nhận";
+            case 1 ->
+                "Đang làm";
+            case 2 ->
+                "Từ chối";
+            case 3 ->
+                "Hoàn thành";
+            case 4 ->
+                "Hoàn thành muộn";
+            default ->
+                "Đang bán";
+        };
+        return status;
+    }
+
 }

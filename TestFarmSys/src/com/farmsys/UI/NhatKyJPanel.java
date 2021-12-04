@@ -5,6 +5,7 @@
  */
 package com.farmsys.UI;
 
+import com.farmsys.Entity.KhoHang;
 import com.farmsys.Entity.NhanVien;
 import com.farmsys.Entity.NhatKy;
 import com.farmsys.Helper.MsgBox;
@@ -15,6 +16,11 @@ import com.farmsys.dao.NhatKyDAO;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.print.PrinterException;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -23,6 +29,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 /**
  *
@@ -62,17 +73,20 @@ public class NhatKyJPanel extends javax.swing.JPanel {
         rdoNu = new javax.swing.JRadioButton();
         txtTenNV = new javax.swing.JTextField();
         buttonGroup3 = new javax.swing.ButtonGroup();
+        jProgressBar1 = new javax.swing.JProgressBar();
         pnlNhatKy = new javax.swing.JPanel();
         txttimkiem = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
+        lbltimkiem = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblNhatKy = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        btnxuapdf = new javax.swing.JButton();
         Datengaybatdau = new com.toedter.calendar.JDateChooser();
         Datengayketthuc = new com.toedter.calendar.JDateChooser();
         lbltungay = new javax.swing.JLabel();
         lblden = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        btnloc = new javax.swing.JButton();
+        btnxuatexcel = new javax.swing.JButton();
+        lblloadagain = new javax.swing.JLabel();
 
         TheNVJDialog.setTitle("Thẻ nhân viên");
         TheNVJDialog.setMinimumSize(new java.awt.Dimension(472, 223));
@@ -146,9 +160,9 @@ public class NhatKyJPanel extends javax.swing.JPanel {
         });
         pnlNhatKy.add(txttimkiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, 970, 30));
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel6.setText("Tìm kiếm:");
-        pnlNhatKy.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 90, 30));
+        lbltimkiem.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lbltimkiem.setText("Tìm kiếm:");
+        pnlNhatKy.add(lbltimkiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 60, 30));
 
         tblNhatKy.setAutoCreateRowSorter(true);
         tblNhatKy.setModel(new javax.swing.table.DefaultTableModel(
@@ -191,37 +205,59 @@ public class NhatKyJPanel extends javax.swing.JPanel {
 
         pnlNhatKy.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 1040, 510));
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Print");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnxuapdf.setBackground(new java.awt.Color(255, 255, 255));
+        btnxuapdf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/pdf_30px.png"))); // NOI18N
+        btnxuapdf.setText("Xuất PDF");
+        btnxuapdf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnxuapdfActionPerformed(evt);
             }
         });
-        pnlNhatKy.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 670, 70, -1));
+        pnlNhatKy.add(btnxuapdf, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 670, 140, -1));
+
+        Datengaybatdau.setBackground(new java.awt.Color(255, 255, 255));
         pnlNhatKy.add(Datengaybatdau, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 170, -1));
 
+        Datengayketthuc.setBackground(new java.awt.Color(255, 255, 255));
         Datengayketthuc.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 DatengayketthucMouseClicked(evt);
             }
         });
-        pnlNhatKy.add(Datengayketthuc, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 120, 170, -1));
+        pnlNhatKy.add(Datengayketthuc, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, 170, -1));
 
         lbltungay.setText("Từ ngày");
         pnlNhatKy.add(lbltungay, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, 20));
 
         lblden.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblden.setText("Đến");
-        pnlNhatKy.add(lblden, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, 50, 20));
+        pnlNhatKy.add(lblden, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, 50, 20));
 
-        jButton2.setText("Lọc");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnloc.setText("Lọc");
+        btnloc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnlocActionPerformed(evt);
             }
         });
-        pnlNhatKy.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 120, -1, -1));
+        pnlNhatKy.add(btnloc, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 120, -1, -1));
+
+        btnxuatexcel.setBackground(new java.awt.Color(255, 255, 255));
+        btnxuatexcel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Microsoft Excel 2019_30px.png"))); // NOI18N
+        btnxuatexcel.setText("Xuất Excel");
+        btnxuatexcel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnxuatexcelActionPerformed(evt);
+            }
+        });
+        pnlNhatKy.add(btnxuatexcel, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 670, 140, -1));
+
+        lblloadagain.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/icons8_synchronize_25px.png"))); // NOI18N
+        lblloadagain.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblloadagainMouseClicked(evt);
+            }
+        });
+        pnlNhatKy.add(lblloadagain, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 120, 30, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -259,36 +295,54 @@ public class NhatKyJPanel extends javax.swing.JPanel {
         TheNVJDialog.setVisible(false);
     }//GEN-LAST:event_pnlTongMouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnxuapdfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnxuapdfActionPerformed
         this.print();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnxuapdfActionPerformed
 
     private void DatengayketthucMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DatengayketthucMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_DatengayketthucMouseClicked
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnlocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlocActionPerformed
         this.loadToTableDate();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnlocActionPerformed
+
+    private void btnxuatexcelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnxuatexcelActionPerformed
+        xuatExcel();
+        Runtime run = Runtime.getRuntime();
+        String url = "src\\Excel\\Nhatky.xlsx";
+        try {
+            run.exec("rundll32 url.dll, FileProtocolHandler " + url);
+        } catch (IOException ex) {
+            Logger.getLogger(NhatKyJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnxuatexcelActionPerformed
+
+    private void lblloadagainMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblloadagainMouseClicked
+        this.fillTableNhatALL();
+    }//GEN-LAST:event_lblloadagainMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser Datengaybatdau;
     private com.toedter.calendar.JDateChooser Datengayketthuc;
     private javax.swing.JDialog TheNVJDialog;
+    private javax.swing.JButton btnloc;
+    private javax.swing.JButton btnxuapdf;
+    private javax.swing.JButton btnxuatexcel;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
     private com.farmsys.Helper.ImageAvatar imageAvatar;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblGioiTinh;
     private javax.swing.JLabel lblTenNV;
     private javax.swing.JLabel lblVaiTro;
     private javax.swing.JLabel lblden;
+    private javax.swing.JLabel lblloadagain;
+    private javax.swing.JLabel lbltimkiem;
     private javax.swing.JLabel lbltungay;
     private javax.swing.JPanel pnlNhatKy;
     private javax.swing.JPanel pnlTong;
@@ -304,21 +358,18 @@ public class NhatKyJPanel extends javax.swing.JPanel {
     NhatKyDAO nkdao = new NhatKyDAO();
     CongViecDAO cvdao = new CongViecDAO();
     NhanVienDAO nvdao = new NhanVienDAO();
+    ArrayList<NhatKy> list = new ArrayList<>();
 
     private void init() {
         this.fillTableNhatALL();
         this.TheNVJDialog.setLocationRelativeTo(null);
-        new Timer(60000, (ActionEvent e) -> {
-            this.fillTableNhatALL();
-        }).start();
     }
 
     private void fillTableNhatALL() {
         DefaultTableModel model = (DefaultTableModel) tblNhatKy.getModel();
         model.setRowCount(0);
-        List<NhatKy> list = nkdao.selectAllMonth();
+        list = (ArrayList<NhatKy>) nkdao.selectAllMonth();
         for (NhatKy nk : list) {
-            String status = trangThai(nk);
             model.addRow(new Object[]{
                 nk.getTenCV(),
                 nk.getTenCay(),
@@ -328,7 +379,7 @@ public class NhatKyJPanel extends javax.swing.JPanel {
                 nk.getNhanVien(),
                 nk.getNgayBatDau(),
                 nk.getNgayKetThuc(),
-                status
+                nk.toString()
             });
         }
     }
@@ -337,9 +388,9 @@ public class NhatKyJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblNhatKy.getModel();
         model.setRowCount(0);
         String TimKiem = txttimkiem.getText();
-        List<NhatKy> list = nkdao.selectByTenCay(TimKiem);
+        list = (ArrayList<NhatKy>) nkdao.selectByTenCay(TimKiem);
         for (NhatKy nk : list) {
-            String status = trangThai(nk);
+
             model.addRow(new Object[]{
                 nk.getTenCV(),
                 nk.getTenCay(),
@@ -349,7 +400,7 @@ public class NhatKyJPanel extends javax.swing.JPanel {
                 nk.getNhanVien(),
                 nk.getNgayBatDau(),
                 nk.getNgayKetThuc(),
-                status
+                nk.toString()
             });
         }
     }
@@ -358,9 +409,9 @@ public class NhatKyJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblNhatKy.getModel();
         model.setRowCount(0);
         String TimKiem = txttimkiem.getText();
-        List<NhatKy> list = nkdao.selectByTenCay(TimKiem);
+        list = (ArrayList<NhatKy>) nkdao.selectByTenCay(TimKiem);
         for (NhatKy nk : list) {
-            String status = trangThai(nk);
+
             model.addRow(new Object[]{
                 nk.getTenCV(),
                 nk.getTenCay(),
@@ -370,7 +421,7 @@ public class NhatKyJPanel extends javax.swing.JPanel {
                 nk.getNhanVien(),
                 nk.getNgayBatDau(),
                 nk.getNgayKetThuc(),
-                status
+                nk.toString()
             });
         }
     }
@@ -379,9 +430,9 @@ public class NhatKyJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblNhatKy.getModel();
         model.setRowCount(0);
         String TimKiem = txttimkiem.getText();
-        List<NhatKy> list = nkdao.selectByTenNV(TimKiem);
+        list = (ArrayList<NhatKy>) nkdao.selectByTenNV(TimKiem);
         for (NhatKy nk : list) {
-            String status = trangThai(nk);
+
             model.addRow(new Object[]{
                 nk.getTenCV(),
                 nk.getTenCay(),
@@ -391,28 +442,9 @@ public class NhatKyJPanel extends javax.swing.JPanel {
                 nk.getNhanVien(),
                 nk.getNgayBatDau(),
                 nk.getNgayKetThuc(),
-                status
+                nk.toString()
             });
         }
-    }
-
-    private String trangThai(NhatKy nk) {
-        String status = null;
-        status = switch (nk.getTrangThai()) {
-            case 0 ->
-                "Chưa nhận";
-            case 1 ->
-                "Đang làm";
-            case 2 ->
-                "Từ chối";
-            case 3 ->
-                "Hoàn thành";
-            case 4 ->
-                "Hoàn thành muộn";
-            default ->
-                "Đang bán";
-        };
-        return status;
     }
 
     void print() {
@@ -473,9 +505,8 @@ public class NhatKyJPanel extends javax.swing.JPanel {
         model.setRowCount(0);
         Date tungay = Datengaybatdau.getDate();
         Date denngay = Datengayketthuc.getDate();
-        List<NhatKy> list = nkdao.selectByTime(tungay, denngay);
+        list = (ArrayList<NhatKy>) nkdao.selectByTime(tungay, denngay);
         for (NhatKy nk : list) {
-            String status = trangThai(nk);
             model.addRow(new Object[]{
                 nk.getTenCV(),
                 nk.getTenCay(),
@@ -485,8 +516,91 @@ public class NhatKyJPanel extends javax.swing.JPanel {
                 nk.getNhanVien(),
                 nk.getNgayBatDau(),
                 nk.getNgayKetThuc(),
-                status
+                nk.toString()
             });
         }
+    }
+
+    private void xuatExcel() {
+
+        try {
+            XSSFWorkbook workbook = new XSSFWorkbook();
+            XSSFSheet sheet = workbook.createSheet("Nhatky");
+            XSSFRow row = null;
+            Cell cell = null;
+            row = sheet.createRow(3);
+            cell = row.createCell(0, CellType.STRING);
+            cell.setCellValue("Tên công việc");
+
+            cell = row.createCell(1, CellType.STRING);
+            cell.setCellValue("Tên cây");
+
+            cell = row.createCell(2, CellType.STRING);
+            cell.setCellValue("Tên giàn");
+
+            cell = row.createCell(3, CellType.STRING);
+            cell.setCellValue("Chi tiết công việc");
+
+            cell = row.createCell(4, CellType.STRING);
+            cell.setCellValue("Người tạo");
+
+            cell = row.createCell(5, CellType.STRING);
+            cell.setCellValue("Nhân viên");
+
+            cell = row.createCell(6, CellType.STRING);
+            cell.setCellValue("Bắt đầu");
+
+            cell = row.createCell(7, CellType.STRING);
+            cell.setCellValue("Kết thúc");
+
+            cell = row.createCell(8, CellType.STRING);
+            cell.setCellValue("Trang thái");
+
+            for (int i = 0; i < list.size(); i++) {
+                // Modelbook book = arr.get(i);
+                row = sheet.createRow(4 + i);
+
+                cell = row.createCell(0, CellType.STRING);
+                cell.setCellValue(list.get(i).getTenCV());
+
+                cell = row.createCell(1, CellType.STRING);
+                cell.setCellValue(list.get(i).getTenCay());
+
+                cell = row.createCell(2, CellType.STRING);
+                cell.setCellValue(list.get(i).getTenGian());
+
+                cell = row.createCell(3, CellType.STRING);
+                cell.setCellValue(list.get(i).getChiTiet());
+
+                cell = row.createCell(4, CellType.STRING);
+                cell.setCellValue(list.get(i).getNguoiTao());
+
+                cell = row.createCell(5, CellType.STRING);
+                cell.setCellValue(list.get(i).getNhanVien());
+
+                cell = row.createCell(6, CellType.STRING);
+                cell.setCellValue(list.get(i).getNgayBatDau() + "");
+
+                cell = row.createCell(7, CellType.STRING);
+                cell.setCellValue(list.get(i).getNgayKetThuc() + "");
+
+                cell = row.createCell(8, CellType.STRING);
+                cell.setCellValue(list.get(i).toString());
+            }
+            File file = new File("src\\Excel\\Nhatky.xlsx");
+            try {
+                FileOutputStream fos = new FileOutputStream(file);
+                workbook.write(fos);
+                fos.close();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+                MsgBox.alert(this, "loimofile");
+            }
+            MsgBox.alert(this, "Đã xuất ra file Excel");
+
+        } catch (Exception e) {
+            MsgBox.alert(this, "loimofile");
+        }
+
     }
 }

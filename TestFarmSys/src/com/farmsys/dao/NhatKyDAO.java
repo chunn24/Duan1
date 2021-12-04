@@ -32,14 +32,12 @@ public class NhatKyDAO extends FarmSysDAO<NhatKy, String> {
     String UPDATE_SQL = "UPDATE NhatKy SET TrangThai = 1 where STT = ?";
     String UPDATE_TuChoi_SQL = "UPDATE NhatKy SET TrangThai = 2 where STT = ?";
     String select_by_Done_Month_SQL = "select *from NhatKy where TrangThai = 3 and NhanVien like ? and  NgayKetThuc between (select CONVERT(varchar,dateadd(d,-(day(getdate()-1)),getdate()),106)) and (select CONVERT(varchar,dateadd(d,-(day(dateadd(m,1,getdate()))),dateadd(m,1,getdate())),106))";
-    String select_by_Done_ThuHoach_Month_SQL = "select *from NhatKy where TrangThai = 3 and TenCV = N'Thu hoạch' and NhanVien like ? and  NgayKetThuc between (select CONVERT(varchar,dateadd(d,-(day(getdate()-1)),getdate()),106)) and (select CONVERT(varchar,dateadd(d,-(day(dateadd(m,1,getdate()))),dateadd(m,1,getdate())),106))";
-    String select_by_Done_ChamSoc_Month_SQL = "select *from NhatKy where TrangThai = 3 and TenCV = N'Chăm sóc' and TenCV = N'Thu hoạch' and NhanVien like ? and  NgayKetThuc between (select CONVERT(varchar,dateadd(d,-(day(getdate()-1)),getdate()),106)) and (select CONVERT(varchar,dateadd(d,-(day(dateadd(m,1,getdate()))),dateadd(m,1,getdate())),106))";
-    String select_by_Done_TrongCay_Month_SQL = "select *from NhatKy where TrangThai = 3 and TenCV = N'Trồng cây' and TenCV = N'Thu hoạch' and NhanVien like ? and  NgayKetThuc between (select CONVERT(varchar,dateadd(d,-(day(getdate()-1)),getdate()),106)) and (select CONVERT(varchar,dateadd(d,-(day(dateadd(m,1,getdate()))),dateadd(m,1,getdate())),106))";
-    String select_by_Cancel_Month_SQL = "select *from NhatKy where TrangThai = 2 and NhanVien like ? and  NgayKetThuc between (select CONVERT(varchar,dateadd(d,-(day(getdate()-1)),getdate()),106)) and (select CONVERT(varchar,dateadd(d,-(day(dateadd(m,1,getdate()))),dateadd(m,1,getdate())),106))";
     String UPDATE_TrangThaiTH_SQL = "UPDATE NhatKy SET TrangThai = 5 where TenGian = ? ";
     String select_by_all_month_SQL = "select *from NhatKy where NgayKetThuc between (select CONVERT(varchar,dateadd(d,-(day(getdate()-1)),getdate()),106)) and (select CONVERT(varchar,dateadd(d,-(day(dateadd(m,1,getdate()))),dateadd(m,1,getdate())),106))";
     String select_by_time_sql = "SELECT * FROM NhatKy WHERE NgayBatDau BETWEEN ? AND ? ";
     String select_by_trangthaibymonth_sql = "select * from NhatKy where TrangThai = ? and NgayBatDau BETWEEN ? AND ? ";
+    String select_done_month_by_trangthai_and_congviec_and_nhanvien_sql = "select *from NhatKy where TrangThai = ? and TenCV = ? and NhanVien like ? and  NgayKetThuc between (select CONVERT(varchar,dateadd(d,-(day(getdate()-1)),getdate()),106)) and (select CONVERT(varchar,dateadd(d,-(day(dateadd(m,1,getdate()))),dateadd(m,1,getdate())),106))";
+    String select_monthe_by_trangthai_and_nhanvien = "select *from NhatKy where TrangThai = ? and NhanVien like ? and  NgayKetThuc between (select CONVERT(varchar,dateadd(d,-(day(getdate()-1)),getdate()),106)) and (select CONVERT(varchar,dateadd(d,-(day(dateadd(m,1,getdate()))),dateadd(m,1,getdate())),106))";
 
     @Override
     public void insert(NhatKy entity) {
@@ -156,20 +154,12 @@ public class NhatKyDAO extends FarmSysDAO<NhatKy, String> {
         return selectBySql(select_by_Done_Month_SQL, MaNV);
     }
 
-    public List<NhatKy> selectDoneThuHoachByMonth(String MaNV) {
-        return selectBySql(select_by_Done_ThuHoach_Month_SQL, MaNV);
+    public List<NhatKy> selectDoneMonthByTrangThaiAndCongViecAndNhanVien(int TrangThai, String CongViec, String MaNV) {
+        return selectBySql(select_done_month_by_trangthai_and_congviec_and_nhanvien_sql, TrangThai, CongViec, MaNV);
     }
 
-    public List<NhatKy> selectDoneChamSocByMonth(String MaNV) {
-        return selectBySql(select_by_Done_ChamSoc_Month_SQL, MaNV);
-    }
-
-    public List<NhatKy> selectDoneTrongCayByMonth(String MaNV) {
-        return selectBySql(select_by_Done_TrongCay_Month_SQL, MaNV);
-    }
-
-    public List<NhatKy> selectCancelByMonth(String MaNV) {
-        return selectBySql(select_by_Cancel_Month_SQL, MaNV);
+    public List<NhatKy> selectDoneMonthByTrangThaiAndNhanVien(int TrangThai, String MaNV) {
+        return selectBySql(select_monthe_by_trangthai_and_nhanvien, TrangThai, MaNV);
     }
 
     public void updateTrangThaiTH(String TenGian) {

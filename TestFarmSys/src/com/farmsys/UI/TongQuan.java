@@ -74,8 +74,7 @@ public class TongQuan extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        penalTong = new RoundedPanel(50)
-        ;
+        penalTong = new javax.swing.JPanel();
         pnlfoot = new javax.swing.JPanel();
         pnlhead = new javax.swing.JPanel();
         tabs = new javax.swing.JTabbedPane();
@@ -91,6 +90,7 @@ public class TongQuan extends javax.swing.JFrame {
         pnltodo = new javax.swing.JPanel();
         lblDemNhanViec = new javax.swing.JLabel();
         logoNhanviec = new javax.swing.JLabel();
+        btnThongke = new javax.swing.JButton();
         lblcongvieccanlam = new javax.swing.JLabel();
         lblkhohang = new javax.swing.JLabel();
         lblnhanviec = new javax.swing.JLabel();
@@ -112,7 +112,6 @@ public class TongQuan extends javax.swing.JFrame {
         logocaycanTH1 = new javax.swing.JLabel();
         lblNhanvien = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         Manhinhlive = new javax.swing.JPanel();
         pnlavatar = new javax.swing.JPanel();
@@ -329,6 +328,14 @@ public class TongQuan extends javax.swing.JFrame {
 
         pnltongquat.add(pnltodo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 220, 120));
 
+        btnThongke.setText("Bảng thống kê doanh thu");
+        btnThongke.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThongkeActionPerformed(evt);
+            }
+        });
+        pnltongquat.add(btnThongke, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 720, 190, -1));
+
         lblcongvieccanlam.setText("Công việc đang làm:");
         pnltongquat.add(lblcongvieccanlam, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, -1, -1));
 
@@ -472,7 +479,7 @@ public class TongQuan extends javax.swing.JFrame {
         }
         tblNhatKy.getAccessibleContext().setAccessibleParent(pnltongquat);
 
-        pnltongquat.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, 980, 300));
+        pnltongquat.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, 1020, 300));
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/refresh_25px.png"))); // NOI18N
@@ -540,11 +547,8 @@ public class TongQuan extends javax.swing.JFrame {
         lblNhanvien.setText("Nhân viên:");
         pnltongquat.add(lblNhanvien, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 230, -1, -1));
 
-        jLabel1.setText("jLabel1");
-        pnltongquat.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 710, -1, -1));
-
-        jLabel2.setText("jLabel2");
-        pnltongquat.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 710, -1, -1));
+        jLabel1.setText("Nhật ký của tháng hiện tại:");
+        pnltongquat.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, -1, -1));
 
         tabs.addTab("tab1", pnltongquat);
 
@@ -767,6 +771,7 @@ public class TongQuan extends javax.swing.JFrame {
         penalTong.add(pnlmenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 230, 220));
 
         pnltruongphong.setBackground(new java.awt.Color(255, 255, 255));
+        pnltruongphong.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlThoiTiet.setBackground(new java.awt.Color(255, 255, 255));
         pnlThoiTiet.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -802,6 +807,8 @@ public class TongQuan extends javax.swing.JFrame {
             .addComponent(lblthoitiet, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        pnltruongphong.add(pnlThoiTiet, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 286, -1, -1));
+
         pnlGiaoViec.setBackground(new java.awt.Color(255, 255, 255));
         pnlGiaoViec.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -835,6 +842,8 @@ public class TongQuan extends javax.swing.JFrame {
             .addComponent(logoGiaoviec, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
             .addComponent(lblGiaoviec, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+
+        pnltruongphong.add(pnlGiaoViec, new org.netbeans.lib.awtextra.AbsoluteConstraints(9, 231, -1, -1));
 
         pnlGianTrong.setBackground(new java.awt.Color(255, 255, 255));
         pnlGianTrong.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -870,6 +879,8 @@ public class TongQuan extends javax.swing.JFrame {
             .addComponent(lblgiantrong, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        pnltruongphong.add(pnlGianTrong, new org.netbeans.lib.awtextra.AbsoluteConstraints(9, 176, 206, -1));
+
         pnlCayTrong.setBackground(new java.awt.Color(255, 255, 255));
         pnlCayTrong.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -893,9 +904,9 @@ public class TongQuan extends javax.swing.JFrame {
         pnlCayTrongLayout.setHorizontalGroup(
             pnlCayTrongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlCayTrongLayout.createSequentialGroup()
-                .addComponent(logocaytrong2)
-                .addGap(18, 18, 18)
-                .addComponent(lblcaytrong2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(logocaytrong2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblcaytrong2, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
                 .addGap(31, 31, 31))
         );
         pnlCayTrongLayout.setVerticalGroup(
@@ -903,6 +914,8 @@ public class TongQuan extends javax.swing.JFrame {
             .addComponent(logocaytrong2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
             .addComponent(lblcaytrong2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+
+        pnltruongphong.add(pnlCayTrong, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 121, 205, -1));
 
         pnlNhatKy.setBackground(new java.awt.Color(255, 255, 255));
         pnlNhatKy.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -938,6 +951,8 @@ public class TongQuan extends javax.swing.JFrame {
             .addComponent(lblcaytrong3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        pnltruongphong.add(pnlNhatKy, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 66, 205, -1));
+
         pnlNhanVien.setBackground(new java.awt.Color(255, 255, 255));
         pnlNhanVien.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -972,48 +987,7 @@ public class TongQuan extends javax.swing.JFrame {
             .addComponent(lblcaytrong1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout pnltruongphongLayout = new javax.swing.GroupLayout(pnltruongphong);
-        pnltruongphong.setLayout(pnltruongphongLayout);
-        pnltruongphongLayout.setHorizontalGroup(
-            pnltruongphongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnltruongphongLayout.createSequentialGroup()
-                .addGroup(pnltruongphongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnltruongphongLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(pnltruongphongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pnlCayTrong, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(pnlNhanVien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(pnlNhatKy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnltruongphongLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(pnltruongphongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(pnlGiaoViec, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(pnlGianTrong, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap())
-            .addGroup(pnltruongphongLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(pnlThoiTiet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        pnltruongphongLayout.setVerticalGroup(
-            pnltruongphongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnltruongphongLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(pnlNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlNhatKy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlCayTrong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlGianTrong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlGiaoViec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlThoiTiet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
-        );
-
-        pnltruongphongLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {pnlCayTrong, pnlGianTrong, pnlGiaoViec, pnlNhanVien, pnlNhatKy, pnlThoiTiet});
+        pnltruongphong.add(pnlNhanVien, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 205, -1));
 
         TabsMnu.addTab("tab1", pnltruongphong);
 
@@ -1324,7 +1298,7 @@ public class TongQuan extends javax.swing.JFrame {
     }//GEN-LAST:event_pnlThoiTietMouseExited
 
     private void ManhinhliveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ManhinhliveMouseClicked
-        pause();
+        this.pause();
     }//GEN-LAST:event_ManhinhliveMouseClicked
 
     private void pnlnhanviecMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlnhanviecMouseClicked
@@ -1370,11 +1344,13 @@ public class TongQuan extends javax.swing.JFrame {
     private void pnlBonusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlBonusMouseClicked
         MsgBox.alert(this, "Tổng công việc: " + nkdao.selectDoneByMonth(Auth.user.getMaNV()).size()
                 + "\n--------------------"
-                + "\nTrồng cây: " + nkdao.selectDoneTrongCayByMonth(Auth.user.getMaNV()).size()
-                + "\nChăm sóc: " + nkdao.selectDoneChamSocByMonth(Auth.user.getMaNV()).size()
-                + "\nThu hoạch: " + nkdao.selectDoneThuHoachByMonth(Auth.user.getMaNV()).size()
+                + "\nTrồng cây: " + nkdao.selectDoneMonthByTrangThaiAndCongViecAndNhanVien(3, "Trồng cây", Auth.user.getMaNV()).size()
+                + "\nChăm sóc: " + nkdao.selectDoneMonthByTrangThaiAndCongViecAndNhanVien(3, "Chăm sóc", Auth.user.getMaNV()).size()
+                + "\nThu hoạch: " + nkdao.selectDoneMonthByTrangThaiAndCongViecAndNhanVien(3, "Thu hoạch", Auth.user.getMaNV()).size()
                 + "\n--------------------"
-                + "\nHủy bỏ" + nkdao.selectCancelByMonth(Auth.user.getMaNV()).size()
+                + "\nHủy bỏ: " + nkdao.selectDoneMonthByTrangThaiAndNhanVien(2, Auth.user.getMaNV()).size()
+                + "\n--------------------"
+                + "\nHoa hồng: " + nkdao.selectDoneMonthByTrangThaiAndNhanVien(5, Auth.user.getMaNV()).size()
         );
     }//GEN-LAST:event_pnlBonusMouseClicked
 
@@ -1383,7 +1359,7 @@ public class TongQuan extends javax.swing.JFrame {
     }//GEN-LAST:event_pnlBonusMouseEntered
 
     private void pnlBonusMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlBonusMouseExited
-        pnlBonus.setBackground(Color.WHITE);
+        pnlBonus.setBackground(new Color(153, 153, 255));
     }//GEN-LAST:event_pnlBonusMouseExited
 
     private void pnlNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlNhanVienMouseClicked
@@ -1422,6 +1398,10 @@ public class TongQuan extends javax.swing.JFrame {
         // TODO add your handling code here:
         pnlNhatKy.setBackground(Color.WHITE);
     }//GEN-LAST:event_pnlNhatKyMouseExited
+
+    private void btnThongkeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongkeActionPerformed
+        //        new ThongKeJDialog(ThongKeJDialog, true);
+    }//GEN-LAST:event_btnThongkeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1463,10 +1443,10 @@ public class TongQuan extends javax.swing.JFrame {
     private javax.swing.JLabel LogoKhohang;
     private javax.swing.JPanel Manhinhlive;
     private javax.swing.JTabbedPane TabsMnu;
+    private javax.swing.JButton btnThongke;
     private com.farmsys.Helper.ImageAvatar imageAvatar;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
@@ -1599,11 +1579,12 @@ public class TongQuan extends javax.swing.JFrame {
     }
 
     float getBonusMonth() {
-        int tongTrongCay = nkdao.selectDoneTrongCayByMonth(Auth.user.getMaNV()).size();
-        int tongChamSoc = nkdao.selectDoneChamSocByMonth(Auth.user.getMaNV()).size();
-        int tongThuHoach = nkdao.selectDoneThuHoachByMonth(Auth.user.getMaNV()).size();
-        int tongCancel = nkdao.selectCancelByMonth(Auth.user.getMaNV()).size();
-        float bonusTrongCay, bonusChamSoc, bonusThuHoach, bonusCancel, bonus;
+        int tongTrongCay = nkdao.selectDoneMonthByTrangThaiAndCongViecAndNhanVien(3, "Trồng cây", Auth.user.getMaNV()).size();
+        int tongChamSoc = nkdao.selectDoneMonthByTrangThaiAndCongViecAndNhanVien(3, "Chăm sóc", Auth.user.getMaNV()).size();
+        int tongThuHoach = nkdao.selectDoneMonthByTrangThaiAndCongViecAndNhanVien(3, "Thu hoạch", Auth.user.getMaNV()).size();
+        int tongCancel = nkdao.selectDoneMonthByTrangThaiAndNhanVien(2, Auth.user.getMaNV()).size();
+        int tongHoaHong = nkdao.selectDoneMonthByTrangThaiAndNhanVien(5, Auth.user.getMaNV()).size();
+        float bonusTrongCay, bonusChamSoc, bonusThuHoach, bonusCancel, bonusHoaHong, bonus;
 
         // sét KPI trồng cây và trả về tiền thưởng trồng cây
         if (tongTrongCay > 50) {
@@ -1645,7 +1626,10 @@ public class TongQuan extends javax.swing.JFrame {
             bonusCancel = tongCancel * 0;
         }
 
-        return bonus = bonusTrongCay + bonusChamSoc + bonusThuHoach + bonusCancel;
+        //tìm sản phẩm đã bán và trả về hoa hồng
+        bonusHoaHong = tongHoaHong * 2;
+
+        return bonus = bonusTrongCay + bonusChamSoc + bonusThuHoach + bonusCancel + bonusHoaHong;
     }
 
     void count() {
@@ -1800,62 +1784,12 @@ public class TongQuan extends javax.swing.JFrame {
 
     }
 
-    class RoundedPanel extends JPanel {
-
-        private Color backgroundColor;
-        private int cornerRadius = 15;
-
-        public RoundedPanel(LayoutManager layout, int radius) {
-            super(layout);
-            cornerRadius = radius;
-        }
-
-        public RoundedPanel(LayoutManager layout, int radius, Color bgColor) {
-            super(layout);
-            cornerRadius = radius;
-            backgroundColor = bgColor;
-        }
-
-        public RoundedPanel(int radius) {
-            super();
-            cornerRadius = radius;
-
-        }
-
-        public RoundedPanel(int radius, Color bgColor) {
-            super();
-            cornerRadius = radius;
-            backgroundColor = bgColor;
-        }
-
-        @Override
-        protected void paintComponent(Graphics g) {
-            super.paintComponent(g);
-            Dimension arcs = new Dimension(cornerRadius, cornerRadius);
-            int width = getWidth();
-            int height = getHeight();
-            Graphics2D graphics = (Graphics2D) g;
-            graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-            //Draws the rounded panel with borders.
-            if (backgroundColor != null) {
-                graphics.setColor(backgroundColor);
-            } else {
-                graphics.setColor(getBackground());
-            }
-            graphics.fillRoundRect(0, 0, width - 1, height - 1, arcs.width, arcs.height); //paint background
-            graphics.setColor(getForeground());
-//            graphics.drawRoundRect(0, 0, width-1, height-1, arcs.width, arcs.height); //paint border
-//             
-        }
-    }
-
     private void fillTableNhatKyAll() {
         DefaultTableModel model = (DefaultTableModel) tblNhatKy.getModel();
         model.setRowCount(0);
         NhatKy nhatKy = new NhatKy();
-        List<NhatKy> list = nkdao.selectAll();
+        List<NhatKy> list = nkdao.selectAllMonth();
         for (NhatKy nk : list) {
-            String status = trangThai(nk);
             model.addRow(new Object[]{
                 nk.getTenCV(),
                 nk.getTenCay(),
@@ -1865,28 +1799,9 @@ public class TongQuan extends javax.swing.JFrame {
                 nk.getNhanVien(),
                 nk.getNgayBatDau(),
                 nk.getNgayKetThuc(),
-                status
+                nk.toString()
             });
         }
-    }
-
-    private String trangThai(NhatKy nk) {
-        String status = null;
-        status = switch (nk.getTrangThai()) {
-            case 0 ->
-                "Chưa nhận";
-            case 1 ->
-                "Đang làm";
-            case 2 ->
-                "Từ chối";
-            case 3 ->
-                "Hoàn thành";
-            case 4 ->
-                "Hoàn thành muộn";
-            default ->
-                "Đang bán";
-        };
-        return status;
     }
 
     void setAvatar(NhanVien nv) {
