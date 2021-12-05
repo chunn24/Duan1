@@ -84,12 +84,10 @@ public class NhatKyJPanel extends javax.swing.JPanel {
         lblloadagain = new javax.swing.JLabel();
 
         TheNVJDialog.setTitle("Thẻ nhân viên");
-        TheNVJDialog.setMinimumSize(new java.awt.Dimension(472, 223));
-        TheNVJDialog.setUndecorated(true);
+        TheNVJDialog.setMinimumSize(new java.awt.Dimension(472, 243));
         TheNVJDialog.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        pnlTong.setBackground(new java.awt.Color(204, 255, 204));
-        pnlTong.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pnlTong.setBackground(new java.awt.Color(153, 255, 153));
         pnlTong.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnlTongMouseClicked(evt);
@@ -101,17 +99,25 @@ public class NhatKyJPanel extends javax.swing.JPanel {
         imageAvatar.setForeground(new java.awt.Color(255, 255, 255));
         pnlTong.add(imageAvatar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 124, 124));
 
-        lblTenNV.setText("Tên");
+        lblTenNV.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblTenNV.setForeground(new java.awt.Color(255, 255, 255));
+        lblTenNV.setText("Tên :");
         pnlTong.add(lblTenNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, 52, 27));
 
-        lblEmail.setText("Email:");
-        pnlTong.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 52, 34));
+        lblEmail.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblEmail.setForeground(new java.awt.Color(255, 255, 255));
+        lblEmail.setText("Email :");
+        pnlTong.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, 52, 50));
 
-        lblVaiTro.setText("Vai Trò:");
-        pnlTong.add(lblVaiTro, new org.netbeans.lib.awtextra.AbsoluteConstraints(152, 115, 52, 34));
+        lblVaiTro.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblVaiTro.setForeground(new java.awt.Color(255, 255, 255));
+        lblVaiTro.setText("Vai Trò :");
+        pnlTong.add(lblVaiTro, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 52, 40));
 
-        lblGioiTinh.setText("Giới Tính: ");
-        pnlTong.add(lblGioiTinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 68, 34));
+        lblGioiTinh.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblGioiTinh.setForeground(new java.awt.Color(255, 255, 255));
+        lblGioiTinh.setText("Giới Tính : ");
+        pnlTong.add(lblGioiTinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 68, 20));
 
         txtEmail.setEditable(false);
         txtEmail.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -121,13 +127,11 @@ public class NhatKyJPanel extends javax.swing.JPanel {
         txtVaiTro.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         pnlTong.add(txtVaiTro, new org.netbeans.lib.awtextra.AbsoluteConstraints(208, 121, 243, -1));
 
-        buttonGroup3.add(rdoNam);
         rdoNam.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         rdoNam.setText("Nam");
         rdoNam.setEnabled(false);
         pnlTong.add(rdoNam, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 160, 60, -1));
 
-        buttonGroup3.add(rdoNu);
         rdoNu.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         rdoNu.setText("Nữ");
         rdoNu.setEnabled(false);
@@ -287,10 +291,6 @@ public class NhatKyJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_tblNhatKyMouseClicked
 
-    private void pnlTongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlTongMouseClicked
-        TheNVJDialog.setVisible(false);
-    }//GEN-LAST:event_pnlTongMouseClicked
-
     private void btnxuapdfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnxuapdfActionPerformed
         this.print();
     }//GEN-LAST:event_btnxuapdfActionPerformed
@@ -317,6 +317,10 @@ public class NhatKyJPanel extends javax.swing.JPanel {
     private void lblloadagainMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblloadagainMouseClicked
         this.fillTableNhatALL();
     }//GEN-LAST:event_lblloadagainMouseClicked
+
+    private void pnlTongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlTongMouseClicked
+        TheNVJDialog.setVisible(false);
+    }//GEN-LAST:event_pnlTongMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
