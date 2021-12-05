@@ -17,19 +17,14 @@ import com.farmsys.dao.NhanVienDAO;
 import com.farmsys.dao.NhatKyDAO;
 import com.farmsys.dao.ThuHoachDAO;
 import jaco.mp3.player.MP3Player;
-import java.awt.Dimension;
-import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.Timer;
 import java.awt.Color;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import java.awt.Graphics;
@@ -1787,9 +1782,8 @@ public class TongQuan extends javax.swing.JFrame {
     private void fillTableNhatKyAll() {
         DefaultTableModel model = (DefaultTableModel) tblNhatKy.getModel();
         model.setRowCount(0);
-        NhatKy nhatKy = new NhatKy();
         List<NhatKy> list = nkdao.selectAllMonth();
-        for (NhatKy nk : list) {
+        list.forEach(nk -> {
             model.addRow(new Object[]{
                 nk.getTenCV(),
                 nk.getTenCay(),
@@ -1801,7 +1795,7 @@ public class TongQuan extends javax.swing.JFrame {
                 nk.getNgayKetThuc(),
                 nk.toString()
             });
-        }
+        });
     }
 
     void setAvatar(NhanVien nv) {
@@ -1841,7 +1835,7 @@ public class TongQuan extends javax.swing.JFrame {
                             Highgui.imencode(".bmp", frame, mem);
                             Image im = ImageIO.read(new ByteArrayInputStream(mem.toArray()));
                             BufferedImage buff = (BufferedImage) im;
-                            if (g.drawImage(buff, 0, 0, getWidth(), getHeight() - 150, 0, 0, buff.getWidth(), buff.getHeight(), null)) {
+                            if (g.drawImage(buff, 0, 0, getWidth(), getHeight(), 0, 0, buff.getWidth(), buff.getHeight(), null)) {
                                 if (runnable == false) {
                                     System.out.println("Paused ..... ");
                                     this.wait();
@@ -1849,7 +1843,6 @@ public class TongQuan extends javax.swing.JFrame {
                             }
                         } catch (IOException | InterruptedException ex) {
                             System.out.println("Error!!");
-                            ex.printStackTrace();
                         }
                     }
                 }
@@ -1857,22 +1850,20 @@ public class TongQuan extends javax.swing.JFrame {
         }
     }
 
-/////////
-    /**
-     * Creates new form FaceDetection
-     */
     public void start() {
         webSource = new VideoCapture(0); // video capture from default cam
         myThread = new DaemonThread(); //create object of threat class
         Thread t = new Thread(myThread);
         t.setDaemon(true);
         myThread.runnable = true;
-        t.start();                 //start thrad
+        t.start();
+ 
     }
 
     public void pause() {
-        myThread.runnable = false;            // stop thread       
-        webSource.release();  // stop caturing fron cam
+        myThread.runnable = false;
+        webSource.release();
+        
     }
 
 }

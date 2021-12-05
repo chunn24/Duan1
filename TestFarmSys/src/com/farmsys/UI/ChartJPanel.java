@@ -51,7 +51,6 @@ public class ChartJPanel extends javax.swing.JPanel {
         Datengaybatdau = new com.toedter.calendar.JDateChooser();
         Datengayketthuc = new com.toedter.calendar.JDateChooser();
         jLabel1 = new javax.swing.JLabel();
-        yearchooser = new com.toedter.calendar.JYearChooser();
         btnloccharttron = new javax.swing.JButton();
 
         setMinimumSize(new java.awt.Dimension(1083, 750));
@@ -81,9 +80,6 @@ public class ChartJPanel extends javax.swing.JPanel {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Đến");
         PanelTong.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 60, 20));
-
-        yearchooser.setBackground(new java.awt.Color(255, 255, 255));
-        PanelTong.add(yearchooser, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 70, 20));
 
         btnloccharttron.setBackground(new java.awt.Color(255, 255, 255));
         btnloccharttron.setText("Lọc");
@@ -125,7 +121,6 @@ public class ChartJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel pnlchartcot;
     private javax.swing.JPanel pnlcharttron;
-    private com.toedter.calendar.JYearChooser yearchooser;
     // End of variables declaration//GEN-END:variables
     ChartDAO dao = new ChartDAO();
     Double Thang1, Thang2, Thang3, Thang4, Thang5, Thang6, Thang7, Thang8, Thang9, Thang10, Thang11, Thang12;
