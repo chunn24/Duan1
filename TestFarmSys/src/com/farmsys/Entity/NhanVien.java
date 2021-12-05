@@ -5,11 +5,16 @@
  */
 package com.farmsys.Entity;
 
+import com.farmsys.dao.KhoHangDAO;
+import com.farmsys.dao.NhanVienDAO;
+import com.farmsys.dao.NhatKyDAO;
+
 /**
  *
  * @author trieu
  */
 public class NhanVien {
+
     private String maNV;
     private String matKhau;
     private String hoTen;
@@ -19,6 +24,7 @@ public class NhanVien {
     private String hinh;
     private boolean vaiTro;
     private String QRcodeString;
+    private Float TongLuong;
 
     public NhanVien() {
     }
@@ -107,15 +113,70 @@ public class NhanVien {
         this.QRcodeString = QRcodeString;
     }
 
-    
-
     @Override
     public String toString() {
-        return  maNV ;
+        return maNV;
     }
 
-    
-    
-    
+    KhoHangDAO khDAO = new KhoHangDAO();
+    NhanVienDAO nvDAO = new NhanVienDAO();
+    NhatKyDAO nkDAO = new NhatKyDAO();
 
+    public float getBonusMonth() {
+        int tongTrongCay = nkDAO.selectDoneMonthByTrangThaiAndCongViecAndNhanVien(3, "Trồng cây", maNV).size();
+        int tongChamSoc = nkDAO.selectDoneMonthByTrangThaiAndCongViecAndNhanVien(3, "Chăm sóc", maNV).size();
+        int tongThuHoach = nkDAO.selectDoneMonthByTrangThaiAndCongViecAndNhanVien(3, "Thu hoạch", maNV).size();
+        int tongCancel = nkDAO.selectDoneMonthByTrangThaiAndNhanVien(2, maNV).size();
+        int tongHoaHong = nkDAO.selectDoneMonthByTrangThaiAndNhanVien(5, maNV).size();
+        float bonusTrongCay, bonusChamSoc, bonusThuHoach, bonusCancel, bonusHoaHong, bonus;
+
+        // sét KPI trồng cây và trả về tiền thưởng trồng cây
+        if (tongTrongCay > 50) {
+            bonusTrongCay = (float) (tongTrongCay * 1.5);
+        } else if (tongTrongCay > 30) {
+            bonusTrongCay = (float) (tongTrongCay * 1.25);
+        } else {
+            bonusTrongCay = tongTrongCay * 1;
+        }
+
+        // sét KPI chăm sóc và trả về tiền thưởng thu hoạch
+        if (tongChamSoc > 150) {
+            bonusChamSoc = (float) (tongChamSoc * 1.75);
+        } else if (tongChamSoc > 100) {
+            bonusChamSoc = (float) (tongChamSoc * 1.5);
+        } else if (tongChamSoc > 50) {
+            bonusChamSoc = (float) (tongChamSoc * 1.25);
+        } else {
+            bonusChamSoc = tongChamSoc * 1;
+        }
+
+        // sét KPI thu hoạch và trả về tiền thưởng thu hoạch
+        if (tongThuHoach > 50) {
+            bonusThuHoach = (float) (tongThuHoach * 1.5);
+        } else if (tongThuHoach > 25) {
+            bonusThuHoach = (float) (tongThuHoach * 1.25);
+        } else {
+            bonusThuHoach = (float) (tongThuHoach * 1);
+        }
+
+        //sét KPI cancel và trả về tiền phạt
+        if (tongCancel > 10) {
+            bonusCancel = tongCancel * -2;
+        } else if (tongCancel > 5) {
+            bonusCancel = (float) (tongCancel * -1.5);
+        } else if (tongCancel > 3) {
+            bonusCancel = (float) (tongCancel * -1.25);
+        } else {
+            bonusCancel = tongCancel * 0;
+        }
+
+        //tìm sản phẩm đã bán và trả về hoa hồng
+        bonusHoaHong = tongHoaHong * 2;
+
+        return bonus = bonusTrongCay + bonusChamSoc + bonusThuHoach + bonusCancel + bonusHoaHong;
+    }
+
+    public float getTongluong() {
+        return getLuong() + getBonusMonth();
+    }
 }

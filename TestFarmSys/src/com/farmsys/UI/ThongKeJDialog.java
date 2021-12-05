@@ -7,7 +7,6 @@ package com.farmsys.UI;
 
 import com.farmsys.Entity.KhoHang;
 import com.farmsys.Entity.NhanVien;
-import com.farmsys.Helper.Auth;
 import com.farmsys.Helper.MsgBox;
 import com.farmsys.dao.KhoHangDAO;
 import com.farmsys.dao.NhanVienDAO;
@@ -45,6 +44,7 @@ public class ThongKeJDialog extends javax.swing.JDialog {
     }
 
     void init() {
+        setLocationRelativeTo(null);
         this.fillTableKhoHangAll();
         this.fillTableLuongNhanVien();
     }
@@ -76,19 +76,17 @@ public class ThongKeJDialog extends javax.swing.JDialog {
         model.setRowCount(0);
         listnv = (ArrayList<NhanVien>) nvDAO.selectAll();
         for (NhanVien nv : listnv) {
-            int Luong = nv.getLuong();
-            Float Bonus = getBonusMonth(nv.getMaNV());
-            Float TongLuong = Luong + Bonus;
+
             model.addRow(new Object[]{
                 nv.getHoTen(),
-                Luong,
-                Bonus,
-                TongLuong
+                nv.getLuong(),
+                nv.getBonusMonth(),
+                nv.getTongluong()
             });
         }
     }
 
-    private void xuatExcel() {
+    private void xuatExcelThongke() {
         try {
             XSSFWorkbook workbook = new XSSFWorkbook();
             XSSFSheet sheet = workbook.createSheet("Thongke");
@@ -145,58 +143,54 @@ public class ThongKeJDialog extends javax.swing.JDialog {
         }
     }
 
-    float getBonusMonth(String manv) {
-        int tongTrongCay = nkDAO.selectDoneMonthByTrangThaiAndCongViecAndNhanVien(3, "Trồng cây", manv).size();
-        int tongChamSoc = nkDAO.selectDoneMonthByTrangThaiAndCongViecAndNhanVien(3, "Chăm sóc", manv).size();
-        int tongThuHoach = nkDAO.selectDoneMonthByTrangThaiAndCongViecAndNhanVien(3, "Thu hoạch", manv).size();
-        int tongCancel = nkDAO.selectDoneMonthByTrangThaiAndNhanVien(2, manv).size();
-        int tongHoaHong = nkDAO.selectDoneMonthByTrangThaiAndNhanVien(5, manv).size();
-        float bonusTrongCay, bonusChamSoc, bonusThuHoach, bonusCancel, bonusHoaHong, bonus;
+    private void xuatExcelLuongNV() {
+        try {
+            XSSFWorkbook workbook = new XSSFWorkbook();
+            XSSFSheet sheet = workbook.createSheet("LuongNV");
+            XSSFRow row = null;
+            Cell cell = null;
+            row = sheet.createRow(3);
+            cell = row.createCell(0, CellType.STRING);
+            cell.setCellValue("Tên nhân viên");
 
-        // sét KPI trồng cây và trả về tiền thưởng trồng cây
-        if (tongTrongCay > 50) {
-            bonusTrongCay = (float) (tongTrongCay * 1.5);
-        } else if (tongTrongCay > 30) {
-            bonusTrongCay = (float) (tongTrongCay * 1.25);
-        } else {
-            bonusTrongCay = tongTrongCay * 1;
+            cell = row.createCell(1, CellType.STRING);
+            cell.setCellValue("Lương cố định");
+
+            cell = row.createCell(2, CellType.STRING);
+            cell.setCellValue("Thưởng");
+
+            cell = row.createCell(3, CellType.STRING);
+            cell.setCellValue("Tổng lương");
+
+            for (int i = 0; i < listnv.size(); i++) {
+                row = sheet.createRow(4 + i);
+
+                cell = row.createCell(0, CellType.STRING);
+                cell.setCellValue(listnv.get(i).getHoTen());
+
+                cell = row.createCell(1, CellType.STRING);
+                cell.setCellValue(listnv.get(i).getLuong());
+
+                cell = row.createCell(2, CellType.STRING);
+                cell.setCellValue(listnv.get(i).getBonusMonth());
+
+                cell = row.createCell(3, CellType.STRING);
+                cell.setCellValue(listnv.get(i).getTongluong() + "");
+            }
+            File file = new File("src\\Excel\\LuongNV.xlsx");
+            try {
+                FileOutputStream fos = new FileOutputStream(file);
+                workbook.write(fos);
+                fos.close();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+                MsgBox.alert(this, "loimofile");
+            }
+            MsgBox.alert(this, "Đã xuất ra file Excel");
+
+        } catch (IOException e) {
+            MsgBox.alert(this, "loimofile");
         }
-
-        // sét KPI chăm sóc và trả về tiền thưởng thu hoạch
-        if (tongChamSoc > 150) {
-            bonusChamSoc = (float) (tongChamSoc * 1.75);
-        } else if (tongChamSoc > 100) {
-            bonusChamSoc = (float) (tongChamSoc * 1.5);
-        } else if (tongChamSoc > 50) {
-            bonusChamSoc = (float) (tongChamSoc * 1.25);
-        } else {
-            bonusChamSoc = tongChamSoc * 1;
-        }
-
-        // sét KPI thu hoạch và trả về tiền thưởng thu hoạch
-        if (tongThuHoach > 50) {
-            bonusThuHoach = (float) (tongThuHoach * 1.5);
-        } else if (tongThuHoach > 25) {
-            bonusThuHoach = (float) (tongThuHoach * 1.25);
-        } else {
-            bonusThuHoach = (float) (tongThuHoach * 1);
-        }
-
-        //sét KPI cancel và trả về tiền phạt
-        if (tongCancel > 10) {
-            bonusCancel = tongCancel * -2;
-        } else if (tongCancel > 5) {
-            bonusCancel = (float) (tongCancel * -1.5);
-        } else if (tongCancel > 3) {
-            bonusCancel = (float) (tongCancel * -1.25);
-        } else {
-            bonusCancel = tongCancel * 0;
-        }
-
-        //tìm sản phẩm đã bán và trả về hoa hồng
-        bonusHoaHong = tongHoaHong * 2;
-
-        return bonus = bonusTrongCay + bonusChamSoc + bonusThuHoach + bonusCancel + bonusHoaHong;
     }
 
     /**
@@ -208,22 +202,30 @@ public class ThongKeJDialog extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        tabs = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblKhoHang = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnXuatPDF = new javax.swing.JButton();
+        btnXuatExcel = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblluongnhanvien = new javax.swing.JTable();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lblDATE = new javax.swing.JLabel();
+        btnXuatPDF2 = new javax.swing.JButton();
+        btnXuatExcel2 = new javax.swing.JButton();
+        pnlBackground = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tabs.setBackground(new java.awt.Color(255, 255, 255));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         tblKhoHang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -246,17 +248,19 @@ public class ThongKeJDialog extends javax.swing.JDialog {
         });
         jScrollPane1.setViewportView(tblKhoHang);
 
-        jButton1.setText("xuat PDF");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnXuatPDF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/pdf_30px.png"))); // NOI18N
+        btnXuatPDF.setText("Xuất PDF");
+        btnXuatPDF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnXuatPDFActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Xuat excel");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnXuatExcel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Microsoft Excel 2019_30px.png"))); // NOI18N
+        btnXuatExcel.setText("Xuất Excel");
+        btnXuatExcel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnXuatExcelActionPerformed(evt);
             }
         });
 
@@ -269,12 +273,15 @@ public class ThongKeJDialog extends javax.swing.JDialog {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(btnXuatPDF)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)
-                        .addGap(0, 700, Short.MAX_VALUE)))
+                        .addComponent(btnXuatExcel)
+                        .addGap(0, 626, Short.MAX_VALUE)))
                 .addContainerGap())
         );
+
+        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnXuatExcel, btnXuatPDF});
+
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -282,10 +289,12 @@ public class ThongKeJDialog extends javax.swing.JDialog {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(btnXuatPDF)
+                    .addComponent(btnXuatExcel))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnXuatExcel, btnXuatPDF});
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -298,7 +307,9 @@ public class ThongKeJDialog extends javax.swing.JDialog {
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("Kho hàng", jPanel1);
+        tabs.addTab("Kho hàng", jPanel1);
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
         tblluongnhanvien.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -321,25 +332,27 @@ public class ThongKeJDialog extends javax.swing.JDialog {
         });
         jScrollPane2.setViewportView(tblluongnhanvien);
 
-        jButton3.setText("xuat PDF");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
-        jButton4.setText("Xuat excel");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Bảng lương tháng:");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setText("10/2021");
+        lblDATE.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblDATE.setText("10/2021");
+
+        btnXuatPDF2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/pdf_30px.png"))); // NOI18N
+        btnXuatPDF2.setText("Xuất PDF");
+        btnXuatPDF2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXuatPDF2ActionPerformed(evt);
+            }
+        });
+
+        btnXuatExcel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/Microsoft Excel 2019_30px.png"))); // NOI18N
+        btnXuatExcel2.setText("Xuất Excel");
+        btnXuatExcel2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXuatExcel2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -352,13 +365,13 @@ public class ThongKeJDialog extends javax.swing.JDialog {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jButton3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton4))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel2)))
+                                .addComponent(lblDATE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(btnXuatPDF2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnXuatExcel2)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -368,34 +381,40 @@ public class ThongKeJDialog extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 18, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lblDATE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
-                .addContainerGap())
+                    .addComponent(btnXuatPDF2)
+                    .addComponent(btnXuatExcel2))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Lương nhân viên", jPanel3);
+        tabs.addTab("Lương nhân viên", jPanel3);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+        getContentPane().add(tabs, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        pnlBackground.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout pnlBackgroundLayout = new javax.swing.GroupLayout(pnlBackground);
+        pnlBackground.setLayout(pnlBackgroundLayout);
+        pnlBackgroundLayout.setHorizontalGroup(
+            pnlBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 890, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+        pnlBackgroundLayout.setVerticalGroup(
+            pnlBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 470, Short.MAX_VALUE)
         );
+
+        getContentPane().add(pnlBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 890, 470));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        this.xuatExcel();
+    private void btnXuatExcelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatExcelActionPerformed
+        this.xuatExcelThongke();
         Runtime run = Runtime.getRuntime();
         String url = "src\\Excel\\ThongKeDT.xlsx";
         try {
@@ -403,23 +422,33 @@ public class ThongKeJDialog extends javax.swing.JDialog {
         } catch (IOException ex) {
             Logger.getLogger(ThongKeJDialog.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnXuatExcelActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnXuatPDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatPDFActionPerformed
         try {
             tblKhoHang.print();
         } catch (PrinterException ex) {
             Logger.getLogger(ThongKeJDialog.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnXuatPDFActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void btnXuatPDF2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatPDF2ActionPerformed
+        try {
+            tblluongnhanvien.print();
+        } catch (PrinterException e) {
+        }
+    }//GEN-LAST:event_btnXuatPDF2ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void btnXuatExcel2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatExcel2ActionPerformed
+        this.xuatExcelLuongNV();
+        Runtime run = Runtime.getRuntime();
+        String url = "src\\Excel\\LuongNV.xlsx";
+        try {
+            run.exec("rundll32 url.dll, FileProtocolHandler " + url);
+        } catch (IOException ex) {
+            Logger.getLogger(ThongKeJDialog.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnXuatExcel2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -462,18 +491,19 @@ public class ThongKeJDialog extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton btnXuatExcel;
+    private javax.swing.JButton btnXuatExcel2;
+    private javax.swing.JButton btnXuatPDF;
+    private javax.swing.JButton btnXuatPDF2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JLabel lblDATE;
+    private javax.swing.JPanel pnlBackground;
+    private javax.swing.JTabbedPane tabs;
     private javax.swing.JTable tblKhoHang;
     private javax.swing.JTable tblluongnhanvien;
     // End of variables declaration//GEN-END:variables

@@ -1395,7 +1395,12 @@ public class TongQuan extends javax.swing.JFrame {
     }//GEN-LAST:event_pnlNhatKyMouseExited
 
     private void btnThongkeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongkeActionPerformed
-        //        new ThongKeJDialog(ThongKeJDialog, true);
+        if (Auth.isManager()) {
+            new ThongKeJDialog(this, true).setVisible(true);
+        } else {
+            MsgBox.alert(this, "Bạn không có quyền truy cập vào chức năng này !");
+        }
+
     }//GEN-LAST:event_btnThongkeActionPerformed
 
     /**
@@ -1426,10 +1431,8 @@ public class TongQuan extends javax.swing.JFrame {
         //</editor-fold>
         /* Create and display the form */
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TongQuan().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new TongQuan().setVisible(true);
         });
     }
 
@@ -1857,13 +1860,13 @@ public class TongQuan extends javax.swing.JFrame {
         t.setDaemon(true);
         myThread.runnable = true;
         t.start();
- 
+
     }
 
     public void pause() {
         myThread.runnable = false;
         webSource.release();
-        
+
     }
 
 }

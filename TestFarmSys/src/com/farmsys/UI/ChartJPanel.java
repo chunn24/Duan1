@@ -44,7 +44,6 @@ public class ChartJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
         PanelTong = new javax.swing.JPanel();
         pnlcharttron = new javax.swing.JPanel();
         pnlchartcot = new javax.swing.JPanel();
@@ -79,7 +78,7 @@ public class ChartJPanel extends javax.swing.JPanel {
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Đến");
-        PanelTong.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 60, 20));
+        PanelTong.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, 60, 40));
 
         btnloccharttron.setBackground(new java.awt.Color(255, 255, 255));
         btnloccharttron.setText("Lọc");
@@ -88,7 +87,7 @@ public class ChartJPanel extends javax.swing.JPanel {
                 btnloccharttronActionPerformed(evt);
             }
         });
-        PanelTong.add(btnloccharttron, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 20, 60, 20));
+        PanelTong.add(btnloccharttron, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 20, 60, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -107,7 +106,6 @@ public class ChartJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnloccharttronActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloccharttronActionPerformed
-
         this.showPieChartByTime();
     }//GEN-LAST:event_btnloccharttronActionPerformed
 
@@ -117,7 +115,6 @@ public class ChartJPanel extends javax.swing.JPanel {
     private com.toedter.calendar.JDateChooser Datengayketthuc;
     private javax.swing.JPanel PanelTong;
     private javax.swing.JButton btnloccharttron;
-    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel pnlchartcot;
     private javax.swing.JPanel pnlcharttron;
@@ -125,8 +122,6 @@ public class ChartJPanel extends javax.swing.JPanel {
     ChartDAO dao = new ChartDAO();
     Double Thang1, Thang2, Thang3, Thang4, Thang5, Thang6, Thang7, Thang8, Thang9, Thang10, Thang11, Thang12;
     NhatKyDAO nkDAO = new NhatKyDAO();
-    private JsonResult result;
-    private int idx = 0;
 
     private void init() {
         this.fillTableChart();
@@ -210,7 +205,7 @@ public class ChartJPanel extends javax.swing.JPanel {
             }
             if (doing > 0) {
                 barDataset.setValue("Đang làm", doing);
-            }
+            }   
             if (done > 0) {
                 barDataset.setValue("Hoàn thành", done);
             }

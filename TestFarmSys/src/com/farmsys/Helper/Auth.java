@@ -12,7 +12,7 @@ import com.farmsys.Entity.NhanVien;
  * @author trieu
  */
 public class Auth {
-    public  static NhanVien user = null;
+    public static NhanVien user = null;
     public static void clear(){
         Auth.user = null;
     }
