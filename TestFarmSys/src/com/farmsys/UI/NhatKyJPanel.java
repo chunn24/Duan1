@@ -5,7 +5,6 @@
  */
 package com.farmsys.UI;
 
-import com.farmsys.Entity.KhoHang;
 import com.farmsys.Entity.NhanVien;
 import com.farmsys.Entity.NhatKy;
 import com.farmsys.Helper.MsgBox;
@@ -14,7 +13,6 @@ import com.farmsys.dao.CongViecDAO;
 import com.farmsys.dao.NhanVienDAO;
 import com.farmsys.dao.NhatKyDAO;
 import java.awt.Image;
-import java.awt.event.ActionEvent;
 import java.awt.print.PrinterException;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -22,12 +20,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
-import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
@@ -73,7 +69,6 @@ public class NhatKyJPanel extends javax.swing.JPanel {
         rdoNu = new javax.swing.JRadioButton();
         txtTenNV = new javax.swing.JTextField();
         buttonGroup3 = new javax.swing.ButtonGroup();
-        jProgressBar1 = new javax.swing.JProgressBar();
         pnlNhatKy = new javax.swing.JPanel();
         txttimkiem = new javax.swing.JTextField();
         lbltimkiem = new javax.swing.JLabel();
@@ -93,6 +88,8 @@ public class NhatKyJPanel extends javax.swing.JPanel {
         TheNVJDialog.setUndecorated(true);
         TheNVJDialog.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        pnlTong.setBackground(new java.awt.Color(204, 255, 204));
+        pnlTong.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pnlTong.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnlTongMouseClicked(evt);
@@ -275,8 +272,7 @@ public class NhatKyJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txttimkiemKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txttimkiemKeyPressed
-//        this.fillTableNhatKyByTenCV();
-//        this.fillTableNhatKyByTenCay();
+
         this.fillTableNhatKyByTenNV();
 
 
@@ -334,7 +330,6 @@ public class NhatKyJPanel extends javax.swing.JPanel {
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
     private com.farmsys.Helper.ImageAvatar imageAvatar;
-    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblGioiTinh;
@@ -370,48 +365,6 @@ public class NhatKyJPanel extends javax.swing.JPanel {
         model.setRowCount(0);
         list = (ArrayList<NhatKy>) nkdao.selectAllMonth();
         for (NhatKy nk : list) {
-            model.addRow(new Object[]{
-                nk.getTenCV(),
-                nk.getTenCay(),
-                nk.getTenGian(),
-                nk.getChiTiet(),
-                nk.getNguoiTao(),
-                nk.getNhanVien(),
-                nk.getNgayBatDau(),
-                nk.getNgayKetThuc(),
-                nk.toString()
-            });
-        }
-    }
-
-    private void fillTableNhatKyByTenCay() {
-        DefaultTableModel model = (DefaultTableModel) tblNhatKy.getModel();
-        model.setRowCount(0);
-        String TimKiem = txttimkiem.getText();
-        list = (ArrayList<NhatKy>) nkdao.selectByTenCay(TimKiem);
-        for (NhatKy nk : list) {
-
-            model.addRow(new Object[]{
-                nk.getTenCV(),
-                nk.getTenCay(),
-                nk.getTenGian(),
-                nk.getChiTiet(),
-                nk.getNguoiTao(),
-                nk.getNhanVien(),
-                nk.getNgayBatDau(),
-                nk.getNgayKetThuc(),
-                nk.toString()
-            });
-        }
-    }
-
-    private void fillTableNhatKyByTenCV() {
-        DefaultTableModel model = (DefaultTableModel) tblNhatKy.getModel();
-        model.setRowCount(0);
-        String TimKiem = txttimkiem.getText();
-        list = (ArrayList<NhatKy>) nkdao.selectByTenCay(TimKiem);
-        for (NhatKy nk : list) {
-
             model.addRow(new Object[]{
                 nk.getTenCV(),
                 nk.getTenCay(),
