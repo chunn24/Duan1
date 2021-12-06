@@ -213,6 +213,7 @@ public class TongQuan extends javax.swing.JFrame {
 
         pnlkhohang.setBackground(new java.awt.Color(255, 204, 153));
         pnlkhohang.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        pnlkhohang.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pnlkhohang.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnlkhohangMouseClicked(evt);
@@ -251,6 +252,7 @@ public class TongQuan extends javax.swing.JFrame {
         pnldoing.setBackground(new java.awt.Color(255, 255, 204));
         pnldoing.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         pnldoing.setToolTipText("");
+        pnldoing.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pnldoing.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnldoingMouseClicked(evt);
@@ -288,6 +290,7 @@ public class TongQuan extends javax.swing.JFrame {
 
         pnltodo.setBackground(new java.awt.Color(255, 204, 204));
         pnltodo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        pnltodo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pnltodo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnltodoMouseClicked(evt);
@@ -346,6 +349,7 @@ public class TongQuan extends javax.swing.JFrame {
 
         pnlBonus.setBackground(new java.awt.Color(153, 153, 255));
         pnlBonus.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        pnlBonus.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pnlBonus.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnlBonusMouseClicked(evt);
@@ -505,6 +509,7 @@ public class TongQuan extends javax.swing.JFrame {
 
         pnlhienthiNV.setBackground(new java.awt.Color(102, 255, 204));
         pnlhienthiNV.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        pnlhienthiNV.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pnlhienthiNV.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnlhienthiNVMouseClicked(evt);
@@ -583,6 +588,7 @@ public class TongQuan extends javax.swing.JFrame {
         lblLogout.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
         lblLogout.setForeground(new java.awt.Color(51, 153, 255));
         lblLogout.setText("Log out");
+        lblLogout.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblLogout.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblLogoutMouseClicked(evt);
@@ -633,6 +639,7 @@ public class TongQuan extends javax.swing.JFrame {
         pnlmenu.setBackground(new java.awt.Color(255, 255, 255));
 
         pnlDashboard.setBackground(new java.awt.Color(255, 255, 255));
+        pnlDashboard.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pnlDashboard.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnlDashboardMouseClicked(evt);
@@ -668,6 +675,7 @@ public class TongQuan extends javax.swing.JFrame {
         );
 
         pnlCamera.setBackground(new java.awt.Color(255, 255, 255));
+        pnlCamera.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pnlCamera.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnlCameraMouseClicked(evt);
@@ -703,6 +711,7 @@ public class TongQuan extends javax.swing.JFrame {
         );
 
         pnlTrangchu.setBackground(new java.awt.Color(255, 255, 255));
+        pnlTrangchu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pnlTrangchu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnlTrangchuMouseClicked(evt);
@@ -770,6 +779,7 @@ public class TongQuan extends javax.swing.JFrame {
         pnltruongphong.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlThoiTiet.setBackground(new java.awt.Color(255, 255, 255));
+        pnlThoiTiet.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pnlThoiTiet.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnlThoiTietMouseClicked(evt);
@@ -806,6 +816,7 @@ public class TongQuan extends javax.swing.JFrame {
         pnltruongphong.add(pnlThoiTiet, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 286, -1, -1));
 
         pnlGiaoViec.setBackground(new java.awt.Color(255, 255, 255));
+        pnlGiaoViec.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pnlGiaoViec.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnlGiaoViecMouseClicked(evt);
@@ -842,6 +853,7 @@ public class TongQuan extends javax.swing.JFrame {
         pnltruongphong.add(pnlGiaoViec, new org.netbeans.lib.awtextra.AbsoluteConstraints(9, 231, -1, -1));
 
         pnlGianTrong.setBackground(new java.awt.Color(255, 255, 255));
+        pnlGianTrong.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pnlGianTrong.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnlGianTrongMouseClicked(evt);
@@ -878,6 +890,7 @@ public class TongQuan extends javax.swing.JFrame {
         pnltruongphong.add(pnlGianTrong, new org.netbeans.lib.awtextra.AbsoluteConstraints(9, 176, 206, -1));
 
         pnlCayTrong.setBackground(new java.awt.Color(255, 255, 255));
+        pnlCayTrong.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pnlCayTrong.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnlCayTrongMouseClicked(evt);
@@ -914,6 +927,7 @@ public class TongQuan extends javax.swing.JFrame {
         pnltruongphong.add(pnlCayTrong, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 121, 205, -1));
 
         pnlNhatKy.setBackground(new java.awt.Color(255, 255, 255));
+        pnlNhatKy.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pnlNhatKy.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnlNhatKyMouseClicked(evt);
@@ -950,6 +964,7 @@ public class TongQuan extends javax.swing.JFrame {
         pnltruongphong.add(pnlNhatKy, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 66, 205, -1));
 
         pnlNhanVien.setBackground(new java.awt.Color(255, 255, 255));
+        pnlNhanVien.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pnlNhanVien.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnlNhanVienMouseClicked(evt);
