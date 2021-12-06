@@ -7,6 +7,7 @@ package com.farmsys.UI;
 
 import com.farmsys.Entity.KhoHang;
 import com.farmsys.Entity.NhanVien;
+import com.farmsys.Helper.Auth;
 import com.farmsys.Helper.MsgBox;
 import com.farmsys.dao.KhoHangDAO;
 import com.farmsys.dao.NhanVienDAO;
@@ -16,7 +17,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
@@ -35,6 +38,8 @@ public class ThongKeJDialog extends javax.swing.JDialog {
 
     /**
      * Creates new form ThongKeJDialog
+     * @param parent
+     * @param modal
      */
     public ThongKeJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -47,6 +52,14 @@ public class ThongKeJDialog extends javax.swing.JDialog {
         setLocationRelativeTo(null);
         this.fillTableKhoHangAll();
         this.fillTableLuongNhanVien();
+        if (!Auth.isManager()) {
+            tabs.setEnabledAt(1, false);
+        }
+        Date now = new Date();
+        SimpleDateFormat formater = new SimpleDateFormat("MM/yyyy");
+        String text = formater.format(now);
+        lblDATE.setText(text);
+
     }
 
     KhoHangDAO khDAO = new KhoHangDAO();
@@ -138,7 +151,7 @@ public class ThongKeJDialog extends javax.swing.JDialog {
             }
             MsgBox.alert(this, "Đã xuất ra file Excel");
 
-        } catch (Exception e) {
+        } catch (IOException e) {
             MsgBox.alert(this, "loimofile");
         }
     }
@@ -203,13 +216,13 @@ public class ThongKeJDialog extends javax.swing.JDialog {
     private void initComponents() {
 
         tabs = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
+        pnlKhohang = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblKhoHang = new javax.swing.JTable();
         btnXuatPDF = new javax.swing.JButton();
         btnXuatExcel = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
+        pnlLuongNV = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblluongnhanvien = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
@@ -219,11 +232,13 @@ public class ThongKeJDialog extends javax.swing.JDialog {
         pnlBackground = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Thống kê");
+        setBackground(new java.awt.Color(255, 255, 255));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tabs.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        pnlKhohang.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -291,25 +306,25 @@ public class ThongKeJDialog extends javax.swing.JDialog {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnXuatPDF)
                     .addComponent(btnXuatExcel))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnXuatExcel, btnXuatPDF});
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout pnlKhohangLayout = new javax.swing.GroupLayout(pnlKhohang);
+        pnlKhohang.setLayout(pnlKhohangLayout);
+        pnlKhohangLayout.setHorizontalGroup(
+            pnlKhohangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        pnlKhohangLayout.setVerticalGroup(
+            pnlKhohangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        tabs.addTab("Kho hàng", jPanel1);
+        tabs.addTab("Kho hàng", pnlKhohang);
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        pnlLuongNV.setBackground(new java.awt.Color(255, 255, 255));
 
         tblluongnhanvien.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -336,7 +351,6 @@ public class ThongKeJDialog extends javax.swing.JDialog {
         jLabel1.setText("Bảng lương tháng:");
 
         lblDATE.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblDATE.setText("10/2021");
 
         btnXuatPDF2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/pdf_30px.png"))); // NOI18N
         btnXuatPDF2.setText("Xuất PDF");
@@ -354,46 +368,46 @@ public class ThongKeJDialog extends javax.swing.JDialog {
             }
         });
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnlLuongNVLayout = new javax.swing.GroupLayout(pnlLuongNV);
+        pnlLuongNV.setLayout(pnlLuongNVLayout);
+        pnlLuongNVLayout.setHorizontalGroup(
+            pnlLuongNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlLuongNVLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlLuongNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 866, Short.MAX_VALUE)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lblDATE))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGroup(pnlLuongNVLayout.createSequentialGroup()
+                        .addGroup(pnlLuongNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlLuongNVLayout.createSequentialGroup()
                                 .addComponent(btnXuatPDF2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnXuatExcel2)))
+                                .addComponent(btnXuatExcel2))
+                            .addGroup(pnlLuongNVLayout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lblDATE, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        pnlLuongNVLayout.setVerticalGroup(
+            pnlLuongNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlLuongNVLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 18, Short.MAX_VALUE)
+                .addGroup(pnlLuongNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblDATE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pnlLuongNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnXuatPDF2)
                     .addComponent(btnXuatExcel2))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
-        tabs.addTab("Lương nhân viên", jPanel3);
+        tabs.addTab("Lương nhân viên", pnlLuongNV);
 
-        getContentPane().add(tabs, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(tabs, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 470));
 
         pnlBackground.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -496,13 +510,13 @@ public class ThongKeJDialog extends javax.swing.JDialog {
     private javax.swing.JButton btnXuatPDF;
     private javax.swing.JButton btnXuatPDF2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblDATE;
     private javax.swing.JPanel pnlBackground;
+    private javax.swing.JPanel pnlKhohang;
+    private javax.swing.JPanel pnlLuongNV;
     private javax.swing.JTabbedPane tabs;
     private javax.swing.JTable tblKhoHang;
     private javax.swing.JTable tblluongnhanvien;

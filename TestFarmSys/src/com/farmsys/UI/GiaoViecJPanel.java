@@ -21,6 +21,7 @@ import com.farmsys.dao.NhatKyDAO;
 import com.farmsys.dao.ThuHoachDAO;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -64,35 +65,46 @@ public class GiaoViecJPanel extends javax.swing.JPanel {
         txtNgayBatDau = new com.toedter.calendar.JDateChooser();
         txtNgayKetThuc = new com.toedter.calendar.JDateChooser();
         cboNhanVien = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblGiaoViec = new javax.swing.JTable();
 
         setMinimumSize(new java.awt.Dimension(1083, 750));
         setPreferredSize(new java.awt.Dimension(1083, 750));
 
         PanelTong.setBackground(new java.awt.Color(255, 255, 255));
         PanelTong.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Giao Việc", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 36), new java.awt.Color(0, 0, 204))); // NOI18N
+        PanelTong.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblNguoiNhanViec.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblNguoiNhanViec.setText("Người nhận việc:");
+        PanelTong.add(lblNguoiNhanViec, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, -1, -1));
 
         lblghiChu.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblghiChu.setText("Ghi chú:");
+        PanelTong.add(lblghiChu, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, -1, -1));
 
         txtGhiChu.setColumns(20);
         txtGhiChu.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtGhiChu.setRows(5);
         jScrollPane2.setViewportView(txtGhiChu);
 
+        PanelTong.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, 260, 109));
+
         lblNgayBD.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblNgayBD.setText("Ngày bắt đầu:");
+        PanelTong.add(lblNgayBD, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 200, -1, -1));
 
         lblKiemTra.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblKiemTra.setText("Ngày kiểm tra:");
+        PanelTong.add(lblKiemTra, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 260, -1, -1));
 
         lblTenCV.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblTenCV.setText("Tên công việc:");
+        PanelTong.add(lblTenCV, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, -1, -1));
 
         lblGianCay.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblGianCay.setText("Giàn cây:");
+        PanelTong.add(lblGianCay, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, -1, -1));
 
         btnGiaoViec.setBackground(new java.awt.Color(19, 148, 147));
         btnGiaoViec.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
@@ -104,101 +116,89 @@ public class GiaoViecJPanel extends javax.swing.JPanel {
                 btnGiaoViecActionPerformed(evt);
             }
         });
+        PanelTong.add(btnGiaoViec, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 330, 470, 40));
 
         lblCaytrong.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblCaytrong.setText("Cây trồng:");
+        PanelTong.add(lblCaytrong, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 80, -1, -1));
 
         lblNguoiTao.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblNguoiTao.setText("Người tạo:");
+        PanelTong.add(lblNguoiTao, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 140, -1, -1));
 
         txtnguoitao.setEditable(false);
         txtnguoitao.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtnguoitao.setEnabled(false);
+        PanelTong.add(txtnguoitao, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 140, 316, 37));
 
         cboCongViec.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboCongViecActionPerformed(evt);
             }
         });
+        PanelTong.add(cboCongViec, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, 260, 37));
 
-        javax.swing.GroupLayout PanelTongLayout = new javax.swing.GroupLayout(PanelTong);
-        PanelTong.setLayout(PanelTongLayout);
-        PanelTongLayout.setHorizontalGroup(
-            PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelTongLayout.createSequentialGroup()
-                .addGap(284, 284, 284)
-                .addGroup(PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblGianCay)
-                    .addComponent(lblCaytrong)
-                    .addGroup(PanelTongLayout.createSequentialGroup()
-                        .addGroup(PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(PanelTongLayout.createSequentialGroup()
-                                .addGroup(PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblKiemTra)
-                                    .addComponent(lblNguoiTao)
-                                    .addComponent(lblghiChu)
-                                    .addComponent(lblTenCV)
-                                    .addComponent(lblNgayBD))
-                                .addGap(35, 35, 35))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelTongLayout.createSequentialGroup()
-                                .addComponent(lblNguoiNhanViec)
-                                .addGap(18, 18, 18)))
-                        .addGroup(PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNgayKetThuc, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtnguoitao, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtNgayBatDau, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(cboCongViec, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cboCayTrong, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cboGianTrong, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(cboNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnGiaoViec, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(319, Short.MAX_VALUE))
-        );
-        PanelTongLayout.setVerticalGroup(
-            PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelTongLayout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addGroup(PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTenCV)
-                    .addComponent(cboCongViec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblCaytrong)
-                    .addComponent(cboCayTrong, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblGianCay)
-                    .addComponent(cboGianTrong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addGroup(PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblghiChu)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtnguoitao, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNguoiTao))
-                .addGap(18, 18, 18)
-                .addGroup(PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtNgayBatDau, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNgayBD))
-                .addGap(18, 18, 18)
-                .addGroup(PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtNgayKetThuc, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblKiemTra))
-                .addGap(18, 18, 18)
-                .addGroup(PanelTongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cboNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNguoiNhanViec))
-                .addGap(37, 37, 37)
-                .addComponent(btnGiaoViec, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(32, Short.MAX_VALUE))
-        );
+        PanelTong.add(cboGianTrong, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, 260, 37));
 
-        PanelTongLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cboCayTrong, cboCongViec, cboGianTrong});
+        PanelTong.add(cboCayTrong, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 80, 316, 37));
+        PanelTong.add(txtNgayBatDau, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 200, 316, 37));
+        PanelTong.add(txtNgayKetThuc, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 260, 316, 37));
 
-        PanelTongLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cboNhanVien, txtNgayBatDau, txtNgayKetThuc, txtnguoitao});
+        PanelTong.add(cboNhanVien, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 330, 260, 37));
+
+        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setBorder(null);
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane1.setAutoscrolls(true);
+        jScrollPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        tblGiaoViec.setAutoCreateRowSorter(true);
+        tblGiaoViec.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Tên công việc", "Tên Cây", "Tên Giàn", "Chi tiết công việc", "Người tạo", "Nhân viên", "Bắt đầu", "Kết thúc", "Trạng thái"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblGiaoViec.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_NEXT_COLUMN);
+        tblGiaoViec.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tblGiaoViec.setDropMode(javax.swing.DropMode.INSERT);
+        tblGiaoViec.setFillsViewportHeight(true);
+        tblGiaoViec.setFocusable(false);
+        tblGiaoViec.setGridColor(new java.awt.Color(255, 255, 255));
+        tblGiaoViec.setMinimumSize(new java.awt.Dimension(750, 480));
+        tblGiaoViec.setRowHeight(40);
+        tblGiaoViec.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tblGiaoViec.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tblGiaoViec.setUpdateSelectionOnSort(false);
+        tblGiaoViec.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblGiaoViecMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblGiaoViec);
+
+        PanelTong.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, 1020, 310));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -233,6 +233,10 @@ public class GiaoViecJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_cboCongViecActionPerformed
 
+    private void tblGiaoViecMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblGiaoViecMouseClicked
+
+    }//GEN-LAST:event_tblGiaoViecMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelTong;
@@ -241,6 +245,7 @@ public class GiaoViecJPanel extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cboCongViec;
     private javax.swing.JComboBox<String> cboGianTrong;
     private javax.swing.JComboBox<String> cboNhanVien;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblCaytrong;
     private javax.swing.JLabel lblGianCay;
@@ -250,6 +255,7 @@ public class GiaoViecJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblNguoiTao;
     private javax.swing.JLabel lblTenCV;
     private javax.swing.JLabel lblghiChu;
+    private javax.swing.JTable tblGiaoViec;
     private javax.swing.JTextArea txtGhiChu;
     private com.toedter.calendar.JDateChooser txtNgayBatDau;
     private com.toedter.calendar.JDateChooser txtNgayKetThuc;
@@ -268,6 +274,26 @@ public class GiaoViecJPanel extends javax.swing.JPanel {
         fillComboBoxCayTrong();
 //        fillComboBoxGianTrong();
         fillComboBoxNhanVien();
+        fillTableNguoinhanviec();
+    }
+
+    void fillTableNguoinhanviec() {
+        DefaultTableModel model = (DefaultTableModel) tblGiaoViec.getModel();
+        model.setRowCount(0);
+        List<NhatKy> list = nkdao.selectByTrangThai(0);
+        for (NhatKy nk : list) {
+            model.addRow(new Object[]{
+                nk.getTenCV(),
+                nk.getTenCay(),
+                nk.getTenGian(),
+                nk.getChiTiet(),
+                nk.getNguoiTao(),
+                nk.getNhanVien(),
+                nk.getNgayBatDau(),
+                nk.getNgayKetThuc(),
+                nk.toString()
+            });
+        }
 
     }
 
@@ -344,6 +370,7 @@ public class GiaoViecJPanel extends javax.swing.JPanel {
             try {
                 nkdao.insert(kh);
                 dtdao.updateTrangThai(String.valueOf(cboGianTrong.getSelectedItem()));
+                fillTableNguoinhanviec();
                 this.clearForm();
                 MsgBox.alert(this, "Đã thêm thành công!");
             } catch (Exception e) {
@@ -374,9 +401,6 @@ public class GiaoViecJPanel extends javax.swing.JPanel {
         return null;
     }
 
-
-        
-
     private boolean Validation() {
 
         //kiểm lỗi ngày bắt đầu
@@ -400,4 +424,3 @@ public class GiaoViecJPanel extends javax.swing.JPanel {
 
     }
 }
-

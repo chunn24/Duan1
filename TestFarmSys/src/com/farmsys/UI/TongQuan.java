@@ -323,13 +323,14 @@ public class TongQuan extends javax.swing.JFrame {
 
         pnltongquat.add(pnltodo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 220, 120));
 
+        btnThongke.setBackground(new java.awt.Color(255, 255, 255));
         btnThongke.setText("Bảng thống kê doanh thu");
         btnThongke.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnThongkeActionPerformed(evt);
             }
         });
-        pnltongquat.add(btnThongke, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 690, 190, -1));
+        pnltongquat.add(btnThongke, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 690, 190, 30));
 
         lblcongvieccanlam.setText("Công việc đang làm:");
         pnltongquat.add(lblcongvieccanlam, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, -1, -1));
@@ -1545,6 +1546,7 @@ public class TongQuan extends javax.swing.JFrame {
     MatOfRect faceDetections = new MatOfRect();
 
     private void init() {
+        this.setIconImage(XImage.getAppIcon());
         result = HandleAPI.getJsonData((String) "Saigon");
         setThoiTiet();
         //this.setIconImage(XImage.getAppIcon());
@@ -1648,8 +1650,6 @@ public class TongQuan extends javax.swing.JFrame {
         String text = lblweather.getText();
         if (text.contains("clouds")) {
             lblsunrain.setIcon(new ImageIcon("src\\com\\farmsys\\icons\\cloud_100px.png"));
-        } else if (text.contains("sun")) {
-            lblsunrain.setIcon(new ImageIcon("src\\com\\farmsys\\icons\\sun_100px.png"));
         } else if (text.contains("rain")) {
             lblsunrain.setIcon(new ImageIcon("src\\com\\farmsys\\icons\\rain_100px.png"));
         }

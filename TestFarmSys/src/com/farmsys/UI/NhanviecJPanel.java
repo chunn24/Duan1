@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.farmsys.UI;
 
 import com.farmsys.Entity.GianTrong;
@@ -13,10 +9,8 @@ import com.farmsys.Helper.MsgBox;
 import com.farmsys.dao.GianTrongDAO;
 import com.farmsys.dao.NhanVienDAO;
 import com.farmsys.dao.NhatKyDAO;
-import java.awt.event.ActionEvent;
 import java.sql.Date;
 import java.util.List;
-import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 
 /**

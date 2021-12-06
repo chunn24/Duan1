@@ -99,12 +99,12 @@ go
 
 insert into NhanVien 
 values 
- ('Trung','240102',N'Vương Nguyên Trung',1,'trung@fpt.edu.vn',10000000,1,'a.png',null),
- ('TrieuNHD','123456',N'Nguyễn Huỳnh Đông Triều',1,'trieu@fpt.edu.vn',10000000,0,'b.png',null),
- ('Tri','123456',N'Nguyễn Diệp Thế Tri',1,'Tri@fpt.edu.vn',10000000,0,'c.png',null),
- ('Dung','123456',N'Trần Tiến Dũng',1,'Dung@fpt.edu.vn',2000000,0,'d.png',null),
- ('Hai','123456',N'Giáp Văn Hải',1,'Hai@fpt.edu.vn',10000000,0,'e.png',null),
- ('Tuan','123456',N'Đinh Quang Tuấn',1,'Tuan@fpt.edu.vn',10000000,0,'f.png',null)
+ ('Trung','123456',N'Vương Nguyên Trung',1,'truongvuong528@gmail.com',10000,1,'a.png',null),
+ ('TrieuNHD','123456',N'Nguyễn Huỳnh Đông Triều',1,'trieu@fpt.edu.vn',300,0,'b.png',null),
+ ('Tri','123456',N'Nguyễn Diệp Thế Tri',1,'Tri@fpt.edu.vn',300,0,'c.png',null),
+ ('Dung','123456',N'Trần Tiến Dũng',1,'Dung@fpt.edu.vn',300,0,'d.png',null),
+ ('Hai','123456',N'Giáp Văn Hải',1,'Hai@fpt.edu.vn',300,0,'e.png',null),
+ ('Tuan','123456',N'Đinh Quang Tuấn',1,'Tuan@fpt.edu.vn',300,0,'f.png',null)
  go
 
  insert into GianTrong (TenGian,TrangThai)

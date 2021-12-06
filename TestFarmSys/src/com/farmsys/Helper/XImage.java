@@ -22,7 +22,7 @@ import javax.swing.ImageIcon;
 public class XImage {
 
     public static Image getAppIcon() {
-        URL url = XImage.class.getResource("com/farmsys/icons/avatar.png");
+        URL url = XImage.class.getResource("/com/farmsys/icons/icon.png");
         return new ImageIcon(url).getImage();
         //Lấy địa chỉ hình ảnh và tạo ảnh --> return
     }
@@ -41,7 +41,7 @@ public class XImage {
         }
 
     }
-    
+
     public static boolean saveImage(File file) {
         File dir = new File("logos");
         // Tạo thư mục nếu chưa tồn tại
@@ -86,5 +86,5 @@ public class XImage {
 //        File path = new File("logos", fileName);
 //        return new ImageIcon(path.getAbsolutePath());
 //    }
-//    
+//  
 }

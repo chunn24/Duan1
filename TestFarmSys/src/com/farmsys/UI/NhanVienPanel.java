@@ -39,7 +39,6 @@ public class NhanVienPanel extends javax.swing.JPanel {
 
     private String manv;
     private String emailNV;
-    private String tempOTP;
     String QRcoderandomString;
     String QRnow;
 
@@ -151,7 +150,6 @@ public class NhanVienPanel extends javax.swing.JPanel {
         NhanVien nv = dao.selectById(manv);
         this.setForm(nv);
         this.updateStatus();
-
     }
 
     void first() {
@@ -210,7 +208,7 @@ public class NhanVienPanel extends javax.swing.JPanel {
         txtEmail.setText(nv.getEmail());
         txtLuong.setText(nv.getLuong() + "");
         txtqrcode.setText(nv.getQRcodeString() + "");
-        QRnow = nv.getQRcodeString();
+
         if (nv.getHinh() != null) {
             lblHinh1.setToolTipText(nv.getHinh());
             ImageIcon icon = XImage.read(nv.getHinh()); // Lấy địa chỉ của file Icon
@@ -222,7 +220,7 @@ public class NhanVienPanel extends javax.swing.JPanel {
             lblHinh1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/avatar.png")));
         }
         this.createQRcode1();
-        
+
     }
 
     NhanVien getForm() {
@@ -281,7 +279,7 @@ public class NhanVienPanel extends javax.swing.JPanel {
 
     private void createQRcode1() {
         try {
-            String qrCodeData = QRnow;
+            String qrCodeData = txtqrcode.getText();
             String filePath = "src\\QRcode\\b.png";
             String charset = "UTF-8"; // or "ISO-8859-1"
             Map< EncodeHintType, ErrorCorrectionLevel> hintMap = new EnumMap<>(EncodeHintType.class);
@@ -657,7 +655,7 @@ public class NhanVienPanel extends javax.swing.JPanel {
         if (evt.getClickCount() == 1) {
             this.row = tblNhanVien.getSelectedRow();
             this.edit();
-
+            lblIconQR.setIcon(new ImageIcon("src\\QRCODE\\b.png"));
         }
     }//GEN-LAST:event_tblNhanVienMouseClicked
 
