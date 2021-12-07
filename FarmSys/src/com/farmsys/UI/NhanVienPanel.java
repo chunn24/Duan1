@@ -26,6 +26,7 @@ import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import java.awt.Image;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.EnumMap;
 import java.util.UUID;
 import javax.swing.ImageIcon;
@@ -335,12 +336,12 @@ public class NhanVienPanel extends javax.swing.JPanel {
             txtMaNV.requestFocus();
             return false;
         }
-        if (txtMatKhau.getPassword().toString().isEmpty()) {
+        if (Arrays.toString(txtMatKhau.getPassword()).isEmpty()) {
             MsgBox.alert(this, "Bạn chưa nhập mật khẩu!");
             txtMatKhau.requestFocus();
             return false;
         }
-        if (txtMatKhau2.getPassword().toString().isEmpty()) {
+        if (Arrays.toString(txtMatKhau2.getPassword()).isEmpty()) {
             MsgBox.alert(this, "Bạn chưa nhập xác nhận mật khẩu!");
             txtMatKhau2.requestFocus();
             return false;
@@ -442,8 +443,6 @@ public class NhanVienPanel extends javax.swing.JPanel {
         rdoNu = new javax.swing.JRadioButton();
         lblHinh1 = new javax.swing.JLabel();
         lblloadagain = new javax.swing.JLabel();
-        lblQR = new javax.swing.JLabel();
-        lblIconQR = new javax.swing.JLabel();
         txtqrcode = new javax.swing.JPasswordField();
 
         setMinimumSize(new java.awt.Dimension(1083, 750));
@@ -500,27 +499,27 @@ public class NhanVienPanel extends javax.swing.JPanel {
 
         lblMaNV.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblMaNV.setText("Tài khoản");
-        pnlEdit.add(lblMaNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, -1, -1));
+        pnlEdit.add(lblMaNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
 
         lblMatKhau.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblMatKhau.setText("Mật khẩu");
-        pnlEdit.add(lblMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, -1, -1));
+        pnlEdit.add(lblMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, -1, -1));
 
         lblMatKhau2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblMatKhau2.setText("Xác nhận mật khẩu");
-        pnlEdit.add(lblMatKhau2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 70, -1, -1));
+        pnlEdit.add(lblMatKhau2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 110, -1, -1));
 
         lblHoTen.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblHoTen.setText("Họ và tên");
-        pnlEdit.add(lblHoTen, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 10, -1, -1));
+        pnlEdit.add(lblHoTen, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 30, -1, -1));
 
         lblVaiTro.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblVaiTro.setText("Vai trò");
-        pnlEdit.add(lblVaiTro, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 130, -1, -1));
-        pnlEdit.add(txtMaNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, 231, 29));
-        pnlEdit.add(txtMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, 231, 29));
-        pnlEdit.add(txtMatKhau2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 90, 231, 29));
-        pnlEdit.add(txtHoTen, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 30, 231, 29));
+        pnlEdit.add(lblVaiTro, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 190, -1, -1));
+        pnlEdit.add(txtMaNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 231, 29));
+        pnlEdit.add(txtMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 231, 29));
+        pnlEdit.add(txtMatKhau2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 130, 231, 29));
+        pnlEdit.add(txtHoTen, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 50, 231, 29));
 
         btnThem.setBackground(new java.awt.Color(255, 255, 255));
         btnThem.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -565,34 +564,34 @@ public class NhanVienPanel extends javax.swing.JPanel {
         buttonGroup2.add(rdoTruongPhong);
         rdoTruongPhong.setSelected(true);
         rdoTruongPhong.setText("Trưởng phòng");
-        pnlEdit.add(rdoTruongPhong, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 150, -1, -1));
+        pnlEdit.add(rdoTruongPhong, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 210, -1, -1));
 
         buttonGroup2.add(rdoNhanVien);
         rdoNhanVien.setText("Nhân viên");
-        pnlEdit.add(rdoNhanVien, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 150, -1, -1));
+        pnlEdit.add(rdoNhanVien, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 210, -1, -1));
 
         lblGioiTinh.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblGioiTinh.setText("Giới tính");
-        pnlEdit.add(lblGioiTinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, -1, 12));
+        pnlEdit.add(lblGioiTinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, -1, 12));
 
         lblEmail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblEmail.setText("Email");
-        pnlEdit.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, -1, 29));
-        pnlEdit.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, 231, 29));
+        pnlEdit.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, -1, 29));
+        pnlEdit.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 231, 29));
 
         lblLuongCoban.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblLuongCoban.setText("Lương cơ bản");
-        pnlEdit.add(lblLuongCoban, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 180, -1, 29));
-        pnlEdit.add(txtLuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 210, 231, 29));
+        pnlEdit.add(lblLuongCoban, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 270, -1, 29));
+        pnlEdit.add(txtLuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 300, 231, 29));
 
         buttonGroup1.add(rdoNam);
         rdoNam.setSelected(true);
         rdoNam.setText("Nam");
-        pnlEdit.add(rdoNam, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, -1, -1));
+        pnlEdit.add(rdoNam, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, -1, -1));
 
         buttonGroup1.add(rdoNu);
         rdoNu.setText("Nữ");
-        pnlEdit.add(rdoNu, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, -1, -1));
+        pnlEdit.add(rdoNu, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, -1, -1));
 
         lblHinh1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHinh1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/avatar.png"))); // NOI18N
@@ -613,13 +612,6 @@ public class NhanVienPanel extends javax.swing.JPanel {
         });
         pnlEdit.add(lblloadagain, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 0, 30, -1));
 
-        lblQR.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblQR.setText("QR code");
-        pnlEdit.add(lblQR, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 242, -1, 20));
-
-        lblIconQR.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        pnlEdit.add(lblIconQR, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 200, 180));
-
         pnlTong.add(pnlEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 1050, 460));
 
         txtqrcode.setText("jPasswordField1");
@@ -631,13 +623,13 @@ public class NhanVienPanel extends javax.swing.JPanel {
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         this.randomString();
         this.insert();
-        lblIconQR.setIcon(new ImageIcon("src\\QRcode\\a.png"));
+
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         this.randomString();
         this.update();
-        lblIconQR.setIcon(new ImageIcon("src\\QRcode\\a.png"));
+
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
@@ -655,7 +647,6 @@ public class NhanVienPanel extends javax.swing.JPanel {
         if (evt.getClickCount() == 1) {
             this.row = tblNhanVien.getSelectedRow();
             this.edit();
-            lblIconQR.setIcon(new ImageIcon("src\\QRCODE\\b.png"));
         }
     }//GEN-LAST:event_tblNhanVienMouseClicked
 
@@ -681,12 +672,10 @@ public class NhanVienPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblGioiTinh;
     private javax.swing.JLabel lblHinh1;
     private javax.swing.JLabel lblHoTen;
-    private javax.swing.JLabel lblIconQR;
     private javax.swing.JLabel lblLuongCoban;
     private javax.swing.JLabel lblMaNV;
     private javax.swing.JLabel lblMatKhau;
     private javax.swing.JLabel lblMatKhau2;
-    private javax.swing.JLabel lblQR;
     private javax.swing.JLabel lblVaiTro;
     private javax.swing.JLabel lblloadagain;
     private javax.swing.JPanel pnlEdit;
