@@ -166,7 +166,7 @@
                   </Group>
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                      <Component id="jLabel2" pref="139" max="32767" attributes="0"/>
+                      <Component id="jLabel2" max="32767" attributes="0"/>
                       <EmptySpace min="312" pref="312" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
@@ -193,9 +193,9 @@
                   </Group>
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                      <Component id="txtDoTDS" max="32767" attributes="0"/>
+                      <Component id="txtDoTDS" pref="0" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="153" max="-2" attributes="0"/>
-                      <Component id="txtDoPH" max="32767" attributes="0"/>
+                      <Component id="txtDoPH" linkSize="2" min="-2" pref="144" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
@@ -207,10 +207,10 @@
                   </Group>
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                      <Component id="txtNhietDo" max="32767" attributes="0"/>
+                      <Component id="txtNhietDo" linkSize="2" min="-2" pref="144" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="153" max="-2" attributes="0"/>
-                      <Component id="txtDoAm" max="32767" attributes="0"/>
-                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                      <Component id="txtDoAm" linkSize="2" min="-2" pref="144" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
@@ -228,15 +228,15 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="lblHinh" pref="169" max="32767" attributes="0"/>
+                      <Component id="lblHinh" pref="168" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-                      <Component id="jLabel2" pref="24" max="32767" attributes="0"/>
+                      <Component id="jLabel2" pref="23" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                      <Component id="txtTenCay" pref="34" max="32767" attributes="0"/>
+                      <Component id="txtTenCay" pref="33" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                      <Component id="jLabel3" pref="24" max="32767" attributes="0"/>
+                      <Component id="jLabel3" pref="23" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                      <Component id="txtThoiGianThuHoach" pref="34" max="32767" attributes="0"/>
+                      <Component id="txtThoiGianThuHoach" pref="33" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel4" max="32767" attributes="0"/>
@@ -244,8 +244,8 @@
                       </Group>
                       <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtDoTDS" pref="34" max="32767" attributes="0"/>
-                          <Component id="txtDoPH" max="32767" attributes="0"/>
+                          <Component id="txtDoTDS" max="32767" attributes="0"/>
+                          <Component id="txtDoPH" linkSize="1" min="-2" pref="34" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -253,13 +253,13 @@
                           <Component id="jLabel7" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtNhietDo" pref="34" max="32767" attributes="0"/>
-                          <Component id="txtDoAm" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txtNhietDo" linkSize="1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtDoAm" linkSize="1" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btnAdd" pref="35" max="32767" attributes="0"/>
+                          <Component id="btnAdd" pref="36" max="32767" attributes="0"/>
                           <Component id="btnUpdate" max="32767" attributes="0"/>
                           <Component id="btnDelete" max="32767" attributes="0"/>
                           <Component id="btnNew" max="32767" attributes="0"/>

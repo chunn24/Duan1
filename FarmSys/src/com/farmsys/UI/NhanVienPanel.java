@@ -576,13 +576,13 @@ public class NhanVienPanel extends javax.swing.JPanel {
 
         lblEmail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblEmail.setText("Email");
-        pnlEdit.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, -1, 29));
-        pnlEdit.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 231, 29));
+        pnlEdit.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, -1, 29));
+        pnlEdit.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 231, 29));
 
         lblLuongCoban.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblLuongCoban.setText("Lương cơ bản");
-        pnlEdit.add(lblLuongCoban, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 270, -1, 29));
-        pnlEdit.add(txtLuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 300, 231, 29));
+        pnlEdit.add(lblLuongCoban, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 260, -1, 29));
+        pnlEdit.add(txtLuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 290, 231, 29));
 
         buttonGroup1.add(rdoNam);
         rdoNam.setSelected(true);
@@ -617,7 +617,7 @@ public class NhanVienPanel extends javax.swing.JPanel {
         txtqrcode.setText("jPasswordField1");
         pnlTong.add(txtqrcode, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 690, -1, -1));
 
-        add(pnlTong, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1070, 750));
+        add(pnlTong, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1090, 750));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
