@@ -81,6 +81,7 @@ public class KhoHangJPanel extends javax.swing.JPanel {
         lblGiaban = new javax.swing.JLabel();
         lblSanPham = new javax.swing.JLabel();
         lblSoLuong = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
         btnkhongin = new javax.swing.JButton();
         btnInHD = new javax.swing.JButton();
         PnlTong = new javax.swing.JPanel();
@@ -160,12 +161,14 @@ public class KhoHangJPanel extends javax.swing.JPanel {
         pnlhoadon.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 280, 446, 10));
 
         jLabel17.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel17.setText("Tổng tiền");
-        pnlhoadon.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 290, 60, 20));
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel17.setText("Tổng tiền:");
+        pnlhoadon.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 290, 60, 20));
 
         lblTongTien.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblTongTien.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblTongTien.setText("0 ");
-        pnlhoadon.add(lblTongTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 290, 120, 20));
+        pnlhoadon.add(lblTongTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 290, 90, 20));
 
         jSeparator5.setBackground(new java.awt.Color(0, 0, 0));
         pnlhoadon.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 324, 446, 10));
@@ -201,6 +204,11 @@ public class KhoHangJPanel extends javax.swing.JPanel {
         lblSoLuong.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblSoLuong.setText("jLabel13");
         pnlhoadon.add(lblSoLuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 214, 80, -1));
+
+        jLabel18.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel18.setText("$");
+        pnlhoadon.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 290, 20, 20));
 
         HoaDonJDialog.getContentPane().add(pnlhoadon, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 470, 590));
 
@@ -486,7 +494,7 @@ public class KhoHangJPanel extends javax.swing.JPanel {
         if (evt.getClickCount() == 1) {
             this.index = tblKhoHang.getSelectedRow();
             this.edit();
-            
+
         }
     }//GEN-LAST:event_tblKhoHangMouseClicked
 
@@ -520,6 +528,7 @@ public class KhoHangJPanel extends javax.swing.JPanel {
 
     private void btnkhonginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnkhonginActionPerformed
         HoaDonJDialog.setVisible(false);
+        clear();
     }//GEN-LAST:event_btnkhonginActionPerformed
 
     private void btnInHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInHDActionPerformed
@@ -545,6 +554,7 @@ public class KhoHangJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
@@ -589,14 +599,14 @@ public class KhoHangJPanel extends javax.swing.JPanel {
     KhoHangDAO khdao = new KhoHangDAO();
     NhatKyDAO nkdao = new NhatKyDAO();
     int index = 0;
-    
+
     void init() {
         txtTimKiem.grabFocus();
         fillTable();
         HoaDonJDialog.setLocationRelativeTo(this);
-        
+
     }
-    
+
     void Buy() {
         if (Validation()) {
             int kh = Integer.parseInt(txtMaTH.getText());
@@ -608,7 +618,7 @@ public class KhoHangJPanel extends javax.swing.JPanel {
             Double Coin2 = Coin + (gb * slb);
             Double hoadontongtien = tongtien + (gb * slb);
             Float TrongLuong2 = TrongLuong - slb;
-            
+
             try {
                 khdao.update(TrongLuong2, Coin2, kh);
                 if (slb > TrongLuong) {
@@ -616,9 +626,9 @@ public class KhoHangJPanel extends javax.swing.JPanel {
                 } else {
                     this.fillTable();
                     MsgBox.alert(this, "Giao Dịch Thành Công !");
-                    
+
                 }
-                
+
             } catch (Exception e) {
                 MsgBox.alert(this, "Giao Dịch Thất Bại !");
             }
@@ -628,12 +638,12 @@ public class KhoHangJPanel extends javax.swing.JPanel {
             lblSanPham.setText(txtTenCay.getText());
             lblGiaban.setText(txtGiaBan.getText() + " /kg");
             lblSoLuong.setText(txtSLBan.getText() + " kg");
-            lblTongTien.setText((hoadontongtien) + " $");
-            
+            lblTongTien.setText((hoadontongtien) + "");
+
         }
-        
+
     }
-    
+
     void fillTable() {
         DefaultTableModel model = (DefaultTableModel) tblKhoHang.getModel();
         model.setRowCount(0);
@@ -651,19 +661,19 @@ public class KhoHangJPanel extends javax.swing.JPanel {
             MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
         }
     }
-    
+
     void edit() {
         try {
             String TenDan = (String) tblKhoHang.getValueAt(this.index, 0);
             KhoHang kh = khdao.selectById(TenDan);
             this.setForm(kh);
-            
+
             this.updateStatus();
         } catch (Exception e) {
             MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
         }
     }
-    
+
     void clear() {
         txtMaTH.setText("");
         txtNgayTH.setText("");
@@ -673,11 +683,12 @@ public class KhoHangJPanel extends javax.swing.JPanel {
         txtThanhTien.setText("");
         txtGiaBan.setText("");
         txtSLBan.setText("");
+      
         this.index = 0;
         this.updateStatus();
-        
+
     }
-    
+
     void setForm(KhoHang kh) {
         txtMaTH.setText(String.valueOf(kh.getMaTH()));
         txtTenGian.setText(kh.getTenGian());
@@ -685,17 +696,17 @@ public class KhoHangJPanel extends javax.swing.JPanel {
         txtTrongLuong.setText(String.valueOf(kh.getTrongLuong()));
         txtNgayTH.setText(kh.getNgayTH().toString());
         txtThanhTien.setText(kh.getGiaThanh() + "");
-        
+
     }
-    
+
     void updateStatus() {
         boolean edit = (this.index >= 0);
         boolean first = (this.index == 0);
         boolean last = (this.index == tblKhoHang.getRowCount() - 1);
         btnBuy.setEnabled(edit);
-        
+
     }
-    
+
     boolean Validation() {
         if (txtMaTH.getText().isEmpty()) {
             MsgBox.alert(this, "Chưa chọn sản phẩm !");
@@ -706,7 +717,7 @@ public class KhoHangJPanel extends javax.swing.JPanel {
             txtSLBan.setFocusable(true);
             return false;
         }
-        
+
         if (txtSLBan.getText().isEmpty()) {
             MsgBox.alert(this, "Giá bán không được để trống!");
             txtSLBan.setFocusable(true);
@@ -719,7 +730,7 @@ public class KhoHangJPanel extends javax.swing.JPanel {
             txtSLBan.requestFocus();
             return false;
         }
-        
+
         try {
             Float.parseFloat(txtGiaBan.getText());
         } catch (Exception e) {
@@ -727,12 +738,12 @@ public class KhoHangJPanel extends javax.swing.JPanel {
             txtGiaBan.requestFocus();
             return false;
         }
-        
+
         if ((Float.parseFloat(txtGiaBan.getText()) < 0)) {
             MsgBox.alert(this, "Bạn phải nhập số dương cho giá bán!");
             txtGiaBan.requestFocus();
             return false;
-            
+
         }
         if ((Float.parseFloat(txtSLBan.getText()) < 0)) {
             MsgBox.alert(this, "Bạn phải nhập số dương cho số lượng bán!");
@@ -746,22 +757,22 @@ public class KhoHangJPanel extends javax.swing.JPanel {
         }
         return true;
     }
-    
+
     void UpdateStt() {
         try {
             nkdao.updateTrangThaiTH(txtTenGian.getText());
-            
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
+
     void timKiem() {
         this.fillTable();
         this.clear();
         this.index = 0;
     }
-    
+
     private void printPanel(JPanel panel) {
         PrinterJob printerJob = PrinterJob.getPrinterJob();
         printerJob.setJobName("In hóa đơn");
@@ -786,7 +797,7 @@ public class KhoHangJPanel extends javax.swing.JPanel {
             }
         }
     }
-    
+
     private void createQRcode() {
         String thongtin = txtTenCay.getText() + ", "
                 + " | " + txtTenGian.getText() + ", "

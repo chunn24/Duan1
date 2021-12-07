@@ -341,7 +341,7 @@ public class NhanVienPanel extends javax.swing.JPanel {
             txtMatKhau.requestFocus();
             return false;
         }
-        if (Arrays.toString(txtMatKhau2.getPassword()).isEmpty()) {
+            if (Arrays.toString(txtMatKhau2.getPassword()).isEmpty()) {
             MsgBox.alert(this, "Bạn chưa nhập xác nhận mật khẩu!");
             txtMatKhau2.requestFocus();
             return false;
