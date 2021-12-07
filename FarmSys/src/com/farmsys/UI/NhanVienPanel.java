@@ -610,14 +610,14 @@ public class NhanVienPanel extends javax.swing.JPanel {
                 lblloadagainMouseClicked(evt);
             }
         });
-        pnlEdit.add(lblloadagain, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 0, 30, -1));
+        pnlEdit.add(lblloadagain, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 10, 30, -1));
 
         pnlTong.add(pnlEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 1050, 460));
 
         txtqrcode.setText("jPasswordField1");
         pnlTong.add(txtqrcode, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 690, -1, -1));
 
-        add(pnlTong, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1090, 750));
+        add(pnlTong, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1070, 750));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed

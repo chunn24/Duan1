@@ -614,9 +614,9 @@ public class KhoHangJPanel extends javax.swing.JPanel {
             Double Coin = Double.parseDouble(txtThanhTien.getText());
             Float gb = Float.parseFloat(txtGiaBan.getText());
             Float slb = Float.parseFloat(txtSLBan.getText());
-            Double tongtien = Double.parseDouble(lblTongTien.getText());
+//            Double tongtien = Double.parseDouble(lblTongTien.getText());
             Double Coin2 = Coin + (gb * slb);
-            Double hoadontongtien = tongtien + (gb * slb);
+//            Double hoadontongtien = tongtien + (gb * slb);
             Float TrongLuong2 = TrongLuong - slb;
 
             try {
@@ -638,7 +638,7 @@ public class KhoHangJPanel extends javax.swing.JPanel {
             lblSanPham.setText(txtTenCay.getText());
             lblGiaban.setText(txtGiaBan.getText() + " /kg");
             lblSoLuong.setText(txtSLBan.getText() + " kg");
-            lblTongTien.setText((hoadontongtien) + "");
+            lblTongTien.setText((slb * gb) + "");
 
         }
 
@@ -683,7 +683,7 @@ public class KhoHangJPanel extends javax.swing.JPanel {
         txtThanhTien.setText("");
         txtGiaBan.setText("");
         txtSLBan.setText("");
-      
+
         this.index = 0;
         this.updateStatus();
 

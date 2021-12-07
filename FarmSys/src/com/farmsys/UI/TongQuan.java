@@ -1203,7 +1203,6 @@ public class TongQuan extends javax.swing.JFrame {
 
     private void pnlTrangchuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlTrangchuMouseClicked
         tabs.setSelectedIndex(0);
-        this.pause();
     }//GEN-LAST:event_pnlTrangchuMouseClicked
 
     private void pnlTrangchuMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlTrangchuMouseEntered
