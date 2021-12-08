@@ -5,7 +5,6 @@
  */
 package com.farmsys.dao;
 
-import com.farmsys.Entity.CayTrong;
 import com.farmsys.Entity.NhatKy;
 import com.farmsys.Helper.JdbcHelper;
 import java.util.List;
