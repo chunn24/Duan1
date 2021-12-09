@@ -411,7 +411,6 @@ public final class GiaoViecJPanel extends javax.swing.JPanel {
             txtNgayBatDau.requestFocus();
             return false;
         }
-
         //kiểm lỗi ngày kết thúc
         try {
             txtNgayKetThuc.getCalendar().getTime();

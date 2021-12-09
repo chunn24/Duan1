@@ -100,11 +100,11 @@ go
 insert into NhanVien 
 values 
  ('Trung','123456',N'Vương Nguyên Trung',1,'truongvuong528@gmail.com',10000,1,'a.png',null),
- ('TrieuNHD','123456',N'Nguyễn Huỳnh Đông Triều',1,'trieu@fpt.edu.vn',300,0,'b.png',null),
- ('Tri','123456',N'Nguyễn Diệp Thế Tri',1,'Tri@fpt.edu.vn',300,0,'c.png',null),
- ('Dung','123456',N'Trần Tiến Dũng',1,'Dung@fpt.edu.vn',300,0,'d.png',null),
- ('Hai','123456',N'Giáp Văn Hải',1,'Hai@fpt.edu.vn',300,0,'e.png',null),
- ('Tuan','123456',N'Đinh Quang Tuấn',1,'Tuan@fpt.edu.vn',300,0,'f.png',null)
+ ('TrieuNHD','123456',N'Nguyễn Huỳnh Đông Triều',1,'trieu@gmail.com',300,0,'b.png',null),
+ ('Tri','123456',N'Nguyễn Diệp Thế Tri',1,'Tri@gmail.com',300,0,'c.png',null),
+ ('Dung','123456',N'Trần Tiến Dũng',1,'Dung@gmail.com',300,0,'d.png',null),
+ ('Hai','123456',N'Giáp Văn Hải',1,'Hai@gmail.com',300,0,'e.png',null),
+ ('Tuan','123456',N'Đinh Quang Tuấn',1,'Tuan@gmail.com',300,0,'f.png',null)
  go
 
  insert into GianTrong (TenGian,TrangThai)
@@ -143,21 +143,21 @@ values
  
 INSERT INTO LoaiCay 
 VALUES 
-(N'Rau mầm','30','1260','3.5','28','18','Hinh1.jpg'),
-(N'Rau muống','25','1300','2.7','30','12','Hinh2.jpg'),
+(N'Rau mầm','30','1260','3.5','26','18','Hinh1.jpg'),
+(N'Rau muống','25','1300','2.7','27','12','Hinh2.jpg'),
 (N'Rau xà lách','15','1000','7.0','27','13','Hinh3.jpg'),
-(N'Rau cầu vòng','20','1750','3.8','32','11','Hinh4.jpg'),
-(N'Rau bina (Cải bó xôi)','23','2590','3.8','32','15','Hinh5.jpg'),
-(N'Rau cải ngọt','37','2500','2.9','29','16','Hinh6.jpg'),
+(N'Rau cầu vòng','20','1750','3.8','28','11','Hinh4.jpg'),
+(N'Rau bina (Cải bó xôi)','26','2590','3.8','32','15','Hinh5.jpg'),
+(N'Rau cải ngọt','37','2500','2.9','27','16','Hinh6.jpg'),
 (N'Rau cải xanh','40','2000','5.6','27','20','Hinh7.jpg'),
 (N'Rau cải xoan','19','2800','5.2','28','21','Hinh8.jpg'),
-(N'Rau dền','18','1280','4.7','27','19','Hinh9.jpg'),
-(N'Cần tây','32','1370','4.8','29','16','Hinh10.jpg'),
-(N'Cây cà chua','34','1120','4.8','26','17','Hinh11.jpg'),
-(N'Cây dưa leo','35','3000','6.6','31','21','Hinh12.jpg'),
-(N'Rau húng quế','15','2570','6.6','33','09','Hinh13.jpg'),
-(N'Rau mồng tơi','15','2180','6.5','30','11','Hinh14.jpg'),
-(N'Tía tô','15','1290','6.9','29','12','Hinh15.jpg')
+(N'Rau dền','18','1280','4.7','27','26','Hinh9.jpg'),
+(N'Cần tây','32','1370','4.8','29','26','Hinh10.jpg'),
+(N'Cây cà chua','34','1120','4.8','28','17','Hinh11.jpg'),
+(N'Cây dưa leo','35','3000','6.6','27','21','Hinh12.jpg'),
+(N'Rau húng quế','15','2570','6.6','26','09','Hinh13.jpg'),
+(N'Rau mồng tơi','15','2180','6.5','27','11','Hinh14.jpg'),
+(N'Tía tô','15','1290','6.9','29','26','Hinh15.jpg')
 go
 
 insert into CongViec (TenCV)
