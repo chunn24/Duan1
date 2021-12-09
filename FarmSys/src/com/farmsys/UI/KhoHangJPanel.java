@@ -89,7 +89,6 @@ public class KhoHangJPanel extends javax.swing.JPanel {
         pnltimkiem = new javax.swing.JPanel();
         txtTimKiem = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        btnTim = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tblKhoHang = new javax.swing.JTable();
@@ -243,16 +242,14 @@ public class KhoHangJPanel extends javax.swing.JPanel {
         pnltimkiem.setForeground(new java.awt.Color(51, 51, 51));
 
         txtTimKiem.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtTimKiemKeyReleased(evt);
+            }
+        });
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel12.setText("Tên Cây");
-
-        btnTim.setText("Tìm");
-        btnTim.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTimActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout pnltimkiemLayout = new javax.swing.GroupLayout(pnltimkiem);
         pnltimkiem.setLayout(pnltimkiemLayout);
@@ -262,20 +259,16 @@ public class KhoHangJPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtTimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(btnTim)
+                .addComponent(txtTimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, 441, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pnltimkiemLayout.setVerticalGroup(
             pnltimkiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnltimkiemLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnltimkiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnltimkiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnTim, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(pnltimkiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(13, Short.MAX_VALUE))
         );
 
@@ -518,10 +511,6 @@ public class KhoHangJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_txtGiaBanFocusLost
 
-    private void btnTimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimActionPerformed
-        this.timKiem();
-    }//GEN-LAST:event_btnTimActionPerformed
-
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         this.fillTable();
     }//GEN-LAST:event_jLabel3MouseClicked
@@ -537,13 +526,15 @@ public class KhoHangJPanel extends javax.swing.JPanel {
         clear();
     }//GEN-LAST:event_btnInHDActionPerformed
 
+    private void txtTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyReleased
+        this.timKiem();    }//GEN-LAST:event_txtTimKiemKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDialog HoaDonJDialog;
     private javax.swing.JPanel PnlTong;
     private javax.swing.JButton btnBuy;
     private javax.swing.JButton btnInHD;
-    private javax.swing.JButton btnTim;
     private javax.swing.JButton btnkhongin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

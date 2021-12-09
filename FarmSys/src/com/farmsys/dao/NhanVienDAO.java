@@ -151,4 +151,8 @@ public class NhanVienDAO extends FarmSysDAO<NhanVien, String> {
         return list.get(0);
     }
 
+    public List<NhanVien> selectByTenNV(String keyword) {
+        String SELECT_BY_NAME_SQL = "select*from NhanVien WHERE HoTen LIKE ?";
+        return this.selectBySql(SELECT_BY_NAME_SQL, "%" + keyword + "%");
+    }
 }

@@ -27,7 +27,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author NguyenTrung
  */
-public class GiaoViecJPanel extends javax.swing.JPanel {
+public final class GiaoViecJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form GiaoViecJPanel

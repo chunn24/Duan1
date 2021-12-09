@@ -17,7 +17,7 @@ import javax.swing.ImageIcon;
 
 /**
  *
- * @author trieu
+ * @author admin
  */
 public class XImage {
 
@@ -42,49 +42,8 @@ public class XImage {
 
     }
 
-    public static boolean saveImage(File file) {
-        File dir = new File("logos");
-        // Tạo thư mục nếu chưa tồn tại
-        if (!dir.exists()) {
-            dir.mkdirs();
-        }
-        File newFile = new File(dir, file.getName());
-        try {
-            // Copy vào thư mục logos (đè nếu đã tồn tại)
-            Path source = Paths.get(file.getAbsolutePath());
-            Path destination = Paths.get(newFile.getAbsolutePath());
-            Files.copy(source, destination, StandardCopyOption.REPLACE_EXISTING);
-            return true;
-        } catch (Exception ex) {
-            return false;
-        }
-    }
-
     public static ImageIcon read(String fileName) {
         File path = new File("logos", fileName);
         return new ImageIcon(path.getAbsolutePath());
     }
-
-//    public static Image getAppIcon(){
-//        URL url = XImage.class.getResource("/com/edusys/Icon/ong.jpg");
-//        return new ImageIcon(url).getImage();
-//    }
-//    public static void save(File src){
-//        File dst = new File("logos", src.getName());
-//        if(!dst.getParentFile().exists()){
-//            dst.getParentFile().mkdirs();
-//        }
-//        try{
-//            Path from = Paths.get(src.getAbsolutePath());
-//            Path to = Paths.get(dst.getAbsolutePath());
-//            Files.copy(from, to,StandardCopyOption.REPLACE_EXISTING);
-//        }catch(Exception ex){
-//            throw new RuntimeException(ex);
-//        }
-//    }
-//    public static ImageIcon read(String fileName){
-//        File path = new File("logos", fileName);
-//        return new ImageIcon(path.getAbsolutePath());
-//    }
-//  
 }

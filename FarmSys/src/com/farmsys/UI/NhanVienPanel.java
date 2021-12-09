@@ -407,6 +407,25 @@ public class NhanVienPanel extends javax.swing.JPanel {
         }
         return -1;
     }
+    
+    public void FillTimKiem(){
+        DefaultTableModel model = (DefaultTableModel) tblNhanVien.getModel();
+        model.setRowCount(0);      
+        String keywords = txtTimKiem.getText();
+        try {
+            List<NhanVien> list = dao.selectByTenNV(keywords);
+            for (NhanVien nv : list) {
+                Object[] row = {
+                    nv.getMaNV(), "***********", nv.getHoTen(),
+                    nv.isVaiTro() ? "Trưởng phòng" : "Nhân viên",
+                    nv.getEmail(), nv.isGioiTinh() ? "Nam" : "Nữ", nv.getLuong()
+                };
+                model.addRow(row);
+            }
+        } catch (Exception e) {
+            MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
+        }
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -444,6 +463,8 @@ public class NhanVienPanel extends javax.swing.JPanel {
         lblHinh1 = new javax.swing.JLabel();
         lblloadagain = new javax.swing.JLabel();
         txtqrcode = new javax.swing.JPasswordField();
+        jPanel1 = new javax.swing.JPanel();
+        txtTimKiem = new javax.swing.JTextField();
 
         setMinimumSize(new java.awt.Dimension(1083, 750));
         setPreferredSize(new java.awt.Dimension(1083, 750));
@@ -490,9 +511,9 @@ public class NhanVienPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblNhanVien);
 
-        pnlList.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 230));
+        pnlList.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 240));
 
-        pnlTong.add(pnlList, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 1050, 230));
+        pnlTong.add(pnlList, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 1050, 240));
 
         pnlEdit.setBackground(new java.awt.Color(255, 255, 255));
         pnlEdit.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -612,10 +633,31 @@ public class NhanVienPanel extends javax.swing.JPanel {
         });
         pnlEdit.add(lblloadagain, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 10, 30, -1));
 
-        pnlTong.add(pnlEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 1050, 460));
+        pnlTong.add(pnlEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 1050, 380));
 
         txtqrcode.setText("jPasswordField1");
         pnlTong.add(txtqrcode, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 690, -1, -1));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tìm kiếm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtTimKiem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTimKiemActionPerformed(evt);
+            }
+        });
+        txtTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtTimKiemKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtTimKiemKeyReleased(evt);
+            }
+        });
+        jPanel1.add(txtTimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 1030, -1));
+
+        pnlTong.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 1050, 60));
 
         add(pnlTong, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1090, 750));
     }// </editor-fold>//GEN-END:initComponents
@@ -659,6 +701,18 @@ public class NhanVienPanel extends javax.swing.JPanel {
         this.fillTable();
     }//GEN-LAST:event_lblloadagainMouseClicked
 
+    private void txtTimKiemKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyPressed
+        
+    }//GEN-LAST:event_txtTimKiemKeyPressed
+
+    private void txtTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTimKiemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTimKiemActionPerformed
+
+    private void txtTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyReleased
+        this.FillTimKiem();
+    }//GEN-LAST:event_txtTimKiemKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnMoi;
@@ -667,6 +721,7 @@ public class NhanVienPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnXoa;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblGioiTinh;
@@ -692,6 +747,7 @@ public class NhanVienPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtMaNV;
     private javax.swing.JPasswordField txtMatKhau;
     private javax.swing.JPasswordField txtMatKhau2;
+    private javax.swing.JTextField txtTimKiem;
     private javax.swing.JPasswordField txtqrcode;
     // End of variables declaration//GEN-END:variables
 }
