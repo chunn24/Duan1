@@ -66,6 +66,8 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
 
         WebcamQRcode = new javax.swing.JFrame();
         panelquetqr = new javax.swing.JPanel();
+        pnlTong = new javax.swing.JPanel();
+        lbllogo = new javax.swing.JLabel();
         pnldoimk = new javax.swing.JPanel();
         txttaikhoanlaymk = new javax.swing.JTextField();
         txtmknew = new javax.swing.JPasswordField();
@@ -83,8 +85,6 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
         txtxnmknew = new javax.swing.JPasswordField();
         lblxn = new javax.swing.JLabel();
         Doimk = new javax.swing.JLabel();
-        pnlTong = new javax.swing.JPanel();
-        lbllogo = new javax.swing.JLabel();
         Pnlnhap = new javax.swing.JPanel();
         txtMaNV = new javax.swing.JTextField();
         txtMatKhau = new javax.swing.JPasswordField();
@@ -131,6 +131,19 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
         setTitle("Đăng nhập");
         setMinimumSize(new java.awt.Dimension(950, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        pnlTong.setBackground(new java.awt.Color(150, 250, 150));
+        pnlTong.setMinimumSize(new java.awt.Dimension(950, 470));
+        pnlTong.setPreferredSize(new java.awt.Dimension(950, 470));
+        pnlTong.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lbllogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/logofarmSys.gif"))); // NOI18N
+        lbllogo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lbllogoMouseEntered(evt);
+            }
+        });
+        pnlTong.add(lbllogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 500));
 
         pnldoimk.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -289,20 +302,7 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
 
         pnldoimkLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtOTP, txtmknew, txttaikhoanlaymk, txtxnmknew});
 
-        getContentPane().add(pnldoimk, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 500));
-
-        pnlTong.setBackground(new java.awt.Color(150, 250, 150));
-        pnlTong.setMinimumSize(new java.awt.Dimension(950, 470));
-        pnlTong.setPreferredSize(new java.awt.Dimension(950, 470));
-        pnlTong.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lbllogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/logofarmSys.gif"))); // NOI18N
-        lbllogo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lbllogoMouseEntered(evt);
-            }
-        });
-        pnlTong.add(lbllogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 500));
+        pnlTong.add(pnldoimk, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 500));
 
         Pnlnhap.setBackground(new java.awt.Color(255, 255, 255));
         Pnlnhap.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
