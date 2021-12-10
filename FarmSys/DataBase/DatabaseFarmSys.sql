@@ -88,7 +88,7 @@ Create table KhoHang(
 	ThoiGianThuHoach date,
 	Coin float,
 
-	Primary key (TrongLuong,MaTH),
+	Primary key (MaTH),
 	foreign key (TenGian) references GianTrong(TenGian),
 	foreign key (TenCay) references LoaiCay(TenCay)
 );
