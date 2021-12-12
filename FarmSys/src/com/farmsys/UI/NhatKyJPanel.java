@@ -316,6 +316,9 @@ public class NhatKyJPanel extends javax.swing.JPanel {
 
     private void lblloadagainMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblloadagainMouseClicked
         this.fillTableNhatALL();
+        txttimkiem.setText("");
+        Datengaybatdau.setCalendar(null);
+        Datengayketthuc.setCalendar(null);
     }//GEN-LAST:event_lblloadagainMouseClicked
 
     private void pnlTongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlTongMouseClicked

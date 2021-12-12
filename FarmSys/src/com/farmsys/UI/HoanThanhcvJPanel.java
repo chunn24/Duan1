@@ -232,9 +232,9 @@ public class HoanThanhcvJPanel extends javax.swing.JPanel {
             try {
                 nkDAO.updateTrangThai((int) tblcv.getValueAt(this.row, 0));
                 this.fillTableXacNhanHT();
-                MsgBox.alert(this, "Nhận việc thành công!");
+                MsgBox.alert(this, "Xác nhận hoàn thành thành công!");
             } catch (Exception e) {
-                MsgBox.alert(this, "Nhận việc thất bại!");
+                MsgBox.alert(this, "Xác nhận hoàn thành thất bại!");
             }
         }
     }
@@ -242,10 +242,11 @@ public class HoanThanhcvJPanel extends javax.swing.JPanel {
     void updateGianTrong() {
         try {
             gtDAO.updateAgain((String) tblcv.getValueAt(this.row, 2));
+            nkDAO.updateTrangThaiBuy((int) tblcv.getValueAt(this.row, 0));
             this.fillTableXacNhanHT();
-            MsgBox.alert(this, "Nhận việc thành công!");
+            MsgBox.alert(this, "Xác nhận hoàn thành thành công!");
         } catch (Exception e) {
-            MsgBox.alert(this, "Nhận việc thất bại!");
+            MsgBox.alert(this, "Xác nhận hoàn thành thất bại!");
 
         }
     }

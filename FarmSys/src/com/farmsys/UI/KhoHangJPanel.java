@@ -513,6 +513,7 @@ public class KhoHangJPanel extends javax.swing.JPanel {
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         this.fillTable();
+        txtTimKiem.setText("");
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void btnkhonginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnkhonginActionPerformed
@@ -617,19 +618,19 @@ public class KhoHangJPanel extends javax.swing.JPanel {
                 } else {
                     this.fillTable();
                     MsgBox.alert(this, "Giao Dịch Thành Công !");
+                    this.UpdateStt();
+                    HoaDonJDialog.setVisible(true);
+                    lblNgayGD.setText(DateHelper.now() + "");
+                    lblSanPham.setText(txtTenCay.getText());
+                    lblGiaban.setText(txtGiaBan.getText() + " /kg");
+                    lblSoLuong.setText(txtSLBan.getText() + " kg");
+                    lblTongTien.setText((slb * gb) + "");
 
                 }
 
             } catch (Exception e) {
                 MsgBox.alert(this, "Giao Dịch Thất Bại !");
             }
-            this.UpdateStt();
-            HoaDonJDialog.setVisible(true);
-            lblNgayGD.setText(DateHelper.now() + "");
-            lblSanPham.setText(txtTenCay.getText());
-            lblGiaban.setText(txtGiaBan.getText() + " /kg");
-            lblSoLuong.setText(txtSLBan.getText() + " kg");
-            lblTongTien.setText((slb * gb) + "");
 
         }
 

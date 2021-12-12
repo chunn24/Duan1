@@ -62,10 +62,6 @@ public class NhanVienPanel extends javax.swing.JPanel {
             System.exit(0);
         }
         this.updateStatus();
-        new Timer(60000, (ActionEvent e) -> {
-            this.fillTable();
-        }).start();
-
     }
 
     void insert() {
@@ -699,6 +695,7 @@ public class NhanVienPanel extends javax.swing.JPanel {
 
     private void lblloadagainMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblloadagainMouseClicked
         this.fillTable();
+        txtTimKiem.setText("");
     }//GEN-LAST:event_lblloadagainMouseClicked
 
     private void txtTimKiemKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyPressed

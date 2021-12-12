@@ -28,6 +28,7 @@ public class NhatKyDAO extends FarmSysDAO<NhatKy, String> {
     String select_by_trangthaivaten_sql = "select * from NhatKy where TrangThai = ? and NhanVien like ?";
     String select_formtodoanddoing_sql = "select * from NhatKy where STT = ?";
     String UPDATE_Done_SQL = "UPDATE NhatKy SET TrangThai = 3 where STT = ?";
+    String UPDATE_Buying_SQL = "UPDATE NhatKy SET TrangThai = 5 where STT = ?";
     String UPDATE_SQL = "UPDATE NhatKy SET TrangThai = 1 where STT = ?";
     String UPDATE_TuChoi_SQL = "UPDATE NhatKy SET TrangThai = 2 where STT = ?";
     String select_by_Done_Month_SQL = "select *from NhatKy where TrangThai = 3 and NhanVien like ? and  NgayKetThuc between (select CONVERT(varchar,dateadd(d,-(day(getdate()-1)),getdate()),106)) and (select CONVERT(varchar,dateadd(d,-(day(dateadd(m,1,getdate()))),dateadd(m,1,getdate())),106))";
@@ -76,6 +77,14 @@ public class NhatKyDAO extends FarmSysDAO<NhatKy, String> {
     public void updateTrangThai(int stt) {
         try {
             JdbcHelper.update(UPDATE_Done_SQL, stt);
+        } catch (SQLException ex) {
+            Logger.getLogger(NhatKyDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void updateTrangThaiBuy(int stt) {
+        try {
+            JdbcHelper.update(UPDATE_Buying_SQL, stt);
         } catch (SQLException ex) {
             Logger.getLogger(NhatKyDAO.class.getName()).log(Level.SEVERE, null, ex);
         }

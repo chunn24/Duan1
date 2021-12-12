@@ -99,7 +99,7 @@ go
 
 insert into NhanVien 
 values 
- ('Trung','123456',N'Vương Nguyên Trung',1,'truongvuong528@gmail.com',10000,1,'a.png',null),
+ ('Trung','123456',N'Vương Nguyên Trung',1,'trungvuong528@gmail.com',10000,1,'a.png',null),
  ('TrieuNHD','123456',N'Nguyễn Huỳnh Đông Triều',1,'trieu@gmail.com',300,0,'b.png',null),
  ('Tri','123456',N'Nguyễn Diệp Thế Tri',1,'Tri@gmail.com',300,0,'c.png',null),
  ('Dung','123456',N'Trần Tiến Dũng',1,'Dung@gmail.com',300,0,'d.png',null),
@@ -117,20 +117,20 @@ values
 	 ('A6','0'),
 	 ('A7','0'),
 	 ('A8','0'),
-	 ('A9','0'),
-	 ('A10','0'),
-	 ('B1','0'),
-	 ('B2','0'),
-	 ('B3','0'),
-	 ('B4','0'),
-	 ('B5','0'),
+	 ('A9','1'),
+	 ('A10','1'),
+	 ('B1','1'),
+	 ('B2','1'),
+	 ('B3','1'),
+	 ('B4','1'),
+	 ('B5','1'),
 	 ('B6','0'),
 	 ('B7','0'),
-	 ('B8','0'),
+	 ('B8','1'),
 	 ('B9','0'),
-	 ('B10','0'),
-	 ('C1','0'),
-	 ('C2','0'),
+	 ('B10','1'),
+	 ('C1','1'),
+	 ('C2','1'),
 	 ('C3','0'),
 	 ('C4','0'),
 	 ('C5','0'),
@@ -138,7 +138,7 @@ values
 	 ('C7','0'),
 	 ('C8','0'),
 	 ('C9','0'),
-	 ('C10','0')
+	 ('C10','1')
  go
  
 INSERT INTO LoaiCay 
@@ -189,33 +189,42 @@ values
  (N'Thu hoạch',N'Rau cầu vòng','A6',N'Thu hoạch giàn A6','Trung','TrieuNHD','2021-06-23','2021-06-24','3'),
  (N'Thu hoạch',N'Rau mồng tơi','A7',N'Thu hoạch giàn A7','Trung','Dung','2021-07-23','2021-07-24','3'),
  (N'Thu hoạch',N'Cây dưa leo','A8',N'Thu hoạch giàn A8','Trung','Tri','2021-08-23','2021-08-24','3'),
- (N'Thu hoạch',N'Tía tô','A9',N'Thu hoạch giàn A9','Trung','Hai','2021-09-23','2021-09-24','3'),
- (N'Thu hoạch',N'Cây cà chua','A10',N'Thu hoạch giàn A10','Trung','Tuan','2021-10-23','2021-10-24','3'),
- (N'Thu hoạch',N'Rau cải xanh','C10',N'Thu hoạch giàn A10','Trung','TrieuNHD','2021-11-15','2021-11-16','3'),
 
- (N'Trồng cây',N'Rau mầm','B1',N'Trồng cây giàn A1','Trung','TrieuNHD','2020-12-01','2021-12-02','1'),
- (N'Trồng cây',N'Rau dền','B2',N'Trồng cây giàn A2','Trung','Dung','2020-12-02','2021-12-03','1'),
- (N'Trồng cây',N'Rau muống','B3',N'Trồng cây giàn A3','Trung','Tri','2020-12-03','2021-12-04','1'),
- (N'Trồng cây',N'Rau cải ngọt','B4',N'Trồng cây giàn A4','Trung','Tuan','2020-12-04','2021-12-05','1'),
- (N'Trồng cây',N'Rau xà lách','B5',N'Trồng cây giàn A5','Trung','Hai','2020-12-01','2021-12-02','1'),
- (N'Trồng cây',N'Rau cầu vòng','B6',N'Trồng cây giàn A6','Trung','TrieuNHD','2020-12-02','2021-12-03','1'),
- (N'Trồng cây',N'Rau mồng tơi','B7',N'Trồng cây giàn A7','Trung','Dung','2020-12-03','2021-12-04','1'),
- (N'Trồng cây',N'Cây dưa leo','B8',N'Trồng cây giàn A8','Trung','Tri','2020-12-04','2021-12-05','1'),
- (N'Trồng cây',N'Tía tô','B10',N'Trồng cây giàn A9','Trung','Tuan','2020-12-01','2021-12-02','1'),
- (N'Trồng cây',N'Cây cà chua','C1',N'Trồng cây giàn A10','Trung','Hai','2020-12-02','2021-12-03','1'),
- (N'Trồng cây',N'Rau cải xanh','C2',N'Trồng cây giàn B1','Trung','Dung','2020-12-03','2021-12-04','1'),
+
+ (N'Trồng cây',N'Rau mồng tơi','B1',N'Trồng cây giàn A7','Trung','Dung','2020-12-03','2021-12-04','1'),
+ (N'Trồng cây',N'Cây dưa leo','B2',N'Trồng cây giàn A8','Trung','Tri','2020-12-04','2021-12-05','1'),
+ (N'Trồng cây',N'Tía tô','B3',N'Trồng cây giàn A9','Trung','Tuan','2020-12-01','2021-12-02','1'),
+ (N'Trồng cây',N'Cây cà chua','B4',N'Trồng cây giàn A10','Trung','Hai','2020-12-02','2021-12-03','1'),
+ (N'Trồng cây',N'Rau cải xanh','B5',N'Trồng cây giàn B1','Trung','Dung','2020-12-03','2021-12-04','1'),
+
+
+ (N'Trồng cây',N'Tía tô','A9',N'Thu hoạch giàn A9','Trung','Hai','2021-09-23','2021-09-24','3'),
+ (N'Trồng cây',N'Cây cà chua','A10',N'Thu hoạch giàn A10','Trung','Tuan','2021-10-23','2021-10-24','3'),
+ (N'Trồng cây',N'Rau cải xanh','C10',N'Thu hoạch giàn A10','Trung','TrieuNHD','2021-11-15','2021-11-16','3'),
+ (N'Thu hoạch',N'Tía tô','A9',N'Thu hoạch giàn A9','Trung','Hai','2021-09-23','2021-09-24','1'),
+ (N'Thu hoạch',N'Cây cà chua','A10',N'Thu hoạch giàn A10','Trung','Tuan','2021-10-23','2021-10-24','1'),
+ (N'Thu hoạch',N'Rau cải xanh','C10',N'Thu hoạch giàn A10','Trung','TrieuNHD','2021-11-15','2021-11-16','1'),
+
+
+
+
 
  (N'Chăm sóc',N'Rau mầm','B1',N'Trồng cây giàn A1','Trung','TrieuNHD','2020-12-01','2021-12-02','0'),
  (N'Chăm sóc',N'Rau dền','B2',N'Trồng cây giàn A2','Trung','Dung','2020-12-02','2021-12-03','0'),
  (N'Chăm sóc',N'Rau muống','B3',N'Trồng cây giàn A3','Trung','Tri','2020-12-03','2021-12-04','0'),
- (N'Chăm sóc',N'Rau cải ngọt','B4',N'Trồng cây giàn A4','Trung','Tuan','2020-12-04','2021-12-05','0'),
- (N'Chăm sóc',N'Rau xà lách','B5',N'Trồng cây giàn A5','Trung','Hai','2020-12-01','2021-12-02','0'),
- (N'Chăm sóc',N'Rau cầu vòng','B6',N'Trồng cây giàn A6','Trung','TrieuNHD','2020-12-02','2021-12-03','0'),
- (N'Chăm sóc',N'Rau mồng tơi','B7',N'Trồng cây giàn A7','Trung','Dung','2020-12-03','2021-12-04','0'),
- (N'Chăm sóc',N'Cây dưa leo','B8',N'Trồng cây giàn A8','Trung','Tri','2020-12-04','2021-12-05','0'),
- (N'Chăm sóc',N'Tía tô','B10',N'Trồng cây giàn A9','Trung','Tuan','2020-12-01','2021-12-02','0'),
- (N'Chăm sóc',N'Cây cà chua','C1',N'Trồng cây giàn A10','Trung','Hai','2020-12-02','2021-12-03','0'),
- (N'Chăm sóc',N'Rau cải xanh','C2',N'Trồng cây giàn B1','Trung','Dung','2020-12-03','2021-12-04','0')
+ (N'Chăm sóc',N'Rau cải ngọt','B4',N'Trồng cây giàn A4','Trung','Tuan','2020-12-04','2021-12-05','2'),
+ (N'Chăm sóc',N'Rau xà lách','B5',N'Trồng cây giàn A5','Trung','Hai','2020-12-01','2021-12-02','2'),
+ (N'Chăm sóc',N'Rau cầu vòng','B6',N'Trồng cây giàn A6','Trung','TrieuNHD','2020-12-02','2021-12-03','2'),
+ (N'Chăm sóc',N'Rau mồng tơi','B7',N'Trồng cây giàn A7','Trung','Dung','2020-12-03','2021-12-04','2'),
+ (N'Chăm sóc',N'Cây dưa leo','B8',N'Trồng cây giàn A8','Trung','Tri','2020-12-04','2021-12-05','1'),
+ (N'Chăm sóc',N'Tía tô','B10',N'Trồng cây giàn A9','Trung','Tuan','2020-12-01','2021-12-02','1'),
+ (N'Chăm sóc',N'Cây cà chua','C1',N'Trồng cây giàn A10','Trung','Hai','2020-12-02','2021-12-03','1'),
+ (N'Chăm sóc',N'Rau cải xanh','C2',N'Trồng cây giàn B1','Trung','Dung','2020-12-03','2021-12-04','1')
+
+ 
+ 
+ 
+
 
 
  go

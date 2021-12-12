@@ -52,10 +52,6 @@ public class GianTrongJPanel extends javax.swing.JPanel {
         btnSua = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
         btnMoi = new javax.swing.JButton();
-        btnFirst = new javax.swing.JButton();
-        btnPrev = new javax.swing.JButton();
-        btnNext = new javax.swing.JButton();
-        btnLast = new javax.swing.JButton();
         cboLoc = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
 
@@ -98,7 +94,7 @@ public class GianTrongJPanel extends javax.swing.JPanel {
         });
         tblGianTrong.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblGianTrong.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        tblGianTrong.setShowGrid(true);
+        tblGianTrong.setShowGrid(false);
         tblGianTrong.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblGianTrongMouseClicked(evt);
@@ -157,7 +153,7 @@ public class GianTrongJPanel extends javax.swing.JPanel {
                 btnThemActionPerformed(evt);
             }
         });
-        panelTong.add(btnThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 630, -1, 49));
+        panelTong.add(btnThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 620, -1, 49));
 
         btnSua.setBackground(new java.awt.Color(255, 255, 255));
         btnSua.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
@@ -168,7 +164,7 @@ public class GianTrongJPanel extends javax.swing.JPanel {
                 btnSuaActionPerformed(evt);
             }
         });
-        panelTong.add(btnSua, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 630, -1, 49));
+        panelTong.add(btnSua, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 620, -1, 49));
 
         btnXoa.setBackground(new java.awt.Color(255, 255, 255));
         btnXoa.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
@@ -179,7 +175,7 @@ public class GianTrongJPanel extends javax.swing.JPanel {
                 btnXoaActionPerformed(evt);
             }
         });
-        panelTong.add(btnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 630, -1, 49));
+        panelTong.add(btnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 620, -1, 49));
 
         btnMoi.setBackground(new java.awt.Color(255, 255, 255));
         btnMoi.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
@@ -190,43 +186,7 @@ public class GianTrongJPanel extends javax.swing.JPanel {
                 btnMoiActionPerformed(evt);
             }
         });
-        panelTong.add(btnMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 630, -1, 50));
-
-        btnFirst.setBackground(new java.awt.Color(255, 255, 255));
-        btnFirst.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/backward.png"))); // NOI18N
-        btnFirst.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFirstActionPerformed(evt);
-            }
-        });
-        panelTong.add(btnFirst, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 630, -1, 50));
-
-        btnPrev.setBackground(new java.awt.Color(255, 255, 255));
-        btnPrev.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/previous.png"))); // NOI18N
-        btnPrev.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPrevActionPerformed(evt);
-            }
-        });
-        panelTong.add(btnPrev, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 630, -1, 50));
-
-        btnNext.setBackground(new java.awt.Color(255, 255, 255));
-        btnNext.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/next.png"))); // NOI18N
-        btnNext.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNextActionPerformed(evt);
-            }
-        });
-        panelTong.add(btnNext, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 630, -1, 50));
-
-        btnLast.setBackground(new java.awt.Color(255, 255, 255));
-        btnLast.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/fast-forward.png"))); // NOI18N
-        btnLast.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLastActionPerformed(evt);
-            }
-        });
-        panelTong.add(btnLast, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 630, -1, 50));
+        panelTong.add(btnMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 620, -1, 50));
 
         cboLoc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả", "Chưa hoạt động", "Đang hoạt động" }));
         cboLoc.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -294,29 +254,6 @@ public class GianTrongJPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnMoiActionPerformed
 
-    private void btnFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstActionPerformed
-        // TODO add your handling code here:
-        this.first();
-
-    }//GEN-LAST:event_btnFirstActionPerformed
-
-    private void btnPrevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrevActionPerformed
-        // TODO add your handling code here:
-        this.prev();
-
-    }//GEN-LAST:event_btnPrevActionPerformed
-
-    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
-        // TODO add your handling code here:
-        this.next();
-
-    }//GEN-LAST:event_btnNextActionPerformed
-
-    private void btnLastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastActionPerformed
-        // TODO add your handling code here:
-        this.last();
-    }//GEN-LAST:event_btnLastActionPerformed
-
     private void tblGianTrongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblGianTrongMouseClicked
         // TODO add your handling code here:
         if (evt.getClickCount() == 1) {
@@ -344,11 +281,7 @@ public class GianTrongJPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnFirst;
-    private javax.swing.JButton btnLast;
     private javax.swing.JButton btnMoi;
-    private javax.swing.JButton btnNext;
-    private javax.swing.JButton btnPrev;
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnXoa;
@@ -516,10 +449,7 @@ public class GianTrongJPanel extends javax.swing.JPanel {
         btnXoa.setEnabled(!insertable);
         boolean first = this.index > 0;
         boolean last = this.index < tblGianTrong.getRowCount() - 1;
-        btnFirst.setEnabled(!insertable && first);
-        btnPrev.setEnabled(!insertable && first);
-        btnLast.setEnabled(!insertable && last);
-        btnNext.setEnabled(!insertable && last);
+
     }
 
     public boolean checkTrungMa(JTextField txt) {
@@ -571,28 +501,6 @@ public class GianTrongJPanel extends javax.swing.JPanel {
         }
     }
 
-    void first() {
-        this.index = 0;
-        this.edit();
-    }
-
-    void prev() {
-        if (this.index > 0) {
-            this.index--;
-            this.edit();
-        }
-    }
-
-    void next() {
-        if (this.index < tblGianTrong.getRowCount() - 1) {
-            this.index++;
-            this.edit();
-        }
-    }
-
-    void last() {
-        this.index = tblGianTrong.getRowCount() - 1;
-        this.edit();
-    }
+ 
 
 }

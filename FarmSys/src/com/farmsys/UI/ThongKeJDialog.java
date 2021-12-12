@@ -250,7 +250,7 @@ public class ThongKeJDialog extends javax.swing.JDialog {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Tên giàn", "Tên cây", "Trọng lượng", "Ngày thu hoạch", "Thành tiền"
+                "Tên giàn", "Tên cây", "Trọng lượng", "Ngày thu hoạch", "Tổng tiền"
             }
         ) {
             boolean[] canEdit = new boolean [] {

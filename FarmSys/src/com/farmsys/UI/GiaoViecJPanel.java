@@ -19,6 +19,7 @@ import com.farmsys.dao.GianTrongDAO;
 import com.farmsys.dao.NhanVienDAO;
 import com.farmsys.dao.NhatKyDAO;
 import com.farmsys.dao.ThuHoachDAO;
+import java.util.Date;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
@@ -418,6 +419,18 @@ public final class GiaoViecJPanel extends javax.swing.JPanel {
             MsgBox.alert(this, "Bạn chưa chọn ngày kết thúc");
             txtNgayKetThuc.requestFocus();
             return false;
+        }
+
+        Date date1 = txtNgayBatDau.getDate();
+        Date date2 = txtNgayKetThuc.getDate();
+
+        try {
+            if (date1.after(date2)) {
+                MsgBox.alert(this, "Ngày bắt đầu bé hơn ngày kết thúc");
+                return false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return true;
 
