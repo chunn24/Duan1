@@ -54,6 +54,7 @@ public class GianTrongJPanel extends javax.swing.JPanel {
         btnMoi = new javax.swing.JButton();
         cboLoc = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
+        lblloadagain = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(1083, 750));
@@ -204,6 +205,14 @@ public class GianTrongJPanel extends javax.swing.JPanel {
         jLabel4.setText("Lọc theo:");
         panelTong.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 30));
 
+        lblloadagain.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/farmsys/icons/icons8_synchronize_25px.png"))); // NOI18N
+        lblloadagain.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblloadagainMouseClicked(evt);
+            }
+        });
+        panelTong.add(lblloadagain, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 420, 30, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -279,6 +288,10 @@ public class GianTrongJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMaDanTrongActionPerformed
 
+    private void lblloadagainMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblloadagainMouseClicked
+        this.load();       
+    }//GEN-LAST:event_lblloadagainMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnMoi;
@@ -291,6 +304,7 @@ public class GianTrongJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblloadagain;
     private javax.swing.JPanel panelTong;
     private javax.swing.JTable tblGianTrong;
     private javax.swing.JTextField txtMaDanTrong;

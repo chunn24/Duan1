@@ -466,6 +466,10 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
 
     private void btndoimkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndoimkActionPerformed
         this.doiMatKhau(manvotp);
+        txttaikhoanlaymk.setText("");
+        txtOTP.setText("");
+        txtmknew.setText("");
+        txtxnmknew.setText("");
     }//GEN-LAST:event_btndoimkActionPerformed
 
     private void lblquaylaidangnhapMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblquaylaidangnhapMouseClicked
@@ -682,16 +686,20 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
                         MsgBox.alert(this, "Mã QR code không đúng !");
                     } else {
                         Auth.user = nhanvienQRcode;
-                        webcam.close();
                         this.dispose();
+                        webcam.close();
+
+                        this.WebcamQRcode.dispose();
                     }
 
                 } else if (!matKhau.equals(nhanVienEM.getMatKhau())) {
 //                    clearForm();
                 } else {
                     Auth.user = nhanVienEM;
-                    webcam.close();
                     this.dispose();
+                    webcam.close();
+
+                    this.WebcamQRcode.dispose();
                 }
             } else if (!matKhau.equals(nhanVien.getMatKhau())) {
 //                MsgBox.alert(this, "Sai mật khẩu!");
@@ -700,9 +708,10 @@ public class DangNhapJDialog extends javax.swing.JDialog implements Runnable, Th
 //                clearForm();
             } else {
                 Auth.user = nhanVien;
+                System.out.println(Auth.user);
                 this.dispose();
                 webcam.close();
-                this.dispose();
+                this.WebcamQRcode.dispose();
 
             }
 

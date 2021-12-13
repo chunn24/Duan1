@@ -655,7 +655,7 @@ public class NhanVienPanel extends javax.swing.JPanel {
 
         pnlTong.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 1050, 60));
 
-        add(pnlTong, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1090, 750));
+        add(pnlTong, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 750));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
